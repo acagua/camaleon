@@ -1,6 +1,29 @@
-<div class="jumbotron jumbotron-fluid animated fadeIn fast">
-  <div class="container">
-    <h1 class="display-4">Camaleón</h1>
-    <p class="lead">Tu tienda, tu espacio</p>
-  </div>
+<div class="card-deck mt-4">
+    <div class="card" *ngFor="let item of itemsLine1">
+        <img class="card-img-top" [src]="item.image" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{item.store}}</h5>
+            <p class="card-text"><small class="text-muted">{{item.price|currency}}</small></p>
+        </div>
+    </div>
+</div>
+
+<div class="card-deck my-4">
+    <div class="card" *ngFor="let item of itemsLine2">
+        <img class="card-img-top" [src]="item.image" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{item.store}}</h5>
+            <p class="card-text"><small class="text-muted">{{item.price|currency}}</small></p>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<h3>TIENDAS</h3>
+
+<div class="card-deck mt-4">
+    <div class="card" *ngFor="let store of storesLine1">
+        <img class="card-img-top" [src]="store.image" alt="Card image cap">
+    </div>
 </div>
