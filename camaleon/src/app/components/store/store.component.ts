@@ -9,14 +9,16 @@ import { CamaleonService } from 'src/app/services/camaleon.service';
 export class StoreComponent implements OnInit
 {
   store: any = {};
+  items: any[] = [];
 
   constructor(private route: ActivatedRoute, private camaleonService: CamaleonService)
   {
     this.route.params.subscribe(params =>
     {
-      console.log(params['id']);
-      console.log(this.store.name);
       this.store = camaleonService.getStore(params['id']);
+      this.items = camaleonService.getItemsStore(params['id']);
+
+      console.log(this.items);
     });
   }
 

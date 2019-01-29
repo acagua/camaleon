@@ -6,7 +6,7 @@
     <div class="card" style="cursor:pointer" *ngFor="let item of itemsLine1">
         <img class="card-img-top" [src]="item.image" alt="Card image cap" (click)="goItem(item)">
         <div class="card-body">
-            <h5 class="card-title">{{item.store}}</h5>
+            <h5 class="card-title">{{item.storeName}}</h5>
             <p class="card-text"><small class="text-muted">{{item.price|currency}}</small></p>
         </div>
     </div>
@@ -16,7 +16,7 @@
     <div class="card" style="cursor:pointer" *ngFor="let item of itemsLine2">
         <img class="card-img-top" [src]="item.image" alt="Card image cap" (click)="goItem(item)">
         <div class="card-body">
-            <h5 class="card-title">{{item.store}}</h5>
+            <h5 class="card-title">{{item.storeName}}</h5>
             <p class="card-text"><small class="text-muted">{{item.price|currency}}</small></p>
         </div>
     </div>
