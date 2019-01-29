@@ -1,6 +1,10 @@
+<br>
+
+<h3>PRODUCTOS DESTACADOS</h3>
+
 <div class="card-deck mt-4">
-    <div class="card" *ngFor="let item of itemsLine1">
-        <img class="card-img-top" [src]="item.image" alt="Card image cap">
+    <div class="card" style="cursor:pointer" *ngFor="let item of itemsLine1">
+        <img class="card-img-top" [src]="item.image" alt="Card image cap" (click)="goItem(item)">
         <div class="card-body">
             <h5 class="card-title">{{item.store}}</h5>
             <p class="card-text"><small class="text-muted">{{item.price|currency}}</small></p>
@@ -9,8 +13,8 @@
 </div>
 
 <div class="card-deck my-4">
-    <div class="card" *ngFor="let item of itemsLine2">
-        <img class="card-img-top" [src]="item.image" alt="Card image cap">
+    <div class="card" style="cursor:pointer" *ngFor="let item of itemsLine2">
+        <img class="card-img-top" [src]="item.image" alt="Card image cap" (click)="goItem(item)">
         <div class="card-body">
             <h5 class="card-title">{{item.store}}</h5>
             <p class="card-text"><small class="text-muted">{{item.price|currency}}</small></p>
@@ -23,7 +27,7 @@
 <h3>TIENDAS</h3>
 
 <div class="card-deck mt-4">
-    <div class="card" *ngFor="let store of storesLine1">
+    <div class="card" style="cursor:pointer" *ngFor="let store of storesLine1" (click)="goStore(store)">
         <img class="card-img-top" [src]="store.image" alt="Card image cap">
     </div>
 </div>
