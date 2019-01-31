@@ -13327,8 +13327,8 @@ a.text-gray-900:focus {
 
 @media (min-width: 1200px) {
     .navbar-airy .navbar-nav .nav-link {
-        padding-right: 3.5rem;
-        padding-left: 3.5rem;
+        padding-right: 2.5rem;
+        padding-left: 2.5rem;
     }
 }
 
