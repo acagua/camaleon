@@ -52,3 +52,11 @@
     margin-top: 20px;
 }
 */
+
+.bg-white {
+    background-color: #fff !important;
+}
+
+.bg-black {
+    background-color: #231F20 !important;
+}

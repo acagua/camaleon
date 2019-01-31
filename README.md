@@ -43,3 +43,15 @@ Use these steps to clone from SourceTree, our client for using the repository co
 4. Open the directory you just created to see your repository’s files.
 
 Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+
+
+Ruteo del dominio:
+1. Crear nuevo Hosted Zone en Route 53 para camaleon.shop. 
+2. Crear 2 Record Sets (uno para www.camaleon.shop y otro para solo camaleon.shop) de Type:A, Alias:Yes, Alias Target escoger el S3 que corresponde (con o sin www). 
+3. Salvar el Record
+4. Guardar los registros que aparecen en el Rercord NS
+5. En GoDaddy ir a Dominios y para Camaleon.shop poner DNS
+6. En Nameservers actualizar / crear los registros guardados en el paso 4.
+
+S3 como website:
+1. Crear un bucket
