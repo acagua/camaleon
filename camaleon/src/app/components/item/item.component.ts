@@ -19,6 +19,11 @@ export class ItemComponent implements OnInit
     });
   }
 
+  addToCart()
+  {
+
+  }
+
   ngOnInit()
   {
   }
