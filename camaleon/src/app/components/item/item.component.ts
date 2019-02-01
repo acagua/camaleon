@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CamaleonService } from 'src/app/services/camaleon.service';
 
@@ -6,7 +6,7 @@ import { CamaleonService } from 'src/app/services/camaleon.service';
   selector: 'app-item',
   templateUrl: './item.component.html'
 })
-export class ItemComponent implements OnInit
+export class ItemComponent implements OnInit, AfterViewInit
 {
   item: any = {};
 
@@ -26,6 +26,12 @@ export class ItemComponent implements OnInit
 
   ngOnInit()
   {
+
+  }
+
+  ngAfterViewInit(): void
+  {
+    
   }
 
 }

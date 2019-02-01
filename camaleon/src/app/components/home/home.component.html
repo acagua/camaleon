@@ -3,23 +3,49 @@
 <h3>PRODUCTOS DESTACADOS</h3>
 
 <div class="card-deck mt-4">
-    <div class="card" style="cursor:pointer" *ngFor="let item of itemsLine1">
-        <img class="card-img-top" [src]="item.image" alt="Card image cap" (click)="goItem(item)">
-        <div class="card-body">
-            <h5 class="card-title">{{item.storeName}}</h5>
-            <p class="card-text"><small class="text-muted">{{item.price|currency}}</small></p>
+    <div *ngFor="let item of itemsLine1" class="col-xl-3 col-sm-5">
+        <div class="product">
+            <div class="product-image">
+                <div class="ribbon ribbon-info">Fresh</div><img [src]="item.image" alt="product" class="img-fluid" />
+                <div class="product-hover-overlay"><a href="detail.html" class="product-hover-overlay-link"></a>
+                    <div class="product-hover-overlay-buttons"><a href="#" class="btn btn-outline-dark btn-product-left"><i
+                                class="fa fa-shopping-cart"></i></a><a (click)="goItem(item)" class="btn btn-dark btn-buy"><i
+                                class="fa-search fa"></i><span class="btn-buy-label ml-2">View</span></a><a href="#"
+                            data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-dark btn-product-right"><i
+                                class="fa fa-expand-arrows-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="py-2">
+                <p class="text-muted text-sm mb-1">Jackets</p>
+                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">{{item.name}}</a></h3><span
+                    class="text-muted">{{item.price|currency}}</span>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="card-deck my-4">
-    <div class="card" style="cursor:pointer" *ngFor="let item of itemsLine2">
-        <img class="card-img-top" [src]="item.image" alt="Card image cap" (click)="goItem(item)">
-        <div class="card-body">
-            <h5 class="card-title">{{item.storeName}}</h5>
-            <p class="card-text"><small class="text-muted">{{item.price|currency}}</small></p>
+    <div *ngFor="let item of itemsLine2" class="col-xl-3 col-sm-5">
+        <div class="product">
+            <div class="product-image">
+                <div class="ribbon ribbon-info">Fresh</div><img [src]="item.image" alt="product" class="img-fluid" />
+                <div class="product-hover-overlay"><a href="detail.html" class="product-hover-overlay-link"></a>
+                    <div class="product-hover-overlay-buttons"><a href="#" class="btn btn-outline-dark btn-product-left"><i
+                                class="fa fa-shopping-cart"></i></a><a (click)="goItem(item)" class="btn btn-dark btn-buy"><i
+                                class="fa-search fa"></i><span class="btn-buy-label ml-2">View</span></a><a href="#"
+                            data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-dark btn-product-right"><i
+                                class="fa fa-expand-arrows-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="py-2">
+                <p class="text-muted text-sm mb-1">Jackets</p>
+                <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">{{item.name}}</a></h3><span
+                    class="text-muted">{{item.price|currency}}</span>
+            </div>
         </div>
-    </div>
+</div>
 </div>
 
 <hr>

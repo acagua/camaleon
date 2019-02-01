@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CamaleonService } from 'src/app/services/camaleon.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class StoreComponent implements OnInit
   store: any = {};
   items: any[] = [];
 
-  constructor(private route: ActivatedRoute, private camaleonService: CamaleonService)
+  constructor(private route: ActivatedRoute, private router: Router, private camaleonService: CamaleonService)
   {
     this.route.params.subscribe(params =>
     {
@@ -20,6 +20,11 @@ export class StoreComponent implements OnInit
 
       console.log(this.items);
     });
+  }
+
+  goItem(item: any)
+  {
+    this.router.navigate(['/item', item.id]);
   }
 
   ngOnInit()

@@ -179,13 +179,13 @@ $(function () {
     //   Scroll to top button
     // ------------------------------------------------------ //
 
-    $(window).on('scroll', function () {
+/*     $(window).on('scroll', function () {
         if ($(window).scrollTop() >= 1500) {
             $('#scrollTop').fadeIn();
         } else {
             $('#scrollTop').fadeOut();
         }
-    });
+    }); */
 
 
     $('#scrollTop').on('click', function () {

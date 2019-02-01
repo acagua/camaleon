@@ -51,8 +51,8 @@
                     <ul class="list-inline mb-2 mb-sm-0">
                         <li class="list-inline-item h4 font-weight-light mb-0">{{item.price|currency}}</li>
                         <!-- <li class="list-inline-item text-muted font-weight-light">
-                                <del>$90.00</del>
-                            </li> -->
+                            <del>$90.00</del>
+                        </li> -->
                     </ul>
                     <div class="d-flex align-items-center">
                         <ul class="list-inline mr-2 mb-0">
@@ -481,8 +481,8 @@
                                 <ul class="list-inline mb-2 mb-sm-0">
                                     <li class="list-inline-item h4 font-weight-light mb-0">$65.00</li>
                                     <!-- <li class="list-inline-item text-muted font-weight-light">
-                                            <del>$90.00</del>
-                                        </li> -->
+                                        <del>$90.00</del>
+                                    </li> -->
                                 </ul>
                                 <div class="d-flex align-items-center">
                                     <ul class="list-inline mr-2 mb-0">
