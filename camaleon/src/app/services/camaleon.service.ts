@@ -73,6 +73,11 @@ export class CamaleonService
 
   //TODO todo se debe pasar a mongo o dynamo
   //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  categories: any[] = [
+    { id: "1", name: "Ropa", image: "" }
+  ];
+
   stores: any[] = [{
     id: "1", image: "assets/img/clientes/logo_pie_de_elefante.jpg", name: "Pie de Elefante", description: "Somos una tienda de muchas cosas bellas! Nacimos en el 2015 con el deseo de combinar el arte con artículos cotidianos como cuadernos, libretas. Marca 100% colombiana!"
   },

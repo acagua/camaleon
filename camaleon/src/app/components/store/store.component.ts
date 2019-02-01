@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { CamaleonService } from 'src/app/services/camaleon.service';
 
 @Component({
@@ -29,6 +29,7 @@ export class StoreComponent implements OnInit
 
   ngOnInit()
   {
+    window.scrollTo(0, 0);
   }
 
 }
