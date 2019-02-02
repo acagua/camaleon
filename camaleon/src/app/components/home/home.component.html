@@ -1,20 +1,10 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" attr.data-slide-to="{{store.id-1}}" [class.active]="(store.id == 1)" *ngFor="let store of storesLine1"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <a [routerLink]="['/store',1]">
-                <img class="d-block w-100" src="/assets/img/clientes/pie-de-elefante/banner2.png" height="300px" alt="First slide">
-            </a>    
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="/assets/img/clientes/happy-meow/banner2.png" height="300px" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="/assets/img/clientes/pie-de-elefante/banner.jpg" height="300px" alt="Third slide">
+        <div class="carousel-item" [class.active]="(store.id == 1)" style="cursor:pointer" *ngFor="let store of storesLine1" (click)="goStore(store)">
+            <img class="d-block w-100" [src]="store.banner" height="250px" alt="store.name">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

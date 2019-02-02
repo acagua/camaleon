@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CamaleonService } from 'src/app/services/camaleon.service';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,9 @@ export class HomeComponent implements OnInit
   itemsLine1: any[] = [];
   itemsLine2: any[] = [];
   storesLine1: any[] = [];
+
+  @Input()
+  dataSlideTo: string;
 
   constructor(private router: Router, private camaleonService: CamaleonService)
   {

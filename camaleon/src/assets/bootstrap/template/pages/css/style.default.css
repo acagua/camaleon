@@ -140,7 +140,7 @@ ol,
 ul,
 dl {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
 }
 
 ol ol,
@@ -7636,8 +7636,10 @@ a.close.disabled {
 
 .carousel-inner {
     position: relative;
-    width: 100%;
+    width: 85%;
     overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .carousel-inner::after {
@@ -7723,7 +7725,7 @@ a.close.disabled {
     align-items: center;
     -ms-flex-pack: center;
     justify-content: center;
-    width: 15%;
+    width: 18%;
     color: #fff;
     text-align: center;
     opacity: 0.5;
@@ -14139,7 +14141,7 @@ a.text-gray-900:focus {
 
 .product {
     margin-bottom: 30px;
-	/*cursor: pointer;*/
+    /*cursor: pointer;*/
 }
 
 .product-image {

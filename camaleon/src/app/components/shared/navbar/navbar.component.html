@@ -15,22 +15,19 @@
     <div class="container-fluid">
         <!-- Navbar Header  -->
         <a [routerLink]="['home']" class="navbar-brand">
-            <img src="/assets/img/logo-black.png" height="45px" alt="logo camaleon!">
+            <img src="/assets/img/logo-black.png" height="35px" alt="logo camaleon!">
         </a>
-        <button type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-            aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+        <button type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
         <!-- Navbar Collapse -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item dropdown">
-                    <a id="homeDropdownMenuLink" [routerLink]="['home']" data-target=" #" data-toggle="" aria-haspopup="true"
-                        aria-expanded="false" class="nav-link active">
+                    <a id="homeDropdownMenuLink" [routerLink]="['home']" data-target=" #" data-toggle="" aria-haspopup="true" aria-expanded="false" class="nav-link active">
                         Home
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        class="nav-link">
+                    <a id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
                         Marcas <i class="fa fa-angle-down"></i>
                     </a>
                     <ul aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
@@ -41,8 +38,7 @@
                     </ul>
                 </li>
                 <!-- Multi level dropdown    -->
-                <li class="nav-item dropdown"><a id="navbarDropdownMenuLink" href="#" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" class="nav-link">Sobre Nosotros<i class="fa fa-angle-down"></i></a>
+                <li class="nav-item dropdown"><a id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Sobre Nosotros<i class="fa fa-angle-down"></i></a>
                     <ul aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
                         <li><a href="#" class="dropdown-item">Nuestro Objetivo</a></li>
                         <li><a href="#" class="dropdown-item">Contáctanos</a></li>
@@ -53,8 +49,7 @@
             <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
                 <!-- Search Bar -->
                 <form class="form-inline my-2 my-lg-0 w-100" onsubmit='return false'>
-                    <input class="form-control mr-sm-2 w-100" type="text" placeholder="¿Qué buscas?" (keyup.enter)=buscarHeroe(buscarTexto.value)
-                        #buscarTexto>
+                    <input class="form-control mr-sm-2 w-100" type="text" placeholder="¿Qué buscas?" (keyup.enter)=buscarHeroe(buscarTexto.value) #buscarTexto>
                 </form>
                 <!-- Search Button -->
                 <div data-toggle="search" class="nav-item navbar-icon-link">
@@ -86,46 +81,39 @@
                                 <!-- cart item-->
                                 <div class="navbar-cart-product">
                                     <div class="d-flex align-items-center">
-                                        <a href="detail.html"><img src="img/product/product-square-ian-dooley-347968-unsplash.jpg"
-                                                alt="..." class="img-fluid navbar-cart-product-image"></a>
+                                        <a href="detail.html"><img src="img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..." class="img-fluid navbar-cart-product-image"></a>
                                         <div class="w-100"><a href="#" class="close text-sm mr-2"><i class="fa fa-times">
                                                 </i></a>
                                             <div class="pl-3"> <a href="detail.html" class="navbar-cart-product-link">Skull
-                                                    Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong
-                                                    class="d-block text-sm">$75.00 </strong></div>
+                                                    Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- cart item-->
                                 <div class="navbar-cart-product">
                                     <div class="d-flex align-items-center">
-                                        <a href="detail.html"><img src="img/product/product-square-kyle-loftus-596319-unsplash.jpg"
-                                                alt="..." class="img-fluid navbar-cart-product-image"></a>
+                                        <a href="detail.html"><img src="img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..." class="img-fluid navbar-cart-product-image"></a>
                                         <div class="w-100"><a href="#" class="close text-sm mr-2"><i class="fa fa-times">
                                                 </i></a>
                                             <div class="pl-3"> <a href="detail.html" class="navbar-cart-product-link">Transparent
-                                                    Blouse</a><small class="d-block text-muted">Quantity: 1 </small><strong
-                                                    class="d-block text-sm">$75.00 </strong></div>
+                                                    Blouse</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- cart item-->
                                 <div class="navbar-cart-product">
                                     <div class="d-flex align-items-center">
-                                        <a href="detail.html"><img src="img/product/product-square-serrah-galos-494312-unsplash.jpg"
-                                                alt="..." class="img-fluid navbar-cart-product-image"></a>
+                                        <a href="detail.html"><img src="img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..." class="img-fluid navbar-cart-product-image"></a>
                                         <div class="w-100"><a href="#" class="close text-sm mr-2"><i class="fa fa-times">
                                                 </i></a>
                                             <div class="pl-3"> <a href="detail.html" class="navbar-cart-product-link">White
-                                                    Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong
-                                                    class="d-block text-sm">$75.00 </strong></div>
+                                                    Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- total price-->
-                            <div class="navbar-cart-total"><span class="text-uppercase text-muted">Total</span><strong
-                                    class="text-uppercase">$75.00</strong></div>
+                            <div class="navbar-cart-total"><span class="text-uppercase text-muted">Total</span><strong class="text-uppercase">$75.00</strong></div>
                             <!-- buttons-->
                             <div class="d-flex justify-content-between"><a href="cart.html" class="btn btn-link text-dark mr-3">View
                                     Cart <i class="fa-arrow-right fa"></i></a><a href="checkout1.html" class="btn btn-outline-dark">Checkout</a></div>
