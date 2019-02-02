@@ -12,6 +12,20 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  goStore(store: any)
+  {
+    this.router.navigate(['/store', store.id]);
+  }
+
+  goAbout()
+  {
+    this.router.navigate(['/about']);
+  }
+
+  goContact()
+  {
+    this.router.navigate(['/contact']);
+  }
 
 
 }
