@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CamaleonService } from 'src/app/services/camaleon.service';
+
 
 @Component({
   selector: 'app-footer',
@@ -6,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
-
+  storesLine1: any[] = [];
+  
+  constructor(private camaleonService: CamaleonService)
+  {
+    this.storesLine1 = this.camaleonService.getStoresLine1();
+  }
+  
   ngOnInit() {
   }
 
