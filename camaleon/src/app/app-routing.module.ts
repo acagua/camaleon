@@ -4,6 +4,8 @@ import { AboutComponent } from './components/about/about.component';
 import { StoreComponent } from './components/store/store.component';
 import { ItemComponent } from './components/item/item.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -11,6 +13,8 @@ const APP_ROUTES: Routes = [
   { path: 'store/:id', component: StoreComponent },
   { path: 'item/:id', component: ItemComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'shoppingCart', component: ShoppingCartComponent },
+  { path: 'checkout', component: CheckoutComponent },
   { path: '', component: HomeComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
