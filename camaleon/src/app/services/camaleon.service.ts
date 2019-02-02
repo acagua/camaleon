@@ -114,7 +114,10 @@ export class CamaleonService
     id: "8", name: "Típicas Iglesia", image: "assets/img/clientes/tipicas_Iglesia.jpg", store: "1", price: "7000", storeName: "Pie de Elefante"
   },
   {
-    id: "8", name: "Típicas Mercado", image: "assets/img/clientes/tipicas_Mercado.jpg", store: "1", price: "7000", storeName: "Pie de Elefante"
+    id: "9", name: "Típicas Mercado", image: "assets/img/clientes/tipicas_Mercado.jpg", store: "1", price: "7000", storeName: "Pie de Elefante"
+  },
+  {
+    id: "10", name: "Arena para Gato", image: "assets/img/clientes/arena-gato.png", store: "2", price: "40000", storeName: "Happy Meow"
   }];
 
   //--------------------------------------------------------------------------------------------------------------------------------------------------------------
