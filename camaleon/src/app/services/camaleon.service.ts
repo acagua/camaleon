@@ -79,7 +79,7 @@ export class CamaleonService
   ];
 
   stores: any[] = [{
-    id: "1", image: "assets/img/clientes/logo_pie_de_elefante.jpg", name: "Pie de Elefante", description: "Somos una tienda de muchas cosas bellas! Nacimos en el 2015 con el deseo de combinar el arte con artículos cotidianos como cuadernos, libretas. Marca 100% colombiana!", banner:"/assets/img/clientes/pie-de-elefante/banner.jpg"
+    id: "1", image: "assets/img/clientes/pie-de-elefante/logo.jpg", name: "Pie de Elefante", description: "Somos una tienda de muchas cosas bellas! Nacimos en el 2015 con el deseo de combinar el arte con artículos cotidianos como cuadernos, libretas. Marca 100% colombiana!", banner:"/assets/img/clientes/pie-de-elefante/banner.jpg"
   },
   {
     id: "2", image: "/assets/img/clientes/happy-meow/logo-texto.png", name: "Happy Meow", description: "Somos una tienda de muchas cosas bellas!", banner:"/assets/img/clientes/happy-meow/banner-store.png"

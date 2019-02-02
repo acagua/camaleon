@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { CamaleonService } from 'src/app/services/camaleon.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html'
 })
-export class NavbarComponent implements OnInit
-{
+export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
-
-  ngOnInit()
+  storesLine1: any[] = [];
+  
+  constructor(private router: Router, private camaleonService: CamaleonService)
   {
+    this.storesLine1 = this.camaleonService.getStoresLine1();
+  }
+  ngOnInit() {
   }
 
   goStore(store: any)
