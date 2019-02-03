@@ -85,7 +85,7 @@ export class CamaleonService
     id: "2", image: "/assets/img/clientes/happy-meow/logo-texto.png", name: "Happy Meow", description: "Somos una tienda de muchas cosas bellas!", banner:"/assets/img/clientes/happy-meow/banner-store.png"
   },
   {
-    id: "3", image: "assets/img/medias.png", name: "pie de elefante", description: "Somos una tienda de muchas cosas bellas!", banner:"assets/img/medias.png" 
+    id: "3", image: "assets/img/medias.png", name: "Inspire in Time", description: "Somos una tienda de muchas cosas bellas!", banner:"/assets/img/clientes/inspire-in-time/banner.png" 
   }];
 
   //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -118,7 +118,14 @@ export class CamaleonService
   },
   {
     id: "10", name: "Arena para Gato", image: "assets/img/clientes/arena-gato.png", store: "2", price: "40000", storeName: "Happy Meow"
-  }];
+  },
+  {
+    id: "11", name: "Libreta Típica Portón", image: "assets/img/clientes/tipicas_Mercado.jpg", store: "1", storeName: "Pie de Elefante", price: "22000", description: `Diseño: Portón.
+    Tamaño: Media carta.
+    Hoja: Rayadas.
+    Núm. Hojas: 80.
+    Especificación: Libreta cosida forrada en papel impreso, cuyos motivos típicos de Colombia son oleos de Luis Francisco Alonso.`, image2:"assets/img/clientes/tipicas_Iglesia.jpg"
+    }];
 
   //--------------------------------------------------------------------------------------------------------------------------------------------------------------
   itemsLine1: any[] = [];
