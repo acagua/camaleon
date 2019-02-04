@@ -37,9 +37,6 @@
                 <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-4">
                     <ul class="list-inline mb-2 mb-sm-0">
                         <li class="list-inline-item h4 font-weight-light mb-0">{{item.price|currency}}</li>
-                        <!-- <li class="list-inline-item text-muted font-weight-light"> 
-                                    <del>$90.00</del>
-                                </li> -->
                     </ul>
                     <div class="d-flex align-items-center">
                         <ul class="list-inline mr-2 mb-0">
@@ -51,20 +48,15 @@
                         </ul><span class="text-muted text-uppercase text-sm">25 reviews</span>
                     </div>
                 </div>
-                <div class="row mb-5">
-                    <div class="col-12 detail-option">
-                        <label class="detail-option-heading font-weight-bold">Cantidad <span>(required)</span></label>
-                    </div>
-                    <button class="btn btn-primary" (click)="cantidad=cantidad-1">-</button>
+                <label class="detail-option-heading font-weight-bold">Cantidad <span>(required)</span></label>
+                <br>
+                <div class="row mb-3 mx-auto">
+                    <button class="btn btn-primary" (click)="cantidad=cantidad-1"><i class="fa fa-minus"></i></button>
                     <input name="items" type="number" [value]="cantidad" class="form-control detail-quantity">
-                    <button class="btn btn-primary" (click)="cantidad=cantidad+1">+</button>
+                    <button class="btn btn-primary" (click)="cantidad=cantidad+1"><i class="fa fa-plus"></i></button>
                 </div>
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <button type="submit" class="btn btn-dark btn-lg mb-1"> <i class="fa fa-shopping-cart mr-2"></i>Agregar
-                            al carrito</button>
-                    </li>
-                </ul>
+                <button type="submit" class="btn btn-dark btn-lg"> <i class="fa fa-shopping-cart mr-2"></i>Agregar
+                    al carrito</button>
             </div>
         </div>
     </div>
