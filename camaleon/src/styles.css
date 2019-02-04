@@ -56,3 +56,17 @@
 .border-3 {
     border-width:3px !important;
 }
+
+.container-90{
+    margin: 0 auto;
+    margin-top:30px;
+    width: 90%;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

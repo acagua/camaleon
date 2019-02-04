@@ -7,20 +7,35 @@ export class CamaleonService
 {
   constructor()
   {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++)
+    {
       this.itemsLine1.push(this.items[i]);
     }
 
-    for (let i = 4; i < 8; i++) {
+    for (let i = 4; i < 8; i++)
+    {
       this.itemsLine2.push(this.items[i]);
     }
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++)
+    {
       this.storesLine1.push(this.stores[i]);
     }
+  }
 
-    console.log(this.itemsLine1);
+  getOtherItems(storeId: number)
+  {
+    const arrItems = [];
 
+    for (let i = 0; i < this.items.length && arrItems.length < 6; i++)
+    {
+      if (this.items[i].idStore == storeId)
+      {
+        arrItems.push(this.items[i]);
+      }
+    }
+
+    return arrItems;
   }
 
   getItemsLine1(): any[]
@@ -40,8 +55,10 @@ export class CamaleonService
 
   getItem(itemId: number)
   {
-    for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].id == itemId) {
+    for (let i = 0; i < this.items.length; i++)
+    {
+      if (this.items[i].id == itemId)
+      {
         return this.items[i];
       }
     }
@@ -49,8 +66,10 @@ export class CamaleonService
 
   getStore(storeId: number)
   {
-    for (let i = 0; i < this.stores.length; i++) {
-      if (this.stores[i].id == storeId) {
+    for (let i = 0; i < this.stores.length; i++)
+    {
+      if (this.stores[i].id == storeId)
+      {
         return this.stores[i];
       }
     }
@@ -60,8 +79,10 @@ export class CamaleonService
   {
     const itemsStore = [];
 
-    for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].store == storeId) {
+    for (let i = 0; i < this.items.length; i++)
+    {
+      if (this.items[i].store == storeId)
+      {
         itemsStore.push(this.items[i]);
       }
     }
@@ -79,13 +100,13 @@ export class CamaleonService
   ];
 
   stores: any[] = [{
-    id: "1", image: "assets/img/clientes/pie-de-elefante/logo.jpg", name: "Pie de Elefante", description: "Somos una tienda de muchas cosas bellas! Nacimos en el 2015 con el deseo de combinar el arte con artículos cotidianos como cuadernos, libretas. Marca 100% colombiana!", banner:"/assets/img/clientes/pie-de-elefante/banner.jpg"
+    id: "1", image: "assets/img/clientes/pie-de-elefante/logo.jpg", name: "Pie de Elefante", description: "Somos una tienda de muchas cosas bellas! Nacimos en el 2015 con el deseo de combinar el arte con artículos cotidianos como cuadernos, libretas. Marca 100% colombiana!", banner: "/assets/img/clientes/pie-de-elefante/banner.jpg"
   },
   {
-    id: "2", image: "/assets/img/clientes/happy-meow/logo-texto.png", name: "Happy Meow", description: "Somos una tienda de muchas cosas bellas!", banner:"/assets/img/clientes/happy-meow/banner-store.png"
+    id: "2", image: "/assets/img/clientes/happy-meow/logo-texto.png", name: "Happy Meow", description: "Somos una tienda de muchas cosas bellas!", banner: "/assets/img/clientes/happy-meow/banner-store.png"
   },
   {
-    id: "3", image: "assets/img/medias.png", name: "Inspire in Time", description: "Somos una tienda de muchas cosas bellas!", banner:"/assets/img/clientes/inspire-in-time/banner.png" 
+    id: "3", image: "assets/img/medias.png", name: "Inspire in Time", description: "Somos una tienda de muchas cosas bellas!", banner: "/assets/img/clientes/inspire-in-time/banner.png"
   }];
 
   //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -124,8 +145,8 @@ export class CamaleonService
     Tamaño: Media carta.
     Hoja: Rayadas.
     Núm. Hojas: 80.
-    Especificación: Libreta cosida forrada en papel impreso, cuyos motivos típicos de Colombia son oleos de Luis Francisco Alonso.`, image2:"assets/img/clientes/tipicas_Iglesia.jpg"
-    }];
+    Especificación: Libreta cosida forrada en papel impreso, cuyos motivos típicos de Colombia son oleos de Luis Francisco Alonso.`, image2: "assets/img/clientes/tipicas_Iglesia.jpg"
+  }];
 
   //--------------------------------------------------------------------------------------------------------------------------------------------------------------
   itemsLine1: any[] = [];
