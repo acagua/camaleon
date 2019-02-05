@@ -7725,10 +7725,10 @@ a.close.disabled {
     align-items: center;
     -ms-flex-pack: center;
     justify-content: center;
-    width: 18%;
+    width: 8%;
     color: #fff;
     text-align: center;
-    opacity: 0.5;
+    opacity: 0.7;
     transition: opacity 0.15s ease;
 }
 

@@ -38,13 +38,12 @@
             <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
                 <!-- Search Bar -->
                 <form class="form-inline my-2 my-lg-0 w-100" onsubmit='return false'>
-                    <input class="form-control mr-sm-2 w-100" type="text" placeholder="¿Qué buscas?" (keyup.enter)=buscarHeroe(buscarTexto.value)
+                    <input class="form-control bg-white border-secondary border-right-0 " type="text" placeholder="¿Qué buscas?" (keyup.enter)=buscarHeroe(buscarTexto.value)
                         #buscarTexto>
                 </form>
                 <!-- Search Button -->
-                <div data-toggle="search" class="nav-item navbar-icon-link">
-                    <img src="/assets/img/search-icon-white.png" height="25px" alt="search-icon">
-                </div>
+                <button type="submit " class="btn btn-outline-secondary border-left-0 "> <img src="/assets/img/search-icon-white.png" height="22px" alt="search-icon"></button>
+
                 <!-- User Not Logged - link to login page-->
                 <div class="nav-item">
                     <a href="customer-login.html" class="navbar-icon-link">
@@ -53,12 +52,12 @@
                 </div>
                 <!-- Cart Dropdown-->
                 <div class="nav-item dropdown">
-                    <a href="cart.html" class="navbar-icon-link d-lg-none">
+                    <!--<a href="cart.html" class="navbar-icon-link d-lg-none">
                         <svg class="svg-icon">
                             <use xlink:href="#cart-1"> </use>
                         </svg><span class="text-sm ml-2 ml-lg-0 text-uppercase text-sm font-weight-bold d-none d-sm-inline d-lg-none">View
-                            cartss</span>
-                    </a>
+                            carts</span>
+                    </a>-->
                     <div class="d-none d-lg-block">
                         <a id="cartdetails" [routerLink]="['shoppingCart']" class="navbar-icon-link">
                             <img src="/assets/img/cart-icon-white.png" height="25px" alt="cart-icon">
