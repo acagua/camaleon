@@ -17,8 +17,6 @@ export class StoreComponent implements OnInit
     {
       this.store = camaleonService.getStore(params['id']);
       this.items = camaleonService.getItemsStore(params['id']);
-
-      console.log(this.items);
     });
   }
 
