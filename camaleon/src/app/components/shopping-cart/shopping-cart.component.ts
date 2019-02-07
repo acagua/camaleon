@@ -26,9 +26,10 @@ export class ShoppingCartComponent implements OnInit
     }
   }
 
-  removeItem(index: number, id: number)
+  removeItem(index: number, itemCart: any)
   {
-    this.cartService.removeItem(id);
+    this.total -= itemCart.quantity * itemCart.item.price;
+    this.cartService.removeItem(itemCart.item.id);
     this.itemsCart.splice(index, 1);
   }
 

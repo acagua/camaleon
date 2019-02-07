@@ -27,7 +27,8 @@
                 </li>
                 <!-- Multi level dropdown    -->
                 <li routerLinkActive="active" class="nav-item dropdown"><a id="navbarDropdownMenuLink" href="#"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Nosotros<i class="fa fa-angle-down"></i></a>
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Nosotros<i
+                            class="fa fa-angle-down"></i></a>
                     <ul aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu w-100">
                         <li><a href="#" class="dropdown-item">Nuestro Objetivo</a></li>
                         <li><a [routerLink]="['contact']" class="dropdown-item">Contáctanos</a></li>
@@ -38,11 +39,12 @@
             <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
                 <!-- Search Bar -->
                 <form class="form-inline my-2 my-lg-0 w-100" onsubmit='return false'>
-                    <input class="form-control bg-white border-secondary border-right-0 " type="text" placeholder="¿Qué buscas?" (keyup.enter)=buscarHeroe(buscarTexto.value)
-                        #buscarTexto>
+                    <input class="form-control bg-white border-secondary border-right-0 " type="text" placeholder="¿Qué buscas?"
+                        (keyup.enter)=buscarHeroe(buscarTexto.value) #buscarTexto>
                 </form>
                 <!-- Search Button -->
-                <button type="submit " class="btn btn-outline-secondary border-left-0 "> <img src="/assets/img/search-icon-white.png" height="22px" alt="search-icon"></button>
+                <button type="submit " class="btn btn-outline-secondary border-left-0 "> <img src="/assets/img/search-icon-white.png"
+                        height="22px" alt="search-icon"></button>
 
                 <!-- User Not Logged - link to login page-->
                 <div class="nav-item">
@@ -62,7 +64,7 @@
                         <a id="cartdetails" [routerLink]="['shoppingCart']" class="navbar-icon-link">
                             <img src="/assets/img/cart-icon-white.png" height="25px" alt="cart-icon">
                             <div class="navbar-icon-link-badge">
-                                3
+                                {{cartService.items.length}}
                             </div>
                         </a>
 

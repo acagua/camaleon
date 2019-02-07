@@ -7,7 +7,13 @@ export class ShoppingCartService
 {
   items: any[] = [];
 
-  constructor() { }
+  constructor()
+  {
+    if (localStorage.getItem('cart'))
+    {
+      this.items = JSON.parse(localStorage.getItem('cart'));
+    }
+  }
 
   addToCart(itemCart: any)
   {
@@ -44,6 +50,9 @@ export class ShoppingCartService
     }
 
     this.items = this.items.filter((dataItemCart) => dataItemCart.item.id !== id);
+
+
+
     localStorage.setItem('cart', JSON.stringify(this.items));
   }
 }
