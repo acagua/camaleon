@@ -6,7 +6,7 @@
     <div class="carousel-inner w-100">
         <div class="carousel-item" [class.active]="(store.id == 1)" style="cursor:pointer" *ngFor="let store of storesLine1"
             (click)="goStore(store)">
-            <img class="d-block w-100" [src]="store.banner" height="300px" alt="store.name">
+            <img class="d-block w-100" [src]="store.banner" alt="store.name">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
