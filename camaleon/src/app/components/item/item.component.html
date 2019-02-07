@@ -3,31 +3,34 @@
         <div class="row">
             <div class="col-lg-7 pt-4 order-1 order-lg-1">
                 <div class="row">
-                    <div class="col-2 pr-0">
-                        <div data-slider-id="1" class="owl-thumbs">
-                            <button class="owl-thumb-item detail-thumb-item mb-3"><img [src]="item.image" alt="Modern Jacket 0"
-                                    class="img-fluid"></button>
-                            <button *ngIf="item.image2" class="owl-thumb-item detail-thumb-item mb-3"><img [src]="item.image2"
-                                    alt="Modern Jacket 1" class="img-fluid"></button>
-                            <!--TODO: ubicar las demás imagenes-->
-                        </div>
-                    </div>
-                    <div class="col-10 detail-carousel shadow">
-                        <div class="ribbon ribbon-info">Fresh</div>
-                        <div class="ribbon ribbon-primary">Sale</div>
-                        <div data-slider-id="1" class="owl-carousel detail-slider">
-                            <div class="item">
-                                <a href="item.image" data-footer="Modern Jacket 1 - Caption text" data-toggle="lightbox"
-                                    data-gallery="product-gallery"><img [src]="item.image" alt="Modern Jacket 1" class="img-fluid"></a>
+                    <!--carrusel-->
+                    <div id="carouselExampleIndicators" class="carousel slide shadow" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" [src]="item.image" alt="First slide">
                             </div>
-                            <div class="item">
-                                <a href="img/photo/kyle-loftus-596319-detail-2.jpg" data-footer="Modern Jacket 2 - Caption text"
-                                    data-toggle="lightbox" data-gallery="product-gallery"><img [src]="item.image2" alt="Modern Jacket 2"
-                                        class="img-fluid"></a>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" [src]="item.image" alt="Second slide">
                             </div>
-                            <!--TODO: ubicar las demás imágenes-->
+                            <div class="carousel-item">
+                                <img class="d-block w-100" [src]="item.image" alt="Third slide">
+                            </div>
                         </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
+                    <!--/carrusel-->
                 </div>
             </div>
             <div class="col-lg-5 pl-lg-4 order-2 order-lg-2">

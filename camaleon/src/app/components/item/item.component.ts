@@ -44,18 +44,8 @@ export class ItemComponent implements OnInit
 
   ngOnInit()
   {
-    var urlParams = [];
-    window.location.search.replace("?", "").split("&").forEach(function (e, i)
-    {
-      var p = e.split("=");
-      urlParams[p[0]] = p[1];
-    });
+   
 
-    if (urlParams["loaded"]) { } else
-    {
-      let win = (window as any);
-      win.location.search = '?loaded=1';
-    }
   }
 
 }
