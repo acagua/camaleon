@@ -53,5 +53,9 @@ Ruteo del dominio:
 5. En GoDaddy ir a Dominios y para Camaleon.shop poner DNS
 6. En Nameservers actualizar / crear los registros guardados en el paso 4.
 
-S3 como website:
-1. Crear un bucket
+Para Deployment en AWS
+1. Crear server.js
+2. Crear carpetas y archivo server/router/api.js (para manejo de peticiones - no obligatorio)
+3. ng build en el root del proyecto
+4. Mantener los archivos en el root del dist sin carpetas intermediarias (o ajustar el server.js para que apunte ahí)
+5. Comprimir server.js; package.json; /server; /dist
