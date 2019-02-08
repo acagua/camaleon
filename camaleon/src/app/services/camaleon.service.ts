@@ -149,6 +149,18 @@ export class CamaleonService
   },
   {
   id: "12", name: "Reloj", image: "assets/img/clientes/OB16EG135w_reloj.jpg", store: "3", storeName: "Inspire in Time", price: "65000", description: `Olivia Burton`, image2:"assets/img/clientes/OB16EG135w_mano.jpg"
+  },
+  {
+  id: "13", name: "Reloj", image: "assets/img/clientes/OB16EX90w_reloj.jpg", store: "3", storeName: "Inspire in Time", price: "65000", description: `Olivia Burton`, image2:"assets/img/clientes/OB16EX90w_mano.jpg"
+  },
+  {
+  id: "14", name: "Reloj", image: "assets/img/clientes/OB16PL34w_reloj.jpg", store: "3", storeName: "Inspire in Time", price: "65000", description: `Olivia Burton`, image2:"assets/img/clientes/OB16PL34w_mano.jpg"
+  },
+  {
+  id: "15", name: "Reloj", image: "assets/img/clientes/OB16PP32w_reloj.jpg", store: "3", storeName: "Inspire in Time", price: "65000", description: `Olivia Burton`, image2:"assets/img/clientes/OB16PP32w_mano.jpg"
+  },
+  {
+  id: "16", name: "Reloj", image: "assets/img/clientes/OB16PP53w_reloj.jpg", store: "3", storeName: "Inspire in Time", price: "65000", description: `Olivia Burton`, image2:"assets/img/clientes/OB16PP53w_mano.jpg"
   }];
 
   //--------------------------------------------------------------------------------------------------------------------------------------------------------------
