@@ -106,7 +106,7 @@ export class CamaleonService
     id: "2", image: "/assets/img/clientes/happy-meow/logo-texto.png", name: "Happy Meow", description: "Somos una tienda de muchas cosas bellas!", banner: "/assets/img/clientes/happy-meow/banner-store.png"
   },
   {
-    id: "3", image: "/assets/img/clientes/inspire-in-time/logo.jpg", name: "Inspire in Time", description: "Traemos para tí relojes únicos de diseñadoress increíbles", banner:"/assets/img/clientes/inspire-in-time/banner.png" 
+    id: "3", image: "/assets/img/clientes/inspire-in-time/logo.jpg", name: "Inspire in Time", description: "Traemos para tí relojes únicos de diseñadores increíbles", banner:"/assets/img/clientes/inspire-in-time/banner.png" 
   }];
 
   //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -148,7 +148,19 @@ export class CamaleonService
     Especificación: Libreta cosida forrada en papel impreso, cuyos motivos típicos de Colombia son oleos de Luis Francisco Alonso.`, image2: "assets/img/clientes/tipicas_Iglesia.jpg"
   },
   {
-  id: "12", name: "Reloj", image: "assets/img/clientes/OB16EG135w_reloj.jpg", store: "3", storeName: "Inspire in Time", price: "65000", description: `Olivia Burton`, image2:"assets/img/clientes/OB16EG135w_mano.jpg"
+    id: "12", name: "Reloj", image: "assets/img/clientes/OB16PP32w_reloj.jpg", store: "3", storeName: "Inspire in Time", price: "65000", description: `Olivia Burton`, image2:"assets/img/clientes/OB16PP32w_mano.jpg"
+  },
+  {
+    id: "13", name: "Reloj", image: "assets/img/clientes/OB16EG135w_reloj.jpg", store: "3", storeName: "Inspire in Time", price: "65000", description: `Olivia Burton`, image2:"assets/img/clientes/OB16EG135w_mano.jpg"
+  },
+  {
+    id: "14", name: "Reloj", image: "assets/img/clientes/OB16PL34w_reloj.jpg", store: "3", storeName: "Inspire in Time", price: "65000", description: `Olivia Burton`, image2:"assets/img/clientes/OB16PL34w_mano.jpg"
+  },
+  {
+    id: "15", name: "Reloj", image: "assets/img/clientes/OB16EX90w_reloj.jpg", store: "3", storeName: "Inspire in Time", price: "65000", description: `Olivia Burton`, image2:"assets/img/clientes/OB16EX90w_mano.jpg"
+  },
+  {
+    id: "16", name: "Reloj", image: "assets/img/clientes/OB16PP53w_reloj.jpg", store: "3", storeName: "Inspire in Time", price: "65000", description: `Olivia Burton`, image2:"assets/img/clientes/OB16PP53w_mano.jpg"
   }];
 
   //--------------------------------------------------------------------------------------------------------------------------------------------------------------

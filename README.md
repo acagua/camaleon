@@ -53,9 +53,19 @@ Ruteo del dominio:
 5. En GoDaddy ir a Dominios y para Camaleon.shop poner DNS
 6. En Nameservers actualizar / crear los registros guardados en el paso 4.
 
-Para Deployment en AWS
+Para Deployment en AWS:
 1. Crear server.js
 2. Crear carpetas y archivo server/router/api.js (para manejo de peticiones - no obligatorio)
 3. ng build en el root del proyecto
 4. Mantener los archivos en el root del dist sin carpetas intermediarias (o ajustar el server.js para que apunte ahí)
 5. Comprimir server.js; package.json; /server; /dist
+
+Actualizar Agnular-CLI (https://www.npmjs.com/package/@angular/cli):
+1. Desinstalar Cli Global 
+    a. npm uninstall -g @angular/cli
+    b. npm cache verify
+    c. npm install -g @angular/cli@latest
+2. Desintalar Local
+    a. rm -rf node_modules dist
+    b. npm install --save-dev @angular/cli@latest
+    c. npm install
