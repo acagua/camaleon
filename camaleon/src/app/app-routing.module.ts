@@ -6,6 +6,7 @@ import { ItemComponent } from './components/item/item.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { LoginComponent } from './components/login/login.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,6 +16,7 @@ const APP_ROUTES: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'shoppingCart', component: ShoppingCartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];

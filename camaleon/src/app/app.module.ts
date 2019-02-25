@@ -12,6 +12,8 @@ import { ItemComponent } from './components/item/item.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,14 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     ItemComponent,
     ShoppingCartComponent,
     ContactComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    APP_ROUTING
+    APP_ROUTING,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
