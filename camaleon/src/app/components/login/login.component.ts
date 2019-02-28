@@ -33,9 +33,14 @@ export class LoginComponent implements OnInit
 
     const formaValue = this.forma2.value;
 
-    let usuario = new Usuario(formaValue.name, formaValue.email, formaValue.password);
+    let usuario = new Usuario(formaValue.name, formaValue.email2, formaValue.password2);
 
-    this._usuarioService.registerUser(usuario);
+    this._usuarioService.registerUser(usuario)
+      .subscribe(resp =>
+      {
+        console.log(resp);
+      }
+      );
   }
 
 }

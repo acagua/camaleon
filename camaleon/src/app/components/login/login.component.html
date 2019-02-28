@@ -18,7 +18,7 @@
             <div class="block-body">
               <hr>
 
-              <form action="customer-orders.html" method="get">
+              <form action="customer-orders.html">
                 <div class="form-group">
                   <label for="email1" class="form-label">Email</label>
                   <input id="email1" type="text" class="form-control">
@@ -47,7 +47,8 @@
                 geniales y mucho más!</p>
               <hr>
 
-              <form ngNativeValidate [formGroup]="forma2" (ngSubmit)="registerUser()">
+              <!--<form ngNativeValidate [formGroup]="forma2" (ngSubmit)="registerUser()">-->
+              <form [formGroup]="forma2" (ngSubmit)="registerUser()">
                 <div class="form-group">
                   <label for="name" class="form-label">Name</label>
                   <input formControlName="name" name="name" id="name" type="text" class="form-control" required>
