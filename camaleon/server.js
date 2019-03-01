@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
-//const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 // Get our API routes
 const userRoute = require('./server/routes/userRoute');
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //------------------------------------------------------------Conexión a la base de datos
-/* mongoose.connection.openUri('mongodb://localhost:27017/camaleon', (err, res) =>
+mongoose.connection.openUri('mongodb://localhost:27017/camaleon', (err, res) =>
 {
     if (err)
     {
@@ -25,13 +25,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
     {
         console.log('Base de datos online');
     }
-}); */
+});
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist/camaleon')));
 
 // Set our api routes
-app.use('/usuario', userRoute);
+app.use('/user', userRoute);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) =>

@@ -39,8 +39,7 @@ export class LoginComponent implements OnInit
       .subscribe(resp =>
       {
         console.log(resp);
-      }
-      );
+      });
   }
 
 }
