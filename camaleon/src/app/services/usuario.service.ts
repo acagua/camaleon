@@ -24,4 +24,15 @@ export class UsuarioService
       return resp;
     }));
   }
+
+  loginUser(usuario: Usuario)
+  {
+    let url = URL_SERVICIOS + '/login';
+
+    return this.httpClient.post(url, usuario).pipe(map((resp: any) =>
+    {
+      Swal.fire('Usuario creado', usuario.email, 'success');
+      return resp;
+    }));
+  }
 }

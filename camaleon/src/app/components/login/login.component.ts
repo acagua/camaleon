@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { Usuario } from '../../models/usuario.model.js';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service.js';
@@ -10,6 +10,8 @@ import { UsuarioService } from 'src/app/services/usuario.service.js';
 })
 export class LoginComponent implements OnInit
 {
+
+  rememberme: boolean = false;
 
   forma2: FormGroup;
   usuario: Usuario;
@@ -36,6 +38,20 @@ export class LoginComponent implements OnInit
     let usuario = new Usuario(formaValue.name, formaValue.email2, formaValue.password2);
 
     this._usuarioService.registerUser(usuario)
+      .subscribe(resp =>
+      {
+        console.log(resp);
+      });
+  }
+
+  loginUser(forma: NgForm)
+  {
+    console.log(forma.valid);
+    console.log(forma.value);
+
+    let usuario = new Usuario(null, forma.value.email1, forma.value.password1);
+
+    this._usuarioService.loginUser(usuario)
       .subscribe(resp =>
       {
         console.log(resp);

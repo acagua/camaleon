@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 // Get our API routes
 const userRoute = require('./server/routes/userRoute');
+const loginRoute = require('./server/routes/loginRoute');
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'dist/camaleon')));
 
 // Set our api routes
 app.use('/user', userRoute);
+//app.use('/login', loginRoute);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) =>

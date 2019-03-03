@@ -1,4 +1,5 @@
 var express = require('express');
+var bcrypt = require('bcrypt');
 
 var app = express();
 
@@ -46,7 +47,7 @@ app.post('/', function (req, res)
   var user = new User({
     name: body.name,
     email: body.email,
-    password: body.password
+    password: bcrypt.hashSync(body.password, 10),
   });
 
   user.save(function (err, userSaved)
@@ -61,6 +62,7 @@ app.post('/', function (req, res)
     }
     else
     {
+      userSaved.password = ':P';
       return res.status(201).json({
         ok: true,
         user: userSaved

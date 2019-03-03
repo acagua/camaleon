@@ -16,16 +16,28 @@
               <h6 class="text-uppercase mb-0">Entra!</h6>
             </div>
             <div class="block-body">
-              <hr>
 
-              <form action="customer-orders.html">
-                <div class="form-group">
-                  <label for="email1" class="form-label">Email</label>
-                  <input id="email1" type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="password1" class="form-label">Password</label>
-                  <input id="password1" type="password" class="form-control">
+              <form ngNativeValidate #f="ngForm" (ngSubmit)="loginUser(f)">
+                <div class="row">
+
+                  <div class="form-group col-md-12">
+                    <label for="email1" class="form-label">Correo</label>
+                    <input ngModel type="text" name="email1" id="email1" class="form-control" required>
+                  </div>
+
+                  <div class="form-group col-md-12">
+                    <label for="password1" class="form-label">Password</label>
+                    <input ngModel type="password" name="password1" id="password1" class="form-control" required>
+                  </div>
+
+                  <div class="form-group col-12">
+                    <div class="custom-control custom-checkbox">
+                      <input [(ngModel)]="rememberme" id="rememberme" type="checkbox" name="rememberme"
+                        class="custom-control-input">
+                      <label for="rememberme" class="custom-control-label align-middle">Recuérdame</label>
+                    </div>
+                  </div>
+
                 </div>
                 <div class="form-group text-center">
                   <button type="submit" class="btn btn-outline-dark"><i class="fa fa-sign-in-alt mr-2"></i> Log
@@ -50,11 +62,11 @@
               <!--<form ngNativeValidate [formGroup]="forma2" (ngSubmit)="registerUser()">-->
               <form [formGroup]="forma2" (ngSubmit)="registerUser()">
                 <div class="form-group">
-                  <label for="name" class="form-label">Name</label>
+                  <label for="name" class="form-label">Nombre</label>
                   <input formControlName="name" name="name" id="name" type="text" class="form-control" required>
                 </div>
                 <div class="form-group">
-                  <label for="email2" class="form-label">Email</label>
+                  <label for="email2" class="form-label">Correo</label>
                   <input formControlName="email2" name="email2" id="email2" type="text" class="form-control" required>
                 </div>
                 <div class="form-group">
