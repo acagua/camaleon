@@ -1,0 +1,125 @@
+<div class="container-90">
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-xl-9">
+          <div class="block mb-5">
+            <div class="block-header"><strong class="text-uppercase">Personal details {{user.name}}</strong></div>
+            <div class="block-body">
+
+              <form #f="ngForm" (ngSubmit)="saveChanges(f)">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="firstname" class="form-label">Nombres</label>
+                      <input [(ngModel)]="user.name" name="name" id="firstname" type="text" class="form-control"
+                        required>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="lastname" class="form-label">Apellidos</label>
+                      <input id="lastname" type="text" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="company" class="form-label">Correo</label>
+                      <input [(ngModel)]="user.email" name="email" id="email" type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="street" class="form-label">Dirección</label>
+                      <input id="street" type="text" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="phone" class="form-label">Teléfono</label>
+                      <input id="phone" type="text" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center mt-4">
+                  <button type="submit" class="btn btn-outline-dark"><i class="far fa-save mr-2"></i>Guardar
+                    cambios</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+
+          <div class="block mb-5">
+            <div class="block-header"><strong class="text-uppercase">Cambiar Password</strong></div>
+            <div class="block-body">
+              <form>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="password_old" class="form-label">Antiguo password</label>
+                      <input id="password_old" type="password" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="password_1" class="form-label">Nuevo password</label>
+                      <input id="password_1" type="password" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="password_2" class="form-label">Una vez más nuevo password</label>
+                      <input id="password_2" type="password" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center mt-4">
+                  <button type="submit" class="btn btn-outline-dark"><i class="far fa-save mr-2"></i>Change
+                    password</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+        <!-- Customer Sidebar-->
+        <div class="col-xl-3 col-lg-4 mb-5">
+          <div class="customer-sidebar card border-0">
+            <div class="customer-profile"><a href="#" class="d-inline-block"><img src="/assets/img/profile_example.jpg"
+                  class="img-fluid rounded-circle customer-image"></a>
+            </div>
+            <nav class="list-group customer-nav">
+              <a href="customer-orders.html"
+                class="list-group-item d-flex justify-content-between align-items-center"><span>
+                  <svg class="svg-icon svg-icon-heavy mr-2">
+                    <use xlink:href="#paper-bag-1"> </use>
+                  </svg>Orders</span>
+                <div class="badge badge-pill badge-dark font-weight-normal px-3">5</div>
+              </a>
+              <a href="customer-account.html"
+                class="active list-group-item d-flex justify-content-between align-items-center"><span>
+                  <svg class="svg-icon svg-icon-heavy mr-2">
+                    <use xlink:href="#male-user-1"> </use>
+                  </svg>Profile</span>
+              </a>
+              <a href="customer-login.html"
+                class="list-group-item d-flex justify-content-between align-items-center"><span>
+                  <svg class="svg-icon svg-icon-heavy mr-2">
+                    <use xlink:href="#exit-1"> </use>
+                  </svg>Log out</span></a>
+            </nav>
+          </div>
+        </div>
+        <!-- /Customer Sidebar-->
+      </div>
+    </div>
+  </section>
+</div>

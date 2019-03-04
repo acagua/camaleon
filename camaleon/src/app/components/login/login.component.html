@@ -22,7 +22,7 @@
 
                   <div class="form-group col-md-12">
                     <label for="email1" class="form-label">Correo</label>
-                    <input ngModel type="text" name="email1" id="email1" class="form-control" required>
+                    <input [ngModel]="email" type="text" name="email1" id="email1" class="form-control" required>
                   </div>
 
                   <div class="form-group col-md-12">
@@ -62,8 +62,13 @@
               <!--<form ngNativeValidate [formGroup]="forma2" (ngSubmit)="registerUser()">-->
               <form [formGroup]="forma2" (ngSubmit)="registerUser()">
                 <div class="form-group">
-                  <label for="name" class="form-label">Nombre</label>
+                  <label for="name" class="form-label">Nombres</label>
                   <input formControlName="name" name="name" id="name" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="form-label">Apellidos</label>
+                  <input formControlName="lastName" name="lastName" type="text" class="form-control"
+                    required>
                 </div>
                 <div class="form-group">
                   <label for="email2" class="form-label">Correo</label>

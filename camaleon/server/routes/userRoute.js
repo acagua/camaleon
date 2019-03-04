@@ -46,6 +46,7 @@ app.post('/', function (req, res)
 
   var user = new User({
     name: body.name,
+    lastName: body.lastName,
     email: body.email,
     password: bcrypt.hashSync(body.password, 10),
   });
@@ -67,6 +68,61 @@ app.post('/', function (req, res)
         ok: true,
         user: userSaved
       });
+    }
+  });
+});
+
+app.put('/:id', (req, res) =>
+{
+  var id = req.params.id;
+  var body = req.body
+
+  User.findById(id, (err, userSearched) =>
+  {
+    if (err)
+    {
+      return res.status(500).json({
+        ok: false,
+        mensaje: 'Error al buscar user',
+        errors: err
+      });
+    }
+    else
+    {
+      if (!userSearched)
+      {
+        return res.status(400).json({
+          ok: false,
+          mensaje: 'El user con el ' + id + ' no existe',
+          errors: { message: 'No existe el user con ese ID' }
+        });
+      }
+      else
+      {
+        userSearched.name = body.name;
+        userSearched.lastname = body.lastname;
+        userSearched.email = body.email;
+
+        userSearched.save(function (err, userSaved)
+        {
+          if (err)
+          {
+            return res.status(400).json({
+              ok: false,
+              mensaje: 'Error al actualizar usuario',
+              errors: err
+            });
+          }
+          else
+          {
+            userSaved.password = ':D';
+            return res.status(200).json({
+              ok: true,
+              user: userSaved
+            });
+          }
+        });
+      }
     }
   });
 });

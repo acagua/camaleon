@@ -7,6 +7,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LoginGuard } from './services/guards/login.guard';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,6 +19,8 @@ const APP_ROUTES: Routes = [
   { path: 'shoppingCart', component: ShoppingCartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'login', component: LoginComponent },
+  //  { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard] },
+  { path: 'profile', component: ProfileComponent },
   { path: '', component: HomeComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];

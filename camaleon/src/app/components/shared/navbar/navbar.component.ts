@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CamaleonService } from 'src/app/services/camaleon.service';
 import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +10,12 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 })
 export class NavbarComponent implements OnInit
 {
-
   storesLine1: any[] = [];
 
-  constructor(private router: Router, private camaleonService: CamaleonService, private cartService: ShoppingCartService)
+  constructor(private router: Router,
+    private camaleonService: CamaleonService,
+    private cartService: ShoppingCartService,
+    public _userService: UsuarioService)
   {
     this.storesLine1 = this.camaleonService.getStoresLine1();
   }
@@ -33,6 +36,11 @@ export class NavbarComponent implements OnInit
   goContact()
   {
     this.router.navigate(['/contact']);
+  }
+
+  logoutUser()
+  {
+    this._userService.logoutUser();
   }
 
 

@@ -15,6 +15,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './components/profile/profile.component';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -28,14 +30,16 @@ import { HttpClientModule } from '@angular/common/http';
     ShoppingCartComponent,
     ContactComponent,
     CheckoutComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTING,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

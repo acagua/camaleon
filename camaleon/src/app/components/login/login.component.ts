@@ -11,6 +11,7 @@ import { UsuarioService } from 'src/app/services/usuario.service.js';
 export class LoginComponent implements OnInit
 {
 
+  email: string;
   rememberme: boolean = false;
 
   forma2: FormGroup;
@@ -20,9 +21,17 @@ export class LoginComponent implements OnInit
 
   ngOnInit()
   {
+    this.email = localStorage.getItem('email') || '';
+
+    if (this.email.length > 1)
+    {
+      this.rememberme = true;
+    }
+
     this.forma2 = new FormGroup({
       name: new FormControl(null, Validators.required),
       email2: new FormControl(null, [Validators.required, Validators.email]),
+      lastName: new FormControl(null, Validators.required),
       password2: new FormControl(null, Validators.required),
     });
   }
@@ -35,7 +44,7 @@ export class LoginComponent implements OnInit
 
     const formaValue = this.forma2.value;
 
-    let usuario = new Usuario(formaValue.name, formaValue.email2, formaValue.password2);
+    let usuario = new Usuario(formaValue.name, formaValue.lastName, formaValue.email2, formaValue.password2);
 
     this._usuarioService.registerUser(usuario)
       .subscribe(resp =>
@@ -46,15 +55,13 @@ export class LoginComponent implements OnInit
 
   loginUser(forma: NgForm)
   {
-    console.log(forma.valid);
-    console.log(forma.value);
+    let usuario = new Usuario(null, null, forma.value.email1, forma.value.password1);
 
-    let usuario = new Usuario(null, forma.value.email1, forma.value.password1);
-
-    this._usuarioService.loginUser(usuario)
+    this._usuarioService.loginUser(usuario, forma.value.rememberme)
       .subscribe(resp =>
       {
-        console.log(resp);
+        this.router.navigate(['/home']);
+        //this.router.navigate(['/profile']);
       });
   }
 
