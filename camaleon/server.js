@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //------------------------------------------------------------Conexión a la base de datos
-mongoose.connection.openUri('mongodb://localhost:27017/camaleon', (err, res) =>
+mongoose.connection.openUri('mongodb://ec2-3-89-143-123.compute-1.amazonaws.com/camaleon', (err, res) =>
 {
     if (err)
     {
