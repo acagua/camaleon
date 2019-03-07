@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class ShoppingCartService
 {
   items: any[] = [];
+  total: number = 0;
 
   constructor()
   {
@@ -39,6 +40,7 @@ export class ShoppingCartService
     {
       this.items.push(itemCart);
     }
+
     localStorage.setItem('cart', JSON.stringify(this.items));
   }
 
@@ -50,8 +52,6 @@ export class ShoppingCartService
     }
 
     this.items = this.items.filter((dataItemCart) => dataItemCart.item.id !== id);
-
-
 
     localStorage.setItem('cart', JSON.stringify(this.items));
   }

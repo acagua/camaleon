@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/models/usuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -7,7 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class CheckoutComponent implements OnInit
 {
 
-  constructor() { }
+  user: Usuario;
+
+  constructor(public _userService: UsuarioService, public _shoppingCartService: ShoppingCartService)
+  {
+    if (this._userService.user)
+    {
+      this.user = this._userService.user;
+    }
+    else
+    {
+
+    }
+  }
 
   ngOnInit()
   {

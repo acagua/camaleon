@@ -17,8 +17,8 @@
                 <div class="col-md-5">Item</div>
                 <div class="col-md-7 d-none d-md-block">
                   <div class="row">
-                    <div class="col-md-3">Price</div>
-                    <div class="col-md-4">Quantity</div>
+                    <div class="col-md-3">Precio</div>
+                    <div class="col-md-4">Cantidad</div>
                     <div class="col-md-3">Total</div>
                     <div class="col-md-2"></div>
                   </div>
@@ -29,13 +29,13 @@
               <!-- Product-->
               <div class="cart-item" *ngFor="let itemCart of itemsCart; let i=index">
                 <div class="row d-flex align-items-center text-left text-md-center">
-                  <div class="col-12 col-md-5"><a href="#" class="cart-remove close mt-3 d-md-none"><i class="fa fa-times">
+                  <div class="col-12 col-md-5"><a href="#" class="cart-remove close mt-3 d-md-none"><i
+                        class="fa fa-times">
                       </i></a>
-                    <div class="d-flex align-items-center"><a [routerLink]="['/item',itemCart.item.id]"><img [src]="itemCart.item.image"
-                          alt="..." class="cart-item-img"></a>
-                      <div class="cart-title text-left"><a [routerLink]="['/item',itemCart.item.id]" class="text-uppercase text-dark"><strong>{{itemCart.item.name}}</strong></a><br><span
-                          class="text-muted text-sm">Size: Large</span><br><span class="text-muted text-sm">Colour:
-                          Green</span>
+                    <div class="d-flex align-items-center"><a [routerLink]="['/item',itemCart.item.id]"><img
+                          [src]="itemCart.item.image" alt="..." class="cart-item-img"></a>
+                      <div class="cart-title text-left"><a [routerLink]="['/item',itemCart.item.id]"
+                          class="text-uppercase text-dark"><strong>{{itemCart.item.name}}</strong></a>
                       </div>
                     </div>
                   </div>
@@ -43,13 +43,13 @@
                     <div class="row align-items-center">
                       <div class="col-md-3">
                         <div class="row">
-                          <div class="col-6 d-md-none text-muted">Price per item</div>
+                          <div class="col-6 d-md-none text-muted">Precio</div>
                           <div class="col-6 col-md-12 text-right text-md-center">{{itemCart.item.price|currency}}</div>
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="row align-items-center">
-                          <div class="d-md-none col-7 col-sm-9 text-muted">Quantity</div>
+                          <div class="d-md-none col-7 col-sm-9 text-muted">Cantidad</div>
                           <div class="col-5 col-sm-3 col-md-12">
                             <div class="d-flex align-items-center">
                               <div class="col-6 col-md-12 text-right text-md-center">{{itemCart.quantity}}</div>
@@ -75,11 +75,10 @@
             </div>
           </div>
           <div class="my-5 d-flex justify-content-between flex-column flex-lg-row" *ngIf="itemsCart.length > 0">
-            <a [routerLink]="['/checkout']" class="btn btn-link text-muted">
-              <i class="fa fa-chevron-left"></i> Continue Shopping
+            <a [routerLink]="['/home']" class="btn btn-link text-muted">
+              <i class="fa fa-chevron-left"></i> Me faltó algo!
             </a>
-            <a [routerLink]="['/checkout']" class="btn btn-dark">Proceed
-              to checkout <i class="fa fa-chevron-right"></i></a>
+            <a [routerLink]="['/checkout']" class="btn btn-dark">Listo! <i class="fa fa-chevron-right"></i></a>
           </div>
         </div>
         <!--Order Summary-->
@@ -91,7 +90,8 @@
             <div class="block-body bg-light pt-1">
               <hr>
               <ul class="order-summary mb-0 list-unstyled">
-                <li class="order-summary-item border-0"><span>Total</span><strong class="order-summary-total">{{total|currency}}</strong></li>
+                <li class="order-summary-item border-0"><span>Total</span><strong
+                    class="order-summary-total">{{total|currency}}</strong></li>
               </ul>
             </div>
           </div>
