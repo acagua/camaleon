@@ -18,11 +18,6 @@
               <div class="block-body">
                 <div class="row">
                   <div class="form-group col-md-6">
-                    <label for="fullname_invoice" class="form-label">Quién Recibe?</label>
-                    <input type="text" name="fullname_invoice" placeholder="Joe Black" id="fullname_invoice"
-                      class="form-control">
-                  </div>
-                  <div class="form-group col-md-6">
                     <label for="emailaddress_invoice" class="form-label">Teléfono</label>
                     <input type="text" name="emailaddress_invoice" placeholder="joe.black@gmail.com"
                       id="emailaddress_invoice" class="form-control">
@@ -33,23 +28,14 @@
                       class="form-control">
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="zip_invoice" class="form-label">ZIP</label>
-                    <input type="text" name="zip_invoice" placeholder="Postal code" id="zip_invoice"
-                      class="form-control">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="state_invoice" class="form-label">State</label>
-                    <input type="text" name="state_invoice" placeholder="State" id="state_invoice" class="form-control">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="phonenumber_invoice" class="form-label">Phone Number</label>
-                    <input type="text" name="phonenumber_invoice" placeholder="Phone Number" id="phonenumber_invoice"
+                    <label for="fullname_invoice" class="form-label">Quién Recibe?</label>
+                    <input type="text" name="fullname_invoice" placeholder="Joe Black" id="fullname_invoice"
                       class="form-control">
                   </div>
                 </div>
-                <!-- /Invoice Address-->
+                <button (click)="addToCart()" type="submit" class="btn btn-dark btn-lg mb-2"> <i
+                    class="fa fa-shopping-cart mr-2"></i>Finalizar Orden!</button>
               </div>
-              <!-- Shippping Address-->
             </div>
             <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row">
               <a [routerLink]="['/shoppingCart']" routerLink="[/shoppingCart]" class="btn btn-link text-muted">

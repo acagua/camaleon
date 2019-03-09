@@ -3,6 +3,7 @@ import { CamaleonService } from 'src/app/services/camaleon.service';
 import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class NavbarComponent implements OnInit
 {
+  user: Usuario;
   storesLine1: any[] = [];
 
   constructor(private router: Router,
@@ -21,6 +23,7 @@ export class NavbarComponent implements OnInit
   }
   ngOnInit()
   {
+    
   }
 
   goStore(store: any)

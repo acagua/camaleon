@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit
 
   constructor(public _userService: UsuarioService)
   {
+    console.log('profilets userService - user: ' + JSON.stringify(this._userService.user));
     this.user = this._userService.user;
   }
 

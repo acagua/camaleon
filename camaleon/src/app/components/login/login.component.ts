@@ -10,7 +10,6 @@ import { UsuarioService } from 'src/app/services/usuario.service.js';
 })
 export class LoginComponent implements OnInit
 {
-
   email: string;
   rememberme: boolean = false;
 
@@ -60,6 +59,8 @@ export class LoginComponent implements OnInit
     this._usuarioService.loginUser(usuario, forma.value.rememberme)
       .subscribe(resp =>
       {
+        //TODO: ver como se puede hacer sin recargar la página
+        window.location.reload();
         this.router.navigate(['/home']);
         //this.router.navigate(['/profile']);
       });

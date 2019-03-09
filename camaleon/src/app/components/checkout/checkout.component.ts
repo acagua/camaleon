@@ -18,10 +18,6 @@ export class CheckoutComponent implements OnInit
     {
       this.user = this._userService.user;
     }
-    else
-    {
-
-    }
   }
 
   ngOnInit()

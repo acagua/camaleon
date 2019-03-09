@@ -28,6 +28,13 @@ export class ItemComponent implements OnInit
     });
   }
 
+
+  ngOnInit()
+  {
+    window.scrollTo(0, 0);
+  }
+
+
   addToCart()
   {
 
@@ -42,9 +49,7 @@ export class ItemComponent implements OnInit
     setTimeout(() => this.added = false, 1500);
   }
 
-  ngOnInit()
-  {
-    window.scrollTo(0, 0);
-  }
+
+
 
 }

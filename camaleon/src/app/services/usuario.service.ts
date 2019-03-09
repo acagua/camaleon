@@ -1,4 +1,4 @@
-import { Injectable, Output } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Usuario } from '../models/usuario.model.js';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
@@ -6,7 +6,6 @@ import { URL_SERVICIOS } from '../config/config';
 
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { EventEmitter } from 'events';
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +15,18 @@ export class UsuarioService
   user: Usuario;
   token: string;
 
-  @Output() getLogged: EventEmitter = new EventEmitter();
-
+  //--------------------------------------------------------------------------------------------------------- METODOS
   constructor(public httpClient: HttpClient, public router: Router)
   {
     this.loadStorage();
   }
 
+
   isLogged()
   {
     return this.token.length > 5 ? true : false
   }
+
 
   loadStorage()
   {
@@ -42,6 +42,7 @@ export class UsuarioService
     }
   }
 
+
   registerUser(usuario: Usuario)
   {
     let url = URL_SERVICIOS + '/user';
@@ -52,6 +53,7 @@ export class UsuarioService
       return resp;
     }));
   }
+
 
   loginUser(usuario: Usuario, rememberme: boolean)
   {
@@ -64,6 +66,7 @@ export class UsuarioService
       localStorage.removeItem('email');
     }
 
+    //------------API
     let url = URL_SERVICIOS + '/login';
 
     return this.httpClient.post(url, usuario).pipe(map((resp: any) =>
@@ -75,9 +78,13 @@ export class UsuarioService
       this.user = resp.user;
       this.token = resp.token;
 
+      console.log('se ejecuto el LOGIN');
+
       return true;
     }));
+
   }
+
 
   logoutUser()
   {
@@ -89,6 +96,7 @@ export class UsuarioService
 
     this.router.navigate(['/login']);
   }
+
 
   updateUser(usuario: Usuario)
   {
