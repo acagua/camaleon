@@ -1,1 +1,1 @@
-export const URL_SERVICIOS = window.location.origin + ':3000';
+export const URL_SERVICIOS = window.location.origin;
