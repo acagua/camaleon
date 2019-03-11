@@ -78,8 +78,6 @@ export class UsuarioService
       this.user = resp.user;
       this.token = resp.token;
 
-      console.log('se ejecuto el LOGIN');
-
       return true;
     }));
 

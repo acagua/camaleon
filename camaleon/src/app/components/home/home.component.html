@@ -1,4 +1,4 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<!--<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" attr.data-slide-to="{{store.id-1}}"
             [class.active]="(store.id == 1)" *ngFor="let store of storesLine1"></li>
@@ -17,7 +17,7 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
-</div>
+</div> -->
 
 <div class="container-90">
 
@@ -30,7 +30,7 @@
                     <div class="ribbon ribbon-info">Nuevo</div><img [src]="item.image" alt="product"
                         class="img-fluid" />
                     <div class="product-hover-overlay">
-                        <a [routerLink]="['/item',item.id]" class="product-hover-overlay-link"></a>
+                        <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
                         <div class="product-hover-overlay-buttons">
                             <a href="#" class="btn btn-outline-dark btn-product-left">
                                 <i class="fa fa-shopping-cart"></i>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="py-2">
                     <p class="text-muted text-sm mb-1">{{item.storeName}}</p>
-                    <h3 class="h6 text-uppercase mb-1"><a [routerLink]="['/item',item.id]"
+                    <h3 class="h6 text-uppercase mb-1"><a [routerLink]="['/item',item._id]"
                             class="text-dark">{{item.name}}</a></h3><span
                         class="text-muted">{{item.price|currency}}</span>
                 </div>
@@ -59,7 +59,7 @@
                     <div class="ribbon ribbon-info">Nuevo</div><img [src]="item.image" alt="product"
                         class="img-fluid" />
                     <div class="product-hover-overlay">
-                        <a [routerLink]="['/item',item.id]" class="product-hover-overlay-link"></a>
+                        <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
                         <div class="product-hover-overlay-buttons">
                             <a href="#" class="btn btn-outline-dark btn-product-left">
                                 <i class="fa fa-shopping-cart"></i>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="py-2">
                     <p class="text-muted text-sm mb-1">{{item.storeName}}</p>
-                    <h3 class="h6 text-uppercase mb-1"><a [routerLink]="['/item',item.id]"
+                    <h3 class="h6 text-uppercase mb-1"><a [routerLink]="['/item',item._id]"
                             class="text-dark">{{item.name}}</a></h3><span
                         class="text-muted">{{item.price|currency}}</span>
                 </div>
@@ -87,7 +87,7 @@
 
     <div class="card-deck mt-4">
         <div class="card" style="cursor:pointer" *ngFor="let store of storesLine1" (click)="goStore(store)">
-            <img class="card-img-top" [src]="store.image" alt="Card image cap">
+            <img class="card-img-top" [src]="store.imageLogo" alt="Card image cap">
         </div>
     </div>
 

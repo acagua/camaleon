@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { CamaleonService } from 'src/app/services/camaleon.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,14 +17,14 @@ import { Router } from '@angular/router';
 
 export class ContactComponent implements OnInit
 {
-  constructor(private router: Router, private camaleonService: CamaleonService)
+  constructor(private router: Router  )
   {
 
   }
 
   ngOnInit()
   {
-    
+
   }
 
   goStore(store: any)

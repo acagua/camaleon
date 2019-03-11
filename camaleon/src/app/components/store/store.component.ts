@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { CamaleonService } from 'src/app/services/camaleon.service';
+import { Store } from 'src/app/models/store.model';
+import { StoreService } from 'src/app/services/store.service';
+import { ItemService } from 'src/app/services/item.service';
+import { Item } from 'src/app/models/item.model';
 
 @Component({
   selector: 'app-store',
@@ -8,21 +11,35 @@ import { CamaleonService } from 'src/app/services/camaleon.service';
 })
 export class StoreComponent implements OnInit
 {
-  store: any = {};
-  items: any[] = [];
+  store: Store;
+  items: Item[];
 
-  constructor(private route: ActivatedRoute, private router: Router, private camaleonService: CamaleonService)
+  constructor(
+    private route: ActivatedRoute, private router: Router,
+    public _storeService: StoreService,
+    public _istemService: ItemService
+  )
   {
     this.route.params.subscribe(params =>
     {
-      this.store = camaleonService.getStore(params['id']);
-      this.items = camaleonService.getItemsStore(params['id']);
+      this._storeService.getStore(params['id'])
+        .subscribe((store) =>
+        {
+          this.store = store;
+        });
+
+      this._istemService.getItemsByStore(params['id'])
+        .subscribe((items) =>
+        {
+          this.items = items;
+        });
     });
   }
 
-  goItem(item: any)
+  goItem(item: Item)
   {
-    this.router.navigate(['/item', item.id]);
+    console.log(item);
+    this.router.navigate(['/item', item._id]);
   }
 
   ngOnInit()

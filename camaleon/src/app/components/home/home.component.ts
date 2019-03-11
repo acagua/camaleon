@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CamaleonService } from 'src/app/services/camaleon.service';
 import { Router } from '@angular/router';
+import { StoreService } from 'src/app/services/store.service';
+import { Store } from 'src/app/models/store.model';
+import { Item } from 'src/app/models/item.model';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +12,30 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit
 {
 
-  itemsLine1: any[] = [];
-  itemsLine2: any[] = [];
-  storesLine1: any[] = [];
+  itemsLine1: Item[] = [];
+  itemsLine2: Item[] = [];
+  storesLine1: Store[] = [];
 
   @Input()
   dataSlideTo: string;
 
-  constructor(private router: Router, private camaleonService: CamaleonService)
+  constructor(private router: Router,
+    public _storeService: StoreService,
+    public _itemService: ItemService)
   {
-    this.itemsLine1 = this.camaleonService.getItemsLine1();
-    this.itemsLine2 = this.camaleonService.getItemsLine2();
-    this.storesLine1 = this.camaleonService.getStoresLine1();
+    this._itemService.getItems(0, 8)
+      .subscribe((items) =>
+      {
+        this.itemsLine1 = items.slice(0, 4);
+        this.itemsLine2 = items.slice(4, 8);
+      });
+
+    this._storeService.getStores()
+      .subscribe((stores) =>
+      {
+        this.storesLine1 = stores;
+      });
+
   }
 
   ngOnInit()
@@ -28,14 +43,16 @@ export class HomeComponent implements OnInit
     window.scrollTo(0, 0);
   }
 
-  goStore(store: any)
+  goStore(store: Store)
   {
-    this.router.navigate(['/store', store.id]);
+    this.router.navigate(['/store', store.codeName]);
   }
 
-  goItem(item: any)
+  goItem(item: Item)
   {
-    this.router.navigate(['/item', item.id]);
+    console.log('home - item: ' + item);
+
+    //this.router.navigate(['/item', item._id]);
   }
 
 }

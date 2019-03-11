@@ -13,8 +13,8 @@ var orderSchema = new Schema({
     telephone: { type: Number, required: [true, 'The telephone is required'] },
     address: { type: String, required: [true, 'The address is required'] },
     _userId: { type: Schema.Types.ObjectId, ref: 'User', required: [true, 'The order has to have an user asociated'] },
-    //_userId: { type: String, required: [true, 'The monda is required'] },
     items: [orderItemSchema],
+    comments: { type: String },
     shippingCost: { type: Schema.Types.Decimal128, required: [true, 'The order has to have a shiping cost'] },
     total: { type: Schema.Types.Decimal128, required: [true, 'The order has to have a total'] }
 }, { collection: 'orders' });

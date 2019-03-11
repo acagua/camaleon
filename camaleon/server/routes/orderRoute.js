@@ -41,6 +41,8 @@ app.post('/', function (req, res)
   var body = req.body;
 
   var order = new Order({
+    whoReceives: body.whoReceives,
+    comments: body.comments,
     date: new Date(),
     telephone: body.telephone,
     address: body.address,

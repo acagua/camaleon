@@ -10,8 +10,18 @@ const userRoute = require('./server/routes/userRoute');
 const loginRoute = require('./server/routes/loginRoute');
 const storeRoute = require('./server/routes/storeRoute');
 const orderRoute = require('./server/routes/orderRoute');
+const itemRoute = require('./server/routes/itemRoute');
 
 const app = express();
+
+//-----------------------------------------------------------------CORS
+app.use(function (req, res, next)
+{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    next();
+});
 
 // -----------------------------------------------------------Parsers for POST data
 app.use(bodyParser.json());
@@ -34,10 +44,11 @@ mongoose.connection.openUri('mongodb://camaleonUser:M3g4l0d0n2019!DBUser@ec2-3-8
 app.use(express.static(path.join(__dirname, 'dist/camaleon')));
 
 // -------------------------------------------------------------Set our api routes
-app.use('/user', userRoute);
-app.use('/login', loginRoute);
-app.use('/store', storeRoute);
-app.use('/order', orderRoute);
+app.use('/api/user', userRoute);
+app.use('/api/login', loginRoute);
+app.use('/api/store', storeRoute);
+app.use('/api/order', orderRoute);
+app.use('/api/item', itemRoute);
 
 // --------------------------------------------------------------Catch all other routes and return the index file
 app.get('*', (req, res) =>

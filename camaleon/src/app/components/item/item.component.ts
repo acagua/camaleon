@@ -1,7 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CamaleonService } from 'src/app/services/camaleon.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { Item } from 'src/app/models/item.model';
+import { ItemCart } from 'src/app/models/item-cart.model';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-item',
@@ -9,22 +11,23 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 })
 export class ItemComponent implements OnInit
 {
-  item: any = {};
+  item: Item;
   quantity: number = 1;
   otherItems: any[] = [];
   added: boolean = false;
 
-
-  constructor(private route: ActivatedRoute, private camaleonService: CamaleonService, private shoppingCartService: ShoppingCartService)
+  constructor(private route: ActivatedRoute,
+    private _cartService: ShoppingCartService,
+    public _itemService: ItemService)
   {
     this.route.params.subscribe(params =>
     {
-      // load the item
-      this.item = camaleonService.getItem(params['id']);
-
-      // load the other items
-      this.otherItems = camaleonService.getOtherItems(this.item.idStore);
-
+      this._itemService.getItem(params['id'])
+        .subscribe((item) =>
+        {
+          console.log(item);
+          this.item = item;
+        });
     });
   }
 
@@ -38,11 +41,9 @@ export class ItemComponent implements OnInit
   addToCart()
   {
 
-    let total = this.item.price * this.quantity;
+    let itemCart = new ItemCart(this.item, this.quantity);
 
-    let itemCart = { item: this.item, quantity: this.quantity, total: total };
-
-    this.shoppingCartService.addToCart(itemCart);
+    this._cartService.addToCart(itemCart);
 
     this.added = true;
 

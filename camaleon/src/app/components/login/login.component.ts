@@ -37,10 +37,6 @@ export class LoginComponent implements OnInit
 
   registerUser()
   {
-    console.log(this.forma2);
-    console.log(this.forma2.value);
-    console.log(this.forma2.valid);
-
     const formaValue = this.forma2.value;
 
     let usuario = new Usuario(formaValue.name, formaValue.lastName, formaValue.email2, formaValue.password2);

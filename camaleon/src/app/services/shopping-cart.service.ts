@@ -1,36 +1,50 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
+import { ItemCart } from '../models/item-cart.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService
 {
-  items: any[] = [];
+
+  arrItemCart: ItemCart[] = [];
+  quantity: number = 0;
   total: number = 0;
+
 
   constructor()
   {
-    if (localStorage.getItem('cart'))
+    const cart = localStorage.getItem('arrItemCart');
+
+    if (cart)
     {
-      this.items = JSON.parse(localStorage.getItem('cart'));
+      this.arrItemCart = JSON.parse(cart);
+      this.quantity = JSON.parse(localStorage.getItem('quantity')) || 0;
+      this.total = JSON.parse(localStorage.getItem('total')) || 0;
     }
   }
 
-  addToCart(itemCart: any)
+
+  addToCart(pItemCart: ItemCart)
   {
+    this.quantity += pItemCart.quantity;
+    this.total += pItemCart.total;
+
     let agregar: boolean = true;
+    const cart = localStorage.getItem('arrItemCart');
 
-    if (localStorage.getItem('cart'))
+    if (cart)
     {
-      this.items = JSON.parse(localStorage.getItem('cart'));
+      this.arrItemCart = JSON.parse(cart);
 
-      for (let i = 0; i < this.items.length; i++)
+      for (let i = 0; i < this.arrItemCart.length; i++)
       {
-        const element = this.items[i];
+        const itemCart = this.arrItemCart[i];
 
-        if (element.item.id === itemCart.item.id)
+        if (itemCart.item._id === pItemCart.item._id)
         {
-          this.items[i].quantity = this.items[i].quantity + itemCart.quantity;
+          this.arrItemCart[i].quantity = itemCart.quantity + pItemCart.quantity;
+          this.arrItemCart[i].total = itemCart.total + pItemCart.total;
           agregar = false;
         }
       }
@@ -38,21 +52,30 @@ export class ShoppingCartService
 
     if (agregar)
     {
-      this.items.push(itemCart);
+      this.arrItemCart.push(pItemCart);
     }
 
-    localStorage.setItem('cart', JSON.stringify(this.items));
+    this.saveStorage();
   }
 
-  removeItem(id: number)
+
+  removeItem(pItemCart: ItemCart)
   {
-    if (localStorage.getItem('cart'))
-    {
-      this.items = JSON.parse(localStorage.getItem('cart'));
-    }
+    this.arrItemCart = this.arrItemCart.filter((dataItemCart) => dataItemCart.item._id !== pItemCart.item._id);
+    this.quantity -= pItemCart.quantity;
+    this.total -= pItemCart.total;
 
-    this.items = this.items.filter((dataItemCart) => dataItemCart.item.id !== id);
-
-    localStorage.setItem('cart', JSON.stringify(this.items));
+    this.saveStorage();
   }
+
+
+  saveStorage()
+  {
+    localStorage.setItem('arrItemCart', JSON.stringify(this.arrItemCart));
+    localStorage.setItem('quantity', JSON.stringify(this.quantity));
+    localStorage.setItem('total', JSON.stringify(this.total));
+  }
+
+
+
 }

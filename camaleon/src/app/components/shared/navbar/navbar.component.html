@@ -1,13 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-dark bg-dark bg-fixed-dark">
     <div class="container-fluid">
-        <!-- Navbar Header  -->
         <a [routerLink]="['home']" class="navbar-brand">
             <img src="/assets/img/logo.png" height="35px" alt="logo camaleon!">
         </a>
         <button type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
             aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i
                 class="fa fa-bars"></i></button>
-        <!-- Navbar Collapse -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="navbar-nav mx-auto">
                 <li routerLinkActive="active" class="nav-item dropdown">
@@ -16,17 +14,6 @@
                         Home
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false" class="nav-link">
-                        Marcas <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
-                        <li class="dropdown-item" *ngFor="let store of storesLine1"><a
-                                [routerLink]="['/store',store.id]" class="text-dark">{{store.name}}</a></li>
-                    </ul>
-                </li>
-                <!-- Multi level dropdown    -->
                 <li routerLinkActive="active" class="nav-item dropdown"><a id="navbarDropdownMenuLink" href="#"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Nosotros<i
                             class="fa fa-angle-down"></i></a>
@@ -38,16 +25,13 @@
                 </li>
             </ul>
             <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
-                <!-- Search Bar -->
                 <form class="form-inline my-2 my-lg-0 w-100" onsubmit='return false'>
                     <input class="form-control bg-white border-secondary border-right-0 " type="text"
                         placeholder="¿Qué buscas?" (keyup.enter)=buscarHeroe(buscarTexto.value) #buscarTexto>
                 </form>
-                <!-- Search Button -->
                 <button *ngIf="!user" type="submit " class="btn btn-outline-secondary
                 border-left-0 "> <img src="/assets/img/search-icon-white.png" height="22px" alt="search-icon"></button>
 
-                <!-- User Not Logged - link to login page-->
                 <div class="nav-item" *ngIf="_userService.isLogged()">
                     <a [routerLink]="['/profile']" class="navbar-icon-link">
                         <img src="/assets/img/user-icon-white.png" height="25px" alt="user-icon">
@@ -67,7 +51,7 @@
                     <a [routerLink]="['/shoppingCart']" class="navbar-icon-link">
                         <img src="/assets/img/cart-icon-white.png" height="25px" alt="user-icon">
                         <div class="navbar-icon-link-badge">
-                            {{cartService.items.length}}
+                            {{_cartService.quantity}}
                         </div>
                     </a>
                 </div>
