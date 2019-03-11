@@ -45,7 +45,7 @@ Use these steps to clone from SourceTree, our client for using the repository co
 Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
 
 
-Ruteo del dominio:
+## Ruteo del dominio:
 1. Crear nuevo Hosted Zone en Route 53 para camaleon.shop. 
 2. Crear 2 Record Sets (uno para www.camaleon.shop y otro para solo camaleon.shop) de Type:A, Alias:Yes, Alias Target escoger el S3 que corresponde (con o sin www). 
 3. Salvar el Record
@@ -53,14 +53,14 @@ Ruteo del dominio:
 5. En GoDaddy ir a Dominios y para Camaleon.shop poner DNS
 6. En Nameservers actualizar / crear los registros guardados en el paso 4.
 
-Para Deployment en AWS:
+## Para Deployment en AWS:
 1. Crear server.js
 2. Crear carpetas y archivo server/router/api.js (para manejo de peticiones - no obligatorio)
 3. ng build en el root del proyecto
 4. Mantener los archivos en el root del dist sin carpetas intermediarias (o ajustar el server.js para que apunte ahí)
 5. Comprimir server.js; package.json; /server; /dist
 
-Actualizar Agnular-CLI (https://www.npmjs.com/package/@angular/cli):
+## Actualizar Angular-CLI (https://www.npmjs.com/package/@angular/cli):
 1. Desinstalar Cli Global 
     a. npm uninstall -g @angular/cli
     b. npm cache verify
@@ -69,3 +69,6 @@ Actualizar Agnular-CLI (https://www.npmjs.com/package/@angular/cli):
     a. rm -rf node_modules dist
     b. npm install --save-dev @angular/cli@latest
     c. npm install
+
+## Error instalar módulo npm 
+sudo npm i <modulo> --unsafe-perm=true --allow-root
