@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 
 export class ContactComponent implements OnInit
 {
-  constructor(private router: Router  )
+  constructor(private router: Router)
   {
 
   }

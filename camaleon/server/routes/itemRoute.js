@@ -71,6 +71,38 @@ app.get('/:id', function (req, res)
 });
 
 
+app.get('/store/:storeCodeName', function (req, res)
+{
+    var storeCodeName = req.params.storeCodeName;
+
+    var from = Number(req.query.from) || 0;
+    var until = Number(req.query.until) || 20;
+
+    Item.find({ _storeCodeName: storeCodeName })
+        .skip(from)
+        .limit(until)
+        .exec(
+            function (err, items)
+            {
+                if (err)
+                {
+                    return res.status(500).json({
+                        ok: false,
+                        message: 'Error retrieving items',
+                        errors: err
+                    });
+                }
+                else
+                {
+                    return res.status(200).json({
+                        ok: true,
+                        documents: items
+                    });
+                }
+            });
+});
+
+
 app.post('/', function (req, res)
 {
     var body = req.body;

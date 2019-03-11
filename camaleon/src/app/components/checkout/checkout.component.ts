@@ -32,18 +32,20 @@ export class CheckoutComponent implements OnInit
     this.total = _cartService.total + this.shippingCost;
 
     this.forma = new FormGroup({
-      telephone: new FormControl(null, Validators.required),
-      address: new FormControl(null, Validators.required),
-      whoReceives: new FormControl(this._userService.user.name || null, Validators.required),
+      telephone: new FormControl(this._userService.user.telephone || null, Validators.required),
+      address: new FormControl(this._userService.user.address || null, Validators.required),
+      whoReceives: new FormControl(this._userService.user.name + ' ' + this._userService.user.lastName || null, Validators.required),
       paymentMethod: new FormControl(1, Validators.required),
       comments: new FormControl()
     });
   }
 
+
   ngOnInit()
   {
     window.scrollTo(0, 0);
   }
+
 
   onRegisterOrder()
   {
@@ -60,7 +62,7 @@ export class CheckoutComponent implements OnInit
       shippingCost: this.shippingCost,
       total: this.total,
       userId: this._userService.user._id,
-      arrItem: [this._cartService.arrItemCart]
+      arrItem: this._cartService.arrItemCart
     }).subscribe(resp =>
     {
       this.router.navigate(['/profile']);

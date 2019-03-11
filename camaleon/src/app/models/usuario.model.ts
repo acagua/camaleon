@@ -5,8 +5,9 @@ export class Usuario
         public lastName: string,
         public email: string,
         public password: string,
+        public telephone?: string,
+        public address?: string,
         public img?: string,
-        public role?: string,
         public _id?: string
     )
     {

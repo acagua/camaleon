@@ -38,7 +38,17 @@ app.get('/', function (req, res)
 
 app.post('/', function (req, res)
 {
-  var body = req.body;
+  const body = req.body;
+
+  //console.log(JSON.stringify(body.arrItem));
+
+  let arrOrderItem = [];
+
+  body.arrItem.forEach(element =>
+  {
+    console.log('element:::' + JSON.stringify(element) + '\n');
+    arrOrderItem.push({ _itemId: element.item._id, quantity: element.quantity });
+  });
 
   var order = new Order({
     whoReceives: body.whoReceives,
@@ -47,10 +57,12 @@ app.post('/', function (req, res)
     telephone: body.telephone,
     address: body.address,
     _userId: body.userId,
-    items: [],
+    items: arrOrderItem,
     shippingCost: body.shippingCost,
     total: body.total,
   });
+
+  console.log('order:::' + JSON.stringify(order) + '\n');
 
   order.save(function (err, orderSaved)
   {

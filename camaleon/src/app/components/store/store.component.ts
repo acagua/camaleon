@@ -26,13 +26,15 @@ export class StoreComponent implements OnInit
         .subscribe((store) =>
         {
           this.store = store;
+
+          this._istemService.getItemsByStore(store.codeName)
+            .subscribe((items) =>
+            {
+              this.items = items;
+            });
         });
 
-      this._istemService.getItemsByStore(params['id'])
-        .subscribe((items) =>
-        {
-          this.items = items;
-        });
+
     });
   }
 
