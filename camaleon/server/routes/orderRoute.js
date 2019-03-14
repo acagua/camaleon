@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt');
 var app = express();
 
 var Order = require('../models/order.js');
+var OrderItem = require('../models/orderItem.js');
 //-------------------------------------------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------RUTAS
@@ -40,14 +41,11 @@ app.post('/', function (req, res)
 {
   const body = req.body;
 
-  //console.log(JSON.stringify(body.arrItem));
-
   let arrOrderItem = [];
 
   body.arrItem.forEach(element =>
   {
-    console.log('element:::' + JSON.stringify(element) + '\n');
-    arrOrderItem.push({ _itemId: element.item._id, quantity: element.quantity });
+    arrOrderItem.push(new OrderItem({ _itemId: element.item._id, quantity: element.quantity }));
   });
 
   var order = new Order({
@@ -61,8 +59,6 @@ app.post('/', function (req, res)
     shippingCost: body.shippingCost,
     total: body.total,
   });
-
-  console.log('order:::' + JSON.stringify(order) + '\n');
 
   order.save(function (err, orderSaved)
   {

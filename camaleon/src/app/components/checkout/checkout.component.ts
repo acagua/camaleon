@@ -65,6 +65,7 @@ export class CheckoutComponent implements OnInit
       arrItem: this._cartService.arrItemCart
     }).subscribe(resp =>
     {
+      this._cartService.removeCart();
       this.router.navigate(['/profile']);
     });;
 

@@ -69,6 +69,18 @@ export class ShoppingCartService
   }
 
 
+  removeCart()
+  {
+    this.arrItemCart = [];
+    this.quantity = 0;
+    this.total = 0;
+
+    localStorage.removeItem('arrItemCart');
+    localStorage.removeItem('quantity');
+    localStorage.removeItem('total');
+  }
+
+
   saveStorage()
   {
     localStorage.setItem('arrItemCart', JSON.stringify(this.arrItemCart));
