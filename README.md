@@ -1,3 +1,31 @@
+# Camaleon
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
 **Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
 
 When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
@@ -44,7 +72,6 @@ Use these steps to clone from SourceTree, our client for using the repository co
 
 Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
 
-
 ## Ruteo del dominio:
 1. Crear nuevo Hosted Zone en Route 53 para camaleon.shop. 
 2. Crear 2 Record Sets (uno para www.camaleon.shop y otro para solo camaleon.shop) de Type:A, Alias:Yes, Alias Target escoger el S3 que corresponde (con o sin www). 
@@ -72,3 +99,8 @@ Now that you're more familiar with your Bitbucket repository, go ahead and add a
 
 ## Error instalar módulo npm 
 sudo npm i <modulo> --unsafe-perm=true --allow-root
+
+## Despliegue en EC2
+1. sudo git pull origin master
+2. sudo ng build
+3. node server
