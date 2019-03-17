@@ -1,10 +1,15 @@
+import { ItemCart } from './item-cart.model';
+
 export class Order
 {
     constructor(
-        public _id: string,
-        public name: string,
-        public price: number,
-        public image: string
+        public whoReceives: String,
+        public comments: String,
+        public date: Date,
+        public address: String,
+        public total: number,
+        public items: ItemCart[],
+        public _id: String,
     )
     {
 

@@ -10,6 +10,7 @@ import { UsuarioService } from 'src/app/services/usuario.service.js';
 })
 export class LoginComponent implements OnInit
 {
+
   email: string;
   rememberme: boolean = false;
 
@@ -20,6 +21,8 @@ export class LoginComponent implements OnInit
 
   ngOnInit()
   {
+    window.scrollTo(0, 0);
+
     this.email = localStorage.getItem('email') || '';
 
     if (this.email.length > 1)
@@ -35,6 +38,7 @@ export class LoginComponent implements OnInit
     });
   }
 
+
   registerUser()
   {
     const formaValue = this.forma2.value;
@@ -48,6 +52,7 @@ export class LoginComponent implements OnInit
       });
   }
 
+
   loginUser(forma: NgForm)
   {
     let usuario = new Usuario(null, null, forma.value.email1, forma.value.password1);
@@ -57,6 +62,7 @@ export class LoginComponent implements OnInit
       {
         //TODO: ver como se puede hacer sin recargar la página
         window.location.reload();
+        setTimeout(() => { }, 2000);
         this.router.navigate(['/home']);
         //this.router.navigate(['/profile']);
       });

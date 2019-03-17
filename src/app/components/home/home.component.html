@@ -27,8 +27,8 @@
         <div *ngFor="let item of itemsLine1" class="col-xl-3 col-sm-5">
             <div class="product">
                 <div class="product-image">
-                    <div class="ribbon ribbon-info">Nuevo</div><img [src]="item.image" alt="product"
-                        class="img-fluid" />
+                    <div class="ribbon ribbon-info">Nuevo</div>
+                    <img [src]="item.image" alt="product" class="img-fluid" />
                     <div class="product-hover-overlay">
                         <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
                         <div class="product-hover-overlay-buttons">

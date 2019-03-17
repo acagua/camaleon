@@ -6,10 +6,48 @@
   </section>
 
   <hr>
-  <!-- customer login-->
   <section>
     <div class="container">
       <div class="row justify-content-center">
+
+        <div class="col-lg-5">
+          <div class="block">
+            <div class="block-header">
+              <h6 class="text-uppercase mb-0">Únete!</h6>
+            </div>
+            <div class="block-body">
+              <p class="lead">Aún no estás registrado?</p>
+              <p class="text-muted">Encuentra miles de productos en esta mega tienda virtual, marcas únicas, productos
+                geniales y mucho más!</p>
+              <hr>
+
+              <form ngNativeValidate [formGroup]="forma2" (ngSubmit)="registerUser()">
+                <div class="form-group">
+                  <label for="name" class="form-label">Nombres</label>
+                  <input formControlName="name" name="name" id="name" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="form-label">Apellidos</label>
+                  <input formControlName="lastName" name="lastName" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="email2" class="form-label">Correo</label>
+                  <input formControlName="email2" name="email2" id="email2" type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="password2" class="form-label">Password</label>
+                  <input formControlName="password2" name="password2" id="password2" type="password"
+                    class="form-control" required>
+                </div>
+                <div class="form-group text-center">
+                  <button type="submit" class="btn btn-outline-dark"><i class="far fa-user mr-2"></i>Registrar!</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
         <div class="col-lg-5">
           <div class="block">
             <div class="block-header">
@@ -40,53 +78,16 @@
 
                 </div>
                 <div class="form-group text-center">
-                  <button type="submit" class="btn btn-outline-dark"><i class="fa fa-sign-in-alt mr-2"></i> Log
-                    in</button>
+                  <button type="submit" class="btn btn-outline-dark"><i class="fa fa-sign-in-alt mr-2"></i>
+                    Entrar!</button>
                 </div>
               </form>
 
             </div>
           </div>
         </div>
-        <div class="col-lg-5">
-          <div class="block">
-            <div class="block-header">
-              <h6 class="text-uppercase mb-0">Únete!</h6>
-            </div>
-            <div class="block-body">
-              <p class="lead">Aún no estás registrado?</p>
-              <p class="text-muted">Encuentra miles de productos en esta mega tienda virtual, marcas únicas, productos
-                geniales y mucho más!</p>
-              <hr>
 
-              <!--<form ngNativeValidate [formGroup]="forma2" (ngSubmit)="registerUser()">-->
-              <form [formGroup]="forma2" (ngSubmit)="registerUser()">
-                <div class="form-group">
-                  <label for="name" class="form-label">Nombres</label>
-                  <input formControlName="name" name="name" id="name" type="text" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="name" class="form-label">Apellidos</label>
-                  <input formControlName="lastName" name="lastName" type="text" class="form-control"
-                    required>
-                </div>
-                <div class="form-group">
-                  <label for="email2" class="form-label">Correo</label>
-                  <input formControlName="email2" name="email2" id="email2" type="text" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="password2" class="form-label">Password</label>
-                  <input formControlName="password2" name="password2" id="password2" type="password"
-                    class="form-control" required>
-                </div>
-                <div class="form-group text-center">
-                  <button type="submit" class="btn btn-outline-dark"><i class="far fa-user mr-2"></i>Register </button>
-                </div>
-              </form>
 
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>

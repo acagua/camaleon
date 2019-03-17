@@ -20,8 +20,30 @@ export class OrderService
 
     return this.httpClient.post(url, pOrder).pipe(map((resp: any) =>
     {
-      Swal.fire('Orden registrada!', ':D', 'success');
+      Swal.fire('Orden registrada!', 'orden número ' + resp.document.orderNumber + ' ha sido registrada', 'success');
       return resp;
+    }));
+  }
+
+
+  getOrder(pOrderId: String)
+  {
+    let url = URL_SERVICIOS + '/order/' + pOrderId;
+
+    return this.httpClient.get(url).pipe(map((resp: any) =>
+    {
+      return resp.document;
+    }));
+  }
+
+
+  getOrdersByUser(pUserId: String)
+  {
+    let url = URL_SERVICIOS + '/order/user/' + pUserId;
+
+    return this.httpClient.get(url).pipe(map((resp: any) =>
+    {
+      return resp.documents;
     }));
   }
 

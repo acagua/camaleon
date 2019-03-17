@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario.model';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,29 +10,56 @@ import { FormGroup } from '@angular/forms';
 })
 export class ProfileComponent implements OnInit
 {
-
+  //--------------------------------------------------ATTRIBUTES
   user: Usuario;
+  forma: FormGroup;
+  orders: any[];
 
-  constructor(public _userService: UsuarioService)
+  //--------------------------------------------------METHODS
+  constructor(public _userService: UsuarioService,
+    public _orderService: OrderService)
   {
     this.user = this._userService.user;
   }
 
+
   ngOnInit()
   {
+    this.forma = new FormGroup({
+      name: new FormControl(this.user.name, Validators.required),
+      lastName: new FormControl(null, Validators.required),
+      email: new FormControl({ value: this.user.email, disabled: true }, [Validators.required, Validators.email]),
+      address: new FormControl(this.user.address),
+      telephone: new FormControl(this.user.telephone),
+    });
 
+    if (this.user)
+    {
+
+      console.log('b, va a buscar las ordenes del usuario');
+
+      this._orderService.getOrdersByUser(this.user._id)
+        .subscribe((orders) =>
+        {
+          this.orders = orders;
+          console.log('b, ordenes: ' + JSON.stringify(orders));
+        });
+    }
   }
 
-  saveChanges(forma: FormGroup)
-  {
-    this.user.name = forma.value.name;
-    this.user.email = forma.value.email;
 
-    this._userService.updateUser(this.user)
+  onSaveChanges()
+  {
+    const formaValue = this.forma.value;
+
+    let usuario = new Usuario(formaValue.name, formaValue.lastName, formaValue.email, null, formaValue.telephone, formaValue.address, null, this.user._id);
+
+    this._userService.updateUser(usuario)
       .subscribe(resp =>
       {
-        console.log(resp)
-      });
+        console.log(resp);
+      });;
+
   }
 
 }

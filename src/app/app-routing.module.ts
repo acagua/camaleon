@@ -9,6 +9,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginGuard } from './services/guards/login.guard';
+import { OrderComponent } from './components/order/order.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -21,6 +22,7 @@ const APP_ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
   //  { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard] },
   { path: 'profile', component: ProfileComponent },
+  { path: 'order/:id', component: OrderComponent },
   { path: '', component: HomeComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];

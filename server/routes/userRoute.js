@@ -94,15 +94,15 @@ app.put('/:id', (req, res) =>
       {
         return res.status(400).json({
           ok: false,
-          mensaje: 'El user con el ' + id + ' no existe',
-          errors: { message: 'No existe el user con ese ID' }
+          mensaje: 'The user with id ' + id + ' does not exist'
         });
       }
       else
       {
         userSearched.name = body.name;
-        userSearched.lastname = body.lastname;
-        userSearched.email = body.email;
+        userSearched.lastName = body.lastName;
+        userSearched.address = body.address;
+        userSearched.telephone = body.telephone;
 
         userSearched.save(function (err, userSaved)
         {
@@ -110,7 +110,7 @@ app.put('/:id', (req, res) =>
           {
             return res.status(400).json({
               ok: false,
-              mensaje: 'Error al actualizar usuario',
+              mensaje: 'Error updating user',
               errors: err
             });
           }

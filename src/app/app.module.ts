@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PipesModule } from './pipes/pipes.module';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PipesModule } from './pipes/pipes.module';
     ContactComponent,
     CheckoutComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

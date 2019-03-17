@@ -10,10 +10,74 @@ var OrderItem = require('../models/orderItem.js');
 //---------------------------------------------------------------------------RUTAS
 app.get('/', function (req, res)
 {
-  var since = Number(req.query.since) || 0;
-  var until = Number(req.query.until) || 5;
-
   Order.find({})
+    .exec(
+      function (err, orders)
+      {
+        if (err)
+        {
+          return res.status(500).json({
+            ok: false,
+            mensaje: 'Error retrieving orders',
+            errors: err
+          });
+        }
+        else
+        {
+          return res.status(200).json({
+            ok: true,
+            documents: orders
+          });
+        }
+      });
+});
+
+
+app.get('/:id', function (req, res)
+{
+  var id = req.params.id;
+
+  Order.findById(id, (err, order) =>
+  {
+    if (err)
+    {
+      return res.status(500).json({
+        ok: false,
+        message: 'Error searching order',
+        errors: err
+      });
+    }
+    else
+    {
+      if (!order)
+      {
+        return res.status(400).json({
+          ok: false,
+          message: 'The order with id: ' + id + 'does not exist'
+        });
+      }
+      else
+      {
+        return res.status(200).json({
+          ok: true,
+          document: order
+        });
+      }
+    }
+  });
+});
+
+
+app.get('/user/:userId', function (req, res)
+{
+
+  var userId = req.params.userId;
+
+  var since = Number(req.query.since) || 0;
+  var until = Number(req.query.until) || 20;
+
+  Order.find({ _userId: userId })
+    .sort({ date: 'descending' })
     .skip(since)
     .limit(until)
     .exec(
@@ -31,11 +95,12 @@ app.get('/', function (req, res)
         {
           return res.status(200).json({
             ok: true,
-            orders: orders
+            documents: orders
           });
         }
       });
 });
+
 
 app.post('/', function (req, res)
 {
@@ -74,7 +139,7 @@ app.post('/', function (req, res)
     {
       return res.status(201).json({
         ok: true,
-        order: orderSaved
+        document: orderSaved
       });
     }
   });
