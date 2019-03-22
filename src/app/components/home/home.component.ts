@@ -48,11 +48,4 @@ export class HomeComponent implements OnInit
     this.router.navigate(['/store', store.codeName]);
   }
 
-  goItem(item: Item)
-  {
-    console.log('home - item: ' + item);
-
-    //this.router.navigate(['/item', item._id]);
-  }
-
 }

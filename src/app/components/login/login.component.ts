@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit
       {
         //TODO: ver como se puede hacer sin recargar la página
         window.location.reload();
-        setTimeout(() => { }, 2000);
+        // setTimeout(() => { }, 2000);
         this.router.navigate(['/home']);
         //this.router.navigate(['/profile']);
       });

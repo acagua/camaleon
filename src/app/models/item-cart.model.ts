@@ -7,7 +7,6 @@ export class ItemCart
     constructor(
         public item: Item,
         public quantity: number,
-
     )
     {
         this.total = item.price * this.quantity;

@@ -112,7 +112,8 @@ app.post('/', function (req, res)
         description: body.description,
         price: body.price,
         images: body.images,
-        _storeId: body.storeId
+        _storeId: body.storeId,
+        _storeCodeName: body.storeCodeName,
     });
 
     item.save(function (err, itemSaved)

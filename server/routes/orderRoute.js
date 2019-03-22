@@ -110,7 +110,7 @@ app.post('/', function (req, res)
 
   body.arrItem.forEach(element =>
   {
-    arrOrderItem.push(new OrderItem({ _itemId: element.item._id, quantity: element.quantity }));
+    arrOrderItem.push(new OrderItem({ item: element.item, quantity: element.quantity, total: element.total }));
   });
 
   var order = new Order({

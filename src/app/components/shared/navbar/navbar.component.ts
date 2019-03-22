@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit
     private _cartService: ShoppingCartService,
     public _userService: UsuarioService)
   {
-    
+
   }
   ngOnInit()
   {

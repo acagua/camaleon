@@ -28,17 +28,11 @@
             <div class="product">
                 <div class="product-image">
                     <div class="ribbon ribbon-info">Nuevo</div>
-                    <img [src]="item.image" alt="product" class="img-fluid" />
+                    <img [src]="item.images[0]" alt="product" class="img-fluid" />
                     <div class="product-hover-overlay">
                         <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
                         <div class="product-hover-overlay-buttons">
-                            <a href="#" class="btn btn-outline-dark btn-product-left">
-                                <i class="fa fa-shopping-cart"></i>
-                            </a>
-                            <a href="#" data-toggle="modal" data-target="#exampleModal"
-                                class="btn btn-outline-dark btn-product-right">
-                                <i class="fa fa-expand-arrows-alt"></i>
-                            </a>
+                            <a [routerLink]="['/item',item._id]">{{item._storeCodeName|storeName}}</a>
                         </div>
                     </div>
                 </div>
@@ -56,18 +50,14 @@
         <div *ngFor="let item of itemsLine2" class="col-xl-3 col-sm-5">
             <div class="product">
                 <div class="product-image">
-                    <div class="ribbon ribbon-info">Nuevo</div><img [src]="item.image" alt="product"
-                        class="img-fluid" />
+                    <div class="ribbon ribbon-info">Nuevo</div>
+                    <img [src]="item.images[0]" alt="product" class="img-fluid" />
                     <div class="product-hover-overlay">
                         <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
                         <div class="product-hover-overlay-buttons">
-                            <a href="#" class="btn btn-outline-dark btn-product-left">
-                                <i class="fa fa-shopping-cart"></i>
-                            </a>
-                            <a href="#" data-toggle="modal" data-target="#exampleModal"
-                                class="btn btn-outline-dark btn-product-right">
-                                <i class="fa fa-expand-arrows-alt"></i>
-                            </a>
+                            <div class="product-hover-overlay-buttons">
+                                <a [routerLink]="['/item',item._id]">{{item._storeCodeName|storeName}}</a>
+                            </div>
                         </div>
                     </div>
                 </div>

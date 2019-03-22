@@ -8,7 +8,8 @@ var itemSchema = new Schema({
     description: { type: String, required: [true, 'Description is required'] },
     price: { type: Number, required: [true, 'Price is required'] },
     images: { type: [String] },
-    _storeId: { type: Schema.Types.ObjectId, ref: 'Store', required: [true, 'Must have a store asociated'] }
+    _storeId: { type: Schema.Types.ObjectId, ref: 'Store', required: [true, 'Must have a store associated'] },
+    _storeCodeName: { type: String, required: [true, 'Must have a store code name associated'] }
 }, { collection: 'items' });
 
 itemSchema.plugin(uniqueValidator, { message: '{PATH} must be unique' });

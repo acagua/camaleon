@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var Item = require('../models/item.js');
 
 var orderItemSchema = new Schema({
-    _itemId: { type: Schema.Types.ObjectId, ref: 'Item' },
-    quantity: { type: Number }
+    item: { type: Item.schema },
+    quantity: { type: Number },
+    total: { type: Number }
 }, { _id: false });
 
 module.exports = mongoose.model('OrderItem', orderItemSchema);

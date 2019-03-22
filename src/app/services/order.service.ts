@@ -20,7 +20,7 @@ export class OrderService
 
     return this.httpClient.post(url, pOrder).pipe(map((resp: any) =>
     {
-      Swal.fire('Orden registrada!', 'orden número ' + resp.document.orderNumber + ' ha sido registrada', 'success');
+      Swal.fire('Orden registrada!', 'orden #' + resp.document.orderNumber + ' ha sido registrada', 'success');
       return resp;
     }));
   }

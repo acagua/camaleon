@@ -35,14 +35,10 @@ export class ProfileComponent implements OnInit
 
     if (this.user)
     {
-
-      console.log('b, va a buscar las ordenes del usuario');
-
       this._orderService.getOrdersByUser(this.user._id)
         .subscribe((orders) =>
         {
           this.orders = orders;
-          console.log('b, ordenes: ' + JSON.stringify(orders));
         });
     }
   }

@@ -39,7 +39,6 @@ export class StoreComponent implements OnInit
 
   goItem(item: Item)
   {
-    console.log(item);
     this.router.navigate(['/item', item._id]);
   }
 

@@ -32,8 +32,10 @@
                   <div class="col-12 col-md-5"><a href="#" class="cart-remove close mt-3 d-md-none"><i
                         class="fa fa-times">
                       </i></a>
-                    <div class="d-flex align-items-center"><a [routerLink]="['/item',itemCart.item.id]"><img
-                          [src]="itemCart.item.image" alt="..." class="cart-item-img"></a>
+                    <div class="d-flex align-items-center">
+                      <a [routerLink]="['/item',itemCart.item.id]">
+                        <img [src]="itemCart.item.images[0]" alt="..." class="cart-item-img">
+                      </a>
                       <div class="cart-title text-left"><a [routerLink]="['/item',itemCart.item.id]"
                           class="text-uppercase text-dark"><strong>{{itemCart.item.name}}</strong></a>
                       </div>
