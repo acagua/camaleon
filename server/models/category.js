@@ -6,8 +6,8 @@ var Schema = mongoose.Schema;
 var categorySchema = new Schema({
     name: { type: String, required: [true, 'El nombre es obligatorio'] },
     description: { type: String, unique: true, required: [true, 'El correo es obligatorio'] },
-    image: { type: String },
-}, { collection: 'items' });
+    images: { type: [String] }
+}, { collection: 'categories' });
 
 categorySchema.plugin(uniqueValidator, { message: '{PATH} debe ser único' });
 

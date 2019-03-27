@@ -22,7 +22,7 @@ app.get('/', function (req, res)
         {
           return res.status(500).json({
             ok: false,
-            mensaje: 'Error cargando users',
+            message: 'Error cargando users',
             errors: err
           });
         }
@@ -58,7 +58,7 @@ app.post('/', function (req, res)
     {
       return res.status(400).json({
         ok: false,
-        mensaje: 'Error al crear user',
+        message: 'Error al crear user',
         errors: err
       });
     }
@@ -73,6 +73,7 @@ app.post('/', function (req, res)
   });
 });
 
+
 app.put('/:id', (req, res) =>
 {
   var id = req.params.id;
@@ -84,7 +85,7 @@ app.put('/:id', (req, res) =>
     {
       return res.status(500).json({
         ok: false,
-        mensaje: 'Error al buscar user',
+        message: 'Error al buscar user',
         errors: err
       });
     }
@@ -94,7 +95,7 @@ app.put('/:id', (req, res) =>
       {
         return res.status(400).json({
           ok: false,
-          mensaje: 'The user with id ' + id + ' does not exist'
+          message: 'The user with id ' + id + ' does not exist'
         });
       }
       else
@@ -110,7 +111,7 @@ app.put('/:id', (req, res) =>
           {
             return res.status(400).json({
               ok: false,
-              mensaje: 'Error updating user',
+              message: 'Error updating user',
               errors: err
             });
           }

@@ -18,7 +18,7 @@ app.get('/', function (req, res)
         {
           return res.status(500).json({
             ok: false,
-            mensaje: 'Error retrieving orders',
+            message: 'Error retrieving orders',
             errors: err
           });
         }
@@ -87,7 +87,7 @@ app.get('/user/:userId', function (req, res)
         {
           return res.status(500).json({
             ok: false,
-            mensaje: 'Error retrieving orders',
+            message: 'Error retrieving orders',
             errors: err
           });
         }
@@ -131,7 +131,7 @@ app.post('/', function (req, res)
     {
       return res.status(400).json({
         ok: false,
-        mensaje: 'Error saving order',
+        message: 'Error saving order',
         errors: err
       });
     }

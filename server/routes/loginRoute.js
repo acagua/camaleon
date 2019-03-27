@@ -17,7 +17,7 @@ app.post('/', (req, res) =>
         {
             return res.status(500).json({
                 ok: false,
-                mensaje: 'Error al buscar el user con email: ' + body.email,
+                message: 'Error al buscar el user con email: ' + body.email,
                 errors: err
             });
         }
@@ -25,8 +25,8 @@ app.post('/', (req, res) =>
         {
             return res.status(400).json({
                 ok: false,
-                mensaje: 'No se encuentra el user con email: ' + body.email,
-                errors: { message: 'No se encuentra el user con ese email' }
+                message: 'No se encuentra el usuario con email: ' + body.email,
+                errors: { message: 'No se encuentra el usuario con ese email' }
             });
         }
         else
@@ -35,8 +35,8 @@ app.post('/', (req, res) =>
             {
                 return res.status(422).json({
                     ok: false,
-                    mensaje: 'Credenciales incorrectas',
-                    errors: err
+                    message: 'Credenciales incorrectas',
+                    errors: { error: 'Credenciales incorrectas' }
                 });
             }
             else

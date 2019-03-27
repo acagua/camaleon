@@ -33,10 +33,10 @@
                         class="fa fa-times">
                       </i></a>
                     <div class="d-flex align-items-center">
-                      <a [routerLink]="['/item',itemCart.item.id]">
+                      <a [routerLink]="['/item',itemCart.item._id]">
                         <img [src]="itemCart.item.images[0]" alt="..." class="cart-item-img">
                       </a>
-                      <div class="cart-title text-left"><a [routerLink]="['/item',itemCart.item.id]"
+                      <div class="cart-title text-left"><a [routerLink]="['/item',itemCart.item._id]"
                           class="text-uppercase text-dark"><strong>{{itemCart.item.name}}</strong></a>
                       </div>
                     </div>

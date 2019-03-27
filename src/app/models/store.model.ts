@@ -6,7 +6,8 @@ export class Store
         public imageLogo: String,
         public imageBanner: String,
         public _id: String,
-        public codeName: String
+        public codeName: String,
+        public numberOfItems: number
     )
     {
 

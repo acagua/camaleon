@@ -4,8 +4,9 @@ import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../config/config';
 
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -47,11 +48,19 @@ export class UsuarioService
   {
     let url = URL_SERVICIOS + '/user';
 
-    return this.httpClient.post(url, usuario).pipe(map((resp: any) =>
-    {
-      Swal.fire('Usuario creado', usuario.email, 'success');
-      return resp;
-    }));
+    return this.httpClient.post(url, usuario)
+      .pipe(
+        map((resp: any) =>
+        {
+          Swal.fire('Usuario creado', usuario.email, 'success');
+          return resp;
+        }),
+        catchError(err =>
+        {
+          let message: string = this.getErrorMessage(err);
+          Swal.fire('Error al registrar', message, 'error');
+          return throwError(err);
+        }));
   }
 
 
@@ -69,18 +78,25 @@ export class UsuarioService
     //------------API
     let url = URL_SERVICIOS + '/login';
 
-    return this.httpClient.post(url, usuario).pipe(map((resp: any) =>
-    {
-      localStorage.setItem('id', resp.id);
-      localStorage.setItem('token', resp.token);
-      localStorage.setItem('user', JSON.stringify(resp.user));
+    return this.httpClient.post(url, usuario)
+      .pipe(
+        map((resp: any) =>
+        {
+          localStorage.setItem('id', resp.id);
+          localStorage.setItem('token', resp.token);
+          localStorage.setItem('user', JSON.stringify(resp.user));
 
-      this.user = resp.user;
-      this.token = resp.token;
+          this.user = resp.user;
+          this.token = resp.token;
 
-      return true;
-    }));
-
+          return true;
+        }),
+        catchError(err =>
+        {
+          let message: string = this.getErrorMessage(err);
+          Swal.fire('Error al ingresar', message, 'error');
+          return throwError(err);
+        }));
   }
 
 
@@ -100,11 +116,50 @@ export class UsuarioService
   {
     let url = URL_SERVICIOS + '/user/' + usuario._id;
 
-    return this.httpClient.put(url, usuario).pipe(map((resp: any) =>
+    return this.httpClient.put(url, usuario)
+      .pipe(
+        map((resp: any) =>
+        {
+          // localStorage.setItem('user', JSON.stringify(resp.document));
+
+          Swal.fire('Usuario actualizado', usuario.email, 'success');
+          return resp;
+        }),
+        catchError(err =>
+        {
+          Swal.fire('Error al actualizar', err.error.message, 'error');
+          return throwError(err);
+        }));
+  }
+
+
+  getErrorMessage(err: any): string
+  {
+    console.log('borrar - err ::: ' + JSON.stringify(err));
+
+    let resp = '';
+
+    if (err.error)
     {
-      Swal.fire('Usuario actualizado', usuario.email, 'success');
-      return resp;
-    }));
+      if (err.error.errors.errors)
+      {
+        if (err.error.errors.name === 'ValidationError')
+        {
+          resp = err.error.errors.message.split(':')[2];
+
+          if (resp.includes('email'))
+          {
+            resp = resp.replace('email', 'correo');
+          }
+        }
+      }
+      else
+      {
+        resp = err.error.message;
+      }
+    }
+
+    return resp;
   }
 
 }

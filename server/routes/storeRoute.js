@@ -21,7 +21,7 @@ app.get('/', function (req, res)
                 {
                     return res.status(500).json({
                         ok: false,
-                        mensaje: 'Error retrieving stores',
+                        message: 'Error retrieving stores',
                         errors: err
                     });
                 }

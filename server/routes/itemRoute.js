@@ -9,11 +9,11 @@ var Item = require('../models/item.js');
 app.get('/', function (req, res)
 {
     var from = Number(req.query.from) || 0;
-    var until = Number(req.query.until) || 20;
+    var limit = Number(req.query.limit) || 100;
 
     Item.find({})
         .skip(from)
-        .limit(until)
+        .limit(limit)
         .exec(
             function (err, items)
             {
@@ -76,11 +76,11 @@ app.get('/store/:storeCodeName', function (req, res)
     var storeCodeName = req.params.storeCodeName;
 
     var from = Number(req.query.from) || 0;
-    var until = Number(req.query.until) || 20;
+    var limit = Number(req.query.limit) || 20;
 
     Item.find({ _storeCodeName: storeCodeName })
         .skip(from)
-        .limit(until)
+        .limit(limit)
         .exec(
             function (err, items)
             {
@@ -114,6 +114,7 @@ app.post('/', function (req, res)
         images: body.images,
         _storeId: body.storeId,
         _storeCodeName: body.storeCodeName,
+        _categoryId: body.categoryId
     });
 
     item.save(function (err, itemSaved)

@@ -12,13 +12,13 @@ export class ItemService
   constructor(public httpClient: HttpClient) { }
 
 
-  getItems(from: number, until: number)
+  getItems(from: number, limit: number)
   {
     let url = URL_SERVICIOS + '/item';
 
-    if (from && until)
+    if (from && limit)
     {
-      url += '?from=' + from + '&until=' + until;
+      url += '?from=' + from + '&limit=' + limit;
     }
 
     return this.httpClient.get(url).pipe(map((resp: any) =>
@@ -39,9 +39,14 @@ export class ItemService
   }
 
 
-  getItemsByStore(pStoreName: String)
+  getItemsByStore(pStoreName: String, from: number, limit: number)
   {
     let url = URL_SERVICIOS + '/item/store/' + pStoreName;
+
+    if (from !== null && limit !== null)
+    {
+      url += '?from=' + from + '&limit=' + limit;
+    }
 
     return this.httpClient.get(url).pipe(map((resp: any) =>
     {
