@@ -56,9 +56,9 @@ export class ItemComponent implements OnInit, OnChanges
   }
 
 
-  goItem(pItem: Item)
+  top()
   {
-    this.router.navigate(['/item', pItem._id]);
+    window.scrollTo(0, 0);
   }
 
 
