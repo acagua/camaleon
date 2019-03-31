@@ -103,6 +103,60 @@ app.get('/store/:storeCodeName', function (req, res)
 });
 
 
+app.get('/category/:categoryId', function (req, res)
+{
+    var categoryId = req.params.categoryId;
+
+    var from = Number(req.query.from) || 0;
+    var limit = Number(req.query.limit) || 20;
+
+    Item.find({ _categoryId: categoryId })
+        .skip(from)
+        .limit(limit)
+        .exec(
+            function (err, items)
+            {
+                if (err)
+                {
+                    return res.status(500).json({
+                        ok: false,
+                        message: 'Error retrieving items',
+                        errors: err
+                    });
+                }
+                else
+                {
+                    return res.status(200).json({
+                        ok: true,
+                        documents: items
+                    });
+                }
+            });
+});
+
+
+app.get('/random/store/:storeId', function (req, res)
+{
+    var storeId = req.params.storeId;
+
+    var limit = Number(req.query.limit) || 5;
+
+    var filter = { _storeId: storeId };
+    var fields = {};
+    var options = { limit: limit };
+    Item.findRandom(filter, fields, options, function (err, items)
+    {
+        if (!err)
+        {
+            return res.status(200).json({
+                ok: true,
+                documents: items
+            });
+        }
+    });
+});
+
+
 app.post('/', function (req, res)
 {
     var body = req.body;

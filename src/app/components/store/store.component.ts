@@ -23,7 +23,8 @@ export class StoreComponent implements OnInit
   limit: number = 20;
 
   constructor(
-    private route: ActivatedRoute, private router: Router,
+    private route: ActivatedRoute,
+    private router: Router,
     public _storeService: StoreService,
     public _itemService: ItemService,
     public _cartService: ShoppingCartService
@@ -46,7 +47,7 @@ export class StoreComponent implements OnInit
 
   setItems()
   {
-    this._itemService.getItemsByStore(this.store.codeName, this.from, this.limit)
+    this._itemService.getItemsByStoreCodeName(this.store.codeName, this.from, this.limit)
       .subscribe((items) =>
       {
         this.items = items;

@@ -52,7 +52,6 @@ export class UsuarioService
       .pipe(
         map((resp: any) =>
         {
-          Swal.fire('Usuario creado', usuario.email, 'success');
           return resp;
         }),
         catchError(err =>
@@ -64,7 +63,7 @@ export class UsuarioService
   }
 
 
-  loginUser(usuario: Usuario, rememberme: boolean)
+  loginUser(usuario: Usuario, rememberme?: boolean)
   {
     if (rememberme)
     {
@@ -86,7 +85,7 @@ export class UsuarioService
           localStorage.setItem('token', resp.token);
           localStorage.setItem('user', JSON.stringify(resp.user));
 
-          this.user = resp.user;
+          this.user = resp.document;
           this.token = resp.token;
 
           return true;
@@ -120,7 +119,9 @@ export class UsuarioService
       .pipe(
         map((resp: any) =>
         {
-          // localStorage.setItem('user', JSON.stringify(resp.document));
+          this.user = resp.document;
+
+          localStorage.setItem('user', JSON.stringify(resp.document));
 
           Swal.fire('Usuario actualizado', usuario.email, 'success');
           return resp;

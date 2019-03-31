@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PipesModule } from './pipes/pipes.module';
 import { OrderComponent } from './components/order/order.component';
+import { CategoryComponent } from './components/category/category.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { OrderComponent } from './components/order/order.component';
     CheckoutComponent,
     LoginComponent,
     ProfileComponent,
-    OrderComponent
+    OrderComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

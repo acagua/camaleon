@@ -6,32 +6,21 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class StoreService
+export class CategoryService
 {
 
-  constructor(public httpClient: HttpClient) { }
-
-
-  getStores()
+  constructor(public httpClient: HttpClient)
   {
-    let url = URL_SERVICIOS + '/store';
-
-    return this.httpClient.get(url).pipe(map((resp: any) =>
-    {
-      return resp.documents;
-    }));
   }
 
 
-  getStore(pCodeName: String)
+  getCategory(pIdCategory: String)
   {
-    let url = URL_SERVICIOS + '/store/name/' + pCodeName;
+    let url = URL_SERVICIOS + '/category/' + pIdCategory;
 
     return this.httpClient.get(url).pipe(map((resp: any) =>
     {
       return resp.document;
     }));
   }
-
-
 }

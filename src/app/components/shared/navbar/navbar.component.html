@@ -9,12 +9,6 @@
         </button>
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="navbar-nav mx-auto">
-                <li routerLinkActive="active" class="nav-item dropdown">
-                    <a id="homeDropdownMenuLink" [routerLink]="['home']" aria-haspopup="true" aria-expanded="false"
-                        class="nav-link">
-                        Home
-                    </a>
-                </li>
                 <li routerLinkActive="active" class="nav-item dropdown"><a id="navbarDropdownMenuLink" href="#"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Nosotros<i
                             class="fa fa-angle-down"></i></a>
@@ -26,13 +20,6 @@
                 </li>
             </ul>
             <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
-                <form class="form-inline my-2 my-lg-0 w-100" onsubmit='return false'>
-                    <input class="form-control bg-white border-secondary border-right-0 " type="text"
-                        placeholder="¿Qué buscas?" (keyup.enter)=buscarHeroe(buscarTexto.value) #buscarTexto>
-                </form>
-                <button *ngIf="!user" type="submit " class="btn btn-outline-secondary
-                border-left-0 "> <img src="/assets/img/search-icon-white.png" height="22px" alt="search-icon"></button>
-
                 <div class="nav-item" *ngIf="_userService.isLogged()">
                     <a [routerLink]="['/profile']" class="navbar-icon-link">
                         <img src="/assets/img/user-icon-white.png" height="25px" alt="user-icon">

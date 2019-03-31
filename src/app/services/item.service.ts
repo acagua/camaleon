@@ -39,9 +39,41 @@ export class ItemService
   }
 
 
-  getItemsByStore(pStoreName: String, from: number, limit: number)
+  getItemsByStoreCodeName(pStoreName: String, from: number, limit: number)
   {
     let url = URL_SERVICIOS + '/item/store/' + pStoreName;
+
+    if (from !== null && limit !== null)
+    {
+      url += '?from=' + from + '&limit=' + limit;
+    }
+
+    return this.httpClient.get(url).pipe(map((resp: any) =>
+    {
+      return resp.documents;
+    }));
+  }
+
+
+  getItemsRandomByStoreId(pStoreId: String, limit?: number)
+  {
+    let url = URL_SERVICIOS + '/item/random/store/' + pStoreId;
+
+    if (limit !== null)
+    {
+      url += '?limit=' + limit;
+    }
+
+    return this.httpClient.get(url).pipe(map((resp: any) =>
+    {
+      return resp.documents;
+    }));
+  }
+
+
+  getItemsByCategory(pCategoryId: String, from?: number, limit?: number)
+  {
+    let url = URL_SERVICIOS + '/item/category/' + pCategoryId;
 
     if (from !== null && limit !== null)
     {

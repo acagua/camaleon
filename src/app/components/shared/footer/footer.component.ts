@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ export class FooterComponent implements OnInit
 
   storesLine1: any[] = [];
 
-  constructor()
+  constructor(public router: Router)
   {
 
   }

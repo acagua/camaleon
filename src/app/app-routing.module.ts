@@ -10,11 +10,13 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginGuard } from './services/guards/login.guard';
 import { OrderComponent } from './components/order/order.component';
+import { CategoryComponent } from './components/category/category.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'store/:id', component: StoreComponent },
+  { path: 'category/:id', component: CategoryComponent },
   { path: 'item/:id', component: ItemComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'shoppingCart', component: ShoppingCartComponent },

@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { Usuario } from '../../models/usuario.model.js';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service.js';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,12 @@ export class LoginComponent implements OnInit
 
   ngOnInit()
   {
+    //cuando inicia sesión, lo debe llevar al home
+    if (localStorage.getItem('user'))
+    {
+      this.router.navigate(['/home']);
+    }
+
     window.scrollTo(0, 0);
 
     this.email = localStorage.getItem('email') || '';
@@ -43,28 +50,40 @@ export class LoginComponent implements OnInit
   {
     const formaValue = this.forma2.value;
 
-    let usuario = new Usuario(formaValue.name, formaValue.lastName, formaValue.email2, formaValue.password2);
+    let usuario = new Usuario(formaValue.name, formaValue.lastName, formaValue.email2.toLowerCase(), formaValue.password2);
 
     this._usuarioService.registerUser(usuario)
       .subscribe(resp =>
       {
-        console.log(resp);
+        Swal.fire({
+          title: 'Usuario creado',
+          text: usuario.email,
+          type: 'success',
+          confirmButtonText: 'Ok'
+        }).then((result) =>
+        {
+          if (result.value)
+          {
+            this._usuarioService.loginUser(usuario)
+              .subscribe(resp =>
+              {
+                window.location.reload();
+              });
+          }
+        })
+
       });
   }
 
 
   loginUser(forma: NgForm)
   {
-    let usuario = new Usuario(null, null, forma.value.email1, forma.value.password1);
+    let usuario = new Usuario(null, null, forma.value.email1.toLowerCase(), forma.value.password1);
 
     this._usuarioService.loginUser(usuario, forma.value.rememberme)
       .subscribe(resp =>
       {
-        //TODO: ver como se puede hacer sin recargar la página
         window.location.reload();
-        // setTimeout(() => { }, 2000);
-        this.router.navigate(['/home']);
-        //this.router.navigate(['/profile']);
       });
   }
 

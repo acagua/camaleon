@@ -7,6 +7,7 @@ import { ItemService } from 'src/app/services/item.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import Swal from 'sweetalert2';
 import { ItemCart } from 'src/app/models/item-cart.model';
+import { Category } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-home',
@@ -55,6 +56,12 @@ export class HomeComponent implements OnInit
   }
 
 
+  goCategory(pCategory: Category)
+  {
+    this.router.navigate(['/category', pCategory._id]);
+  }
+
+
   addToCart(pItem: Item)
   {
     Swal.fire('Se ha añadido al carrito!', '', 'success');
@@ -63,5 +70,15 @@ export class HomeComponent implements OnInit
 
     this._cartService.addToCart(itemCart);
   }
+
+  //----------categorías aquí para no traer de bd
+  categories: Category[] = [
+    new Category('Ropa', 'Ropa divina!', '../../../assets/img/icons/ropa.png', 'black', '5c965809b3d5ba1284b2e247'),
+    new Category('Accesorios', 'Ropa divina!', '../../../assets/img/icons/accesorios.png', 'orange', '5c96584e21c7361284230a90'),
+    new Category('Mascotas', 'Ropa divina!', '../../../assets/img/icons/mascotas.png', 'green', '5c96588a21c7361284230a91'),
+    new Category('Bienestar', 'Ropa divina!', '../../../assets/img/icons/bienestar.png', 'red', '5c9658a421c7361284230a92'),
+    new Category('Tecnología', 'Ropa divina!', '../../../assets/img/icons/tecnologia.png', 'blue', '5c965bfb21c7361284230a93'),
+    new Category('Hogar', 'Ropa divina!', '../../../assets/img/icons/hogar.png', 'pink', '5c965c1321c7361284230a94')
+  ];
 
 }

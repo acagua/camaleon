@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
+var random = require('mongoose-simple-random');
 
 var Schema = mongoose.Schema;
 
@@ -14,5 +15,6 @@ var itemSchema = new Schema({
 }, { collection: 'items' });
 
 itemSchema.plugin(uniqueValidator, { message: '{PATH} must be unique' });
+itemSchema.plugin(random);
 
 module.exports = mongoose.model('Item', itemSchema);

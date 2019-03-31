@@ -1,5 +1,6 @@
 var express = require('express');
-var bcrypt = require('bcrypt');
+var mail = require('../services/mail');
+
 
 var app = express();
 
@@ -120,6 +121,7 @@ app.post('/', function (req, res)
     telephone: body.telephone,
     address: body.address,
     _userId: body.userId,
+    _userEmail: body.userEmail,
     items: arrOrderItem,
     shippingCost: body.shippingCost,
     total: body.total,
@@ -137,6 +139,10 @@ app.post('/', function (req, res)
     }
     else
     {
+      //send email
+      var email = body.userEmail;
+      mail.sendMail(email);
+
       return res.status(201).json({
         ok: true,
         document: orderSaved

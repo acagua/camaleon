@@ -11,6 +11,7 @@ var orderSchema = new Schema({
     telephone: { type: Number, required: [true, 'The telephone is required'] },
     address: { type: String, required: [true, 'The address is required'] },
     _userId: { type: Schema.Types.ObjectId, ref: 'User', required: [true, 'The order has to have an user asociated'] },
+    _userEmail: { type: String, required: [true, 'The order has to have an user email asociated'] },
     items: { type: [OrderItem.schema] },
     comments: { type: String },
     shippingCost: { type: Number, required: [true, 'The order has to have a shiping cost'] },

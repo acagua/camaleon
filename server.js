@@ -11,6 +11,7 @@ const loginRoute = require('./server/routes/loginRoute');
 const storeRoute = require('./server/routes/storeRoute');
 const orderRoute = require('./server/routes/orderRoute');
 const itemRoute = require('./server/routes/itemRoute');
+const categoryRoute = require('./server/routes/categoryRoute');
 
 const app = express();
 
@@ -48,6 +49,7 @@ app.use('/api/login', loginRoute);
 app.use('/api/store', storeRoute);
 app.use('/api/order', orderRoute);
 app.use('/api/item', itemRoute);
+app.use('/api/category', categoryRoute);
 
 // --------------------------------------------------------------Catch all other routes and return the index file
 app.get('*', (req, res) =>

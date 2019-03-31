@@ -62,6 +62,7 @@ export class CheckoutComponent implements OnInit
       shippingCost: this.shippingCost,
       total: this.total,
       userId: this._userService.user._id,
+      userEmail: this._userService.user.email,
       arrItem: this._cartService.arrItemCart
     }).subscribe(resp =>
     {
