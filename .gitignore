@@ -1,4 +1,5 @@
 node_modules/
 dist/
 src/app/config/config.js
+server.js
 
