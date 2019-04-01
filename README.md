@@ -104,3 +104,9 @@ sudo npm i <modulo> --unsafe-perm=true --allow-root
 1. sudo git pull origin master
 2. sudo ng build
 3. node server
+
+## Instalar ambiente
+1. sudo apt update
+2. curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
+3. sudo apt intall node npm
+4. npm install -g @angular/cli
