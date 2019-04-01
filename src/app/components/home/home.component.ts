@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit
     public _itemService: ItemService,
     public _cartService: ShoppingCartService)
   {
-    this._itemService.getItems(0, 8)
+    this._itemService.getItemsRandomForHome(8)
       .subscribe((items) =>
       {
         this.itemsLine1 = items.slice(0, 4);

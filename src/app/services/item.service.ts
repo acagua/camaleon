@@ -55,6 +55,22 @@ export class ItemService
   }
 
 
+  getItemsRandomForHome(limit?: number)
+  {
+    let url = URL_SERVICIOS + '/item/random/home/';
+
+    if (limit !== null)
+    {
+      url += '?limit=' + limit;
+    }
+
+    return this.httpClient.get(url).pipe(map((resp: any) =>
+    {
+      return resp.documents;
+    }));
+  }
+
+
   getItemsRandomByStoreId(pStoreId: String, limit?: number)
   {
     let url = URL_SERVICIOS + '/item/random/store/' + pStoreId;
@@ -63,6 +79,24 @@ export class ItemService
     {
       url += '?limit=' + limit;
     }
+
+    return this.httpClient.get(url).pipe(map((resp: any) =>
+    {
+      return resp.documents;
+    }));
+  }
+
+
+  getItemsRandomByCategory(pCategoryId: String, limit?: number)
+  {
+    let url = URL_SERVICIOS + '/item/random/category/' + pCategoryId;
+
+    if (limit !== null)
+    {
+      url += '?limit=' + limit;
+    }
+
+    console.log('b:::url: ' + url);
 
     return this.httpClient.get(url).pipe(map((resp: any) =>
     {

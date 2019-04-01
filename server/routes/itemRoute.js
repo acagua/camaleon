@@ -138,6 +138,7 @@ app.get('/category/:categoryId', function (req, res)
 app.get('/random/store/:storeId', function (req, res)
 {
     var storeId = req.params.storeId;
+    console.log('b:::storeId: ' + storeId);
 
     var limit = Number(req.query.limit) || 5;
 
@@ -146,7 +147,78 @@ app.get('/random/store/:storeId', function (req, res)
     var options = { limit: limit };
     Item.findRandom(filter, fields, options, function (err, items)
     {
-        if (!err)
+        if (err)
+        {
+            return res.status(500).json({
+                ok: false,
+                message: 'Error retrieving items',
+                errors: err
+            });
+        }
+        else
+        {
+            return res.status(200).json({
+                title: 'random by store',
+                ok: true,
+                documents: items
+            });
+        }
+    });
+});
+
+
+app.get('/random/category/:categoryId', function (req, res)
+{
+    var categoryId = req.params.categoryId;
+
+    var limit = Number(req.query.limit) || 5;
+
+    console.log('b:::limit: ' + limit);
+    console.log('b:::categoryId: ' + categoryId);
+
+    var filter = { _categoryId: categoryId };
+    var fields = {};
+    var options = { limit: limit };
+    Item.findRandom(filter, fields, options, function (err, items)
+    {
+        if (err)
+        {
+            return res.status(500).json({
+                ok: false,
+                message: 'Error retrieving items',
+                errors: err
+            });
+        }
+        else
+        {
+            return res.status(200).json({
+                title: 'random by category',
+                ok: true,
+                documents: items
+            });
+        }
+    });
+});
+
+
+app.get('/random/home/', function (req, res)
+{
+    var limit = Number(req.query.limit) || 8;
+
+    var filter = {};
+    var fields = {};
+    var options = { limit: limit };
+    Item.findRandom(filter, fields, options, function (err, items)
+    {
+        if (err)
+        {
+            return res.status(500).json({
+                ok: false,
+                message: 'Error retrieving items',
+                errors: err
+            });
+        }
+        else
         {
             return res.status(200).json({
                 ok: true,

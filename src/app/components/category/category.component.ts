@@ -30,7 +30,7 @@ export class CategoryComponent implements OnInit
         {
           this.category = category;
 
-          this._itemService.getItemsByCategory(this.category._id)
+          this._itemService.getItemsRandomByCategory(this.category._id, 20)
             .subscribe((items) =>
             {
               this.items = items;
