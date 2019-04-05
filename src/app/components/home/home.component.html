@@ -22,13 +22,14 @@
 <div class="container-90">
 
     <!--INICIO sección de categorías-->
-    <section>
+
+    <!-- <section>
         <h3>CATEGORÍAS</h3>
         <div class="card-deck mt-4">
-            <div class="card text-center rounded-circle col-6" style="cursor:pointer;border-width: 3px"
+            <div class="card text-center col-6" style="cursor:pointer;border-width: 3px"
                 [ngStyle]="{'border-color': category.color}" *ngFor="let category of categories"
                 (click)="goCategory(category)">
-                <img class="img-fluid mx-auto mt-4" [src]="category.image" height="75px" width="75px"
+                <img class="img-fluid mx-auto mt-4" [src]="category.image" height="50px" width="50px"
                     alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{category.name}}</h5>
@@ -36,15 +37,15 @@
             </div>
         </div>
     </section>
+    
+    <hr> -->
     <!--FIN sección de categorías-->
-
-    <hr>
 
     <h3>PRODUCTOS DESTACADOS</h3>
 
     <div class="card-deck mt-4">
         <div class="row">
-            <div *ngFor="let item of itemsLine1" class="col-xl-3 col-6">
+            <div *ngFor="let item of itemsLine1" class="col-xl-2 col-6">
                 <div class="product">
                     <div class="product-image">
                         <div class="ribbon ribbon-info">Nuevo</div><img [src]="item.images[0]" alt="product"
@@ -78,7 +79,7 @@
 
     <div class="card-deck my-4">
         <div class="row">
-            <div *ngFor="let item of itemsLine2" class="col-xl-3 col-6 col-sm-6">
+            <div *ngFor="let item of itemsLine2" class="col-xl-2 col-6">
                 <div class="product">
                     <div class="product-image">
                         <div class="ribbon ribbon-info">Nuevo</div>
