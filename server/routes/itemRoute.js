@@ -4,6 +4,7 @@ var express = require('express');
 var app = express();
 
 var Item = require('../models/item.js');
+var ItemOption = require('../models/itemOption.js');
 
 //---------------------------------------------------------------------------ROUTES
 app.get('/', function (req, res)
@@ -233,15 +234,40 @@ app.post('/', function (req, res)
 {
     var body = req.body;
 
+    //ejemplo de mapa y de nested monda
+    var itemOptions = [];
+
+    itemOptions.push(new ItemOption({ name: 'tipo de hoja', values: ['rayada', 'cuadriculas'] }));
+
+    var specifications = {
+        color: 'rojo',
+        material: 'cuero'
+    };
+
     var item = new Item({
-        name: body.name,
-        description: body.description,
-        price: body.price,
-        images: body.images,
-        _storeId: body.storeId,
-        _storeCodeName: body.storeCodeName,
-        _categoryId: body.categoryId
+        name: 'item borrar',
+        description: 'borrar esta mierda de item',
+        price: '15000',
+        images: [],
+        options: itemOptions,
+        specifications: specifications,
+        _storeId: '5c991418ba47ad3788cd2ed8',
+        _storeCodeName: 'c',
+        _categoryId: '5c96584e21c7361284230a90'
     });
+
+
+    //\ejemplo de mapa
+
+    // var item = new Item({
+    //     name: body.name,
+    //     description: body.description,
+    //     price: body.price,
+    //     images: body.images,
+    //     _storeId: body.storeId,
+    //     _storeCodeName: body.storeCodeName,
+    //     _categoryId: body.categoryId
+    // });
 
     item.save(function (err, itemSaved)
     {

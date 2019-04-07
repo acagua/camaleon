@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var random = require('mongoose-simple-random');
+var ItemOption = require('../models/itemOption.js');
 
 var Schema = mongoose.Schema;
 
@@ -9,6 +10,8 @@ var itemSchema = new Schema({
     description: { type: String, required: [true, 'Description is required'] },
     price: { type: Number, required: [true, 'Price is required'] },
     images: { type: [String] },
+    options: { type: [ItemOption.schema] },
+    specifications: { type: Map, of: String },
     _storeId: { type: Schema.Types.ObjectId, ref: 'Store', required: [true, 'Must have a store associated'] },
     _storeCodeName: { type: String, required: [true, 'Must have a store code name associated'] },
     _categoryId: { type: Schema.Types.ObjectId, ref: 'Category', required: [true, 'Must have a category associated'] }
