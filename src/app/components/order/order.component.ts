@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-order',
@@ -14,16 +15,30 @@ export class OrderComponent implements OnInit
   order: Order;
 
   constructor(private route: ActivatedRoute,
-    public _orderService: OrderService) 
+    public router: Router,
+    public _orderService: OrderService,
+    public _userService: UsuarioService) 
   {
-    this.route.params.subscribe(params =>
+
+    if (!this._userService.user)
     {
-      this._orderService.getOrder(params['id'])
-        .subscribe((document) =>
-        {
-          this.order = document;
-        });
-    });
+      this.router.navigate(['/home']);
+    }
+    else
+    {
+      this.route.params.subscribe(params =>
+      {
+        const orderId = params['id'];
+        const userId = _userService.user._id;
+
+        this._orderService.getOrder(orderId, userId)
+          .subscribe((document) =>
+          {
+            this.order = document;
+          });
+      });
+    }
+
   }
 
 

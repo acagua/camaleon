@@ -26,9 +26,11 @@ export class OrderService
   }
 
 
-  getOrder(pOrderId: String)
+  getOrder(pOrderId: String, pUserId: String)
   {
-    let url = URL_SERVICIOS + '/order/' + pOrderId;
+    let url = URL_SERVICIOS + '/order/' + pOrderId + '?userId=' + pUserId;
+
+    console.log('b:::url: ' + url);
 
     return this.httpClient.get(url).pipe(map((resp: any) =>
     {

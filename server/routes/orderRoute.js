@@ -37,35 +37,28 @@ app.get('/', function (req, res)
 app.get('/:id', function (req, res)
 {
   var id = req.params.id;
+  var userId = req.query.userId;
 
-  Order.findById(id, (err, order) =>
-  {
-    if (err)
-    {
-      return res.status(500).json({
-        ok: false,
-        message: 'Error searching order',
-        errors: err
+  Order.findOne({ _id: id, _userId: userId })
+    .exec(
+      function (err, document)
+      {
+        if (err)
+        {
+          return res.status(500).json({
+            ok: false,
+            message: 'Error retrieving orders',
+            errors: err
+          });
+        }
+        else
+        {
+          return res.status(200).json({
+            ok: true,
+            document: document
+          });
+        }
       });
-    }
-    else
-    {
-      if (!order)
-      {
-        return res.status(400).json({
-          ok: false,
-          message: 'The order with id: ' + id + 'does not exist'
-        });
-      }
-      else
-      {
-        return res.status(200).json({
-          ok: true,
-          document: order
-        });
-      }
-    }
-  });
 });
 
 
