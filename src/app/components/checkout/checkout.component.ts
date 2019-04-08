@@ -15,7 +15,7 @@ export class CheckoutComponent implements OnInit
   //TODO: como se puede hacer esto trayendo de base de datos solo una vez? habrá algun tipo de "bean de aplicacion, de sesion"?
   arrPaymentMethod: any[] = [{ '_id': 1, 'name': 'Contraentrega' }, { '_id': 2, 'name': 'Transferencia' }];
 
-  shippingCost: number = 5000;
+  shippingCost: number = 6000;
 
   total: number = 0;
 

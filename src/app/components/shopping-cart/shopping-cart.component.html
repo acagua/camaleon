@@ -82,20 +82,22 @@
               <i class="fa fa-chevron-left"></i> Me faltó algo!
             </a>
             <!-- <a [routerLink]="['/checkout']" class="btn btn-outline-dark">Listo! <i class="fa fa-chevron-right"></i></a> -->
-            <a [routerLink]="" (click)="goCheckout()" class="btn btn-outline-dark">Listo! <i class="fa fa-chevron-right"></i></a>
+            <a [routerLink]="" (click)="goCheckout()" class="btn btn-outline-dark">Listo! <i
+                class="fa fa-chevron-right"></i></a>
           </div>
         </div>
         <!--Order Summary-->
         <div class="col-lg-4">
           <div class="block mb-5">
             <div class="block-header">
-              <h6 class="text-uppercase mb-0">Resumen</h6>
+              <h6 class="text-uppercase mb-0">¿Cuánto voy a pagar?</h6>
             </div>
             <div class="block-body bg-light pt-1">
               <hr>
               <ul class="order-summary mb-0 list-unstyled">
+                <li class="order-summary-item"><span>Envío</span><span>{{shippingCost|currency}}</span></li>
                 <li class="order-summary-item border-0"><span>Total</span><strong
-                    class="order-summary-total">{{_cartService.total|currency}}</strong></li>
+                    class="order-summary-total">{{_cartService.total + shippingCost|currency}}</strong></li>
               </ul>
             </div>
           </div>

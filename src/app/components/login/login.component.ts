@@ -22,13 +22,21 @@ export class LoginComponent implements OnInit
 
   ngOnInit()
   {
+    window.scrollTo(0, 0);
     //cuando inicia sesión, lo debe llevar al home
     if (localStorage.getItem('user'))
     {
-      this.router.navigate(['/home']);
+      if (localStorage.getItem('pendingCheckout'))
+      {
+        localStorage.removeItem('pendingCheckout');
+        this.router.navigate(['/checkout']);
+      }
+      else
+      {
+        this.router.navigate(['/home']);
+      }
     }
 
-    window.scrollTo(0, 0);
 
     this.email = localStorage.getItem('email') || '';
 

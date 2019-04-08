@@ -8,40 +8,51 @@ import Swal from 'sweetalert2';
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html'
 })
-export class ShoppingCartComponent implements OnInit {
+export class ShoppingCartComponent implements OnInit
+{
+
+  shippingCost: number = 6000;
 
   constructor(
     public router: Router,
     public _cartService: ShoppingCartService,
     public _userService: UsuarioService
-  ) {
+  )
+  {
 
   }
 
 
-  ngOnInit() {
+  ngOnInit()
+  {
+    window.scrollTo(0, 0);
   }
 
 
-  goCheckout() {
+  goCheckout()
+  {
 
-    if (this._userService.user) {
+    if (this._userService.user)
+    {
       this.router.navigate(['/checkout']);
     }
-    else {
+    else
+    {
       Swal.fire('', 'No estás registrado, ingresa para poder continuar :D', 'warning');
 
       Swal.fire({
         title: 'Oops',
-        text: 'No estás registrado, ingresa para poder continuar :D',
+        text: 'Ingresa o registrate para continuar :D',
         type: 'warning',
         confirmButtonText: 'Ok'
-      }).then((result) => {
-        if (result.value) {
+      }).then((result) =>
+      {
+        if (result.value)
+        {
+          localStorage.setItem('pendingCheckout', 'yes');
           this.router.navigate(['/login']);
         }
       });
-
 
     }
   }
