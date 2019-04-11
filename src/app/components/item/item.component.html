@@ -10,6 +10,9 @@
                                 <div class="carousel-item active">
                                     <img class="d-block w-100" [src]="item.images[0]" alt="First slide">
                                 </div>
+                                <div *ngFor="let image of item.images | slice:1" class="carousel-item">
+                                    <img class="d-block w-100" [src]="image" alt="First slide">
+                                </div>
                             </div>
                             <a *ngIf="item.images.length > 1" class="carousel-control-prev"
                                 href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -38,6 +41,19 @@
                             <li class="list-inline-item h4 font-weight-light mb-0">{{item.price|currency}}</li>
                         </ul>
                     </div>
+
+                    <div *ngFor="let option of item.options" class="mb-3">
+                        <label class="detail-option-heading font-weight-bold">{{option.name}}</label>
+                        <select class="form-control col-6">
+                            <option value="seleccionar" selected>
+                                Seleccionar...
+                            </option>
+                            <option *ngFor="let value of option.values" [value]="value">
+                                {{value}}
+                            </option>
+                        </select>
+                    </div>
+
                     <label class="detail-option-heading font-weight-bold">Cantidad</label>
                     <br>
                     <div class="row mb-3 mx-auto">
@@ -63,8 +79,9 @@
             <ul role="tablist" class="nav nav-tabs flex-column flex-sm-row">
                 <li class="nav-item"><a data-toggle="tab" href="#description" role="tab"
                         class="nav-link detail-nav-link active">Descripción</a></li>
-                <li class="nav-item"><a data-toggle="tab" href="#additional-information" role="tab"
-                        class="nav-link detail-nav-link">Información Adicional</a></li>
+                <li *ngIf="item.specifications.length > 0" class="nav-item"><a data-toggle="tab"
+                        href="#additional-information" role="tab" class="nav-link detail-nav-link">Información
+                        Adicional</a></li>
             </ul>
             <div class="tab-content py-4">
                 <div id="description" role="tabpanel" class="tab-pane active px-3">
@@ -75,21 +92,10 @@
                         <div class="col-lg-6">
                             <table class="table text-sm">
                                 <tbody>
-                                    <tr>
-                                        <th class="text-uppercase font-weight-normal border-0">Product #</th>
-                                        <td class="text-muted border-0">Lorem ipsum dolor sit amet</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-uppercase font-weight-normal ">Available packaging</th>
-                                        <td class="text-muted ">LOLDuis aute irure dolor in reprehenderit</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-uppercase font-weight-normal ">Weight</th>
-                                        <td class="text-muted ">dolor sit amet</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-uppercase font-weight-normal ">Sunt in culpa qui</th>
-                                        <td class="text-muted ">Lorem ipsum dolor sit amet</td>
+                                    <tr *ngFor="let specification of item.specifications|slice:0:4">
+                                        <th class="text-uppercase font-weight-normal border-0">{{specification.name}}
+                                        </th>
+                                        <td class="text-muted border-0">{{specification.value}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -97,21 +103,10 @@
                         <div class="col-lg-6">
                             <table class="table text-sm">
                                 <tbody>
-                                    <tr>
-                                        <th class="text-uppercase font-weight-normal border-0">Weight</th>
-                                        <td class="text-muted border-0">dolor sit amet </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-uppercase font-weight-normal ">Sunt in culpa qui</th>
-                                        <td class="text-muted ">Lorem ipsum dolor sit amet </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-uppercase font-weight-normal ">Product #</th>
-                                        <td class="text-muted ">Lorem ipsum dolor sit amet </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="text-uppercase font-weight-normal ">Available packaging</th>
-                                        <td class="text-muted ">LOLDuis aute irure dolor in reprehenderit </td>
+                                    <tr *ngFor="let specification of item.specifications|slice:4:8">
+                                        <th class="text-uppercase font-weight-normal border-0">{{specification.name}}
+                                        </th>
+                                        <td class="text-muted border-0">{{specification.value}}</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -5,6 +5,7 @@ var app = express();
 
 var Item = require('../models/item.js');
 var ItemOption = require('../models/itemOption.js');
+var ItemSpecification = require('../models/itemSpecification.js');
 
 //---------------------------------------------------------------------------ROUTES
 app.get('/', function (req, res)
@@ -239,20 +240,29 @@ app.post('/', function (req, res)
 
     itemOptions.push(new ItemOption({ name: 'tipo de hoja', values: ['rayada', 'cuadriculas'] }));
 
-    var specifications = {
-        color: 'rojo',
-        material: 'cuero'
-    };
+    var itemSpecifications = [];
+
+    itemSpecifications.push(
+        new ItemSpecification({ name: 'peso', value: '1' }),
+        new ItemSpecification({ name: 'dimensiones', value: '34x45x67' }),
+        new ItemSpecification({ name: 'volumen', value: '45' }),
+        new ItemSpecification({ name: 'material', value: 'cuero' }),
+        new ItemSpecification({ name: 'color', value: 'rojo' }),
+        new ItemSpecification({ name: 'sabor', value: 'frutitas' }),
+        new ItemSpecification({ name: 'fragancia', value: 'lavanda' }),
+        new ItemSpecification({ name: 'textura', value: 'mate' })
+    );
+
 
     var item = new Item({
         name: 'item borrar',
         description: 'borrar esta mierda de item',
         price: '15000',
-        images: [],
+        images: ['https://s3.amazonaws.com/camaleon/store/pie-de-elefante/product/planner-letras.jpg', 'https://s3.amazonaws.com/camaleon/store/pie-de-elefante/product/planner-manchas.jpg'],
         options: itemOptions,
-        specifications: specifications,
+        specifications: itemSpecifications,
         _storeId: '5c991418ba47ad3788cd2ed8',
-        _storeCodeName: 'c',
+        _storeCodeName: 'Pie_De_Elefante',
         _categoryId: '5c96584e21c7361284230a90'
     });
 

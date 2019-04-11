@@ -31,13 +31,13 @@ export class ItemComponent implements OnInit, OnChanges
         {
           this.item = item;
 
+          console.log(item);
+
           this._itemService.getItemsRandomByStoreId(item._storeId, 6)
             .subscribe((documents) =>
             {
               this.otherItems = documents;
             });
-
-
         });
     });
   }

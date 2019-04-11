@@ -32,6 +32,8 @@ export class ItemService
   {
     let url = URL_SERVICIOS + '/item/' + pItemId;
 
+    console.log(url);
+
     return this.httpClient.get(url).pipe(map((resp: any) =>
     {
       return resp.document;
