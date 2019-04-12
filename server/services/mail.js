@@ -1,34 +1,43 @@
 var nodeMailer = require("nodemailer");
 
 
-
 exports.sendMail = function (email)
 {
-    var transporter = nodeMailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'nicolaz888@gmail.com',
-            pass: 'paolaperez88'
-        }
-    });
-    // Definimos el email
-    var mailOptions = {
-        from: 'Remitente',
-        to: email,
-        subject: 'Asunto',
-        text: 'Contenido del email'
-    };
-    // Enviamos el email
-    transporter.sendMail(mailOptions, function (error, info)
+    try
     {
-        if (error)
+        var transporter = nodemailer.createTransport({
+            host: 'smtp.zoho.com',
+            port: 465,
+            secure: true, // use SSL
+            auth: {
+                user: 'info@camaleon.shop',
+                pass: 'M3g4l0d0n2019!'
+            }
+        });
+
+        // Definimos el email
+        var mailOptions = {
+            from: 'Remitente',
+            to: email,
+            subject: 'Asunto',
+            text: 'Contenido del email'
+        };
+        // Enviamos el email
+        transporter.sendMail(mailOptions, function (error, info)
         {
-            console.log(error);
-            res.send(500, error.message);
-        } else
-        {
-            console.log("Email sent");
-            res.status(200).jsonp(req.body);
-        }
-    });
+            if (error)
+            {
+                console.log(error);
+                res.send(500, error.message);
+            } else
+            {
+                console.log("Email sent");
+                res.status(200).jsonp(req.body);
+            }
+        });
+
+    } catch (error)
+    {
+        console.log('error en mail - sendMail');
+    }
 };
