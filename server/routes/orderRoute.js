@@ -132,10 +132,6 @@ app.post('/', function (req, res)
     }
     else
     {
-      //send email
-      var email = body.userEmail;
-      mail.sendMail(email);
-
       return res.status(201).json({
         ok: true,
         document: orderSaved

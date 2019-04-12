@@ -7,9 +7,16 @@ var Item = require('../models/item.js');
 var ItemOption = require('../models/itemOption.js');
 var ItemSpecification = require('../models/itemSpecification.js');
 
+//borrar
+var mail = require('../services/mail');
+
 //---------------------------------------------------------------------------ROUTES
 app.get('/', function (req, res)
 {
+    //send email
+    console.log('va a enviar el marico correo');
+    mail.sendMail('nicolaz888@hotmail.com');
+
     var from = Number(req.query.from) || 0;
     var limit = Number(req.query.limit) || 100;
 

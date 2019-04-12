@@ -1,4 +1,4 @@
-var nodeMailer = require("nodemailer");
+var nodemailer = require("nodemailer");
 
 
 exports.sendMail = function (email)
@@ -17,7 +17,7 @@ exports.sendMail = function (email)
 
         // Definimos el email
         var mailOptions = {
-            from: 'Remitente',
+            from: 'info@camaleon.shop',
             to: email,
             subject: 'Asunto',
             text: 'Contenido del email'
@@ -28,16 +28,14 @@ exports.sendMail = function (email)
             if (error)
             {
                 console.log(error);
-                res.send(500, error.message);
             } else
             {
                 console.log("Email sent");
-                res.status(200).jsonp(req.body);
             }
         });
 
     } catch (error)
     {
-        console.log('error en mail - sendMail');
+        console.log('error en mail - sendMail: ' + error);
     }
 };
