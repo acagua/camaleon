@@ -11,6 +11,11 @@ var OrderItem = require('../models/orderItem.js');
 //---------------------------------------------------------------------------RUTAS
 app.get('/', function (req, res)
 {
+
+  //borrar
+  mail.sendMail('nicolaz888@hotmail.com', mail.ORDER);
+  //\borrar
+
   Order.find({})
     .exec(
       function (err, orders)
@@ -132,7 +137,10 @@ app.post('/', function (req, res)
     }
     else
     {
-      return res.status(201).json({
+
+      mail.sendOrderMail({ email: order._userEmail, orderNumber: order.number });
+
+      return res.status(200).json({
         ok: true,
         document: orderSaved
       });

@@ -79,8 +79,8 @@
             <ul role="tablist" class="nav nav-tabs flex-column flex-sm-row">
                 <li class="nav-item"><a data-toggle="tab" href="#description" role="tab"
                         class="nav-link detail-nav-link active">Descripción</a></li>
-                <li *ngIf="item.specifications.length > 0" class="nav-item"><a data-toggle="tab"
-                        href="#additional-information" role="tab" class="nav-link detail-nav-link">Información
+                <li *ngIf="item.specifications" class="nav-item"><a data-toggle="tab" href="#additional-information"
+                        role="tab" class="nav-link detail-nav-link">Información
                         Adicional</a></li>
             </ul>
             <div class="tab-content py-4">

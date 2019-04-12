@@ -5,7 +5,7 @@ var OrderItem = require('../models/orderItem.js');
 var Schema = mongoose.Schema;
 
 var orderSchema = new Schema({
-    orderNumber: { type: Number },
+    number: { type: Number },
     whoReceives: { type: String, required: [true, 'Who receives is required'] },
     date: { type: Date, required: [true, 'The date is required'] },
     telephone: { type: Number, required: [true, 'The telephone is required'] },
@@ -20,6 +20,6 @@ var orderSchema = new Schema({
 
 orderSchema.plugin(uniqueValidator, { message: '{PATH} must be unique' });
 
-orderSchema.plugin(autoIncrement, { inc_field: 'orderNumber' });
+orderSchema.plugin(autoIncrement, { inc_field: 'number' });
 
 module.exports = mongoose.model('Order', orderSchema);
