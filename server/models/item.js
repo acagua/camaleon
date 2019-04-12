@@ -13,6 +13,7 @@ var itemSchema = new Schema({
     images: { type: [String] },
     options: { type: [ItemOption.schema] },
     specifications: { type: [ItemSpecification.schema] },
+    arreglo: { type: [String] },
     _storeId: { type: Schema.Types.ObjectId, ref: 'Store', required: [true, 'Must have a store associated'] },
     _storeCodeName: { type: String, required: [true, 'Must have a store code name associated'] },
     _categoryId: { type: Schema.Types.ObjectId, ref: 'Category', required: [true, 'Must have a category associated'] }
