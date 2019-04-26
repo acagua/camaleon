@@ -34,4 +34,20 @@ export class StoreService
   }
 
 
+  getStoresRandom(limit)
+  {
+    let url = URL_SERVICIOS + '/store/random/normal';
+
+    if (limit !== null)
+    {
+      url += '?limit=' + limit;
+    }
+
+    return this.httpClient.get(url).pipe(map((resp: any) =>
+    {
+      return resp.documents;
+    }));
+  }
+
+
 }

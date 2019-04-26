@@ -8,7 +8,7 @@ export class StoreNamePipe implements PipeTransform
 
   transform(value: String): String
   {
-    return value.split('_').join(' ');
+    return value.split('-').join(' ');
   }
 
 }

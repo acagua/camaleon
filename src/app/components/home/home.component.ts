@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit
         this.itemsLine2 = items.slice(6, 12);
       });
 
-    this._storeService.getStores()
+    this._storeService.getStoresRandom(4)
       .subscribe((stores) =>
       {
         this.storesLine1 = stores;
