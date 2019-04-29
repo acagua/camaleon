@@ -23,22 +23,18 @@
 
     <!--INICIO sección de categorías-->
 
-    <!-- <section>
+    <section>
         <h3>CATEGORÍAS</h3>
-        <div class="card-deck mt-4">
-            <div class="card text-center col-6" style="cursor:pointer;border-width: 3px"
-                [ngStyle]="{'border-color': category.color}" *ngFor="let category of categories"
-                (click)="goCategory(category)">
-                <img class="img-fluid mx-auto mt-4" [src]="category.image" height="50px" width="50px"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{category.name}}</h5>
+        <div class="container-fluid">
+            <div class="row mt-4 justify-content-center">
+                <div class="col-5 col-sm-4 col-md-2 text-center" *ngFor="let category of categories" (click)="goCategory(category)">
+                    <img class="img-fluid mx-auto mt-4" [src]="category.image" alt="Card image cap">
                 </div>
             </div>
         </div>
     </section>
-    
-    <hr> -->
+
+    <hr>
     <!--FIN sección de categorías-->
 
     <h3>PRODUCTOS DESTACADOS</h3>
@@ -48,8 +44,7 @@
             <div *ngFor="let item of itemsLine1" class="col-xl-2 col-6">
                 <div class="product">
                     <div class="product-image">
-                        <div class="ribbon ribbon-info">Nuevo</div><img [src]="item.images[0]" alt="product"
-                            class="img-fluid" />
+                        <div class="ribbon ribbon-info">Nuevo</div><img [src]="item.images[0]" alt="product" class="img-fluid" />
                         <div class="product-hover-overlay">
                             <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
                             <div class="product-hover-overlay-buttons">
@@ -151,5 +146,4 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
 </div>
