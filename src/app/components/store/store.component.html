@@ -3,8 +3,7 @@
     <section class="hero">
         <div class="row">
             <div class="col-xl-6 text-center">
-                <img class="img img-fluid" [src]="store.imageLogo" width="300px"
-                    height="300px" alt="">
+                <img class="img img-fluid" [src]="store.imageLogo" width="300px" height="300px" alt="">
             </div>
             <div class="col-xl-6">
                 <div class="row h-100">
@@ -26,8 +25,7 @@
                 <div *ngFor="let item of items" class="col-xl-3 col-6">
                     <div class="product">
                         <div class="product-image">
-                            <div class="ribbon ribbon-info">Nuevo</div><img [src]="item.images[0]" alt="product"
-                                class="img-fluid" />
+                            <img [src]="item.images[0]" alt="product" class="img-fluid" />
                             <div class="product-hover-overlay">
                                 <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
                                 <div class="product-hover-overlay-buttons">

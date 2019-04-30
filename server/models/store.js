@@ -9,7 +9,8 @@ var storeSchema = new Schema({
     description: { type: String, unique: true, required: [true, 'El correo es obligatorio'] },
     image: { type: String, required: [true, 'La imagen debe es obligatoria'] },
     imageBanner: { type: String },
-    numberOfItems: { type: Number }
+    numberOfItems: { type: Number },
+    status: { type: String }
 }, { collection: 'stores' });
 
 storeSchema.plugin(uniqueValidator, { message: '{PATH} debe ser único' });

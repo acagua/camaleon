@@ -34,7 +34,7 @@ export class StoreService
   }
 
 
-  getStoresRandom(limit)
+  getStoresRandom(limit: number)
   {
     let url = URL_SERVICIOS + '/store/random/normal';
 

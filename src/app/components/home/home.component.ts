@@ -8,6 +8,7 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import Swal from 'sweetalert2';
 import { ItemCart } from 'src/app/models/item-cart.model';
 import { Category } from 'src/app/models/category.model';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +17,17 @@ import { Category } from 'src/app/models/category.model';
 export class HomeComponent implements OnInit
 {
 
+  itemsLines: Item[][] = [];
+
   itemsLine1: Item[] = [];
   itemsLine2: Item[] = [];
   storesLine1: Store[] = [];
+
+  category1: Category = null;
+  category2: Category = null;
+  category3: Category = null;
+
+  categories: Category[] = [];
 
   @Input()
   dataSlideTo: string;
@@ -26,13 +35,31 @@ export class HomeComponent implements OnInit
   constructor(private router: Router,
     public _storeService: StoreService,
     public _itemService: ItemService,
-    public _cartService: ShoppingCartService)
+    public _cartService: ShoppingCartService,
+
+    public _categoryService: CategoryService)
   {
-    this._itemService.getItemsRandomForHome(12)
-      .subscribe((items) =>
+
+    this._categoryService.getCategoriesRandom(2)
+      .subscribe((documents) =>
       {
-        this.itemsLine1 = items.slice(0, 6);
-        this.itemsLine2 = items.slice(6, 12);
+        if (documents.length === 2)
+        {
+          this.categories = documents;
+
+          console.log('b:::categories: ' + JSON.stringify(this.categories));
+
+          for (let i = 0; i < this.categories.length; i++)
+          {
+            const category = this.categories[i];
+
+            this._itemService.getItemsRandomByCategory(category._id, 6)
+              .subscribe((items) =>
+              {
+                this.itemsLines.push(items);
+              });
+          }
+        }
       });
 
     this._storeService.getStoresRandom(4)
@@ -72,13 +99,13 @@ export class HomeComponent implements OnInit
   }
 
   //----------categorías aquí para no traer de bd
-  categories: Category[] = [
-    new Category('Ropa', 'Ropa divina!', '../../../assets/img/icons/moda.png', 'black', '5c965809b3d5ba1284b2e247'),
-    new Category('Mascotas', 'Ropa divina!', '../../../assets/img/icons/mascotas.png', 'green', '5c96588a21c7361284230a91'),
-    new Category('Hogar', 'Ropa divina!', '../../../assets/img/icons/hogar.png', 'pink', '5c965c1321c7361284230a94'),
-    new Category('Bienestar', 'Ropa divina!', '../../../assets/img/icons/bienestar.png', 'red', '5c9658a421c7361284230a92'),
-    new Category('Accesorios', 'Ropa divina!', '../../../assets/img/icons/accesorios.png', 'orange', '5c96584e21c7361284230a90'),
-    new Category('Tecnología', 'Ropa divina!', '../../../assets/img/icons/tecnologia.png', 'blue', '5c965bfb21c7361284230a93')
-  ];
+  // categories: Category[] = [
+  //   new Category('Ropa', 'Ropa divina!', '../../../assets/img/icons/ropa.png', 'black', '5c965809b3d5ba1284b2e247'),
+  //   new Category('Accesorios', 'Ropa divina!', '../../../assets/img/icons/accesorios.png', 'orange', '5c96584e21c7361284230a90'),
+  //   new Category('Mascotas', 'Ropa divina!', '../../../assets/img/icons/mascotas.png', 'green', '5c96588a21c7361284230a91'),
+  //   new Category('Bienestar', 'Ropa divina!', '../../../assets/img/icons/bienestar.png', 'red', '5c9658a421c7361284230a92'),
+  //   new Category('Tecnología', 'Ropa divina!', '../../../assets/img/icons/tecnologia.png', 'blue', '5c965bfb21c7361284230a93'),
+  //   new Category('Hogar', 'Ropa divina!', '../../../assets/img/icons/hogar.png', 'pink', '5c965c1321c7361284230a94')
+  // ];
 
 }

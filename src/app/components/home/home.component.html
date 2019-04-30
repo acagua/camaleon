@@ -36,73 +36,75 @@
 
     <hr>
     <!--FIN sección de categorías-->
+    <div *ngFor="let category of categories;index as i">
 
-    <h3>PRODUCTOS DESTACADOS</h3>
+        <h3>{{category.name|uppercase}}</h3>
 
-    <div class="card-deck mt-4">
-        <div class="row">
-            <div *ngFor="let item of itemsLine1" class="col-xl-2 col-6">
-                <div class="product">
-                    <div class="product-image">
-                        <div class="ribbon ribbon-info">Nuevo</div><img [src]="item.images[0]" alt="product" class="img-fluid" />
-                        <div class="product-hover-overlay">
-                            <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
-                            <div class="product-hover-overlay-buttons">
-                                <a (click)="addToCart(item)" class="btn btn-outline-dark btn-product-left">
-                                    <i class="fa fa-shopping-cart"></i>
-                                </a>
+        <div class="card-deck mt-4">
+            <div class="row">
+                <div *ngFor="let item of itemsLines[i]" class="col-xl-2 col-6">
+                    <div class="product">
+                        <div class="product-image">
+                            <img [src]="item.images[0]" alt="product" class="img-fluid" />
+                            <div class="product-hover-overlay">
+                                <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
+                                <div class="product-hover-overlay-buttons">
+                                    <a (click)="addToCart(item)" class="btn btn-outline-dark btn-product-left">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="py-2">
-                        <h3 class="h6 text-uppercase mb-1">
-                            <a [routerLink]="['/item',item._id]" class="text-dark">{{item.name}}
-                            </a>
-                        </h3>
-                        <h4 class="h6 mb-1">by
-                            <a [routerLink]="['/store',item._storeCodeName]" class="">{{item._storeCodeName|storeName}}
-                            </a>
-                        </h4>
-                        <span class="text-muted">{{item.price|currency}}</span>
+                        <div class="py-2">
+                            <h3 class="h6 text-uppercase mb-1">
+                                <a [routerLink]="['/item',item._id]" class="text-dark">{{item.name}}
+                                </a>
+                            </h3>
+                            <h4 class="h6 mb-1">by
+                                <a [routerLink]="['/store',item._storeCodeName]"
+                                    class="">{{item._storeCodeName|storeName}}
+                                </a>
+                            </h4>
+                            <span class="text-muted">{{item.price|currency}}</span>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
 
     </div>
 
-    <div class="card-deck my-4">
-        <div class="row">
-            <div *ngFor="let item of itemsLine2" class="col-xl-2 col-6">
-                <div class="product">
-                    <div class="product-image">
-                        <div class="ribbon ribbon-info">Nuevo</div>
-                        <img [src]="item.images[0]" alt="product" class="img-fluid" />
-                        <div class="product-hover-overlay">
-                            <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
-                            <div class="product-hover-overlay-buttons">
-                                <a (click)="addToCart(item)" class="btn btn-outline-dark btn-product-left">
-                                    <i class="fa fa-shopping-cart"></i>
-                                </a>
-                            </div>
+    <!-- <div class="card-deck my-4"><div class="row">
+        <div *ngFor="let item of itemsLine2" class="col-xl-2 col-6">
+            <div class="product">
+                <div class="product-image">
+                    <img [src]="item.images[0]" alt="product" class="img-fluid" />
+                    <div class="product-hover-overlay">
+                        <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
+                        <div class="product-hover-overlay-buttons">
+                            <a (click)="addToCart(item)" class="btn btn-outline-dark btn-product-left">
+                                <i class="fa fa-shopping-cart"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="py-2">
-                        <h3 class="h6 text-uppercase mb-1">
-                            <a [routerLink]="['/item',item._id]" class="text-dark">{{item.name}}
-                            </a>
-                        </h3>
-                        <h4 class="h6 mb-1">by
-                            <a [routerLink]="['/store',item._storeCodeName]" class="">{{item._storeCodeName|storeName}}
-                            </a>
-                        </h4>
-                        <span class="text-muted">{{item.price|currency}}</span>
-                    </div>
+                </div>
+                <div class="py-2">
+                    <h3 class="h6 text-uppercase mb-1">
+                        <a [routerLink]="['/item',item._id]" class="text-dark">{{item.name}}
+                        </a>
+                    </h3>
+                    <h4 class="h6 mb-1">by
+                        <a [routerLink]="['/store',item._storeCodeName]" class="">{{item._storeCodeName|storeName}}
+                        </a>
+                    </h4>
+                    <span class="text-muted">{{item.price|currency}}</span>
                 </div>
             </div>
         </div>
     </div>
+    </div> -->
 
     <hr>
 

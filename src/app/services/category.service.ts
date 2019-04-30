@@ -23,4 +23,20 @@ export class CategoryService
       return resp.document;
     }));
   }
+
+
+  getCategoriesRandom(limit: number)
+  {
+    let url = URL_SERVICIOS + '/category/random/normal';
+
+    if (limit !== null)
+    {
+      url += '?limit=' + limit;
+    }
+
+    return this.httpClient.get(url).pipe(map((resp: any) =>
+    {
+      return resp.documents;
+    }));
+  }
 }

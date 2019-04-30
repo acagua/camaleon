@@ -115,7 +115,7 @@ app.get('/random/normal', function (req, res)
     var filter = {};
     var fields = {};
     var options = { limit: limit };
-    Store.findRandom(filter, fields, options, function (err, items)
+    Store.findRandom(filter, fields, options, function (err, documents)
     {
         if (err)
         {
@@ -128,9 +128,9 @@ app.get('/random/normal', function (req, res)
         else
         {
             return res.status(200).json({
-                title: 'random by store',
+                title: 'random stores',
                 ok: true,
-                documents: items
+                documents: documents
             });
         }
     });

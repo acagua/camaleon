@@ -71,4 +71,33 @@ app.get('/:id', function (req, res)
 });
 
 
+app.get('/random/normal', function (req, res)
+{
+    var limit = Number(req.query.limit) || 5;
+
+    var filter = { status: 'ACTIVE' };
+    var fields = {};
+    var options = { limit: limit };
+    Category.findRandom(filter, fields, options, function (err, documents)
+    {
+        if (err)
+        {
+            return res.status(500).json({
+                ok: false,
+                message: 'Error retrieving categories',
+                errors: err
+            });
+        }
+        else
+        {
+            return res.status(200).json({
+                title: 'random categories',
+                ok: true,
+                documents: documents
+            });
+        }
+    });
+});
+
+
 module.exports = app;

@@ -98,8 +98,6 @@ export class ItemService
       url += '?limit=' + limit;
     }
 
-    console.log('b:::url: ' + url);
-
     return this.httpClient.get(url).pipe(map((resp: any) =>
     {
       return resp.documents;
