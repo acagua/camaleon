@@ -23,20 +23,12 @@ export class HomeComponent implements OnInit
   itemsLine2: Item[] = [];
   storesLine1: Store[] = [];
 
-  category1: Category = null;
-  category2: Category = null;
-  category3: Category = null;
-
   categories: Category[] = [];
-
-  @Input()
-  dataSlideTo: string;
 
   constructor(private router: Router,
     public _storeService: StoreService,
     public _itemService: ItemService,
     public _cartService: ShoppingCartService,
-
     public _categoryService: CategoryService)
   {
 
@@ -99,13 +91,13 @@ export class HomeComponent implements OnInit
   }
 
   //----------categorías aquí para no traer de bd
-  // categories: Category[] = [
-  //   new Category('Ropa', 'Ropa divina!', '../../../assets/img/icons/ropa.png', 'black', '5c965809b3d5ba1284b2e247'),
-  //   new Category('Accesorios', 'Ropa divina!', '../../../assets/img/icons/accesorios.png', 'orange', '5c96584e21c7361284230a90'),
-  //   new Category('Mascotas', 'Ropa divina!', '../../../assets/img/icons/mascotas.png', 'green', '5c96588a21c7361284230a91'),
-  //   new Category('Bienestar', 'Ropa divina!', '../../../assets/img/icons/bienestar.png', 'red', '5c9658a421c7361284230a92'),
-  //   new Category('Tecnología', 'Ropa divina!', '../../../assets/img/icons/tecnologia.png', 'blue', '5c965bfb21c7361284230a93'),
-  //   new Category('Hogar', 'Ropa divina!', '../../../assets/img/icons/hogar.png', 'pink', '5c965c1321c7361284230a94')
-  // ];
+  categoriesTop: Category[] = [
+    new Category('Ropa', 'Ropa divina!', '../../../assets/img/icons/moda.png', 'black', '5c965809b3d5ba1284b2e247'),
+    new Category('Accesorios', 'Ropa divina!', '../../../assets/img/icons/accesorios.png', 'orange', '5c96584e21c7361284230a90'),
+    new Category('Mascotas', 'Ropa divina!', '../../../assets/img/icons/mascotas.png', 'green', '5c96588a21c7361284230a91'),
+    new Category('Bienestar', 'Ropa divina!', '../../../assets/img/icons/bienestar.png', 'red', '5c9658a421c7361284230a92'),
+    new Category('Tecnología', 'Ropa divina!', '../../../assets/img/icons/tecnologia.png', 'blue', '5c965bfb21c7361284230a93'),
+    new Category('Hogar', 'Ropa divina!', '../../../assets/img/icons/hogar.png', 'pink', '5c965c1321c7361284230a94')
+  ];
 
 }
