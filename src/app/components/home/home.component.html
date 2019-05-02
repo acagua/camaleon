@@ -23,28 +23,62 @@
 
     <!--INICIO sección de categorías-->
 
-    <section>
-        <h3>CATEGORÍAS</h3>
+    <div class="container-fluid mt-5">
+        <!--<h2 class="h3 section-title">CATEGORÍAS</h2>-->
         <div class="container-fluid">
-            <div class="row justify-c1ontent-center mx-auto col-md-10">
-                <div class="col-5 col-sm-4 col-md-2 text-center" *ngFor="let category of categoriesTop"
-                    (click)="goCategory(category)">
+            <div class="row justify-content-center mx-auto col-md-10">
+                <div class="col-5 col-sm-4 col-md-2 text-center" *ngFor="let category of categoriesTop" (click)="goCategory(category)">
                     <img class="img-fluid mx-auto mt-4" [src]="category.image" alt="Card image cap">
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <div class="container-fluid mt-5 text-center">
+        <p>
+            Camaleones una plataforma que busca potenciar el crecimiento de los emprendimientos
+        </p>
+    </div>
 
-    <hr>
+    <div class="container-fluid my-5">
+        <div class="row justify-content-center mx-auto col-md-10">
+            <div class="card mb-2 mx-2">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="..." class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Beneficio 1</h5>
+                            <p class="card-text">Descripción 1 dasdfasdfas fads fa dfda fa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-2 mx-2">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="..." class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Beneficio 2</h5>
+                            <p class="card-text">Descripción 2 dasdfasdfas fads fa dfda fa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--FIN sección de categorías-->
     <div *ngFor="let category of categories;index as i">
 
-        <h3>{{category.name|uppercase}}</h3>
+        <h2 class="h3 section-title">{{category.name|uppercase}}</h2>
 
         <div class="card-deck mt-4">
             <div class="row">
-                <div *ngFor="let item of itemsLines[i]" class="col-xl-2 col-6">
-                    <div class="product">
+                <div *ngFor="let item of itemsLines[i]" class="col-6 col-sm-4 col-md-2">
+                    <div class="product mx-auto ">
                         <div class="product-image">
                             <img [src]="item.images[0]" alt="product" class="img-fluid" />
                             <div class="product-hover-overlay">
@@ -57,13 +91,12 @@
                             </div>
                         </div>
                         <div class="py-2">
-                            <h3 class="h6 text-uppercase mb-1">
+                            <h3 class="product-title">
                                 <a [routerLink]="['/item',item._id]" class="text-dark">{{item.name}}
                                 </a>
                             </h3>
-                            <h4 class="h6 mb-1">by
-                                <a [routerLink]="['/store',item._storeCodeName]"
-                                    class="">{{item._storeCodeName|storeName}}
+                            <h4 class="product-store">
+                                <a [routerLink]="['/store',item._storeCodeName]" class="store-name">{{item._storeCodeName|storeName}}
                                 </a>
                             </h4>
                             <span class="text-muted">{{item.price|currency}}</span>
@@ -96,10 +129,10 @@
                         <a [routerLink]="['/item',item._id]" class="text-dark">{{item.name}}
                         </a>
                     </h3>
-                    <h4 class="h6 mb-1">by
+                    <h3 class="h6 mb-1">by
                         <a [routerLink]="['/store',item._storeCodeName]" class="">{{item._storeCodeName|storeName}}
                         </a>
-                    </h4>
+                    </h3>
                     <span class="text-muted">{{item.price|currency}}</span>
                 </div>
             </div>
@@ -109,9 +142,24 @@
 
     <hr>
 
-    <h3>TIENDAS</h3>
+    <section>
+        <h2 class="h3 section-title">TIENDAS</h2>
+        <div class="container-fluid">
+            <div class="row justify-content-center mx-auto">
+                <div class="col-5 col-sm-4 col-md-2 text-center" *ngFor="let store of storesLine1" (click)="goStore(store)">
+                    <img class="img-fluid mx-auto mt-4" [src]="store.imageLogo" alt="Card image cap">
+                </div>
+                <div class="col-5 col-sm-4 col-md-2 text-center">
+                    <a href="stores">
+                        <img class="img-fluid mx-auto mt-4" src="../../../assets/img/more-brands.png" alt="Card image cap">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+    <!--<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -148,5 +196,5 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
+    </div>-->
 </div>

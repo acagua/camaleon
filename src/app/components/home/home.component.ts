@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit
         }
       });
 
-    this._storeService.getStoresRandom(4)
+    this._storeService.getStoresRandom(5)
       .subscribe((stores) =>
       {
         this.storesLine1 = stores;
