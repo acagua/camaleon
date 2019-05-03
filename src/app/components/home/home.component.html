@@ -27,7 +27,7 @@
         <!--<h2 class="h3 section-title">CATEGORÍAS</h2>-->
         <div class="container-fluid">
             <div class="row justify-content-center mx-auto col-md-10">
-                <div class="col-5 col-sm-4 col-md-2 text-center" *ngFor="let category of categoriesTop" (click)="goCategory(category)">
+                <div class="col-6 col-sm-4 col-md-2 text-center" *ngFor="let category of categoriesTop" (click)="goCategory(category)">
                     <img class="img-fluid mx-auto mt-4" [src]="category.image" alt="Card image cap">
                 </div>
             </div>
@@ -35,34 +35,34 @@
     </div>
     <div class="container-fluid mt-5 text-center">
         <p>
-            Camaleones una plataforma que busca potenciar el crecimiento de los emprendimientos
+            Camaleones una plataforma que busca potenciar el crecimiento de los emprendimientos colombianos al ofrecer un espacio para ellos publicar sus productos innovadores al público.
         </p>
     </div>
 
-    <div class="container-fluid my-5">
-        <div class="row justify-content-center mx-auto col-md-10">
-            <div class="card mb-2 mx-2">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="..." class="card-img" alt="...">
+    <div class="container-fluid my-5 col-md-12">
+        <div class="row justify-content-center mx-auto">
+            <div class="card mb-2 mx-2 col-md-5 rounded-border border-width-3">
+                <div class="row">
+                    <div class="col-md-2 col-sm-2 col-2 m-auto py-1 no-padding">
+                        <img src="../../../assets/img/icons/delivery.png" class="card-img no-padding" alt="delivery">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-9 col-xs-9 col-8 my-auto no-padding">
                         <div class="card-body">
-                            <h5 class="card-title">Beneficio 1</h5>
-                            <p class="card-text">Descripción 1 dasdfasdfas fads fa dfda fa</p>
+                            <h5 class="card-title">Envios a todo el país</h5>
+                            <p class="card-text">Llevamos los productos que compres donde sea que estés dentro del territorio Colombiano</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card mb-2 mx-2">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="..." class="card-img" alt="...">
+            <div class="card mb-2 mx-2 col-md-5 rounded-border border-width-3">
+                <div class="row">
+                    <div class="col-md-2 col-sm-2 col-2 m-auto py-1 no-padding">
+                        <img src="../../../assets/img/icons/products.png" class="card-img no-padding" alt="products">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-9 col-xs-9 col-8 my-auto no-padding">
                         <div class="card-body">
-                            <h5 class="card-title">Beneficio 2</h5>
-                            <p class="card-text">Descripción 2 dasdfasdfas fads fa dfda fa</p>
+                            <h5 class="card-title">Productos diferentes</h5>
+                            <p class="card-text">Encuentra productos únicos, novedosos y exclusivos de emprendimientos colombianos</p>
                         </div>
                     </div>
                 </div>
@@ -147,11 +147,11 @@
         <div class="container-fluid">
             <div class="row justify-content-center mx-auto">
                 <div class="col-5 col-sm-4 col-md-2 text-center" *ngFor="let store of storesLine1" (click)="goStore(store)">
-                    <img class="img-fluid mx-auto mt-4" [src]="store.imageLogo" alt="Card image cap">
+                    <img class="img-fluid mx-auto mt-4 rounded-border" [src]="store.imageLogo" alt="Card image cap">
                 </div>
                 <div class="col-5 col-sm-4 col-md-2 text-center">
                     <a href="stores">
-                        <img class="img-fluid mx-auto mt-4" src="../../../assets/img/more-brands.png" alt="Card image cap">
+                        <img class="img-fluid mx-auto mt-4 rounded-border" src="../../../assets/img/more-brands.png" alt="Card image cap">
                     </a>
                 </div>
             </div>

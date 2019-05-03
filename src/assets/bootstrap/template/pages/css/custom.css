@@ -1,31 +1,49 @@
 /* your styles go here */
 
-@media only screen and (max-width: 768px) {
-    .section-title {
-        text-align: center;
-    }
-    .product {
-        max-width: 180px;
-    }
-    .product-title {
-        font-size: .9rem;
-    }
-    .product-store {
-        font-size: .9rem;
-    }
+.section-title {
+    text-align: left;
 }
 
-@media only screen and (min-width: 769px) {
-    .product {
-        max-width: 180px;
-    }
+.product {
+    max-width: 150px;
+}
+
+.product-title {
+    font-size: 1rem;
+}
+
+.product-store {
+    font-size: 1rem;
+}
+
+.store-name {
+    text-transform: capitalize;
+}
+
+.rounded-border {
+    border-radius: 10px;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.card-icon {
+    max-width: 100%;
+}
+
+.border-width-3 {
+    border-width: 3px;
+}
+
+@media only screen and (max-width: 768px) {
     .product-title {
-        font-size: 1rem;
+        font-size: .9rem;
     }
     .product-store {
-        font-size: 1rem;
+        font-size: .9rem;
     }
-    .store-name {
-        text-transform: capitalize;
+    .section-title {
+        text-align: center;
     }
 }
