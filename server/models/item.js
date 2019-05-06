@@ -3,6 +3,7 @@ var uniqueValidator = require('mongoose-unique-validator');
 var random = require('mongoose-simple-random');
 var ItemOption = require('../models/itemOption.js');
 var ItemSpecification = require('../models/itemSpecification.js');
+var StoreCategory = require('../models/storeCategory.js');
 
 var Schema = mongoose.Schema;
 
@@ -16,7 +17,8 @@ var itemSchema = new Schema({
     status: { type: String },
     _storeId: { type: Schema.Types.ObjectId, ref: 'Store', required: [true, 'Must have a store associated'] },
     _storeCodeName: { type: String, required: [true, 'Must have a store code name associated'] },
-    _categoryId: { type: Schema.Types.ObjectId, ref: 'Category', required: [true, 'Must have a category associated'] }
+    _categoryId: { type: Schema.Types.ObjectId, ref: 'Category', required: [true, 'Must have a category associated'] },
+    _storeCategoryId: { type: Schema.Types.ObjectId, ref: 'StoreCategory' }
 }, { collection: 'items' });
 
 itemSchema.plugin(uniqueValidator, { message: '{PATH} must be unique' });

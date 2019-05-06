@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var random = require('mongoose-simple-random');
 var uniqueValidator = require('mongoose-unique-validator');
+var StoreCategory = require('../models/storeCategory.js');
 
 var Schema = mongoose.Schema;
 
@@ -10,7 +11,8 @@ var storeSchema = new Schema({
     image: { type: String, required: [true, 'La imagen debe es obligatoria'] },
     imageBanner: { type: String },
     numberOfItems: { type: Number },
-    status: { type: String }
+    status: { type: String },
+    categories: { type: [StoreCategory.schema] }
 }, { collection: 'stores' });
 
 storeSchema.plugin(uniqueValidator, { message: '{PATH} debe ser único' });
