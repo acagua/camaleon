@@ -1,5 +1,5 @@
 var express = require('express');
-var mail = require('../services/mail');
+var mail = require('../services/mail/mail.js');
 
 
 var app = express();

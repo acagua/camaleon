@@ -1,4 +1,7 @@
 var nodemailer = require("nodemailer");
+var fs = require('fs');
+
+var template = fs.readFileSync('templates/newOrder.html', { encoding: 'utf-8' })
 
 var transporter = nodemailer.createTransport({
     host: 'smtp.zoho.com',
@@ -51,7 +54,7 @@ exports.sendOrderMail = function (parameters)
             from: mailFrom,
             to: parameters.email,
             subject: 'Tú orden #' + parameters.orderNumber + ' ha sido recibida :D',
-            text: 'Contenido del email'
+            text: template
         };
 
         transporter.sendMail(mailOptions, function (error, info)
