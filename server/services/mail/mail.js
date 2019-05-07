@@ -1,7 +1,8 @@
 var nodemailer = require("nodemailer");
 var fs = require('fs');
 
-var template = fs.readFileSync('templates/newOrder.html', { encoding: 'utf-8' })
+// var template = fs.readFileSync('templates/newOrder.html', { encoding: 'utf-8' });
+var template = '';
 
 var transporter = nodemailer.createTransport({
     host: 'smtp.zoho.com',
