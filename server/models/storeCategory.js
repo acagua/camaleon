@@ -6,4 +6,4 @@ var storeCategorySchema = new Schema({
     description: { type: String }
 });
 
-module.exports = mongoose.model('StoreCategory', orderItemSchema);
+module.exports = mongoose.model('StoreCategory', storeCategorySchema);
