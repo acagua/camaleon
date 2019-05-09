@@ -41,10 +41,10 @@
         <div class="row justify-content-center mx-auto">
             <div class="card mb-2 mx-2 col-md-5 rounded-border border-width-3">
                 <div class="row p-2">
-                    <div class="col-md-2 col-sm-2 col-3 m-auto py-2 no-padding">
+                    <div class="col-md-2 col-sm-2 col-3 m-auto no-padding">
                         <img src="../../../assets/img/icons/delivery.png" class="card-img no-padding" alt="delivery">
                     </div>
-                    <div class="col-md-9 col-xs-9 col-8 my-auto">
+                    <div class="col-md-9 col-xs-9 col-8">
                         <div class="row">
                             <h5 class="card-title">Envios a todo el país</h5>
                         </div>
@@ -57,10 +57,10 @@
             </div>
             <div class="card mb-2 mx-2 col-md-5 rounded-border border-width-3">
                 <div class="row p-2">
-                    <div class="col-md-2 col-sm-2 col-3 m-auto py-2 no-padding">
+                    <div class="col-md-2 col-sm-2 col-3 m-auto no-padding">
                         <img src="../../../assets/img/icons/products.png" class="card-img no-padding" alt="delivery">
                     </div>
-                    <div class="col-md-9 col-xs-9 col-8 my-auto">
+                    <div class="col-md-9 col-xs-9 col-8">
                         <div class="row">
                             <h5 class="card-title">Productos diferentes</h5>
                         </div>
@@ -76,7 +76,7 @@
     <!--FIN sección de categorías-->
     <div *ngFor="let category of categories;index as i">
 
-        <h2 class="h3 section-title">{{category.name|uppercase}}</h2>
+        <h2 class="h3 section-title">{{category.name}}</h2>
         <div class="row mt-4">
             <div *ngFor="let item of itemsLines[i]" class="col-6 col-sm-4 col-md-2">
                 <div class="product mx-auto ">
@@ -140,7 +140,7 @@
     <hr>
 
     <section>
-        <h2 class="h3 section-title">TIENDAS</h2>
+        <h2 class="h3 section-title">Tiendas</h2>
         <div class="container-fluid">
             <div class="row justify-content-center mx-auto">
                 <div class="pointer col-5 col-sm-4 col-md-2 text-center" *ngFor="let store of storesLine1" (click)="goStore(store)">
