@@ -124,9 +124,10 @@
                 <h6 class="text-uppercase mb-5">Quizás te guste también...</h6>
             </header>
             <div class="row">
-                <div class="col-lg-2 col-md-4 col-6" *ngFor="let item of otherItems">
-                    <div class="product">
+                <div *ngFor="let item of otherItems" class="col-lg-2 col-md-4 col-6">
+                    <div class="product mx-auto">
                         <div class="product-image">
+                            <img [src]="item.images[0]" alt="product" class="img-fluid" />
                             <div class="product-hover-overlay">
                                 <a [routerLink]="['/item', item._id]" (click)="top()"
                                     class="product-hover-overlay-link"></a>
