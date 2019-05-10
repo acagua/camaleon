@@ -19,6 +19,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PipesModule } from './pipes/pipes.module';
 import { OrderComponent } from './components/order/order.component';
 import { CategoryComponent } from './components/category/category.component';
+import { StoresComponent } from './components/stores/stores.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CategoryComponent } from './components/category/category.component';
     ProfileComponent,
     OrderComponent,
     CategoryComponent,
+    StoresComponent,
   ],
   imports: [
     BrowserModule,

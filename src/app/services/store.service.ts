@@ -50,4 +50,20 @@ export class StoreService
   }
 
 
+  getStoresRandomByCategory(pCategoryId: String, limit: number)
+  {
+    let url = URL_SERVICIOS + '/store/random/category/' + pCategoryId;
+
+    if (limit !== null)
+    {
+      url += '?limit=' + limit;
+    }
+
+    return this.httpClient.get(url).pipe(map((resp: any) =>
+    {
+      return resp.documents;
+    }));
+  }
+
+
 }

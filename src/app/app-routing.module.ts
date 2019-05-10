@@ -11,6 +11,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { LoginGuard } from './services/guards/login.guard';
 import { OrderComponent } from './components/order/order.component';
 import { CategoryComponent } from './components/category/category.component';
+import { StoresComponent } from './components/stores/stores.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -25,6 +26,7 @@ const APP_ROUTES: Routes = [
   //  { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard] },
   { path: 'profile', component: ProfileComponent },
   { path: 'order/:id', component: OrderComponent },
+  { path: 'stores', component: StoresComponent },
   { path: '', component: HomeComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];

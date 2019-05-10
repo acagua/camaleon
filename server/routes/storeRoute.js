@@ -136,4 +136,36 @@ app.get('/random/normal', function (req, res)
     });
 });
 
+
+app.get('/random/category/:categoryId', function (req, res)
+{
+    var categoryId = req.params.categoryId;
+
+    var limit = Number(req.query.limit) || 5;
+
+    var filter = { _categoryId: categoryId };
+    var fields = {};
+    var options = { limit: limit };
+    Store.findRandom(filter, fields, options, function (err, items)
+    {
+        if (err)
+        {
+            return res.status(500).json({
+                ok: false,
+                message: 'Error retrieving stores',
+                errors: err
+            });
+        }
+        else
+        {
+            return res.status(200).json({
+                title: 'random by category',
+                ok: true,
+                documents: items
+            });
+        }
+    });
+});
+
+
 module.exports = app;

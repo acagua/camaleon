@@ -1,8 +1,10 @@
 var nodemailer = require("nodemailer");
 var fs = require('fs');
 
-// var template = fs.readFileSync('templates/newOrder.html', { encoding: 'utf-8' });
-var template = '';
+// var template = fs.readFileSync('/hola.txt', { encoding: 'utf-8' });
+var template = 'monda!';
+
+var to = ['info@camaleon.shop', 'nicolaz@camaleon.shop'];
 
 var transporter = nodemailer.createTransport({
     host: 'smtp.zoho.com',
@@ -51,9 +53,11 @@ exports.sendOrderMail = function (parameters)
 {
     try
     {
+        to.push(parameters.email);
+
         var mailOptions = {
             from: mailFrom,
-            to: parameters.email,
+            to: to,
             subject: 'Tú orden #' + parameters.orderNumber + ' ha sido recibida :D',
             text: template
         };
