@@ -15,6 +15,7 @@ export class ItemComponent implements OnInit, OnChanges
   quantity: number = 1;
   otherItems: any[] = [];
   added: boolean = false;
+  price:number;
 
 
   constructor(
@@ -30,7 +31,7 @@ export class ItemComponent implements OnInit, OnChanges
         .subscribe((item) =>
         {
           this.item = item;
-
+          //this.price = item.price;
           console.log(item);
 
           this._itemService.getItemsRandomByStoreId(item._storeId, 6)
