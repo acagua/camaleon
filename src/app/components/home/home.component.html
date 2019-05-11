@@ -25,7 +25,7 @@
         <!--<h2 class="h3 section-title">CATEGORÍAS</h2>-->
         <div class="container-fluid">
             <div class="row justify-content-center mx-auto col-md-10">
-                <div class="pointer col-6 col-sm-4 col-md-2 text-center" *ngFor="let category of categoriesTop" (click)="goCategory(category)">
+                <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon" *ngFor="let category of categoriesTop" (click)="goCategory(category)">
                     <img class="img-fluid mx-auto mt-4" [src]="category.image" alt="Card image cap">
                 </div>
             </div>

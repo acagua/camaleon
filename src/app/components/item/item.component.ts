@@ -4,6 +4,8 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Item } from 'src/app/models/item.model';
 import { ItemCart } from 'src/app/models/item-cart.model';
 import { ItemService } from 'src/app/services/item.service';
+import Swal from 'sweetalert2';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-item',
@@ -15,8 +17,6 @@ export class ItemComponent implements OnInit, OnChanges
   quantity: number = 1;
   otherItems: any[] = [];
   added: boolean = false;
-  price:number;
-
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +31,6 @@ export class ItemComponent implements OnInit, OnChanges
         .subscribe((item) =>
         {
           this.item = item;
-          //this.price = item.price;
           console.log(item);
 
           this._itemService.getItemsRandomByStoreId(item._storeId, 6)
@@ -43,25 +42,21 @@ export class ItemComponent implements OnInit, OnChanges
     });
   }
 
-
   ngOnInit()
   {
     window.scrollTo(0, 0);
     console.log('ngOnInit activated');
   }
 
-
   ngOnChanges()
   {
     console.log('ngOnChanges activated');
   }
 
-
   top()
   {
     window.scrollTo(0, 0);
   }
-
 
   addToCart()
   {
@@ -73,9 +68,13 @@ export class ItemComponent implements OnInit, OnChanges
     this.added = true;
 
     setTimeout(() => this.added = false, 1500);
+
+    let qtyMessage = 'Agregado';
+
+    if (this.quantity > 1) {
+      qtyMessage += 's';
+    }
+    qtyMessage += ' a tu carrito!';
+    Swal.fire(this.quantity + ' ' + this.item.name, qtyMessage, 'success');
   }
-
-
-
-
 }
