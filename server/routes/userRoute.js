@@ -10,38 +10,6 @@ var User = require('../models/user.js');
 //---------------------------------------------------------------------------RUTAS
 app.get('/', function (req, res)
 {
-  //
-
-  var transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-      user: 'nicolaz888@gmail.com',
-      pass: 'paolaperez88'
-    }
-  });
-  // Definimos el email
-  var mailOptions = {
-    from: 'Remitente',
-    to: 'nicolaz888@hotmail.com',
-    subject: 'Asunto',
-    text: 'Contenido del email'
-  };
-  // Enviamos el email
-  transporter.sendMail(mailOptions, function (error, info)
-  {
-    if (error)
-    {
-      console.log(error);
-      res.send(500, error.message);
-    } else
-    {
-      console.log("Email sent");
-      res.status(200).jsonp(req.body);
-    }
-  });
-
-  //
-
   var desde = Number(req.query.desde) || 0;
   var hasta = Number(req.query.hasta) || 5;
 

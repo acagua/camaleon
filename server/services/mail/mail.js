@@ -1,8 +1,8 @@
 var nodemailer = require("nodemailer");
 var fs = require('fs');
 
-// var template = fs.readFileSync('/hola.txt', { encoding: 'utf-8' });
-var template = 'monda!';
+var template = fs.readFileSync('server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
+// var template = 'monda!';
 
 var to = ['info@camaleon.shop', 'nicolaz@camaleon.shop'];
 
@@ -59,7 +59,8 @@ exports.sendOrderMail = function (parameters)
             from: mailFrom,
             to: to,
             subject: 'Tú orden #' + parameters.orderNumber + ' ha sido recibida :D',
-            text: template
+            // text: template
+            html: template
         };
 
         transporter.sendMail(mailOptions, function (error, info)
