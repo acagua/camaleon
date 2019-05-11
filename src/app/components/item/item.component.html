@@ -95,7 +95,7 @@
                             <table class="table text-sm">
                                 <tbody>
                                     <tr *ngFor="let specification of item.specifications|slice:0:4">
-                                        <th class="text-uppercase font-weight-normal border-0">{{specification.name}}
+                                        <th class="text-capitalize font-weight-normal border-0">{{specification.name}}
                                         </th>
                                         <td class="text-muted border-0">{{specification.value}}</td>
                                     </tr>
@@ -106,7 +106,7 @@
                             <table class="table text-sm">
                                 <tbody>
                                     <tr *ngFor="let specification of item.specifications|slice:4:8">
-                                        <th class="text-uppercase font-weight-normal border-0">{{specification.name}}
+                                        <th class="text-capitalize font-weight-normal border-0">{{specification.name}}
                                         </th>
                                         <td class="text-muted border-0">{{specification.value}}</td>
                                     </tr>
@@ -123,7 +123,7 @@
     <section class="my-5">
         <div class="container">
             <header class="text-center">
-                <h6 class="text-uppercase mb-5">Quizás te guste también...</h6>
+                <h6 class="text-Capitalize mb-5">Quizás te guste también...</h6>
             </header>
             <div class="row">
                 <div *ngFor="let item of otherItems" class="col-lg-2 col-md-4 col-6">
