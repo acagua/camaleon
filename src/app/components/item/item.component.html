@@ -43,18 +43,20 @@
                             </ul>
                         </div>
                     </div>
-
-                    <div *ngFor="let option of item.options" class="mb-3">
-                        <label class="detail-option-heading font-weight-bold">{{option.name}}</label>
-                        <select class="form-control col-6">
-                            <option value="seleccionar" selected>
-                                Seleccionar...
-                            </option>
-                            <option *ngFor="let value of option.values" [value]="value">
-                                {{value}}
-                            </option>
-                        </select>
+                    <div class="row justify-content-center" *ngIf="item.options.length > 0">
+                        <div *ngFor="let option of item.options" class="m-3 col-4">
+                            <label class="detail-option-heading font-weight-bold">{{option.name}}</label>
+                            <select class="form-control mx-auto">
+                                <option value="seleccionar" selected>
+                                    Seleccionar...
+                                </option>
+                                <option *ngFor="let value of option.values" [value]="value">
+                                    {{value}}
+                                </option>
+                            </select>
+                        </div>
                     </div>
+
 
                     <div class="row mx-auto justify-content-center">
                         <label class="detail-option-heading font-weight-bold text-center">Cantidad</label>
