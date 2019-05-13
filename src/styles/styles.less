@@ -95,27 +95,18 @@ input[type=number]::-webkit-outer-spin-button {
 .no-padding {
     padding: 0;
 }
-
 .card-icon {
     max-width: 100%;
 }
-
 .border-width-3 {
     border-width: 3px;
 }
-
 .description{
     font-size:16px;
 }
-
-:hover{
-    
-}
-
 .category-icon {
     transition-duration: 0.3s;
 }
-
 .category-icon:hover:hover {
     transform: translateY(-10%);
     transition-duration: 0.3s;
@@ -145,7 +136,6 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 3rem;
     //text-align: center;
 }
-
 .multi-words {
     text-align:center;
     font-size:1.1rem;
@@ -153,7 +143,17 @@ input[type=number]::-webkit-outer-spin-button {
 .product-detail-store {
     text-transform: capitalize;//TODO ver si por la marca algunos nos quieran la mayuscula
 }
-
+.menu-mobile{
+    display:none !important;
+}
+.logo-img{
+    height:35px;
+}
+@media only screen and (max-width: 991px){
+    .menu-mobile{
+        display:flex !important;
+    }
+}
 @media only screen and (max-width: 768px) {
     .product-title {
         font-size: .9rem;
@@ -183,7 +183,7 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing:0.0rem !important;
         font-size: 0.9rem !important;
         padding: 0.8rem 0.8rem !important;
-        text-transform: capitalize !important;
+        text-transform: uppercase !important;
     }
     .nav-link.active{
         color:#000 !important;
@@ -201,5 +201,10 @@ input[type=number]::-webkit-outer-spin-button {
     .whatsapp-mobile{
         visibility: block;
     }
-    
+    .menu-mobile{
+        display:flex !important;
+    }
+    .logo-img{
+        height:25px;
+    }
 }

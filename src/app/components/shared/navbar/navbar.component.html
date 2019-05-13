@@ -1,15 +1,42 @@
 <nav class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-dark bg-dark bg-fixed-dark">
     <div class="container-fluid">
         <a [routerLink]="['home']" class="navbar-brand">
-            <img src="/assets/img/logo.png" height="35px" alt="logo camaleon!">
+            <img src="/assets/img/logo.png" class="logo-img" alt="logo camaleon!">
         </a>
-        <button type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-            aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i
-                class="fa fa-bars"></i>
-        </button>
+        <!-- <button type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right">
+            <i class="fa fa-bars"></i>
+        </button> -->
+
+        <div class="menu-mobile d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
+            <div class="nav-item" *ngIf="_userService.isLogged()">
+                <a [routerLink]="['/profile']" class="navbar-icon-link">
+                    <img src="/assets/img/user-icon-white.png" height="25px" alt="user-icon">
+                </a>
+            </div>
+            <div class="nav-item" *ngIf="_userService.isLogged()">
+                <a (click)="logoutUser()" class="nav-link pointer">
+                    <img src="/assets/img/icons/door-exit-white.png" height="25px" alt="user-icon">
+                </a>
+            </div>
+            <div class="nav-item" *ngIf="!_userService.isLogged()">
+                <a [routerLink]="['/login']" class="nav-link pointer text-uppercase" style="color:#ffffff">
+                    Ingresa
+                </a>
+            </div>
+            <div class="nav-item">
+                <a [routerLink]="['/shoppingCart']" class="navbar-icon-link">
+                    <img src="/assets/img/cart-icon-white.png" height="25px" alt="user-icon">
+                    <div class="navbar-icon-link-badge">
+                        {{_cartService.quantity}}
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="navbar-nav mx-auto">
-                <li routerLinkActive="active" class="nav-item dropdown"><a id="navbarDropdownMenuLink" href="#"
+                <!-- <li routerLinkActive="active" class="nav-item dropdown"><a id="navbarDropdownMenuLink" href="#"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Nosotros<i
                             class="fa fa-angle-down"></i></a>
                     <ul aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu w-100">
@@ -17,7 +44,7 @@
                         <li><a [routerLink]="['contact']" class="dropdown-item">Contáctanos</a></li>
 
                     </ul>
-                </li>
+                </li> -->
             </ul>
             <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
                 <div class="nav-item" *ngIf="_userService.isLogged()">
