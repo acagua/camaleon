@@ -10,7 +10,8 @@ var User = require('../models/user.js');
 //---------------------------------------------------------------------------RUTAS
 app.get('/politicas', function (req, res)
 {
-  res.send('hola!');
+  var file = 'server/docs/politicaDatos.pdf';
+  res.download(file);
 });
 
 

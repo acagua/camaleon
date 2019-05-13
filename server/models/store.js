@@ -12,7 +12,7 @@ var storeSchema = new Schema({
     imageBanner: { type: String },
     numberOfItems: { type: Number },
     status: { type: String },
-    categories: { type: [StoreCategory.schema] },
+    categories: { type: [Object] },
     _categoryId: { type: Schema.Types.ObjectId, ref: 'Category', required: [true, 'Must have a category associated'] },
 }, { collection: 'stores' });
 

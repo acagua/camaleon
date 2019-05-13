@@ -4,6 +4,8 @@ import { Usuario } from '../../models/usuario.model.js';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service.js';
 import Swal from 'sweetalert2';
+import { FileService } from 'src/app/services/file.service.js';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +20,14 @@ export class LoginComponent implements OnInit
   forma2: FormGroup;
   usuario: Usuario;
 
-  constructor(public router: Router, public _usuarioService: UsuarioService) { }
+  constructor(
+    public router: Router,
+    public _usuarioService: UsuarioService,
+    public _fileService: FileService
+  )
+  {
+
+  }
 
   ngOnInit()
   {
@@ -93,6 +102,16 @@ export class LoginComponent implements OnInit
       {
         window.location.reload();
       });
+  }
+
+
+  downloadFile()
+  {
+    this._fileService.downloadPoliticas()
+      .subscribe(
+        data => saveAs(data, 'politicaTratamientoDatos.pdf'),
+        error => console.error(error)
+      );
   }
 
 }
