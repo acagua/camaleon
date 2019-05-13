@@ -19,7 +19,7 @@
                 </a>
             </div>
             <div class="nav-item" *ngIf="!_userService.isLogged()">
-                <a [routerLink]="['/login']" class="nav-link pointer text-uppercase" style="color:#ffffff">
+                <a [routerLink]="['/login']" class="nav-link pointer text-uppercase">
                     Ingresa
                 </a>
             </div>
@@ -58,8 +58,8 @@
                     </a>
                 </div>
                 <div class="nav-item" *ngIf="!_userService.isLogged()">
-                    <a [routerLink]="['/login']" class="nav-link pointer" style="color:#ffffff">
-                        entrar/registrar
+                    <a [routerLink]="['/login']" class="nav-link pointer">
+                        Ingresa | Registrate
                     </a>
                 </div>
                 <div class="nav-item">
