@@ -19,7 +19,7 @@ const APP_ROUTES: Routes = [
   { path: 'store/:id', component: StoreComponent },
   { path: 'category/:id', component: CategoryComponent },
   { path: 'item/:id', component: ItemComponent },
-  // { path: 'contact', component: ContactComponent },
+  { path: 'contact', component: ContactComponent },
   { path: 'shoppingCart', component: ShoppingCartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'login', component: LoginComponent },
