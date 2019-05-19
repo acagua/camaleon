@@ -55,18 +55,19 @@
 //Colores Camaleon Logo
 @camaleon-pink: #EF1E7A;
 @camaleon-orange: #F7931E;
-@camaleon-skin: #FBB03E;
+@camaleon-salmon: #FBB03E;
 @camaleon-yellow:#FFF103;
 @camaleon-lemon:#D6DF22;
 @camaleon-grass: #8BC73D;
 @camaleon-green: #3AB549;
 @camaleon-blue: #03AEEF;
 @camaleon-black: #242020;
+@camaleon-dark-blue: #00516c;
 
-@camaleon-lemon-text:#00516c;
 @btn-color: @camaleon-pink;
 @link-color: @camaleon-blue;
 
+@main-font:'Montserrat';
 
 .container-90{
     margin: 0 auto;
@@ -177,59 +178,107 @@ input[type=number]::-webkit-outer-spin-button {
     
     .right{
         float:right;
-        padding-left: 30px; 
+        padding-left: 25px; 
         padding-right: 6%;
         text-align: right;
     }
     .left{
         float:left;
         padding-left: 6%; 
-        padding-right: 30px;
+        padding-right: 25px;
         text-align: left;
     }
+
     .hs-text-block {
         cursor:pointer;
-        background-color: @camaleon-lemon; 
-        color: @camaleon-lemon-text;
         margin-top: 50px; 
         padding-top: 15px; 
-        padding-bottom: 35px; 
-        
+        padding-bottom: 25px;         
         opacity:0.75;
-        font-family: 'Montserrat', sans-serif;
         
-        .title{
-            font-weight: 700;
-            font-size:22px;
+        .title(){
+            .font-settings(700; none; 22px);
         }
-        .subtitle{
-            font-weight: 500;
-            font-size:18px;
-            
+
+        .title-lemon{
+            .title();
+            color:@camaleon-lemon;
         }
-        .cta{
-            font-weight: 800;
-            font-size: 12px;
+
+        .title-dark-blue{
+            .title();
+            color:@camaleon-dark-blue;
+        }
+
+        .subtitle(){
+            .font-settings(500; none; 18px);
+        }
+
+        .subtitle-white{
+            .subtitle();
+            color:white;
+        }
+        .subtitle-lemon{
+            .subtitle();
+            color:@camaleon-lemon;
+        }
+        .subtitle-dark-blue{
+            .subtitle();
+            color:@camaleon-dark-blue;
+        }
+
+        .cta(){
             border-radius: 5px;
-            border: solid @camaleon-lemon-text 1px;
-            background-color: white;
+            border: solid 1px;
             letter-spacing: .0em;
             text-transform: none;
+            .font-settings(800; none; 12px);
+            
         }
-        .slogan{
-            font-weight: 300;
-            font-style: italic;
+
+        .cta-white-dark-blue{
+            .cta();
+            .color-settings(@camaleon-dark-blue; white; @camaleon-dark-blue);
         }
+        .cta-salmon-dark-blue{
+            .cta();
+            .color-settings(@camaleon-dark-blue; @camaleon-salmon; @camaleon-dark-blue);
+        }
+
+        .slogan(){
+            .font-settings(300; none; 12px);
+        }
+
+        .slogan-dark-blue{
+            .slogan();
+            color: @camaleon-dark-blue;
+        }
+
+        .slogan-lemon{
+            .slogan();
+            color:@camaleon-lemon;
+        }
+
+    }
+    .black{
+        background-color: @camaleon-black;
+        //.color-settings(@camaleon-lemon; @camaleon-black; none);
+    }
+
+    .blue{
+        background-color: @camaleon-blue;
+        //.color-settings(white; @camaleon-blue; none);
+    }
+
+    .yellow{
+        background-color: @camaleon-yellow;
+        //.color-settings(@camaleon-dark-blue; @camaleon-lemon; none);
     }
 }
 
 .carousel-control-prev, .carousel-control-next {
     width:4%;
 }
-
-
-
-
 
 @media only screen and (max-width: 991px){
     .menu-mobile{
@@ -290,4 +339,23 @@ input[type=number]::-webkit-outer-spin-button {
     .logo-img{
         height:25px;
     }
+    .carousel-inner{
+        overflow: none;
+    }
+}
+
+
+//MIXINS
+
+.color-settings(@font-color; @background-color; @border-color){
+    color: @font-color;
+    background-color: @background-color;
+    border-color: @border-color;
+}
+
+.font-settings(@weight; @style:none; @size; @family:@main-font){
+    font-family: @family, sans-serif;
+    font-weight: @weight;
+    font-style: @style;
+    font-size: @size;
 }

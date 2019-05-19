@@ -5,25 +5,26 @@
     <div class="carousel-inner w-100">
         <div class="carousel-item" [class.active]="(hs[0] == 1)" [ngStyle]="{ 'background-image': 'url(' + hs[1] + ')'}" *ngFor="let hs of homesliders">
             <!-- <img class="d-block w-100" [src]="hs[1]" [alt]="hs[2]"> -->
-            <div *ngIf="(hs[0] == 1)" class="hs-text-block right" (click)="goHomeslider(hs[2])">
-                <div class="title">¡Llegó la hora de conocernos!</div>
-                <div class="subtitle">Encuentra variedad de productos novedosos y exclusivos<br> de nuestros emprendmientos aliados</div>
-                <div class="cta btn my-3">¡Ver catalogo!</div>
-                <div class="slogan">#Tu Tienda, Tu Espacio</div>
+            <!-- <div class="hs-background">fok</div> -->
+            <div *ngIf="(hs[0] == 1)" class="hs-text-block right blue" (click)="goHomeslider(hs[2])">
+                <div class="title-dark-blue">¡Llegó la hora de conocernos!</div>
+                <div class="subtitle-white">Encuentra variedad de productos novedosos y exclusivos<br> de nuestros emprendmientos aliados</div>
+                <div class="btn cta-salmon-dark-blue my-3">¡Ver catálogo!</div>
+                <div class="slogan-dark-blue my-0">#Tu Tienda, Tu Espacio</div>
             </div>
             <a *ngIf="(hs[0] == 2)" data-sumome-listbuilder-id="5e3397ef-ef7a-4218-8aff-094df063d7d3">
-                <div class="hs-text-block left">
-                    <div class="title">Camaleon la nueva plataforma que</div>
-                    <div class="subtitle">ayuda a emprendimientos colombianos</div>
-                    <div class="slogan my-3">#Tu Tienda, Tu Espacio</div>
-                    <div class="cta btn">¡Haz parte de nuestra comunidad!</div>
+                <div class="hs-text-block left black">
+                    <div class="title-lemon">Camaleon la nueva plataforma que</div>
+                    <div class="subtitle-white">ayuda a emprendimientos colombianos</div>
+                    <div class="btn cta-white-dark-blue my-3">¡Haz parte de nuestra comunidad!</div>
+                    <div class="slogan-lemon my-0">#Tu Tienda, Tu Espacio</div>
                 </div>
             </a>
-            <div *ngIf="(hs[0] == 3)" class="hs-text-block right" (click)="goHomeslider(hs[2])">
-                <div class="title">Descubre nuestras tiendas aliadas</div>
-                <div class="subtitle">y enamórate de ellas</div>
-                <div class="cta btn my-3">¡Ver todas las tiendas!</div>
-                <div class="slogan">#Tu Tienda, Tu Espacio</div>
+            <div *ngIf="(hs[0] == 3)" class="hs-text-block right yellow" (click)="goHomeslider(hs[2])">
+                <div class="title-dark-blue">Descubre nuestras tiendas aliadas</div>
+                <div class="subtitle-dark-blue">y enamórate de ellas</div>
+                <div class="btn cta-white-dark-blue my-3">¡Ver todas las tiendas!</div>
+                <div class="slogan-dark-blue">#Tu Tienda, Tu Espacio</div>
             </div>
         </div>
     </div>
