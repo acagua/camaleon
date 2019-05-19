@@ -5,6 +5,8 @@ var app = express();
 
 var Order = require('../models/order.js');
 var OrderItem = require('../models/orderItem.js');
+var User = require('../models/user.js');
+var Store = require('../models/store.js');
 //-------------------------------------------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------RUTAS
@@ -99,11 +101,16 @@ app.post('/', function (req, res)
 {
   const body = req.body;
 
+  var storesIds = [];
+
   let arrOrderItem = [];
 
   body.arrItem.forEach(element =>
   {
     arrOrderItem.push(new OrderItem({ item: element.item, quantity: element.quantity, total: element.total }));
+
+    //get stores ids
+    storesIds.push(element.item._storeId);
   });
 
   var order = new Order({
@@ -112,11 +119,10 @@ app.post('/', function (req, res)
     date: new Date(),
     telephone: body.telephone,
     address: body.address,
-    _userId: body.userId,
-    _userEmail: body.userEmail,
     items: arrOrderItem,
     shippingCost: body.shippingCost,
     total: body.total,
+    _userId: body.userId
   });
 
   order.save(function (err, orderSaved)
@@ -131,7 +137,56 @@ app.post('/', function (req, res)
     }
     else
     {
-      mail.sendOrderMail({ email: order._userEmail, orderNumber: order.number });
+      //mail
+      var to = [];
+      var user = null;
+      var stores = [];
+
+      //search for the user of the order and the stores
+      User.findById(body.userId, (err, document) =>
+      {
+        if (err)
+        {
+          console.log('error at searching for the user in the order registration');
+        }
+        else
+        {
+          if (!document)
+          {
+            console.log('The user with id ' + body.userId + ' does not exist');
+          }
+          else
+          {
+            //add the user email to the 'to' variable of the mail
+            user = document;
+
+            //find stores to retrieve the emails to bcc
+            Store.find({
+              '_id': {
+                $in: storesIds
+              }
+            }, (err, documents) =>
+              {
+                if (err)
+                {
+                  console.log('error at searching for the stores in the order registration');
+                }
+                else
+                {
+                  stores = documents;
+                  var parameters = {
+                    order: order,
+                    user: user,
+                    stores: stores
+                  };
+
+                  mail.sendOrderMail(parameters);
+                }
+              });
+          }
+        }
+      });
+      //\mail
 
       return res.status(200).json({
         ok: true,

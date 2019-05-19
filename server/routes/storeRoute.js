@@ -1,4 +1,5 @@
 var express = require('express');
+var mongoose = require('mongoose');
 
 var app = express();
 
@@ -165,6 +166,37 @@ app.get('/random/category/:categoryId', function (req, res)
             });
         }
     });
+});
+
+
+app.get('/monda/monda2/monda3', function (req, res)
+{
+    Store.find({
+        '_id': {
+            $in: [
+                '5c849e8475aaf01cf0f8439a',
+                '5c849e8475aaf01cf0f8439a'
+            ]
+        }
+    }).exec(
+        function (err, stores)
+        {
+            if (err)
+            {
+                return res.status(500).json({
+                    ok: false,
+                    message: 'Error retrieving stores',
+                    errors: err
+                });
+            }
+            else
+            {
+                return res.status(200).json({
+                    ok: true,
+                    documents: stores
+                });
+            }
+        });
 });
 
 
