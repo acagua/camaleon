@@ -1,71 +1,90 @@
-<!--<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" attr.data-slide-to="{{store.id-1}}" [class.active]="(store.id == 1)" *ngFor="let store of storesLine1"></li>
+        <li data-target="#carouselExampleIndicators" attr.data-slide-to="{{hs[0]-1}}" [class.active]="(hs[0] == 1)" *ngFor="let hs of homesliders"></li>
     </ol>
     <div class="carousel-inner w-100">
-        <div class="carousel-item" [class.active]="(store.id == 1)" style="cursor:pointer" *ngFor="let store of storesLine1" (click)="goStore(store)">
-            <img class="d-block w-100" [src]="store.banner" alt="store.name">
+        <div class="carousel-item" [class.active]="(hs[0] == 1)" [ngStyle]="{ 'background-image': 'url(' + hs[1] + ')'}" *ngFor="let hs of homesliders">
+            <!-- <img class="d-block w-100" [src]="hs[1]" [alt]="hs[2]"> -->
+            <div *ngIf="(hs[0] == 1)" class="hs-text-block right" (click)="goHomeslider(hs[2])">
+                <div class="title">¡Llegó la hora de conocernos!</div>
+                <div class="subtitle">Encuentra variedad de productos novedosos y exclusivos<br> de nuestros emprendmientos aliados</div>
+                <div class="cta btn my-3">¡Ver catalogo!</div>
+                <div class="slogan">#Tu Tienda, Tu Espacio</div>
+            </div>
+            <a *ngIf="(hs[0] == 2)" data-sumome-listbuilder-id="5e3397ef-ef7a-4218-8aff-094df063d7d3">
+                <div class="hs-text-block left">
+                    <div class="title">Camaleon la nueva plataforma que</div>
+                    <div class="subtitle">ayuda a emprendimientos colombianos</div>
+                    <div class="slogan my-3">#Tu Tienda, Tu Espacio</div>
+                    <div class="cta btn">¡Haz parte de nuestra comunidad!</div>
+                </div>
+            </a>
+            <div *ngIf="(hs[0] == 3)" class="hs-text-block right" (click)="goHomeslider(hs[2])">
+                <div class="title">Descubre nuestras tiendas aliadas</div>
+                <div class="subtitle">y enamórate de ellas</div>
+                <div class="cta btn my-3">¡Ver todas las tiendas!</div>
+                <div class="slogan">#Tu Tienda, Tu Espacio</div>
+            </div>
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <a class="carousel-control-next " href="#carouselExampleIndicators" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
-</div>-->
-<!-- SUMO al Banner: <a data-sumome-listbuilder-id="3c2c559e-d1ef-4544-999a-f47f6d694591">-->
-<div class="container-90">
+</div>
+<!-- SUMO al Banner: <a data-sumome-listbuilder-id="3c2c559e-d1ef-4544-999a-f47f6d694591 ">-->
+<div class="container-90 ">
 
     <!--INICIO sección de categorías-->
 
-    <div class="container-fluid mt-5">
-        <!--<h2 class="h3 section-title">CATEGORÍAS</h2>-->
-        <div class="container-fluid">
-            <div class="row justify-content-center mx-auto col-md-10">
-                <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon" *ngFor="let category of categoriesTop" (click)="goCategory(category)">
-                    <img class="img-fluid mx-auto mt-4" [src]="category.image" alt="Card image cap">
+    <div class="container-fluid mt-5 ">
+        <!--<h2 class="h3 section-title ">CATEGORÍAS</h2>-->
+        <div class="container-fluid ">
+            <div class="row justify-content-center mx-auto col-md-10 ">
+                <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon " *ngFor="let category of categoriesTop " (click)="goCategory(category) ">
+                    <img class="img-fluid mx-auto mt-4 " [src]="category.image " alt="Card image cap ">
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid mt-5 text-center">
-        <p class="description">
+    <div class="container-fluid mt-5 text-center ">
+        <p class="description ">
             Camaleon es una plataforma digital que busca potenciar el crecimiento de los emprendimientos colombianos, al brindarles un espacio en donde puedan publicar sus productos innovadores.
         </p>
     </div>
-
-    <div class="container-fluid my-5 col-md-12">
-        <div class="row justify-content-center mx-auto">
-            <div class="card mb-2 mx-2 col-md-5 rounded-border border-width-3">
-                <div class="row p-2">
-                    <div class="col-md-2 col-sm-2 col-3 m-auto no-padding">
-                        <img src="../../../assets/img/icons/delivery.png" class="card-img no-padding" alt="delivery">
+    <div class="container-fluid my-5 col-md-12 ">
+        <div class="row justify-content-center mx-auto ">
+            <div class="card mb-2 mx-2 col-md-5 rounded-border border-width-3 ">
+                <div class="row p-2 ">
+                    <div class="col-md-2 col-sm-2 col-3 m-auto no-padding ">
+                        <img src="../../../assets/img/icons/delivery.png " class="card-img no-padding " alt="delivery ">
                     </div>
-                    <div class="col-md-9 col-xs-9 col-8">
-                        <div class="row">
-                            <h5 class="card-title">Envios a todo el país</h5>
+                    <div class="col-md-9 col-xs-9 col-8 ">
+                        <div class="row ">
+                            <h5 class="card-title ">Envios a todo el país</h5>
                         </div>
 
-                        <div class="row">
-                            <p class="card-text justify-content">Llevamos los productos que compres donde sea que estés dentro del territorio colombiano</p>
+                        <div class="row ">
+                            <p class="card-text justify-content ">Llevamos los productos que compres donde sea que estés dentro del territorio colombiano</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card mb-2 mx-2 col-md-5 rounded-border border-width-3">
-                <div class="row p-2">
-                    <div class="col-md-2 col-sm-2 col-3 m-auto no-padding">
-                        <img src="../../../assets/img/icons/products.png" class="card-img no-padding" alt="delivery">
+            <div class="card mb-2 mx-2 col-md-5 rounded-border border-width-3 ">
+                <div class="row p-2 ">
+                    <div class="col-md-2 col-sm-2 col-3 m-auto no-padding ">
+                        <img src="../../../assets/img/icons/products.png " class="card-img no-padding " alt="delivery ">
                     </div>
-                    <div class="col-md-9 col-xs-9 col-8">
-                        <div class="row">
-                            <h5 class="card-title">Productos diferentes</h5>
+                    <div class="col-md-9 col-xs-9 col-8 ">
+                        <div class="row ">
+                            <h5 class="card-title ">Productos diferentes</h5>
                         </div>
-                        <div class="row">
-                            <p class="card-text justify-content">Encuentra productos únicos, novedosos y exclusivos de emprendimientos colombianos</p>
+                        <div class="row ">
+                            <p class="card-text justify-content ">Encuentra productos únicos, novedosos y exclusivos de emprendimientos colombianos</p>
                         </div>
                     </div>
                 </div>
@@ -74,63 +93,63 @@
     </div>
 
     <!--FIN sección de categorías-->
-    <div *ngFor="let category of categories;index as i">
+    <div *ngFor="let category of categories;index as i ">
 
-        <h2 class="h3 section-title">{{category.name}}</h2>
-        <div class="row mt-4">
-            <div *ngFor="let item of itemsLines[i]" class="col-6 col-sm-4 col-md-2">
+        <h2 class="h3 section-title ">{{category.name}}</h2>
+        <div class="row mt-4 ">
+            <div *ngFor="let item of itemsLines[i] " class="col-6 col-sm-4 col-md-2 ">
                 <div class="product mx-auto ">
-                    <div class="product-image">
-                        <img [src]="item.images[0]" alt="product" class="img-fluid" />
-                        <div class="product-hover-overlay">
-                            <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
-                            <div class="product-hover-overlay-buttons">
-                                <a (click)="addToCart(item)" class="btn btn-outline-dark btn-product-left">
-                                    <i class="fa fa-shopping-cart"></i>
+                    <div class="product-image ">
+                        <img [src]="item.images[0] " alt="product " class="img-fluid " />
+                        <div class="product-hover-overlay ">
+                            <a [routerLink]="[ '/item',item._id] " class="product-hover-overlay-link "></a>
+                            <div class="product-hover-overlay-buttons ">
+                                <a (click)="addToCart(item) " class="btn btn-outline-dark btn-product-left ">
+                                    <i class="fa fa-shopping-cart "></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="py-2">
-                        <h3 class="product-title">
-                            <a [routerLink]="['/item',item._id]" class="text-dark">{{item.name}}
+                    <div class="py-2 ">
+                        <h3 class="product-title ">
+                            <a [routerLink]="[ '/item',item._id] " class="text-dark ">{{item.name}}
                             </a>
                         </h3>
-                        <h4 class="product-store">
-                            <a [routerLink]="['/store',item._storeCodeName]" class="store-name">{{item._storeCodeName|storeName}}
+                        <h4 class="product-store ">
+                            <a [routerLink]="[ '/store',item._storeCodeName] " class="store-name ">{{item._storeCodeName|storeName}}
                             </a>
                         </h4>
-                        <span class="text-muted">{{item.price|currency}}</span>
+                        <span class="text-muted ">{{item.price|currency}}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- <div class="card-deck my-4"><div class="row">
-        <div *ngFor="let item of itemsLine2" class="col-xl-2 col-6">
-            <div class="product">
-                <div class="product-image">
-                    <img [src]="item.images[0]" alt="product" class="img-fluid" />
-                    <div class="product-hover-overlay">
-                        <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
-                        <div class="product-hover-overlay-buttons">
-                            <a (click)="addToCart(item)" class="btn btn-outline-dark btn-product-left">
-                                <i class="fa fa-shopping-cart"></i>
+    <!-- <div class="card-deck my-4 "><div class="row ">
+        <div *ngFor="let item of itemsLine2 " class="col-xl-2 col-6 ">
+            <div class="product ">
+                <div class="product-image ">
+                    <img [src]="item.images[0] " alt="product " class="img-fluid " />
+                    <div class="product-hover-overlay ">
+                        <a [routerLink]="[ '/item',item._id] " class="product-hover-overlay-link "></a>
+                        <div class="product-hover-overlay-buttons ">
+                            <a (click)="addToCart(item) " class="btn btn-outline-dark btn-product-left ">
+                                <i class="fa fa-shopping-cart "></i>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="py-2">
-                    <h3 class="h6 text-uppercase mb-1">
-                        <a [routerLink]="['/item',item._id]" class="text-dark">{{item.name}}
+                <div class="py-2 ">
+                    <h3 class="h6 text-uppercase mb-1 ">
+                        <a [routerLink]="[ '/item',item._id] " class="text-dark ">{{item.name}}
                         </a>
                     </h3>
-                    <h3 class="h6 mb-1">by
-                        <a [routerLink]="['/store',item._storeCodeName]" class="">{{item._storeCodeName|storeName}}
+                    <h3 class="h6 mb-1 ">by
+                        <a [routerLink]="[ '/store',item._storeCodeName] " class=" ">{{item._storeCodeName|storeName}}
                         </a>
                     </h3>
-                    <span class="text-muted">{{item.price|currency}}</span>
+                    <span class="text-muted ">{{item.price|currency}}</span>
                 </div>
             </div>
         </div>
@@ -140,15 +159,15 @@
     <hr>
 
     <section>
-        <h2 class="h3 section-title">Tiendas</h2>
-        <div class="container-fluid">
-            <div class="row justify-content-center mx-auto">
-                <div class="pointer col-5 col-sm-4 col-md-2 text-center category-icon" *ngFor="let store of storesLine1" (click)="goStore(store)">
-                    <img class="img-fluid mx-auto mt-4 rounded-border" [src]="store.imageLogo" alt="Card image cap">
+        <h2 class="h3 section-title ">Tiendas</h2>
+        <div class="container-fluid ">
+            <div class="row justify-content-center mx-auto ">
+                <div class="pointer col-5 col-sm-4 col-md-2 text-center category-icon " *ngFor="let store of storesLine1 " (click)="goStore(store) ">
+                    <img class="img-fluid mx-auto mt-4 rounded-border " [src]="store.imageLogo " alt="Card image cap ">
                 </div>
-                <div class="col-5 col-sm-4 col-md-2 text-center category-icon">
-                    <a [routerLink]="['/stores']">
-                        <img class="img-fluid mx-auto mt-4 rounded-border" src="../../../assets/img/more-brands.png" alt="Card image cap">
+                <div class="col-5 col-sm-4 col-md-2 text-center category-icon ">
+                    <a [routerLink]="[ '/stores'] ">
+                        <img class="img-fluid mx-auto mt-4 rounded-border " src="../../../assets/img/more-brands.png " alt="Card image cap ">
                     </a>
                 </div>
             </div>
@@ -156,42 +175,42 @@
     </section>
 
 
-    <!--<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <!--<div id="carouselExampleIndicators " class="carousel slide " data-ride="carousel ">
+        <ol class="carousel-indicators ">
+            <li data-target="#carouselExampleIndicators " data-slide-to="0 " class="active "></li>
+            <li data-target="#carouselExampleIndicators " data-slide-to="1 "></li>
+            <li data-target="#carouselExampleIndicators " data-slide-to="2 "></li>
         </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="card-deck mt-4">
-                    <div class="card" style="cursor:pointer" *ngFor="let store of storesLine1" (click)="goStore(store)">
-                        <img class="card-img-top" [src]="store.imageLogo" alt="Card image cap">
+        <div class="carousel-inner ">
+            <div class="carousel-item active ">
+                <div class="card-deck mt-4 ">
+                    <div class="card " style="cursor:pointer " *ngFor="let store of storesLine1 " (click)="goStore(store) ">
+                        <img class="card-img-top " [src]="store.imageLogo " alt="Card image cap ">
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="card-deck mt-4">
-                    <div class="card" style="cursor:pointer" *ngFor="let store of storesLine1" (click)="goStore(store)">
-                        <img class="card-img-top" [src]="store.imageLogo" alt="Card image cap">
+            <div class="carousel-item ">
+                <div class="card-deck mt-4 ">
+                    <div class="card " style="cursor:pointer " *ngFor="let store of storesLine1 " (click)="goStore(store) ">
+                        <img class="card-img-top " [src]="store.imageLogo " alt="Card image cap ">
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="card-deck mt-4">
-                    <div class="card" style="cursor:pointer" *ngFor="let store of storesLine1" (click)="goStore(store)">
-                        <img class="card-img-top" [src]="store.imageLogo" alt="Card image cap">
+            <div class="carousel-item ">
+                <div class="card-deck mt-4 ">
+                    <div class="card " style="cursor:pointer " *ngFor="let store of storesLine1 " (click)="goStore(store) ">
+                        <img class="card-img-top " [src]="store.imageLogo " alt="Card image cap ">
                     </div>
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+        <a class="carousel-control-prev " href="#carouselExampleIndicators " role="button " data-slide="prev ">
+            <span class="carousel-control-prev-icon " aria-hidden="true "></span>
+            <span class="sr-only ">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+        <a class="carousel-control-next " href="#carouselExampleIndicators " role="button " data-slide="next ">
+            <span class="carousel-control-next-icon " aria-hidden="true "></span>
+            <span class="sr-only ">Next</span>
         </a>
     </div>-->
 </div>

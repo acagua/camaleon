@@ -63,7 +63,7 @@
 @camaleon-blue: #03AEEF;
 @camaleon-black: #242020;
 
-
+@camaleon-lemon-text:#00516c;
 @btn-color: @camaleon-pink;
 @link-color: @camaleon-blue;
 
@@ -169,6 +169,68 @@ input[type=number]::-webkit-outer-spin-button {
     color: #fff !important;
     font-weight: 100 !important;
 }
+
+.carousel-item{
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 330px; 
+    
+    .right{
+        float:right;
+        padding-left: 30px; 
+        padding-right: 6%;
+        text-align: right;
+    }
+    .left{
+        float:left;
+        padding-left: 6%; 
+        padding-right: 30px;
+        text-align: left;
+    }
+    .hs-text-block {
+        cursor:pointer;
+        background-color: @camaleon-lemon; 
+        color: @camaleon-lemon-text;
+        margin-top: 50px; 
+        padding-top: 15px; 
+        padding-bottom: 35px; 
+        
+        opacity:0.75;
+        font-family: 'Montserrat', sans-serif;
+        
+        .title{
+            font-weight: 700;
+            font-size:22px;
+        }
+        .subtitle{
+            font-weight: 500;
+            font-size:18px;
+            
+        }
+        .cta{
+            font-weight: 800;
+            font-size: 12px;
+            border-radius: 5px;
+            border: solid @camaleon-lemon-text 1px;
+            background-color: white;
+            letter-spacing: .0em;
+            text-transform: none;
+        }
+        .slogan{
+            font-weight: 300;
+            font-style: italic;
+        }
+    }
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width:4%;
+}
+
+
+
+
+
 @media only screen and (max-width: 991px){
     .menu-mobile{
         display:flex !important;
