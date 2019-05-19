@@ -1,7 +1,6 @@
 var express = require('express');
 var mail = require('../services/mail/mail.js');
 
-
 var app = express();
 
 var Order = require('../models/order.js');
@@ -11,11 +10,6 @@ var OrderItem = require('../models/orderItem.js');
 //---------------------------------------------------------------------------RUTAS
 app.get('/', function (req, res)
 {
-
-  //borrar
-  mail.sendMail('nicolaz888@hotmail.com', mail.ORDER);
-  //\borrar
-
   Order.find({})
     .exec(
       function (err, orders)
@@ -137,7 +131,6 @@ app.post('/', function (req, res)
     }
     else
     {
-
       mail.sendOrderMail({ email: order._userEmail, orderNumber: order.number });
 
       return res.status(200).json({

@@ -7,6 +7,8 @@ import { ItemCart } from '../models/item-cart.model';
 export class ShoppingCartService
 {
 
+  shippingCost: number = 0;
+
   arrItemCart: ItemCart[] = [];
   quantity: number = 0;
   total: number = 0;
@@ -29,6 +31,7 @@ export class ShoppingCartService
   {
     this.quantity += pItemCart.quantity;
     this.total += pItemCart.total;
+    this.shippingCost = 6000;
 
     let agregar: boolean = true;
     const cart = localStorage.getItem('arrItemCart');
@@ -64,6 +67,11 @@ export class ShoppingCartService
     this.arrItemCart = this.arrItemCart.filter((dataItemCart) => dataItemCart.item._id !== pItemCart.item._id);
     this.quantity -= pItemCart.quantity;
     this.total -= pItemCart.total;
+
+    if (this.total === 0)
+    {
+      this.shippingCost = 0;
+    }
 
     this.saveStorage();
   }

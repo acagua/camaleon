@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class ShoppingCartComponent implements OnInit
 {
 
-  shippingCost: number = 6000;
+  shippingCost: number = 0;
 
   constructor(
     public router: Router,

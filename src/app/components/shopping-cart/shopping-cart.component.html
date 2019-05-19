@@ -31,13 +31,15 @@
                                 <div class="row d-flex align-items-center text-left text-md-center">
                                     <div class="col-12 col-md-5">
                                         <button (click)="_cartService.removeItem(itemCart)" class="btn float-right">
-                                          <i class="delete fa fa-times"></i>
+                                            <i class="delete fa fa-times"></i>
                                         </button>
                                         <div class="d-flex align-items-center">
                                             <a [routerLink]="['/item',itemCart.item._id]">
                                                 <img [src]="itemCart.item.images[0]" alt="..." class="cart-item-img">
                                             </a>
-                                            <div class="cart-title text-left"><a [routerLink]="['/item',itemCart.item._id]" class="text-uppercase text-dark"><strong>{{itemCart.item.name}}</strong></a>
+                                            <div class="cart-title text-left"><a
+                                                    [routerLink]="['/item',itemCart.item._id]"
+                                                    class="text-uppercase text-dark"><strong>{{itemCart.item.name}}</strong></a>
                                             </div>
                                         </div>
                                     </div>
@@ -46,7 +48,8 @@
                                             <div class="col-md-3">
                                                 <div class="row">
                                                     <div class="col-6 d-md-none text-muted">Precio</div>
-                                                    <div class="col-6 col-md-12 text-right text-md-center">{{itemCart.item.price|currency}}</div>
+                                                    <div class="col-6 col-md-12 text-right text-md-center">
+                                                        {{itemCart.item.price|currency}}</div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -54,7 +57,8 @@
                                                     <div class="d-md-none col-7 col-sm-9 text-muted">Cantidad</div>
                                                     <div class="col-5 col-sm-3 col-md-12">
                                                         <div class="d-flex align-items-center">
-                                                            <div class="col-6 col-md-12 text-right text-md-center">{{itemCart.quantity}}</div>
+                                                            <div class="col-6 col-md-12 text-right text-md-center">
+                                                                {{itemCart.quantity}}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -62,12 +66,14 @@
                                             <div class="col-md-3">
                                                 <div class="row">
                                                     <div class="col-6 d-md-none text-muted">Total price </div>
-                                                    <div class="col-6 col-md-12 text-right text-md-center">{{itemCart.item.price * itemCart.quantity|currency}}
+                                                    <div class="col-6 col-md-12 text-right text-md-center">
+                                                        {{itemCart.item.price * itemCart.quantity|currency}}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-2 d-none d-md-block text-center"><button (click)="_cartService.removeItem(itemCart)" class="btn">
-                          <i class="delete fa fa-times"></i></button></div>
+                                            <div class="col-2 d-none d-md-block text-center"><button
+                                                    (click)="_cartService.removeItem(itemCart)" class="btn">
+                                                    <i class="delete fa fa-times"></i></button></div>
                                         </div>
                                     </div>
                                 </div>
@@ -75,13 +81,14 @@
                             <!-- Product-->
                         </div>
                     </div>
-                    <div class="my-5 d-flex justify-content-between flex-column flex-lg-row" *ngIf="_cartService.arrItemCart.length > 0">
+                    <div class="my-5 d-flex justify-content-between flex-column flex-lg-row"
+                        *ngIf="_cartService.arrItemCart.length > 0">
                         <a [routerLink]="['/home']" class="btn btn-link text-muted">
                             <i class="fa fa-chevron-left"></i> Me faltó algo!
                         </a>
                         <!-- <a [routerLink]="['/checkout']" class="btn btn-outline-dark">Listo! <i class="fa fa-chevron-right"></i></a> -->
                         <a [routerLink]="" (click)="goCheckout()" class="btn btn-outline-dark">Listo! <i
-                class="fa fa-chevron-right"></i></a>
+                                class="fa fa-chevron-right"></i></a>
                     </div>
                 </div>
                 <!--Order Summary-->
@@ -93,8 +100,12 @@
                         <div class="block-body bg-light pt-1">
                             <hr>
                             <ul class="order-summary mb-0 list-unstyled">
-                                <li class="order-summary-item"><span>Envío</span><span>{{shippingCost|currency}}</span></li>
-                                <li class="order-summary-item border-0"><span>Total</span><strong class="order-summary-total">{{_cartService.total + shippingCost|currency}}</strong></li>
+                                <li class="order-summary-item">
+                                    <span>Envío</span><span>{{_cartService.shippingCost|currency}}</span>
+                                </li>
+                                <li class="order-summary-item border-0"><span>Total</span><strong
+                                        class="order-summary-total">{{_cartService.total + _cartService.shippingCost|currency}}</strong>
+                                </li>
                             </ul>
                         </div>
                     </div>
