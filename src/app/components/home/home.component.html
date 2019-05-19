@@ -4,8 +4,7 @@
     </ol>
     <div class="carousel-inner w-100">
         <div class="carousel-item" [class.active]="(hs[0] == 1)" [ngStyle]="{ 'background-image': 'url(' + hs[1] + ')'}" *ngFor="let hs of homesliders">
-            <!-- <img class="d-block w-100" [src]="hs[1]" [alt]="hs[2]"> -->
-            <!-- <div class="hs-background">fok</div> -->
+            <img class="w-100 hs-mobile" [src]="hs[1]" [alt]="hs[2]">
             <div *ngIf="(hs[0] == 1)" class="hs-text-block right blue" (click)="goHomeslider(hs[2])">
                 <div class="title-dark-blue">¡Llegó la hora de conocernos!</div>
                 <div class="subtitle-white">Encuentra variedad de productos novedosos y exclusivos<br> de nuestros emprendmientos aliados</div>
@@ -14,8 +13,8 @@
             </div>
             <a *ngIf="(hs[0] == 2)" data-sumome-listbuilder-id="5e3397ef-ef7a-4218-8aff-094df063d7d3">
                 <div class="hs-text-block left black">
-                    <div class="title-lemon">Camaleon la nueva plataforma que</div>
-                    <div class="subtitle-white">ayuda a emprendimientos colombianos</div>
+                    <div class="title-lemon">Camaleon la nueva plataforma que ayuda</div>
+                    <div class="subtitle-white"> a crecer emprendimientos colombianos</div>
                     <div class="btn cta-white-dark-blue my-3">¡Haz parte de nuestra comunidad!</div>
                     <div class="slogan-lemon my-0">#Tu Tienda, Tu Espacio</div>
                 </div>

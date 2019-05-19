@@ -73,9 +73,9 @@ export class HomeComponent implements OnInit
   ];
 
   homesliders: any[] = [
-    new Array('1', '../../../assets/img/homeslider/hs-shopper.png', 'products', 'goStores()'),
-    new Array('2', '../../../assets/img/homeslider/hs-store.png', '', 'goCatalog()'),
-    new Array('3', '../../../assets/img/homeslider/hs-shopper-2.png', 'stores', 'goStores()')
+    new Array('1', '../../../assets/img/homeslider/hs-shopper.png', 'products'),
+    new Array('2', '../../../assets/img/homeslider/hs-store.png', ''),
+    new Array('3', '../../../assets/img/homeslider/hs-shopper-2.png', 'stores')
   ];
 
   ngOnInit()

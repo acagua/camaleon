@@ -68,6 +68,7 @@
 @link-color: @camaleon-blue;
 
 @main-font:'Montserrat';
+@hs-opacity:0.7;
 
 .container-90{
     margin: 0 auto;
@@ -179,22 +180,24 @@ input[type=number]::-webkit-outer-spin-button {
     .right{
         float:right;
         padding-left: 25px; 
-        padding-right: 6%;
+        padding-right: 4%;
         text-align: right;
     }
     .left{
         float:left;
-        padding-left: 6%; 
+        padding-left: 4%; 
         padding-right: 25px;
         text-align: left;
     }
 
+    .hs-mobile{
+        display:none;
+    }
     .hs-text-block {
-        cursor:pointer;
-        margin-top: 50px; 
-        padding-top: 15px; 
-        padding-bottom: 25px;         
-        opacity:0.75;
+        cursor: pointer;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        transform: translate(0,33%);
         
         .title(){
             .font-settings(700; none; 22px);
@@ -233,16 +236,15 @@ input[type=number]::-webkit-outer-spin-button {
             letter-spacing: .0em;
             text-transform: none;
             .font-settings(800; none; 12px);
-            
         }
 
         .cta-white-dark-blue{
             .cta();
-            .color-settings(@camaleon-dark-blue; white; @camaleon-dark-blue);
+            .btn-colors(@camaleon-dark-blue; white; @camaleon-dark-blue);
         }
         .cta-salmon-dark-blue{
             .cta();
-            .color-settings(@camaleon-dark-blue; @camaleon-salmon; @camaleon-dark-blue);
+            .btn-colors(@camaleon-dark-blue; @camaleon-salmon; @camaleon-dark-blue);
         }
 
         .slogan(){
@@ -261,18 +263,15 @@ input[type=number]::-webkit-outer-spin-button {
 
     }
     .black{
-        background-color: @camaleon-black;
-        //.color-settings(@camaleon-lemon; @camaleon-black; none);
+        background-color: rgba(@camaleon-black,@hs-opacity);
     }
 
     .blue{
-        background-color: @camaleon-blue;
-        //.color-settings(white; @camaleon-blue; none);
+        background-color: rgba(@camaleon-blue, @hs-opacity);
     }
 
     .yellow{
-        background-color: @camaleon-yellow;
-        //.color-settings(@camaleon-dark-blue; @camaleon-lemon; none);
+        background-color: rgba(@camaleon-yellow,@hs-opacity);
     }
 }
 
@@ -339,15 +338,14 @@ input[type=number]::-webkit-outer-spin-button {
     .logo-img{
         height:25px;
     }
-    .carousel-inner{
-        overflow: none;
-    }
+
+    
 }
 
 
 //MIXINS
 
-.color-settings(@font-color; @background-color; @border-color){
+.btn-colors(@font-color; @background-color; @border-color){
     color: @font-color;
     background-color: @background-color;
     border-color: @border-color;
