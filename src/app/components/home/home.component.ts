@@ -62,6 +62,8 @@ export class HomeComponent implements OnInit
 
   categories: Category[] = [];
 
+  isMobile: Boolean = false;
+
   //categorías aquí para no traer de bd
   categoriesTop: Category[] = [
     new Category('Ropa', 'Ropa divina!', '../../../assets/img/icons/moda.png', 'black', '5c965809b3d5ba1284b2e247'),
@@ -81,6 +83,9 @@ export class HomeComponent implements OnInit
   ngOnInit()
   {
     window.scrollTo(0, 0);
+    if (window.screen.width < 768) { // 768px portrait
+      this.isMobile = true;
+    }
   }
   
   goStore(store: Store)

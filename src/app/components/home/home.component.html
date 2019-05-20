@@ -3,25 +3,27 @@
         <li data-target="#carouselExampleIndicators" attr.data-slide-to="{{hs[0]-1}}" [class.active]="(hs[0] == 1)" *ngFor="let hs of homesliders"></li>
     </ol>
     <div class="carousel-inner w-100">
-        <div class="carousel-item" [class.active]="(hs[0] == 1)" [ngStyle]="{ 'background-image': 'url(' + hs[1] + ')'}" *ngFor="let hs of homesliders">
+        <!-- <div class="carousel-item hs-desktop" [class.active]="(hs[0] == 1)" ng-style="isMobile && ({ 'background-image': 'url(' + hs[1] + ')'})" *ngFor="let hs of homesliders"> -->
+        <div class="carousel-item hs-desktop" [class.active]="(hs[0] == 1)" [ngStyle]="{'background-image': (isMobile) ? 'none' : 'url(' + hs[1] + ')' }" *ngFor="let hs of homesliders">
+
             <img class="w-100 hs-mobile" [src]="hs[1]" [alt]="hs[2]">
             <div *ngIf="(hs[0] == 1)" class="hs-text-block right blue" (click)="goHomeslider(hs[2])">
                 <div class="title-dark-blue">¡Llegó la hora de conocernos!</div>
-                <div class="subtitle-white">Encuentra variedad de productos novedosos y exclusivos<br> de nuestros emprendmientos aliados</div>
+                <div class="subtitle-white hs-desktop">Encuentra variedad de productos novedosos y <br>exclusivos de nuestros emprendmientos aliados</div>
                 <div class="btn cta-salmon-dark-blue my-3">¡Ver catálogo!</div>
                 <div class="slogan-dark-blue my-0">#Tu Tienda, Tu Espacio</div>
             </div>
             <a *ngIf="(hs[0] == 2)" data-sumome-listbuilder-id="5e3397ef-ef7a-4218-8aff-094df063d7d3">
                 <div class="hs-text-block left black">
-                    <div class="title-lemon">Camaleon la nueva plataforma que ayuda</div>
-                    <div class="subtitle-white"> a crecer emprendimientos colombianos</div>
+                    <div class="title-lemon">Camaleon la nueva plataforma que</div>
+                    <div class="subtitle-white">ayuda a emprendimientos colombianos en su crecimiento</div>
                     <div class="btn cta-white-dark-blue my-3">¡Haz parte de nuestra comunidad!</div>
                     <div class="slogan-lemon my-0">#Tu Tienda, Tu Espacio</div>
                 </div>
             </a>
             <div *ngIf="(hs[0] == 3)" class="hs-text-block right yellow" (click)="goHomeslider(hs[2])">
                 <div class="title-dark-blue">Descubre nuestras tiendas aliadas</div>
-                <div class="subtitle-dark-blue">y enamórate de ellas</div>
+                <div class="subtitle-dark-blue">y enamórate de ellas <br>&hearts;</div>
                 <div class="btn cta-white-dark-blue my-3">¡Ver todas las tiendas!</div>
                 <div class="slogan-dark-blue">#Tu Tienda, Tu Espacio</div>
             </div>
@@ -42,7 +44,8 @@
     <!--INICIO sección de categorías-->
 
     <div class="container-fluid mt-5 ">
-        <!--<h2 class="h3 section-title ">CATEGORÍAS</h2>-->
+        <hr>
+        <h2 class="h3 section-title ">Categorías</h2>
         <div class="container-fluid ">
             <div class="row justify-content-center mx-auto col-md-10 ">
                 <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon " *ngFor="let category of categoriesTop " (click)="goCategory(category) ">
