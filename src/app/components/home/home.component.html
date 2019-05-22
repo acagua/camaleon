@@ -13,8 +13,8 @@
                 <div class="btn cta-salmon-dark-blue my-3">¡Ver catálogo!</div>
                 <div class="slogan-dark-blue my-0">#Tu Tienda, Tu Espacio</div>
             </div>
-            <a *ngIf="(hs[0] == 2)" data-sumome-listbuilder-id="5e3397ef-ef7a-4218-8aff-094df063d7d3">
-                <div class="hs-text-block left black">
+            <a ng-href="{/contacts}">
+                <div *ngIf="(hs[0] == 2)" class="hs-text-block left black" (click)="goHomeslider(hs[2])">
                     <div class="title-lemon">Camaleon la nueva plataforma que</div>
                     <div class="subtitle-white">ayuda a emprendimientos colombianos en su crecimiento</div>
                     <div class="btn cta-white-dark-blue my-3">¡Haz parte de nuestra comunidad!</div>
