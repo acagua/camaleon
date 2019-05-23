@@ -28,12 +28,13 @@
                                 </div>
                             </div>
                             <div class="py-2">
-                                <h3 class="h6 text-uppercase mb-1">
+                                <div class="h6 mb-1">
                                     <a [routerLink]="['/item',item.id]" class="text-dark">{{item.name}}</a>
-                                </h3>
+                                </div>
                                 <h4 class="h6 mb-1">by
-                                    <a [routerLink]="['/store',item._storeCodeName]" class="">{{item._storeCodeName|storeName}}
-                  </a>
+                                    <a [routerLink]="['/store',item._storeCodeName]" class="">
+                                      {{item._storeCodeName|storeName}}
+                                    </a>
                                 </h4>
                                 <span class="text-muted">{{item.price|currency}}</span>
                             </div>
