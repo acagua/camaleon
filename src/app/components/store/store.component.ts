@@ -37,8 +37,6 @@ export class StoreComponent implements OnInit
         {
           this.store = store;
 
-          console.log('b:::store: ' + JSON.stringify(store));
-
           this.numberItems = this.store.numberOfItems;
           this.numberOfPages = Math.ceil(this.numberItems / 20);
 

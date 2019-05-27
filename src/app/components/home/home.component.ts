@@ -31,8 +31,6 @@ export class HomeComponent implements OnInit
         {
           this.categories = documents;
 
-          console.log('b:::categories: ' + JSON.stringify(this.categories));
-
           for (let i = 0; i < this.categories.length; i++)
           {
             const category = this.categories[i];
@@ -83,11 +81,12 @@ export class HomeComponent implements OnInit
   ngOnInit()
   {
     window.scrollTo(0, 0);
-    if (window.screen.width < 768) { // 768px portrait
+    if (window.screen.width < 768)
+    { // 768px portrait
       this.isMobile = true;
     }
   }
-  
+
   goStore(store: Store)
   {
     this.router.navigate(['/store', store.codeName]);
@@ -107,7 +106,8 @@ export class HomeComponent implements OnInit
     this._cartService.addToCart(itemCart);
   }
 
-  goHomeslider(action: String) {
+  goHomeslider(action: String)
+  {
     if (action !== '')
     {
       this.router.navigate(['/' + action]);

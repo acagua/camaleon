@@ -20,6 +20,8 @@ import { PipesModule } from './pipes/pipes.module';
 import { OrderComponent } from './components/order/order.component';
 import { CategoryComponent } from './components/category/category.component';
 import { StoresComponent } from './components/stores/stores.component';
+import { ItemsComponent } from './components/items/items.component';
+import { PasswordForgotComponent } from './components/password-forgot/password-forgot.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { StoresComponent } from './components/stores/stores.component';
     OrderComponent,
     CategoryComponent,
     StoresComponent,
+    ItemsComponent,
+    PasswordForgotComponent,
   ],
   imports: [
     BrowserModule,

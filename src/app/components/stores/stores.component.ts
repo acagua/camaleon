@@ -25,8 +25,6 @@ export class StoresComponent implements OnInit
         {
           this.categories = documents;
 
-          console.log('b:::categories: ' + JSON.stringify(documents));
-
           for (let i = 0; i < this.categories.length; i++)
           {
             const category = this.categories[i];

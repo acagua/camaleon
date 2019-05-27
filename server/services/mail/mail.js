@@ -21,6 +21,8 @@ exports.sendOrderMail = function (parameters)
 {
     try
     {
+        var order = parameters.order;
+
         var bcc = ['info@camaleon.shop', 'nicolaz@camaleon.shop'];
 
         //1. mail to the user
@@ -30,7 +32,7 @@ exports.sendOrderMail = function (parameters)
             from: mailFrom,
             to: to,
             bcc: bcc,
-            subject: 'Tú orden #' + parameters.order.number + ' ha sido recibida :D',
+            subject: 'Tú orden #' + order.number + ' ha sido recibida :D',
             html: templateNewOrder
         };
 
@@ -47,14 +49,40 @@ exports.sendOrderMail = function (parameters)
         });
 
         //2. mail to the stores
-        parameters.stores.forEach(element =>
+        console.log('b:::parameters.stores: ' + JSON.stringify(parameters.stores) + '\n');
+
+        parameters.stores.forEach(element1 =>
         {
+            var htmlTemplate = templateNewOrderStore;
+            var htmlOrderTable = '<table>';
+            // replace order table
+            order.items.forEach(element2 =>
+            {
+                if (element2.item._storeId + 'x' === element1._id + 'x')
+                {
+                    htmlOrderTable += '<tr>';
+                    htmlOrderTable += ' <th>Producto</th>';
+                    htmlOrderTable += ' <th>Cantidad</th>';
+                    htmlOrderTable += '</tr>';
+
+                    htmlOrderTable += '<tr>';
+                    htmlOrderTable += ' <td>' + element2.item.name + '</td>';
+                    htmlOrderTable += ' <td>' + element2.quantity + '</td>';
+                    htmlOrderTable += '</tr>';
+                }
+            });
+
+            htmlOrderTable += '</table>';
+
+            htmlTemplate = htmlTemplate.replace('**tableItems**', htmlOrderTable)
+                .replace('**storeName**', element1.name);
+
             var mailOptions = {
                 from: mailFrom,
-                to: element.emails[0],
+                to: element1.emails[0],
                 bcc: bcc,
-                subject: element.name + ' tienes un pedido para preparar!',
-                html: templateNewOrderStore
+                subject: element1.name + ' tienes un pedido para preparar!',
+                html: htmlTemplate
             };
 
             transporter.sendMail(mailOptions, function (error, info)

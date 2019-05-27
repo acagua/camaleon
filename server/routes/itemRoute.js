@@ -140,7 +140,6 @@ app.get('/category/:categoryId', function (req, res)
 app.get('/random/store/:storeId', function (req, res)
 {
     var storeId = req.params.storeId;
-    console.log('b:::storeId: ' + storeId);
 
     var limit = Number(req.query.limit) || 5;
 
@@ -174,9 +173,6 @@ app.get('/random/category/:categoryId', function (req, res)
     var categoryId = req.params.categoryId;
 
     var limit = Number(req.query.limit) || 5;
-
-    console.log('b:::limit: ' + limit);
-    console.log('b:::categoryId: ' + categoryId);
 
     var filter = { _categoryId: categoryId };
     var fields = {};

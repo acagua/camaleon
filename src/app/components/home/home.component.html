@@ -1,15 +1,19 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" attr.data-slide-to="{{hs[0]-1}}" [class.active]="(hs[0] == 1)" *ngFor="let hs of homesliders"></li>
+        <li data-target="#carouselExampleIndicators" attr.data-slide-to="{{hs[0]-1}}" [class.active]="(hs[0] == 1)"
+            *ngFor="let hs of homesliders"></li>
     </ol>
     <div class="carousel-inner w-100">
         <!-- <div class="carousel-item hs-desktop" [class.active]="(hs[0] == 1)" ng-style="isMobile && ({ 'background-image': 'url(' + hs[1] + ')'})" *ngFor="let hs of homesliders"> -->
-        <div class="carousel-item hs-desktop" [class.active]="(hs[0] == 1)" [ngStyle]="{'background-image': (isMobile) ? 'none' : 'url(' + hs[1] + ')' }" *ngFor="let hs of homesliders">
+        <div class="carousel-item hs-desktop" [class.active]="(hs[0] == 1)"
+            [ngStyle]="{'background-image': (isMobile) ? 'none' : 'url(' + hs[1] + ')' }"
+            *ngFor="let hs of homesliders">
 
             <img class="w-100 hs-mobile" [src]="hs[1]" [alt]="hs[2]">
             <div *ngIf="(hs[0] == 1)" class="hs-text-block right blue" (click)="goHomeslider(hs[2])">
                 <div class="title-dark-blue">¡Llegó la hora de conocernos!</div>
-                <div class="subtitle-white hs-desktop">Encuentra variedad de productos novedosos y <br>exclusivos de nuestros emprendmientos aliados</div>
+                <div class="subtitle-white hs-desktop">Encuentra variedad de productos novedosos y <br>exclusivos de
+                    nuestros emprendmientos aliados</div>
                 <div class="btn cta-salmon-dark-blue my-3">¡Ver catálogo!</div>
                 <div class="slogan-dark-blue my-0">#Tu Tienda, Tu Espacio</div>
             </div>
@@ -48,7 +52,8 @@
         <h2 class="h3 section-title ">Categorías</h2>
         <div class="container-fluid ">
             <div class="row justify-content-center mx-auto col-md-10 ">
-                <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon " *ngFor="let category of categoriesTop " (click)="goCategory(category) ">
+                <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon "
+                    *ngFor="let category of categoriesTop " (click)="goCategory(category) ">
                     <img class="img-fluid mx-auto mt-4 " [src]="category.image " alt="Card image cap ">
                 </div>
             </div>
@@ -56,7 +61,8 @@
     </div>
     <div class="container-fluid mt-5 text-center ">
         <p class="description ">
-            Camaleon es una plataforma digital que busca potenciar el crecimiento de los emprendimientos colombianos, al brindarles un espacio en donde puedan publicar sus productos innovadores.
+            Camaleon es una plataforma digital que busca potenciar el crecimiento de los emprendimientos colombianos, al
+            brindarles un espacio en donde puedan publicar sus productos innovadores.
         </p>
     </div>
     <div class="container-fluid my-5 col-md-12 ">
@@ -72,7 +78,8 @@
                         </div>
 
                         <div class="row ">
-                            <p class="card-text justify-content ">Llevamos los productos que compres donde sea que estés dentro del territorio colombiano</p>
+                            <p class="card-text justify-content ">Llevamos los productos que compres donde sea que estés
+                                dentro del territorio colombiano</p>
                         </div>
                     </div>
                 </div>
@@ -87,7 +94,8 @@
                             <h5 class="card-title ">Productos diferentes</h5>
                         </div>
                         <div class="row ">
-                            <p class="card-text justify-content ">Encuentra productos únicos, novedosos y exclusivos de emprendimientos colombianos</p>
+                            <p class="card-text justify-content ">Encuentra productos únicos, novedosos y exclusivos de
+                                emprendimientos colombianos</p>
                         </div>
                     </div>
                 </div>
@@ -119,7 +127,8 @@
                             </a>
                         </h3>
                         <h4 class="product-store ">
-                            <a [routerLink]="[ '/store',item._storeCodeName] " class="store-name ">{{item._storeCodeName|storeName}}
+                            <a [routerLink]="[ '/store',item._storeCodeName] "
+                                class="store-name ">{{item._storeCodeName|storeName}}
                             </a>
                         </h4>
                         <span class="text-muted ">{{item.price|currency}}</span>
@@ -165,12 +174,14 @@
         <h2 class="h3 section-title ">Tiendas</h2>
         <div class="container-fluid ">
             <div class="row justify-content-center mx-auto ">
-                <div class="pointer col-5 col-sm-4 col-md-2 text-center category-icon " *ngFor="let store of storesLine1 " (click)="goStore(store) ">
+                <div class="pointer col-5 col-sm-4 col-md-2 text-center category-icon "
+                    *ngFor="let store of storesLine1 " (click)="goStore(store) ">
                     <img class="img-fluid mx-auto mt-4 rounded-border " [src]="store.imageLogo " alt="Card image cap ">
                 </div>
                 <div class="col-5 col-sm-4 col-md-2 text-center category-icon ">
                     <a [routerLink]="[ '/stores'] ">
-                        <img class="img-fluid mx-auto mt-4 rounded-border " src="../../../assets/img/more-brands.png " alt="Card image cap ">
+                        <img class="img-fluid mx-auto mt-4 rounded-border " src="../../../assets/img/more-brands.png "
+                            alt="Card image cap ">
                     </a>
                 </div>
             </div>

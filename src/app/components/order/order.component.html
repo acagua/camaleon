@@ -56,6 +56,22 @@
                 <td class="align-middle text-right">{{orderItem.item.price|currency}}</td>
                 <td class="align-middle text-right">{{orderItem.total|currency}}</td>
               </tr>
+              <tr>
+                <td class="align-middle text-center"></td>
+                <td class="align-middle text-center"></td>
+                <td class="align-middle text-center"></td>
+                <td class="align-middle text-right"></td>
+                <td class="align-middle text-left">Envío</td>
+                <td class="align-middle text-right">{{order.shippingCost|currency}}</td>
+              </tr>
+              <tr>
+                <td class="align-middle text-center"></td>
+                <td class="align-middle text-center"></td>
+                <td class="align-middle text-center"></td>
+                <td class="align-middle text-right"></td>
+                <td class="align-middle text-left">TOTAL</td>
+                <td class="align-middle text-right">{{order.total|currency}}</td>
+              </tr>
             </tbody>
           </table>
         </div>
