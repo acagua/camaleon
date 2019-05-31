@@ -259,7 +259,7 @@ body {
 }
 
 .outer-pannel {
-    width: 60%;
+    width: 70%;
     padding: 0% 7%;
     background-color: rgba(0, 0, 0, 0.059);
 }
@@ -287,6 +287,48 @@ body {
     margin-bottom: auto;
 }
 
-.green-title{
-    color:green;
+.green-title {
+    color: #65ca51;
+}
+
+@media (max-width: 670px) {
+    .outer-pannel {
+        width: 100%;
+    }
+}
+
+.font {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.f-300 {
+    font-weight: 300;
+}
+
+.f-500 {
+    font-weight: 500;
+}
+
+.f-size-1 {
+    font-size: 2rem;
+}
+
+.f-size-2 {
+    font-size: 1.5rem;
+}
+
+.f-size-3 {
+    font-size: 1.3rem;
+}
+
+.f-size-4 {
+    font-size: 1rem;
+}
+
+.f-size-5 {
+    font-size: 0.7rem;
+}
+
+.totals {
+    text-align: right;
 }

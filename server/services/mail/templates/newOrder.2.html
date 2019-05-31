@@ -4,71 +4,133 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title></title>
     <link href="../src/styles.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,500&display=swap">
 </head>
 
 <body>
-    <div class="container">
+    <div class="container font">
         <div class="outer-pannel text-center rounded">
             <div class="inner-pannel rounded">
                 <div class="row header">
-                    <div class="col-6 my-3">
+                    <div class="col-12 my-3">
                         <a href="https://camaleon.shop/" target="_blank">
                             <img src="../src/logo.png" alt="Camaleon.shop" title="Camaleon.shop" width="255">
                         </a>
                     </div>
-                    <div class="col-6 text-right account">
+                    <!-- <div class="col-6 text-right account">
                         <button type="button" class="btn btn-success">Mi Cuenta</button>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row info">
                     <div class="col-12 mt-3">
-                        <h3>**PEPITO** gracias por tu compra!</h3>
-                        <h5>  Estamos trabajando para que lo puedas disfrutar cuanto antes.</h5>
+                        <div class="f-500 f-size-1">**name** gracias por tu compra!</div>
+                        <div class="f-300 f-size-3"> Estamos trabajando para que la puedas disfrutar cuanto antes.</div>
                     </div>
                 </div>
                 <div class="row info">
-                    <div class="col-6 mt-3">
+                    <div class="col-md-6 col-12 mt-3">
                         <img src="../src/list.png" width="85">
-                        <h4 class="green-title">Resumen de compra</h4>
+                        <div class="f-size-2 f-500 green-title">Resumen de compra</div>
                         <ul class="list-unstyled">
                             <li>
-                                <b># Orden:</b> **9101938**
+                                <b># Orden:</b> <span class="f-300">**order-id**</span>
                             </li>
                             <li>
-                                <b>Fecha:</b> Apr 3, 2019
+                                <b>Fecha:</b> <span class="f-300">**purchase-date**</span>
                             </li>
                             <!-- <li>
-                                <b>Total:</b> $38,90
+                                <b>Total:</b> <span class="f-300">$**38,90**</span
                             </li> -->
                         </ul>
                     </div>
-                    <div class="col-6 mt-3">
+                    <div class="col-md-6 col-12 mt-3">
                         <img src="../src/002-shipped.png" width="85">
-                        <h4 class="green-title">Dirección de envío</h4>
-                        <h6> HARRY MAC INTOSH
-                            123 Anywhere road
-                            Anywhere, IT 82933 </h6>
+                        <div class="f-size-2 f-500 green-title">Dirección de entrega</div>
+                        <div class="f-300"> **shipping-address** </div>
                     </div>
                 </div>
                 <div class="row info">
                     <div class="col-12 mt-3">
-                        <button type="button" class="btn btn-success">Ver Estado</button>
+                        <a href="https://www.camaleon.shop" target="_blank" rel="noopener">
+                            <div type="div" class="btn btn-success">Ver Estado</div>
+                        </a>
                     </div>
                 </div>
                 <div class="row info">
                     <div class="col-12 mt-4">
-                        <h5>Detalle de tu compra</h5>
+                        <div class="f-500 f-size-3">Detalle de tu compra</div>
                     </div>
                 </div>
-
+                <div class="row info">
+                    <div class="col-12 mt-4">
+                        <div class="f-500 f-size-3">TABLA</div>
+                    </div>
+                </div>
+                <div class="row info pb-4">
+                    <div class="col-2 mt-4">
+                    </div>
+                    <div class="col-2 mt-4">
+                    </div>
+                    <div class="col-4 mt-4 totals">
+                        <div class="f-300 f-size-4">Subtotal</div>
+                        <div class="f-300 f-size-4">Envío</div>
+                        <div class="f-300 f-size-4">IVA</div>
+                        <div class="f-500 f-size-3">Total</div>
+                    </div>
+                    <div class="col-4 mt-4">
+                        <div class="f-300 f-size-4">$**subtotal**</div>
+                        <div class="f-300 f-size-4">$**shipping**</div>
+                        <div class="f-300 f-size-4">$**tax**</div>
+                        <div class="f-500 f-size-3 green-title">$**total**</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-4">
+                    <h2 class="green-title">
+                        ¿Necesitas ayuda?
+                    </h2>
+                    <h6>
+                        Envíanos un correo a <a href="mailto:info@camaleon.shop" target="_blank" rel="noopener">info@camaleon.shop</a>
+                        <br>
+                        <!-- o llámanos al
+                        <a style="text-decoration: underline; color: #2190E3;" href="tel:+573138891481" target="_blank" rel="noopener"><span style="color: #2190e3; font-size: 18px; line-height: 27px;">(<strong>319</strong>)</span>           
+                            <span style="color: #2190e3; font-size: 18px; line-height: 27px;">
+                                <strong>264-9443</strong>
+                            </span>
+                        </a> -->
+                    </h6>
+                    <h6>
+                        O <br>escríbenos en nuestras redes sociales
+                    </h6>
+                    <div class="row justify-content-center my-3">
+                        <div class="col-2">
+                            <a href="https://web.whatsapp.com/send?phone=573192649443" target="_blank"><img width="32" height="32" src="../src/whatsapp-logo.png" alt="Whatsapp" title="Whatsapp"></a>
+                        </div>
+                        <div class="col-2">
+                            <a href="https://instagram.com/" target="_blank"><img width="32" height="32" src="../src/instagram-logo.png" alt="Instagram" title="Instagram"></a>
+                        </div>
+                        <div class="col-2">
+                            <a href="https://www.facebook.com/messages/t/nicolazp1" target="_blank"><img width="32" height="32" src="../src/facebook-logo.png" alt="Messenger" title="Messenger"></a>
+                        </div>
+                        <div class="col-2">
+                            <a href="https://linkedin.com/company/camaleon-shop" target="_blank"><img width="32" height="32" src="../src/linkedin-logo.png" alt="Twitter" title="Twitter"></a>
+                        </div>
+                    </div>
+                    <div class="row f-size-5 mb-2">
+                        <div class="col-12 text-secondary">
+                            Bogotá - Colombia
+                        </div>
+                        <div class="col-12 text-secondary">
+                            camaleon.shop - 2019
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
