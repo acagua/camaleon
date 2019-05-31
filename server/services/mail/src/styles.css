@@ -327,8 +327,27 @@ body {
     text-align: right;
 }
 
+.image{
+    max-width: 100px;
+}
+
+.desktop{
+    display: block;
+}
+
+.mobile{
+    display: none;
+}
+
 @media (max-width: 670px) {
     .outer-pannel {
         width: 100%;
+    }
+    .desktop{
+        display: none;
+    }
+    
+    .mobile{
+        display: block;
     }
 }
