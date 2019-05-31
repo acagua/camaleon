@@ -259,7 +259,7 @@ body {
 }
 
 .outer-pannel {
-    width: 70%;
+    width: 80%;
     padding: 0% 7%;
     background-color: rgba(0, 0, 0, 0.059);
 }
@@ -289,12 +289,6 @@ body {
 
 .green-title {
     color: #65ca51;
-}
-
-@media (max-width: 670px) {
-    .outer-pannel {
-        width: 100%;
-    }
 }
 
 .font {
@@ -331,4 +325,10 @@ body {
 
 .totals {
     text-align: right;
+}
+
+@media (max-width: 670px) {
+    .outer-pannel {
+        width: 100%;
+    }
 }
