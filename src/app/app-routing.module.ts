@@ -14,6 +14,8 @@ import { CategoryComponent } from './components/category/category.component';
 import { StoresComponent } from './components/stores/stores.component';
 import { ItemsComponent } from './components/items/items.component';
 import { PasswordForgotComponent } from './components/password-forgot/password-forgot.component';
+import { PasswordNewComponent } from './components/password-new/password-new.component';
+import { PasswordNewGuard } from './services/guards/password-new.guard';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -31,6 +33,7 @@ const APP_ROUTES: Routes = [
   { path: 'stores', component: StoresComponent },
   { path: 'items', component: ItemsComponent },
   { path: 'passwordForgot', component: PasswordForgotComponent },
+  { path: 'passwordNew', component: PasswordNewComponent, canActivate: [PasswordNewGuard] },
   { path: '', component: HomeComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];

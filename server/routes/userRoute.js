@@ -1,6 +1,5 @@
 var express = require('express');
 var bcrypt = require('bcrypt');
-var nodemailer = require('nodemailer');
 
 var app = express();
 
@@ -46,7 +45,7 @@ app.post('/', function (req, res)
     name: body.name,
     lastName: body.lastName,
     email: body.email,
-    password: bcrypt.hashSync(body.password, 10),
+    password: bcrypt.hashSync(body.password, 10)
   });
 
   user.save(function (err, userSaved)

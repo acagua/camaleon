@@ -32,6 +32,14 @@ export class LoginComponent implements OnInit
   ngOnInit()
   {
     window.scrollTo(0, 0);
+
+    this.forma2 = new FormGroup({
+      name: new FormControl(null, Validators.required),
+      email2: new FormControl(null, [Validators.required, Validators.email]),
+      lastName: new FormControl(null, Validators.required),
+      password2: new FormControl(null, Validators.required),
+    });
+
     //cuando inicia sesión, lo debe llevar al home
     if (localStorage.getItem('user'))
     {
@@ -54,12 +62,6 @@ export class LoginComponent implements OnInit
       this.rememberme = true;
     }
 
-    this.forma2 = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      email2: new FormControl(null, [Validators.required, Validators.email]),
-      lastName: new FormControl(null, Validators.required),
-      password2: new FormControl(null, Validators.required),
-    });
   }
 
 

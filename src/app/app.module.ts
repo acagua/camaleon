@@ -22,6 +22,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { StoresComponent } from './components/stores/stores.component';
 import { ItemsComponent } from './components/items/items.component';
 import { PasswordForgotComponent } from './components/password-forgot/password-forgot.component';
+import { PasswordNewComponent } from './components/password-new/password-new.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { PasswordForgotComponent } from './components/password-forgot/password-f
     StoresComponent,
     ItemsComponent,
     PasswordForgotComponent,
+    PasswordNewComponent
   ],
   imports: [
     BrowserModule,

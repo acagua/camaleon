@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TokenService } from 'src/app/services/token.service';
+import Swal from 'sweetalert2';
+import { PasswordService } from 'src/app/services/password.service';
 
 @Component({
   selector: 'app-password-forgot',
@@ -7,10 +11,30 @@ import { Component, OnInit } from '@angular/core';
 export class PasswordForgotComponent implements OnInit
 {
 
-  constructor() { }
+  formForgot: FormGroup;
+
+  constructor(public _passwordService: PasswordService) { }
 
   ngOnInit()
   {
+    window.scrollTo(0, 0);
+
+    this.formForgot = new FormGroup({
+      email: new FormControl(null, Validators.required)
+    });
+  }
+
+  askNewPassword()
+  {
+    const formForgotValue = this.formForgot.value;
+
+    let email = formForgotValue.email;
+
+    this._passwordService.askNewPassword(email)
+      .subscribe(resp =>
+      {
+        Swal.fire('Listo!', 'Un correo ha sido enviado para que recuperes tu contraseña :D', 'success');
+      });
   }
 
 }
