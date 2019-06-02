@@ -18,12 +18,12 @@
     </section>
     <br>
     <hr>
-    <h2 class="center-title">Productos</h2>
+    <h2 class="center-title pb-3">Productos</h2>
     <div class="container-fluid">
         <div class="px-xl-5">
-            <div class="row">
+            <div class="row row justify-content-center">
                 <!-- Grid -->
-                <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
+                <div class="products-grid col-xl-11 col-lg-8 order-lg-2">
                     <div class="row">
                         <!-- product-->
                         <div *ngFor="let item of items" class="col-xl-3 col-lg-4 col-sm-6 col-6">
@@ -40,9 +40,7 @@
                                     </div>
                                 </div>
                                 <div class="py-2">
-                                    <h3 class="h6 mb-1"><a [routerLink]="['/item',item.id]"
-                                            class="text-dark">{{item.name}}</a></h3><span
-                                        class="text-muted">{{item.price|currency}}</span>
+                                    <h3 class="h6 mb-1"><a [routerLink]="['/item',item.id]" class="text-dark">{{item.name}}</a></h3><span class="text-muted">{{item.price|currency}}</span>
                                 </div>
                             </div>
                         </div>
@@ -83,8 +81,7 @@
             </li>
 
             <!-- <li *ngFor="let in of counter(5) ;let i = index" class="page-item active"> -->
-            <li *ngFor="let in of counter(numberOfPages) ;let i = index"
-                [ngClass]="{'page-item': true, 'active': actualPage == (i+1)}">
+            <li *ngFor="let in of counter(numberOfPages) ;let i = index" [ngClass]="{'page-item': true, 'active': actualPage == (i+1)}">
                 <a (click)="goToPage(i+1)" class="page-link">{{i+1}}</a>
             </li>
 
@@ -117,13 +114,11 @@
             document.getElementById('slider-snap-input-lower'),
             document.getElementById('slider-snap-input-upper')
         ];
-        snapSlider.noUiSlider.on('update', function (values, handle)
-        {
+        snapSlider.noUiSlider.on('update', function(values, handle) {
             snapValues[handle].innerHTML = values[handle];
         });
 
-        snapSlider.noUiSlider.on('change', function (values, handle)
-        {
+        snapSlider.noUiSlider.on('change', function(values, handle) {
             inputValues[handle].value = values[handle];
         });
     </script>
