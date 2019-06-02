@@ -1,109 +1,106 @@
 <div class="container-90">
-  <section class="hero">
-    <div class="hero-content text-center">
-      <h2 class="hero-heading">Hola!</h2>
-    </div>
-  </section>
+    <section class="hero">
+        <div class="hero-content text-center">
+            <h2 class="hero-heading">Hola!</h2>
+        </div>
+    </section>
 
-  <hr>
-  <section>
-    <div class="container">
-      <div class="row justify-content-center">
+    <hr>
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
 
-        <div class="col-lg-5">
-          <div class="block">
-            <div class="block-header">
-              <h6 class="text-uppercase mb-0">Únete!</h6>
-            </div>
-            <div class="block-body">
-              <form ngNativeValidate [formGroup]="forma2" (ngSubmit)="registerUser()">
-                <div class="form-group">
-                  <label for="name" class="form-label">Nombres</label>
-                  <input formControlName="name" name="name" id="name" type="text" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="name" class="form-label">Apellidos</label>
-                  <input formControlName="lastName" name="lastName" type="text" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="email2" class="form-label">Correo</label>
-                  <input formControlName="email2" name="email2" id="email2" type="text" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label for="password2" class="form-label">Password</label>
-                  <input formControlName="password2" name="password2" id="password2" type="password" minlength="8"
-                    class="form-control" required>
-                </div>
-                <div class="form-group text-center">
-                  <!-- <p>Al registrarte aceptas las políticas de tratamiento de datos de Cameleon que puedes encontrar <a href="javascript:void(0)"
+                <div class="col-lg-5">
+                    <div class="block">
+                        <div class="block-header">
+                            <h6 class="text-uppercase mb-0">Regístrate</h6>
+                        </div>
+                        <div class="block-body">
+                            <form ngNativeValidate [formGroup]="forma2" (ngSubmit)="registerUser()">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Nombres</label>
+                                    <input formControlName="name" name="name" id="name" type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Apellidos</label>
+                                    <input formControlName="lastName" name="lastName" type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email2" class="form-label">Correo</label>
+                                    <input formControlName="email2" name="email2" id="email2" type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password2" class="form-label">Contraseña</label>
+                                    <input formControlName="password2" name="password2" id="password2" type="password" minlength="8" class="form-control" required>
+                                </div>
+                                <div class="form-group text-center">
+                                    <!-- <p>Al registrarte aceptas las políticas de tratamiento de datos de Cameleon que puedes encontrar <a href="javascript:void(0)"
                       (click)="downloadFile()">aquí</a>
                   </p> -->
-                  <p>Al registrarte aceptas las políticas de tratamiento de datos de Cameleon que puedes encontrar
-                    <a target="_blank"
-                      href="https://s3.amazonaws.com/camaleon/general/politica-para-el-tratamiento-de-datos-personales-camaleon.pdf">aquí
-                    </a>
-                    y los Términos y Condiciones que puedes encontrar
-                    <a target="_blank"
-                      href="https://s3.amazonaws.com/camaleon/general/terminos-condiciones-camaleon.pdf">aquí
-                    </a>
-                  </p>
-                </div>
-                <div class="form-group text-center">
-                  <button type="submit" class="btn btn-outline-dark"><i class="far fa-user mr-2"></i>Registrar!</button>
-                </div>
-              </form>
+                                    <p>Al registrarte aceptas las
+                                        <a target="_blank" href="https://s3.amazonaws.com/camaleon/general/politica-para-el-tratamiento-de-datos-personales-camaleon.pdf" rel="noopener">
+                                          Políticas de Tratamiento de Datos
+                                        </a> y los
+                                        <a target="_blank" href="https://s3.amazonaws.com/camaleon/general/terminos-condiciones-camaleon.pdf" rel="noopener">
+                                          Términos y Condiciones
+                                      </a> de Camaleon.
+                                    </p>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-outline-dark"><i class="far fa-user mr-2"></i>Registrar</button>
+                                </div>
+                            </form>
 
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-5">
-          <div class="block">
-            <div class="block-header">
-              <h6 class="text-uppercase mb-0">Entra!</h6>
-            </div>
-            <div class="block-body">
-
-              <form ngNativeValidate #f="ngForm" (ngSubmit)="loginUser(f)">
-                <div class="row">
-
-                  <div class="form-group col-md-12">
-                    <label for="email1" class="form-label">Correo</label>
-                    <input [ngModel]="email" type="text" name="email1" id="email1" class="form-control" required>
-                  </div>
-
-                  <div class="form-group col-md-12">
-                    <label for="password1" class="form-label">Password</label>
-                    <input ngModel type="password" name="password1" id="password1" class="form-control" required>
-                  </div>
-
-                  <div class="form-group col-12">
-                    <div class="custom-control custom-checkbox">
-                      <input [(ngModel)]="rememberme" id="rememberme" type="checkbox" name="rememberme"
-                        class="custom-control-input">
-                      <label for="rememberme" class="custom-control-label align-middle">Recuérdame</label>
+                        </div>
                     </div>
-                  </div>
+                </div>
 
-                  <div class="form-group col-12">
-                    <div class="">
-                      <a [routerLink]="['/passwordForgot']">Olvidé mi clave x_x</a>
+                <div class="col-lg-5">
+                    <div class="block">
+                        <div class="block-header">
+                            <h6 class="text-uppercase mb-0">Ingresa</h6>
+                        </div>
+                        <div class="block-body">
+
+                            <form ngNativeValidate #f="ngForm" (ngSubmit)="loginUser(f)">
+                                <div class="row">
+
+                                    <div class="form-group col-md-12">
+                                        <label for="email1" class="form-label">Correo</label>
+                                        <input [ngModel]="email" type="text" name="email1" id="email1" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label for="password1" class="form-label">Contraseña</label>
+                                        <input ngModel type="password" name="password1" id="password1" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group col-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input [(ngModel)]="rememberme" id="rememberme" type="checkbox" name="rememberme" class="custom-control-input">
+                                            <label for="rememberme" class="custom-control-label align-middle">Recuérdame</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-12">
+                                        <div class="">
+                                            <a [routerLink]="['/passwordForgot']">Olvidé mi clave :(</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-outline-dark"><i class="fa fa-sign-in-alt mr-2"></i>
+                    Ingresar</button>
+                                </div>
+                            </form>
+
+                        </div>
                     </div>
-                  </div>
+                </div>
 
-                </div>
-                <div class="form-group text-center">
-                  <button type="submit" class="btn btn-outline-dark"><i class="fa fa-sign-in-alt mr-2"></i>
-                    Entrar!</button>
-                </div>
-              </form>
 
             </div>
-          </div>
         </div>
-
-
-      </div>
-    </div>
-  </section>
+    </section>
 </div>
