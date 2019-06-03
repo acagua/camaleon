@@ -97,8 +97,14 @@ export class CheckoutComponent implements OnInit
   }
 
 
-  ChangingValue(evet: any)
+  selectCity(selectedOption: String)
   {
-
+    this._geoService.getCitiesFromDepartment(selectedOption).subscribe(docs =>
+    {
+      this.cities = docs;
+    });
   }
+
+
+
 }
