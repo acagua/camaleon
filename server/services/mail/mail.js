@@ -2,11 +2,14 @@ var nodemailer = require("nodemailer");
 var fs = require('fs');
 
 //templates desarrollo
-// var templateNewOrder = fs.readFileSync('server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
-// var templateNewOrderStore = fs.readFileSync('server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
+var templateNewOrder = fs.readFileSync('server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
+var templateNewOrderStore = fs.readFileSync('server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
+var templateNewPassword = fs.readFileSync('server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
+
 //templates produccion
-var templateNewOrder = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
-var templateNewOrderStore = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
+// var templateNewOrder = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
+// var templateNewOrderStore = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
+// var templateNewPassword = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
 
 var mailFrom = 'info@camaleon.shop';
 
@@ -20,8 +23,10 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-exports.sendOrderMail = function(parameters) {
-    try {
+exports.sendOrderMail = function (parameters)
+{
+    try
+    {
         var order = parameters.order;
 
         var bcc = ['info@camaleon.shop', 'nicolaz@camaleon.shop'];
@@ -37,10 +42,13 @@ exports.sendOrderMail = function(parameters) {
             html: templateNewOrder
         };
 
-        transporter.sendMail(mailOptions, function(error, info) {
-            if (error) {
+        transporter.sendMail(mailOptions, function (error, info)
+        {
+            if (error)
+            {
                 console.log(error);
-            } else {
+            } else
+            {
                 console.log("Email sent");
             }
         });
@@ -48,12 +56,15 @@ exports.sendOrderMail = function(parameters) {
         //2. mail to the stores
         console.log('b:::parameters.stores: ' + JSON.stringify(parameters.stores) + '\n');
 
-        parameters.stores.forEach(element1 => {
+        parameters.stores.forEach(element1 =>
+        {
             var htmlTemplate = templateNewOrderStore;
             var htmlOrderTable = '<table>';
             // replace order table
-            order.items.forEach(element2 => {
-                if (element2.item._storeId + 'x' === element1._id + 'x') {
+            order.items.forEach(element2 =>
+            {
+                if (element2.item._storeId + 'x' === element1._id + 'x')
+                {
                     htmlOrderTable += '<tr>';
                     htmlOrderTable += ' <th>Producto</th>';
                     htmlOrderTable += ' <th>Cantidad</th>';
@@ -79,16 +90,57 @@ exports.sendOrderMail = function(parameters) {
                 html: htmlTemplate
             };
 
-            transporter.sendMail(mailOptions, function(error, info) {
-                if (error) {
+            transporter.sendMail(mailOptions, function (error, info)
+            {
+                if (error)
+                {
                     console.log(error);
-                } else {
+                } else
+                {
                     console.log("Email sent");
                 }
             });
         });
 
-    } catch (error) {
+    } catch (error)
+    {
         console.log('error en mail - sendOrderMail: ' + error);
+    }
+}
+
+exports.sendNewPasswordMail = function (parameters)
+{
+    try
+    {
+        var user = parameters.user;
+        var token = parameters.token.token;
+
+        var to = user.email;
+
+        var html = templateNewPassword.replace('**userName**', user.name)
+            .replace('**token**', token);
+
+        var mailOptions = {
+            from: mailFrom,
+            to: to,
+            subject: 'Nueva contraseña',
+            html: html
+        };
+
+        transporter.sendMail(mailOptions, function (error, info)
+        {
+            if (error)
+            {
+                console.log(error);
+            }
+            else
+            {
+                console.log("Email sent");
+            }
+        });
+    }
+    catch (error)
+    {
+        console.log('error en mail - sendNewPasswordMail: ' + error);
     }
 }

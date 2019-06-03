@@ -31,7 +31,7 @@ export class ItemComponent implements OnInit, OnChanges
         .subscribe((item) =>
         {
           this.item = item;
-          console.log(item);
+          console.log('b:::item: ' + JSON.stringify(item));
 
           this._itemService.getItemsRandomByStoreId(item._storeId, 6)
             .subscribe((documents) =>
@@ -71,7 +71,8 @@ export class ItemComponent implements OnInit, OnChanges
 
     let qtyMessage = 'Agregado';
 
-    if (this.quantity > 1) {
+    if (this.quantity > 1)
+    {
       qtyMessage += 's';
     }
     qtyMessage += ' a tu carrito!';

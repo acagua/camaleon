@@ -14,11 +14,13 @@
                                     <img class="d-block w-100" [src]="image" alt="First slide">
                                 </div>
                             </div>
-                            <a *ngIf="item.images.length > 1" class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <a *ngIf="item.images.length > 1" class="carousel-control-prev"
+                                href="#carouselExampleIndicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a *ngIf="item.images.length > 1" class=" carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <a *ngIf="item.images.length > 1" class=" carousel-control-next"
+                                href="#carouselExampleIndicators" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
@@ -28,7 +30,7 @@
                 </div>
                 <div class="col-lg-5 pl-lg-4 order-2 order-lg-2 text-center">
 
-                    <h1 class="mb-md-2 mt-3 product-detail-title">{{item.name}}</h1>
+                    <h1 class="mb-md-2 product-detail-title">{{item.name}}</h1>
                     <span class="align-center multi-words"> de </span>
                     <div class="mb-md-4 row justify-content-center text-md-left">
                         <!--<span class="align-center multi-words">-</span>-->
@@ -36,16 +38,18 @@
                             <h2 class="product-detail-store">{{item._storeCodeName|storeName}}</h2>
                         </a>
                     </div>
-                    <div class="row justify-content-center mt-4">
-                        <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-2">
+                    <div class="row justify-content-center mt-2">
+                        <div
+                            class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between mb-2">
                             <ul class="list-inline mb-2 mb-sm-0">
-                                <li class="list-inline-item h4 font-weight-light mb-0">{{(item.price)|currency}} c/u</li>
+                                <li class="list-inline-item h4 font-weight-light mb-0">{{(item.price)|currency}} c/u
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="row justify-content-center" *ngIf="item.options.length > 0">
                         <div *ngFor="let option of item.options" class="m-3 col-4">
-                            <label class="detail-option-heading font-weight-bold">{{option.name}}</label>
+                            <label class="detail-option-heading multi-words">{{option.name}}</label>
                             <select class="form-control mx-auto" required>
                                 <!-- Con un ng-model se puede cambiar esto y se puede incluir el angular/material para 
                                     que quede más bonito. mat-select
@@ -59,9 +63,29 @@
                         </div>
                     </div>
 
+                    <div *ngIf="item.shippingCities.length == 1" class="row justify-content-center mt-3">
+                        <div
+                            class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between multi-words">
+                            <i class="fa fa-truck mr-2"></i> Envíos solo en {{item.shippingCities[0].name}}
+                        </div>
+                    </div>
 
-                    <div class="row mx-auto justify-content-center">
-                        <label class="detail-option-heading font-weight-bold text-center">Cantidad</label>
+                    <div *ngIf="item.shippingCities.length > 1" class="row justify-content-center mt-3">
+                        <div
+                            class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between multi-words">
+                            <i class="fa fa-truck mr-2"></i> Envíos restringidos, ver sección envíos
+                        </div>
+                    </div>
+
+                    <div *ngIf="item.shippingAllColombia" class="row justify-content-center mt-3">
+                        <div
+                            class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-sm-between multi-words">
+                            <i class="fa fa-truck mr-2"></i> Envíos a todos el país
+                        </div>
+                    </div>
+
+                    <div class="row mx-auto justify-content-center mt-3">
+                        <label class=" text-center multi-words">Cantidad</label>
                     </div>
 
                     <div class="row mb-3 mx-auto justify-content-center">
@@ -73,10 +97,12 @@
                             <i class="fa fa-plus"></i>
                         </button>
                     </div>
-                    <button (click)="addToCart()" type="submit" class="btn btn-dark btn-lg mb-2 col-12"> 
+                    <button (click)="addToCart()" type="submit" class="btn btn-dark btn-lg mb-2 col-12">
                         <i class="fa fa-shopping-cart mr-2"></i>
                         Agregar al carrito
                     </button>
+
+
 
                     <p class="text-success" *ngIf="added">Se ha agregado al carrito!</p>
                 </div>
@@ -86,9 +112,14 @@
     <section class="mt-5">
         <div class="container">
             <ul role="tablist" class="nav nav-tabs flex-row flex-sm-row">
-                <li class="nav-item"><a data-toggle="tab" href="#description" role="tab" class="nav-link detail-nav-link item-detail-title active">Descripción</a></li>
-                <li *ngIf="item.specifications.length > 0" class="nav-item"><a data-toggle="tab" href="#additional-information" role="tab" class="nav-link detail-nav-link">Información
+                <li class="nav-item"><a data-toggle="tab" href="#description" role="tab"
+                        class="nav-link detail-nav-link item-detail-title active">Descripción</a></li>
+                <li *ngIf="item.specifications.length > 0" class="nav-item"><a data-toggle="tab"
+                        href="#additional-information" role="tab" class="nav-link detail-nav-link">Información
                         Adicional</a></li>
+                <li *ngIf="item.shippingCities.length > 0" class="nav-item"><a data-toggle="tab" href="#shipping"
+                        role="tab" class="nav-link detail-nav-link">Envíos
+                    </a></li>
             </ul>
             <div class="tab-content py-4">
                 <div id="description" role="tabpanel" class="tab-pane active px-3">
@@ -120,6 +151,20 @@
                         </div>
                     </div>
                 </div>
+                <div id="shipping" role="tabpanel" class="tab-pane">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <table class="table text-sm">
+                                <tbody>
+                                    <tr *ngFor="let shippingCity of item.shippingCities">
+                                        <th class="text-capitalize font-weight-normal border-0">{{shippingCity.name}}
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -136,12 +181,14 @@
                         <div class="product-image">
                             <img [src]="item.images[0]" alt="product" class="img-fluid" />
                             <div class="product-hover-overlay">
-                                <a [routerLink]="['/item', item._id]" (click)="top()" class="product-hover-overlay-link"></a>
+                                <a [routerLink]="['/item', item._id]" (click)="top()"
+                                    class="product-hover-overlay-link"></a>
                             </div>
                         </div>
                         <div class="py-2">
                             <h3 class="product-title mb-1">
-                                <a [routerLink]="['/item', item._id]" (click)="top()" class="text-dark" style="cursor: pointer">{{item.name}}</a>
+                                <a [routerLink]="['/item', item._id]" (click)="top()" class="text-dark"
+                                    style="cursor: pointer">{{item.name}}</a>
                             </h3><span class="text-muted">{{item.price|currency}}</span>
                         </div>
                     </div>

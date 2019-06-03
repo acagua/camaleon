@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { TokenService } from 'src/app/services/token.service';
 import Swal from 'sweetalert2';
 import { PasswordService } from 'src/app/services/password.service';
 

@@ -30,10 +30,27 @@
                     <input type="text" class="form-control" formControlName="whoReceives" required>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="fullname_invoice" class="form-label">Método Pago</label>
+                    <label for="fullname_invoice" class="form-label">Método de Pago</label>
                     <select class="form-control" formControlName="paymentMethod" required>
                       <option *ngFor="let paymentMethod of arrPaymentMethod" [value]="paymentMethod._id">
                         {{paymentMethod.name}}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="fullname_invoice" class="form-label">Departamento</label>
+                    <select class="form-control" formControlName="department"
+                      (change)="selectDepartment($event.target.value)" required>
+                      <option *ngFor="let dep of departments" [value]="dep.code">
+                        {{dep.name}}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="fullname_invoice" class="form-label">Ciudad</label>
+                    <select class="form-control" formControlName="city" required>
+                      <option *ngFor="let cit of cities" [value]="cit.cityCode">
+                        {{cit.name}}
                       </option>
                     </select>
                   </div>

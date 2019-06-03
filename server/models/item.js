@@ -3,7 +3,7 @@ var uniqueValidator = require('mongoose-unique-validator');
 var random = require('mongoose-simple-random');
 var ItemOption = require('../models/itemOption.js');
 var ItemSpecification = require('../models/itemSpecification.js');
-var StoreCategory = require('../models/storeCategory.js');
+var City = require('../models/city');
 
 var Schema = mongoose.Schema;
 
@@ -15,6 +15,8 @@ var itemSchema = new Schema({
     options: { type: [ItemOption.schema] },
     specifications: { type: [ItemSpecification.schema] },
     status: { type: String },
+    shippingCities: { type: [City.schema] },
+    shippingAllColombia: { type: Boolean },
     _storeId: { type: Schema.Types.ObjectId, ref: 'Store', required: [true, 'Must have a store associated'] },
     _storeCodeName: { type: String, required: [true, 'Must have a store code name associated'] },
     _categoryId: { type: Schema.Types.ObjectId, ref: 'Category', required: [true, 'Must have a category associated'] },
