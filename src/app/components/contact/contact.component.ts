@@ -34,7 +34,7 @@ export class ContactComponent implements OnInit
 
   goItem(item: any)
   {
-    this.router.navigate(['/item', item.id]);
+    this.router.navigate(['/item', item._id]);
   }
 
 }

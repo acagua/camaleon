@@ -17,7 +17,8 @@
                     <div *ngFor="let item of items" class="col-xl-3">
                         <div class="product">
                             <div class="product-image">
-                                <div class="ribbon ribbon-info">Nuevo</div><img [src]="item.images[0]" alt="product" class="img-fluid" />
+                                <div class="ribbon ribbon-info">Nuevo</div><img [src]="item.images[0]" alt="product"
+                                    class="img-fluid" />
                                 <div class="product-hover-overlay">
                                     <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
                                     <div class="product-hover-overlay-buttons">
@@ -29,11 +30,11 @@
                             </div>
                             <div class="py-2">
                                 <div class="h6 mb-1">
-                                    <a [routerLink]="['/item',item.id]" class="text-dark">{{item.name}}</a>
+                                    <a [routerLink]="['/item',item._id]" class="text-dark">{{item.name}}</a>
                                 </div>
                                 <h4 class="h6 mb-1">by
                                     <a [routerLink]="['/store',item._storeCodeName]" class="">
-                                      {{item._storeCodeName|storeName}}
+                                        {{item._storeCodeName|storeName}}
                                     </a>
                                 </h4>
                                 <span class="text-muted">{{item.price|currency}}</span>
