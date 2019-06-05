@@ -1,10 +1,14 @@
+import { City } from './city.model';
+
 export class Item
 {
     constructor(
-        public _id: string,
-        public name: string,
+        public _id: String,
+        public name: String,
         public price: number,
-        public image: string
+        public image: String,
+        public shippingAllColombia: Boolean,
+        public shippingCities?: City[]
     )
     {
 

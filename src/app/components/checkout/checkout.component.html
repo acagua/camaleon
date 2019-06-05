@@ -48,8 +48,9 @@
                   </div>
                   <div class="form-group col-md-6">
                     <label for="fullname_invoice" class="form-label">Ciudad</label>
-                    <select class="form-control" formControlName="city" required>
-                      <option *ngFor="let cit of cities" [value]="cit.cityCode">
+                    <select class="form-control" formControlName="city" (change)="selectCity($event.target.value)"
+                      required>
+                      <option *ngFor="let cit of cities" [value]="cit.cityDepartmentCode">
                         {{cit.name}}
                       </option>
                     </select>
@@ -59,6 +60,10 @@
                     <textarea class="form-control" formControlName="comments" rows="3" id="message"
                       class="form-control"></textarea>
                   </div>
+                  <div *ngIf="!canShip" class="form-group col-md-12">
+                    <p class="text-danger">* Oops, hay productos que no pueden ser enviados a la ciudad seleccionada,
+                      por favor revisa el carrito de compras</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -66,7 +71,8 @@
               <a [routerLink]="['/shoppingCart']" routerLink="[/shoppingCart]" class="btn btn-link text-muted">
                 <i class="fa fa-angle-left mr-2"></i>Volver al carrito
               </a>
-              <button type="submit" class="btn btn-outline-dark"><i class="far fa-save mr-2"></i>Finalizar
+              <button type="submit" class="btn btn-outline-dark" [disabled]="!canShip"><i
+                  class="far fa-save mr-2"></i>Finalizar
                 Orden!</button>
             </div>
           </form>

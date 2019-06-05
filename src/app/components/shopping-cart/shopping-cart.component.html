@@ -9,17 +9,18 @@
     <!-- Shopping Cart Section-->
     <section>
         <div class="row mb-5">
-            <div class="col-lg-8">
+            <div class="col-lg-9">
                 <div class="cart">
                     <div class="cart-header text-center" *ngIf="_cartService.arrItemCart.length > 0">
                         <div class="row">
-                            <div class="col-md-5">Item</div>
-                            <div class="col-md-7 d-none d-md-block">
+                            <div class="col-md-4">Item</div>
+                            <div class="col-md-8 d-none d-md-block">
                                 <div class="row">
+                                    <div class="col-md-3">Envío</div>
                                     <div class="col-md-3">Precio</div>
-                                    <div class="col-md-4">Cantidad</div>
+                                    <div class="col-md-2">Cantidad</div>
                                     <div class="col-md-3">Total</div>
-                                    <div class="col-md-2"></div>
+                                    <div class="col-md-1"></div>
                                 </div>
                             </div>
                         </div>
@@ -28,18 +29,27 @@
                         <!-- Product-->
                         <div class="cart-item" *ngFor="let itemCart of _cartService.arrItemCart; let i=index">
                             <div class="row d-flex align-items-center text-left text-md-center">
-                                <div class="col-12 col-md-5">
+                                <div class="col-12 col-md-4">
                                     <div class="d-flex align-items-center">
                                         <a [routerLink]="['/item',itemCart.item._id]">
-                                            <img [src]="itemCart.item.images[0]" alt="..." class="cart-item-img">
+                                            <!-- <img [src]="itemCart.item.images[0]" alt="..." class="cart-item-img"> -->
+                                            <img [src]="itemCart.item.images[0]" alt="..." width="80px">
                                         </a>
                                         <div class="cart-title text-left"><a [routerLink]="['/item',itemCart.item._id]"
                                                 class="text-uppercase text-dark"><strong>{{itemCart.item.name}}</strong></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-7 mt-4 mt-md-0">
+                                <div class="col-12 col-md-8 mt-4 mt-md-0">
                                     <div class="row align-items-center">
+                                        <div class="col-md-3">
+                                            <div class="row">
+                                                <div class="col-6 d-md-none text-muted">Precio</div>
+                                                <div class="col-6 col-md-12 text-right text-lg-center text-md-center">
+                                                    {{itemCart.item|shipping}}
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-md-3">
                                             <div class="row">
                                                 <div class="col-6 d-md-none text-muted">Precio</div>
@@ -48,7 +58,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-2">
                                             <div class="row align-items-center">
                                                 <div class="col-6 d-md-none text-muted">Cantidad</div>
                                                 <div class="col-6 col-md-12 text-right text-lg-center text-md-center">
@@ -65,7 +75,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-1">
                                             <div class="row">
                                                 <div class="col-6 d-md-none text-muted"></div>
                                                 <div class="col-12 d-md-block text-center"><button
@@ -83,7 +93,7 @@
 
             </div>
             <!--Order Summary-->
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="block">
                     <div class="block-header text-center">
                         <h6 class="text-uppercase mb-0">¿Cuánto voy a pagar?</h6>
@@ -101,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-between flex-column flex-lg-row col-lg-8 mt-3"
+            <div class="d-flex justify-content-between flex-column flex-lg-row col-lg-9 mt-3"
                 *ngIf="_cartService.arrItemCart.length > 0">
                 <a [routerLink]="['/home']" class="btn btn-link text-muted">
                     <i class="fa fa-chevron-left"></i> Me faltó algo!

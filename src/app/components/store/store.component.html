@@ -23,13 +23,14 @@
         <div class="px-xl-5">
             <div class="row row justify-content-center">
                 <!-- Grid -->
-                <div class="products-grid col-xl-11 col-lg-8 order-lg-2">
+                <div class="products-grid col-xl-12 col-lg-12 order-lg-2">
                     <div class="row">
                         <!-- product-->
-                        <div *ngFor="let item of items" class="col-xl-3 col-lg-4 col-sm-6 col-6">
+                        <div *ngFor="let item of items" class="col-xl-4 col-lg-4 col-sm-6 col-6"
+                            style="border:0px solid">
                             <div class="product mx-auto">
                                 <div class="product-image">
-                                    <img [src]="item.images[0]" alt="product" class="img-fluid" />
+                                    <img [src]="item.images[0]" alt="product" class="" width="250px" />
                                     <div class="product-hover-overlay">
                                         <a [routerLink]="['/item',item._id]" class="product-hover-overlay-link"></a>
                                         <div class="product-hover-overlay-buttons">
@@ -83,7 +84,8 @@
             </li>
 
             <!-- <li *ngFor="let in of counter(5) ;let i = index" class="page-item active"> -->
-            <li *ngFor="let in of counter(numberOfPages) ;let i = index" [ngClass]="{'page-item': true, 'active': actualPage == (i+1)}">
+            <li *ngFor="let in of counter(numberOfPages) ;let i = index"
+                [ngClass]="{'page-item': true, 'active': actualPage == (i+1)}">
                 <a (click)="goToPage(i+1)" class="page-link">{{i+1}}</a>
             </li>
 
@@ -116,11 +118,13 @@
             document.getElementById('slider-snap-input-lower'),
             document.getElementById('slider-snap-input-upper')
         ];
-        snapSlider.noUiSlider.on('update', function(values, handle) {
+        snapSlider.noUiSlider.on('update', function (values, handle)
+        {
             snapValues[handle].innerHTML = values[handle];
         });
 
-        snapSlider.noUiSlider.on('change', function(values, handle) {
+        snapSlider.noUiSlider.on('change', function (values, handle)
+        {
             inputValues[handle].value = values[handle];
         });
     </script>

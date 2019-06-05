@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 import { GeoService } from 'src/app/services/geo.service';
 import { Department } from 'src/app/models/department.model';
 import { City } from 'src/app/models/city.model';
+import { ItemCart } from 'src/app/models/item-cart.model';
+import Swal from 'sweetalert2';
+import { Item } from 'src/app/models/item.model';
 
 @Component({
   selector: 'app-checkout',
@@ -18,12 +21,10 @@ export class CheckoutComponent implements OnInit
   arrPaymentMethod: any[] = [{ '_id': 1, 'name': 'Contraentrega' }, { '_id': 2, 'name': 'Transferencia' }];
   departments: Department[] = [{ name: 'BOGOTA', code: '01' }];
   cities: City[] = [];
-
-  // departments : Department
-
   shippingCost: number = 6000;
   total: number = 0;
   forma: FormGroup;
+  canShip: Boolean = true;
 
   constructor(
     public _userService: UsuarioService,
@@ -57,15 +58,14 @@ export class CheckoutComponent implements OnInit
 
       this.selectDepartment('11');
 
-      // this.forma.controls['city'].patchValue({ id: '001', name: 'Bogotá D.C.' });
-      this.forma.controls['city'].setValue('001');
+      // this.forma.controls['city'].setValue('001'); // TODO: pendiente de borrar, junio 4 de 2019
     });
   }
 
 
   onRegisterOrder()
   {
-    console.warn(this.forma.value);
+    //check if the order has shipping issues
 
     const formValues = this.forma.value;
 
@@ -99,10 +99,37 @@ export class CheckoutComponent implements OnInit
 
   selectCity(selectedOption: String)
   {
-    this._geoService.getCitiesFromDepartment(selectedOption).subscribe(docs =>
+    const citySelected = selectedOption;
+
+    let arrDifferentCities: City[] = [];
+    let arrItemsNoShip: String[] = [];
+
+    //check if the order has shipping issues
+    this._cartService.arrItemCart.forEach((element: ItemCart) =>
     {
-      this.cities = docs;
+      const shippingAllColombia = element.item.shippingAllColombia;
+
+      if (!shippingAllColombia)
+      {
+        const item: Item = element.item;
+
+        item.shippingCities.forEach((element2: City) =>
+        {
+          if (citySelected !== element2.cityDepartmentCode)
+          {
+            arrDifferentCities.push(element2);
+            arrItemsNoShip.push(item.name);
+            this.canShip = false;
+          }
+        });
+      }
     });
+
+    if (!this.canShip)
+    {
+      Swal.fire('Oops', 'Los siguientes items no pueden ser enviados a tu ciudad: \n ' + JSON.stringify(arrItemsNoShip), 'warning');
+    }
+
   }
 
 
