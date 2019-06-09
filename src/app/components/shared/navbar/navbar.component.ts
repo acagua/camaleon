@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit
   storesLine1: any[] = [];
 
   constructor(private router: Router,
-    private _cartService: ShoppingCartService,
+    public _cartService: ShoppingCartService,
     public _userService: UsuarioService)
   {
 

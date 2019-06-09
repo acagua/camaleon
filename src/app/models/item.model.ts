@@ -4,9 +4,13 @@ export class Item
 {
     constructor(
         public _id: String,
+        public _storeCodeName: string,
         public name: String,
+        public images: String,
         public price: number,
-        public image: String,
+        public description: string,
+        public specifications: any [],
+        public options: any [],
         public shippingAllColombia: Boolean,
         public shippingCities?: City[]
     )

@@ -18,10 +18,10 @@ export class StoresComponent implements OnInit
     public _storeService: StoreService
   )
   {
-    this._categoryService.getCategoriesRandom(3)
+    this._categoryService.getCategoriesRandom(6)
       .subscribe((documents) =>
       {
-        if (documents.length === 3)
+        if (documents.length === 5)
         {
           this.categories = documents;
 
