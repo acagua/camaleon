@@ -12,6 +12,9 @@ const storeRoute = require('./server/routes/storeRoute');
 const orderRoute = require('./server/routes/orderRoute');
 const itemRoute = require('./server/routes/itemRoute');
 const categoryRoute = require('./server/routes/categoryRoute');
+const fileRoute = require('./server/routes/fileRoute');
+const passwordRoute = require('./server/routes/passwordRoute');
+const geoRoute = require('./server/routes/geoRoute');
 
 const app = express();
 
@@ -50,6 +53,9 @@ app.use('/api/store', storeRoute);
 app.use('/api/order', orderRoute);
 app.use('/api/item', itemRoute);
 app.use('/api/category', categoryRoute);
+app.use('/api/file', fileRoute);
+app.use('/api/password', passwordRoute);
+app.use('/api/geo', geoRoute);
 
 // --------------------------------------------------------------Catch all other routes and return the index file
 app.get('*', (req, res) =>
