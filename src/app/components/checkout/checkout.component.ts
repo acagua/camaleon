@@ -10,6 +10,7 @@ import { City } from 'src/app/models/city.model';
 import { ItemCart } from 'src/app/models/item-cart.model';
 import Swal from 'sweetalert2';
 import { Item } from 'src/app/models/item.model';
+import {Md5} from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-checkout',
@@ -17,7 +18,7 @@ import { Item } from 'src/app/models/item.model';
 })
 export class CheckoutComponent implements OnInit
 {
-  //TODO: como se puede hacer esto trayendo de base de datos solo una vez? habrá algun tipo de "bean de aplicacion, de sesion"?
+  // TODO: como se puede hacer esto trayendo de base de datos solo una vez? habrá algun tipo de "bean de aplicacion, de sesion"?
   arrPaymentMethod: any[] = [{ '_id': 1, 'name': 'Contraentrega' }, { '_id': 2, 'name': 'Transferencia' }];
   departments: Department[] = [{ name: 'BOGOTA', code: '01' }];
   cities: City[] = [];
@@ -25,6 +26,7 @@ export class CheckoutComponent implements OnInit
   total: number = 0;
   forma: FormGroup;
   canShip: Boolean = true;
+  payuSignature: String;
 
   constructor(
     public _userService: UsuarioService,
@@ -47,7 +49,6 @@ export class CheckoutComponent implements OnInit
     });
   }
 
-
   ngOnInit()
   {
     window.scrollTo(0, 0);
@@ -61,7 +62,6 @@ export class CheckoutComponent implements OnInit
       // this.forma.controls['city'].setValue('001'); // TODO: pendiente de borrar, junio 4 de 2019
     });
   }
-
 
   onRegisterOrder()
   {
@@ -84,9 +84,8 @@ export class CheckoutComponent implements OnInit
     {
       this._cartService.removeCart();
       this.router.navigate(['/profile']);
-    });;
+    });
   }
-
 
   selectDepartment(selectedOption: String)
   {
@@ -95,7 +94,6 @@ export class CheckoutComponent implements OnInit
       this.cities = docs;
     });
   }
-
 
   selectCity(selectedOption: String)
   {
@@ -129,9 +127,16 @@ export class CheckoutComponent implements OnInit
     {
       Swal.fire('Oops', 'Los siguientes items no pueden ser enviados a tu ciudad: \n ' + JSON.stringify(arrItemsNoShip), 'warning');
     }
-
   }
 
+  setPayuSignature(referenceCode: string, amount: number) {
+    const apiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
+    const merchantId = '806840';
+    const currency = 'COP';
+    this.payuSignature = Md5.hashStr(apiKey + '~' + merchantId + '~' + referenceCode + '~' + amount + '~' + currency).toString();
+
+    console.log(this.payuSignature);
+  }
 
 
 }

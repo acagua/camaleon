@@ -1,100 +1,131 @@
 <div class="container-90">
-  <!-- Hero Section-->
-  <section class="hero">
-    <div class="hero-content text-center">
-      <h2 class="hero-heading">Checkout</h2>
-    </div>
-  </section>
-  <hr>
-  <!-- Checkout-->
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
+    <!-- Hero Section-->
+    <section class="hero">
+        <div class="hero-content text-center">
+            <h2 class="hero-heading">Checkout</h2>
+        </div>
+    </section>
+    <hr>
+    <!-- Checkout-->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
 
-          <form ngNativeValidate [formGroup]="forma" (ngSubmit)="onRegisterOrder()">
-            <div class="block">
-              <!-- Invoice Address-->
-              <div class="block-body">
-                <div class="row">
-                  <div class="form-group col-md-6">
-                    <label for="emailaddress_invoice" class="form-label">Teléfono</label>
-                    <input type="text" class="form-control" formControlName="telephone" required>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="street_invoice" class="form-label">Dirección</label>
-                    <input type="text" class="form-control" formControlName="address" required>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="fullname_invoice" class="form-label">Quién Recibe?</label>
-                    <input type="text" class="form-control" formControlName="whoReceives" required>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="fullname_invoice" class="form-label">Método de Pago</label>
-                    <select class="form-control" formControlName="paymentMethod" required>
+                    <form ngNativeValidate [formGroup]="forma" (ngSubmit)="onRegisterOrder()">
+                        <div class="block">
+                            <!-- Invoice Address-->
+                            <div class="block-body">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="emailaddress_invoice" class="form-label">Teléfono</label>
+                                        <input type="text" class="form-control" formControlName="telephone" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="street_invoice" class="form-label">Dirección</label>
+                                        <input type="text" class="form-control" formControlName="address" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="fullname_invoice" class="form-label">Quién Recibe?</label>
+                                        <input type="text" class="form-control" formControlName="whoReceives" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="fullname_invoice" class="form-label">Método de Pago</label>
+                                        <select class="form-control" formControlName="paymentMethod" required>
                       <option *ngFor="let paymentMethod of arrPaymentMethod" [value]="paymentMethod._id">
                         {{paymentMethod.name}}
                       </option>
                     </select>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="fullname_invoice" class="form-label">Departamento</label>
-                    <select class="form-control" formControlName="department"
-                      (change)="selectDepartment($event.target.value)" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="fullname_invoice" class="form-label">Departamento</label>
+                                        <select class="form-control" formControlName="department" (change)="selectDepartment($event.target.value)" required>
                       <option *ngFor="let dep of departments" [value]="dep.code">
                         {{dep.name}}
                       </option>
                     </select>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="fullname_invoice" class="form-label">Ciudad</label>
-                    <select class="form-control" formControlName="city" (change)="selectCity($event.target.value)"
-                      required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="fullname_invoice" class="form-label">Ciudad</label>
+                                        <select class="form-control" formControlName="city" (change)="selectCity($event.target.value)" required>
                       <option *ngFor="let cit of cities" [value]="cit.cityDepartmentCode">
                         {{cit.name}}
                       </option>
                     </select>
-                  </div>
-                  <div class="form-group col-md-12">
-                    <label for="message" class="form-label">Observaciones</label>
-                    <textarea class="form-control" formControlName="comments" rows="3" id="message"
-                      class="form-control"></textarea>
-                  </div>
-                  <div *ngIf="!canShip" class="form-group col-md-12">
-                    <p class="text-danger">* Oops, hay productos que no pueden ser enviados a la ciudad seleccionada,
-                      por favor revisa el carrito de compras</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row">
-              <a [routerLink]="['/shoppingCart']" routerLink="[/shoppingCart]" class="btn btn-link text-muted">
-                <i class="fa fa-angle-left mr-2"></i>Volver al carrito
-              </a>
-              <button type="submit" class="btn btn-outline-dark" [disabled]="!canShip"><i
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="message" class="form-label">Observaciones</label>
+                                        <textarea class="form-control" formControlName="comments" rows="3" id="message" class="form-control"></textarea>
+                                    </div>
+                                    <div *ngIf="!canShip" class="form-group col-md-12">
+                                        <p class="text-danger">* Oops, hay productos que no pueden ser enviados a la ciudad seleccionada, por favor revisa el carrito de compras</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row">
+                            <a [routerLink]="['/shoppingCart']" routerLink="[/shoppingCart]" class="btn btn-link text-muted">
+                                <i class="fa fa-angle-left mr-2"></i>Volver al carrito
+                            </a>
+                            <button type="submit" class="btn btn-outline-dark" [disabled]="!canShip"><i
                   class="far fa-save mr-2"></i>Finalizar
                 Orden!</button>
-            </div>
-          </form>
+                        </div>
+                    </form>
 
-        </div>
-        <div class="col-lg-4">
-          <div class="block mb-5">
-            <div class="block-header">
-              <h6 class="text-uppercase mb-0">¿Cuánto voy a pagar?</h6>
+                </div>
+                <div class="col-lg-4">
+                    <div class="block mb-5">
+                        <div class="block-header">
+                            <h6 class="text-uppercase mb-0">¿Cuánto voy a pagar?</h6>
+                        </div>
+                        <div class="block-body bg-light pt-1">
+                            <ul class="order-summary mb-0 list-unstyled">
+                                <li class="order-summary-item"><span>Subtotal </span><span>{{_cartService.total|currency}}</span></li>
+                                <li class="order-summary-item"><span>Envío</span><span>{{shippingCost|currency}}</span></li>
+                                <li class="order-summary-item"><span>Impuestos</span><span>$0.00</span></li>
+                                <li class="order-summary-item border-0"><span>Total</span><strong class="order-summary-total">{{total|currency}}</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="block-body bg-light pt-1">
-              <ul class="order-summary mb-0 list-unstyled">
-                <li class="order-summary-item"><span>Subtotal </span><span>{{_cartService.total|currency}}</span></li>
-                <li class="order-summary-item"><span>Envío</span><span>{{shippingCost|currency}}</span></li>
-                <li class="order-summary-item"><span>Impuestos</span><span>$0.00</span></li>
-                <li class="order-summary-item border-0"><span>Total</span><strong
-                    class="order-summary-total">{{total|currency}}</strong></li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 </div>
+
+<!-- <form #form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+  <input name="merchantId"    type="hidden"  value="508029"   >
+  <input name="accountId"     type="hidden"  value="512321" >
+  <input name="description"   type="hidden"  value="Test PAYU"  >
+  <input name="referenceCode" type="hidden"  value="TestPayU" >
+  <input name="amount"        type="hidden"  value="20000"   >
+  <input name="tax"           type="hidden"  value="3193"  >
+  <input name="taxReturnBase" type="hidden"  value="16806" >
+  <input name="currency"      type="hidden"  value="COP" >
+  <input name="signature"     type="hidden"  value="7ee7cf808ce6a39b17481c54f2c57acc"  >
+  <input name="test"          type="hidden"  value="1" >
+  <input name="buyerEmail"    type="hidden"  value="test@test.com" >
+  <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" >
+  <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
+  <input name="Submit"        type="submit"  value="Enviar" >
+</form>
+<button type="submit" class="btn btn-success" (click)="setPayuSignature('codigo2', 20000)">Submit</button>
+
+
+<form ngNoForm method="post" action="https://checkout.payulatam.com/ppp-web-gateway-payu/">
+    <input name="merchantId" type="hidden" value="806840">
+    <input name="accountId" type="hidden" value="813893">
+    <input name="description" type="hidden" value="Test PAYU">
+    <input name="referenceCode" type="hidden" value="TestPayU2">
+    <input name="amount" type="hidden" value="20000">
+    <input name="tax" type="hidden" value="0">
+    <input name="taxReturnBase" type="hidden" value="20000">
+    <input name="currency" type="hidden" value="COP">
+    <input name="signature" type="hidden" value="0660abca9ea0a71d026b42d2c083d132">
+    <input name="test" type="hidden" value="1">
+    <input name="buyerEmail" type="hidden" value="andres@camaleon.com">
+    <input name="responseUrl" type="hidden" value="http://www.camaleon.shop/response">
+    <input name="confirmationUrl" type="hidden" value="http://www.camaleon.shop/confirmation">
+    <button type="submit">Search</button>
+</form> -->
