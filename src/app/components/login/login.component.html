@@ -6,16 +6,22 @@
     </section>
 
     <hr>
+    <div class="only-mobile my-3 text-center">
+        Selecciona una opción:
+    </div>
+
     <section>
         <div class="container">
             <div class="row justify-content-center">
 
                 <div class="col-lg-5">
                     <div class="block">
-                        <div class="block-header">
-                            <h6 class="text-uppercase mb-0">Regístrate</h6>
-                        </div>
-                        <div class="block-body">
+                        <a class="" data-toggle="collapse" href="#register-content" role="button" aria-expanded="false" aria-controls="register-content">
+                            <div class="block-header">
+                                <h6 class="text-uppercase register-title">Regístrate</h6>
+                            </div>
+                        </a>
+                        <div id="register-content" class="block-body collapse">
                             <form ngNativeValidate [formGroup]="forma2" (ngSubmit)="registerUser()">
                                 <div class="form-group">
                                     <label for="name" class="form-label">Nombres</label>
@@ -54,13 +60,15 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-5">
+                <br>
+                <div class="col-lg-5 mt-3 mt-md-0">
                     <div class="block">
-                        <div class="block-header">
-                            <h6 class="text-uppercase mb-0">Ingresa</h6>
-                        </div>
-                        <div class="block-body">
+                        <a class="" data-toggle="collapse" href="#login-content" role="button" aria-expanded="false" aria-controls="login-content">
+                            <div class="block-header">
+                                <h6 class="text-uppercase register-title">Ingresa</h6>
+                            </div>
+                        </a>
+                        <div id="login-content" class="block-body collapse">
 
                             <form ngNativeValidate #f="ngForm" (ngSubmit)="loginUser(f)">
                                 <div class="row">
