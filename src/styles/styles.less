@@ -285,6 +285,12 @@ input[type=number]::-webkit-outer-spin-button {
 .only-mobile{
     display:none;
 }
+.only-desktop{
+    display:block;
+}
+.collapse:not(.show) {
+    display: block;
+}
 
 @media only screen and (max-width: 991px){
     .menu-mobile{
@@ -292,6 +298,12 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .only-mobile{
         display:block;
+    }
+    .collapse:not(.show) {
+        display: none;
+    }
+    .only-desktop{
+        display:none;
     }
 }
 @media only screen and (max-width: 768px) {
@@ -464,6 +476,13 @@ input[type=number]::-webkit-outer-spin-button {
     .only-mobile{
         display:block;
     }
+    .only-desktop{
+        display:none;
+    }
+    .collapse:not(.show) {
+        display: none;
+    }
+    
 }
 
 

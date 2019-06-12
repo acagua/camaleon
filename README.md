@@ -111,6 +111,15 @@ sudo npm i <modulo> --unsafe-perm=true --allow-root
 3. sudo apt intall node npm
 4. npm install -g @angular/cli
 
+## Actualizar Angular
+1. sudo ng update @angular/cli @angular/core
+
+## Actualizar npm
+1. sudo npm cache clean -f 
+2. sudo npm install -g n 
+3. sudo n stable 
+4. sudo ln -sf /usr/local/n/versions/node/<xx.x.x (xx.x.x = nueva version)>/bin/node /usr/bin/node
+
 ## Daemon PM2 para levantar app
 1. sudo pm2 delete all
 2. pm2 start /var/www/camaleon.shop/server.js --name="camaleon"
