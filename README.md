@@ -127,3 +127,18 @@ sudo npm i <modulo> --unsafe-perm=true --allow-root
 4. pm2 startup
 5. copiar PATH resultante (ejemplo) sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu)
 6. pm2 status
+
+## Memoria para el Build
+1. free -m -> para validar si se está usando
+2. df -h -> para ver disponibilidad de espacio
+3. sudo fallocate -l 1G /swapfile ->1G hace referencia a lo que se va a guardar en swap
+4. ls -lh /swapfile -> validar si se creó
+5. sudo chmod 600 /swapfile
+6. sudo mkswap /swapfile
+7. sudo swapon /swapfile
+8. sudo swapon -s -> para ver si quedó bien
+
+## Activar memoria SWAP para el Build
+1. sudo mkswap /swapfile
+2. sudo swapon /swapfile
+8. sudo swapon -s
