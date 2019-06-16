@@ -215,3 +215,41 @@ exports.sendNewPasswordMail = function (parameters)
         console.log('error en mail - sendNewPasswordMail: ' + error);
     }
 }
+
+exports.sendContactMessage = function (parameters)
+{
+    try
+    {
+        var contactMessage = parameters.contactMessage;
+
+        var to = mailFrom;
+
+        var html = 'hola';
+
+        var mailOptions = {
+            from: mailFrom,
+            to: to,
+            subject: 'Nuevo Mensaje de Contacto',
+            html: html
+        };
+
+        transporter.sendMail(mailOptions, function (error, info)
+        {
+            if (error)
+            {
+                console.log(error);
+            }
+            else
+            {
+                console.log("Email sent");
+            }
+        });
+
+        return true;
+    }
+    catch (error)
+    {
+        console.log('error en mail - sendContactMessage: ' + error);
+        return false;
+    }
+}

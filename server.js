@@ -15,6 +15,8 @@ const categoryRoute = require('./server/routes/categoryRoute');
 const fileRoute = require('./server/routes/fileRoute');
 const passwordRoute = require('./server/routes/passwordRoute');
 const geoRoute = require('./server/routes/geoRoute');
+const contactMessageRoute = require('./server/routes/contactMessageRoute');
+const payuRoute = require('./server/routes/payuRoute');
 
 const app = express();
 
@@ -22,6 +24,7 @@ const app = express();
 app.use(function (req, res, next)
 {
     res.header("Access-Control-Allow-Origin", "*");
+    // res.header("Access-Control-Allow-Origin", "http://localhost:4200");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     next();
@@ -56,6 +59,8 @@ app.use('/api/category', categoryRoute);
 app.use('/api/file', fileRoute);
 app.use('/api/password', passwordRoute);
 app.use('/api/geo', geoRoute);
+app.use('/api/contactMessage', contactMessageRoute);
+app.use('/api/payu', payuRoute);
 
 // --------------------------------------------------------------Catch all other routes and return the index file
 app.get('*', (req, res) =>

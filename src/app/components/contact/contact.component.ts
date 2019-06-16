@@ -24,7 +24,7 @@ export class ContactComponent implements OnInit
 
   ngOnInit()
   {
-
+    window.scrollTo(0,0);
   }
 
   goStore(store: any)
