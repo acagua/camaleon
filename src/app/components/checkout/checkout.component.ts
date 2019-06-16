@@ -10,7 +10,7 @@ import { City } from 'src/app/models/city.model';
 import { ItemCart } from 'src/app/models/item-cart.model';
 import Swal from 'sweetalert2';
 import { Item } from 'src/app/models/item.model';
-import {Md5} from 'ts-md5/dist/md5';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-checkout',
@@ -82,8 +82,8 @@ export class CheckoutComponent implements OnInit
       arrItem: this._cartService.arrItemCart
     }).subscribe(resp =>
     {
-      this._cartService.removeCart();
-      this.router.navigate(['/profile']);
+      // this._cartService.removeCart();
+      // this.router.navigate(['/profile']);
     });
   }
 
@@ -129,7 +129,8 @@ export class CheckoutComponent implements OnInit
     }
   }
 
-  setPayuSignature(referenceCode: string, amount: number) {
+  setPayuSignature(referenceCode: string, amount: number)
+  {
     const apiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
     const merchantId = '806840';
     const currency = 'COP';

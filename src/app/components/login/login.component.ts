@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit
   {
     const formaValue = this.forma2.value;
 
-    let usuario = new Usuario(formaValue.name, formaValue.lastName, formaValue.email2.toLowerCase(), formaValue.password2);
+    let usuario = new Usuario(formaValue.name, formaValue.lastName, formaValue.email2.trim().toLowerCase(), formaValue.password2);
 
     this._usuarioService.registerUser(usuario)
       .subscribe(resp =>
@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit
 
   loginUser(forma: NgForm)
   {
-    let usuario = new Usuario(null, null, forma.value.email1.toLowerCase(), forma.value.password1);
+    let usuario = new Usuario(null, null, forma.value.email1.trim().toLowerCase(), forma.value.password1);
 
     this._usuarioService.loginUser(usuario, forma.value.rememberme)
       .subscribe(resp =>

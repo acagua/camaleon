@@ -27,7 +27,7 @@ export class PasswordForgotComponent implements OnInit
   {
     const formForgotValue = this.formForgot.value;
 
-    let email = formForgotValue.email;
+    let email = formForgotValue.email.trim();
 
     this._passwordService.askNewPassword(email)
       .subscribe(resp =>
