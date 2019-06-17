@@ -6,11 +6,13 @@ var util = require('../../utils/util.js');
 // var templateNewOrder = fs.readFileSync('server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
 // var templateNewOrderStore = fs.readFileSync('server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
 // var templateNewPassword = fs.readFileSync('server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
+// var templateContactMessage = fs.readFileSync('server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
 
 //templates produccion
 var templateNewOrder = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
 var templateNewOrderStore = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
 var templateNewPassword = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
+var templateContactMessage = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
 
 var mailFrom = 'info@camaleon.shop';
 
@@ -222,9 +224,13 @@ exports.sendContactMessage = function (parameters)
     {
         var contactMessage = parameters.contactMessage;
 
-        var to = mailFrom;
+        // var to = mailFrom;
+        var to = 'nicolaz888@hotmail.com';
 
-        var html = 'hola';
+        var html = templateContactMessage.replace('**sender**', contactMessage.name + ' ' + contactMessage.lastName)
+            .replace('**phone**', contactMessage.phone)
+            .replace('**email**', contactMessage.email)
+            .replace('**message**', contactMessage.message);
 
         var mailOptions = {
             from: mailFrom,

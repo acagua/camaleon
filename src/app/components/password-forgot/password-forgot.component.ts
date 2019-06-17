@@ -9,7 +9,6 @@ import { PasswordService } from 'src/app/services/password.service';
 })
 export class PasswordForgotComponent implements OnInit
 {
-
   formForgot: FormGroup;
 
   constructor(public _passwordService: PasswordService) { }

@@ -13,7 +13,6 @@ import { saveAs } from 'file-saver';
 })
 export class LoginComponent implements OnInit
 {
-
   email: string;
   rememberme: boolean = false;
 

@@ -40,7 +40,8 @@ mongoose.connection.openUri('mongodb://camaleonUser:M3g4l0d0n2019!DBUser@ec2-3-8
     if (err)
     {
         throw err;
-    } else
+    }
+    else
     {
         console.log('Base de datos online');
     }
