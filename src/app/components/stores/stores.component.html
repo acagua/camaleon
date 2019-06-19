@@ -1,25 +1,25 @@
 <div class="container-90">
 
-  <section class="hero">
-    <div class="hero-content text-center">
-      <h2 class="hero-heading">Tiendas</h2>
-    </div>
-  </section>
-  <hr>
-
-  <section>
-
-    <div *ngFor="let category of categories;index as i" class="">
-      <h3>{{category.name}}</h3>
-      <div class="row mb-4 mt-3">
-        <div *ngFor="let store of storesLines[i]" class="pointer col-5 col-sm-4 col-md-2 text-center">
-          <a [routerLink]="[ '/store', store.codeName ]">
-            <img class="img-fluid mx-auto rounded-border" [src]="store.imageLogo" alt="Card image cap">
-          </a>
+    <section class="hero">
+        <div class="hero-content text-center">
+            <h2 class="hero-heading">Tiendas</h2>
         </div>
-      </div>
-    </div>
+    </section>
+    <hr>
 
-  </section>
+    <section>
+
+        <div *ngFor="let category of categories;index as i" class="">
+            <h3 class="category-title">{{category.name}}</h3>
+            <div class="row mb-4 mt-3 category">
+                <div *ngFor="let store of storesLines[i]" class="pointer col-5 col-sm-4 col-md-2 text-center my-2">
+                    <a [routerLink]="[ '/store', store.codeName ]">
+                        <img class="img-fluid mx-auto rounded-border" [src]="store.imageLogo" alt="Card image cap">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
 
 </div>
