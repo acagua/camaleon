@@ -16,6 +16,7 @@ import { ItemsComponent } from './components/items/items.component';
 import { PasswordForgotComponent } from './components/password-forgot/password-forgot.component';
 import { PasswordNewComponent } from './components/password-new/password-new.component';
 import { PasswordNewGuard } from './services/guards/password-new.guard';
+import { PayuResponseComponent } from './components/payu-response/payu-response.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,6 +35,7 @@ const APP_ROUTES: Routes = [
   { path: 'items', component: ItemsComponent },
   { path: 'passwordForgot', component: PasswordForgotComponent },
   { path: 'passwordNew', component: PasswordNewComponent, canActivate: [PasswordNewGuard] },
+  { path: 'response', component: PayuResponseComponent },
   { path: '', component: HomeComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];

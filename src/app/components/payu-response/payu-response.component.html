@@ -1,0 +1,16 @@
+<div>
+    Fecha de transacción: {{transactionDate}}
+    <br> Valor: {{amount|currency}}
+    <br> Nº de orden: {{referenceCode}}
+    <br> Estado: {{transactionStateStr}}
+
+    <div *ngIf="transactionState == '6'">
+        Detalle:{{responseCode}}
+    </div>
+    <div *ngIf="transactionState == '4'">
+        Dentro de poco recibiras tu pedido!
+    </div>
+    <div *ngIf="transactionState == '7'">
+        Detalle:{{responseCode}}
+    </div>
+</div>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators  } from '@angular/forms';
 import { OrderService } from 'src/app/services/order.service';
 import { Router } from '@angular/router';
 import { GeoService } from 'src/app/services/geo.service';
@@ -12,10 +12,12 @@ import Swal from 'sweetalert2';
 import { Item } from 'src/app/models/item.model';
 import { Md5 } from 'ts-md5/dist/md5';
 
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html'
 })
+
 export class CheckoutComponent implements OnInit
 {
   // TODO: como se puede hacer esto trayendo de base de datos solo una vez? habrá algun tipo de "bean de aplicacion, de sesion"?
@@ -25,8 +27,28 @@ export class CheckoutComponent implements OnInit
   shippingCost: number = 6000;
   total: number = 0;
   forma: FormGroup;
+  formPayu: FormGroup;
   canShip: Boolean = true;
   payuSignature: String;
+  email = localStorage.getItem('email');
+  tax = 0;
+  // Produccion
+  // url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/';
+  // payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
+  // merchantId = '806840';
+  // accountId = '813893';
+  // responseUrl = 'http://www.camaleon.shop/response'
+  // confirmationUrl = 'https://www.camaleon.shop/confirmation';
+  // Sandbox
+  url = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu';
+  payUApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
+  merchantId = '508029';
+  accountId = '512326';
+  responseUrl = 'http://localhost:4200/response';
+  confirmationUrl = 'https://www.camaleon.shop/confirmation';
+  currency = 'COP';
+  description: string;
+  referenceCode: string;
 
   constructor(
     public _userService: UsuarioService,
@@ -34,8 +56,7 @@ export class CheckoutComponent implements OnInit
     public _orderService: OrderService,
     public _geoService: GeoService,
     public router: Router,
-  )
-  {
+  )  {
     this.total = _cartService.total + this.shippingCost;
 
     this.forma = new FormGroup({
@@ -65,7 +86,7 @@ export class CheckoutComponent implements OnInit
 
   onRegisterOrder()
   {
-    //check if the order has shipping issues
+    // check if the order has shipping issues
 
     const formValues = this.forma.value;
 
@@ -82,8 +103,14 @@ export class CheckoutComponent implements OnInit
       arrItem: this._cartService.arrItemCart
     }).subscribe(resp =>
     {
-      // this._cartService.removeCart();
+      this.referenceCode = resp.document.number;
+      this.description = resp.document.number;
+
       // this.router.navigate(['/profile']);
+      this.setPayuSignature();
+      // TODO: descomentar limpieza de carrito en compra
+      // this._cartService.removeCart();
+      this.submitForm();
     });
   }
 
@@ -110,16 +137,18 @@ export class CheckoutComponent implements OnInit
       if (!shippingAllColombia)
       {
         const item: Item = element.item;
+        if(item.shippingCities != null){
 
-        item.shippingCities.forEach((element2: City) =>
-        {
-          if (citySelected !== element2.cityDepartmentCode)
+          item.shippingCities.forEach((element2: City) =>
           {
-            arrDifferentCities.push(element2);
-            arrItemsNoShip.push(item.name);
-            this.canShip = false;
-          }
-        });
+            if (citySelected !== element2.cityDepartmentCode)
+            {
+              arrDifferentCities.push(element2);
+              arrItemsNoShip.push(item.name);
+              this.canShip = false;
+            }
+          });
+        }
       }
     });
 
@@ -129,15 +158,96 @@ export class CheckoutComponent implements OnInit
     }
   }
 
-  setPayuSignature(referenceCode: string, amount: number)
+  setPayuSignature()
   {
-    const apiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
-    const merchantId = '806840';
-    const currency = 'COP';
-    this.payuSignature = Md5.hashStr(apiKey + '~' + merchantId + '~' + referenceCode + '~' + amount + '~' + currency).toString();
-
-    console.log(this.payuSignature);
+    this.payuSignature = Md5.hashStr(this.payUApiKey + '~' + this.merchantId + '~' + this.referenceCode + '~' + this.total + '~' + this.currency).toString();
   }
 
+  submitForm() {
+    const customForm = document.createElement('form');
+    customForm.action = this.url;
+    customForm.method = 'POST';
+
+    const merchantId = document.createElement('input');
+    merchantId.type = 'hidden';
+    merchantId.name = 'merchantId';
+    merchantId.value = this.merchantId;
+    customForm.appendChild(merchantId);
+
+    const accountId = document.createElement('input');
+    accountId.type = 'hidden';
+    accountId.name = 'accountId';
+    accountId.value = this.accountId;
+    customForm.appendChild(accountId);
+
+    const description = document.createElement('input');
+    description.type = 'hidden';
+    description.name = 'description';
+    description.value = this.description;
+    customForm.appendChild(description);
+
+    const referenceCode = document.createElement('input');
+    referenceCode.type = 'hidden';
+    referenceCode.name = 'referenceCode';
+    referenceCode.value = this.referenceCode;
+    customForm.appendChild(referenceCode);
+
+    const amount = document.createElement('input');
+    amount.type = 'hidden';
+    amount.name = 'amount';
+    amount.value = this.total.toString();
+    customForm.appendChild(amount);
+
+    const tax = document.createElement('input');
+    tax.type = 'hidden';
+    tax.name = 'tax';
+    tax.value = this.tax.toString();
+    customForm.appendChild(tax);
+
+    const taxReturnBase = document.createElement('input');
+    taxReturnBase.type = 'hidden';
+    taxReturnBase.name = 'taxReturnBase';
+    taxReturnBase.value = this.total.toString();
+    customForm.appendChild(taxReturnBase);
+
+    const currency = document.createElement('input');
+    currency.type = 'hidden';
+    currency.name = 'currency';
+    currency.value = this.currency;
+    customForm.appendChild(currency);
+
+    const test = document.createElement('input');
+    test.type = 'hidden';
+    test.name = 'test';
+    test.value = '1';
+    customForm.appendChild(test);
+
+    const signature = document.createElement('input');
+    signature.type = 'hidden';
+    signature.name = 'signature';
+    signature.value = this.payuSignature.toString();
+    customForm.appendChild(signature);
+
+    const buyerEmail = document.createElement('input');
+    buyerEmail.type = 'hidden';
+    buyerEmail.name = 'buyerEmail';
+    buyerEmail.value = this.email;
+    customForm.appendChild(buyerEmail);
+
+    const responseUrl = document.createElement('input');
+    responseUrl.type = 'hidden';
+    responseUrl.name = 'responseUrl';
+    responseUrl.value = this.responseUrl;
+    customForm.appendChild(responseUrl);
+
+    const confirmationUrl = document.createElement('input');
+    confirmationUrl.type = 'hidden';
+    confirmationUrl.name = 'confirmationUrl';
+    confirmationUrl.value = this.confirmationUrl;
+    customForm.appendChild(confirmationUrl);
+
+    document.body.appendChild(customForm);
+    customForm.submit();
+  }
 
 }

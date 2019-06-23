@@ -23,6 +23,7 @@ import { StoresComponent } from './components/stores/stores.component';
 import { ItemsComponent } from './components/items/items.component';
 import { PasswordForgotComponent } from './components/password-forgot/password-forgot.component';
 import { PasswordNewComponent } from './components/password-new/password-new.component';
+import { PayuResponseComponent } from './components/payu-response/payu-response.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { PasswordNewComponent } from './components/password-new/password-new.com
     StoresComponent,
     ItemsComponent,
     PasswordForgotComponent,
-    PasswordNewComponent
+    PasswordNewComponent,
+    PayuResponseComponent
   ],
   imports: [
     BrowserModule,
