@@ -6,6 +6,7 @@ import { UsuarioService } from 'src/app/services/usuario.service.js';
 import Swal from 'sweetalert2';
 import { FileService } from 'src/app/services/file.service.js';
 import { saveAs } from 'file-saver';
+import { REGEX_EMAIL } from '../../constants/constants';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +14,8 @@ import { saveAs } from 'file-saver';
 })
 export class LoginComponent implements OnInit
 {
-  email: string;
-  rememberme: boolean = false;
-
-  forma2: FormGroup;
+  formLogin: FormGroup;
+  formRegister: FormGroup;
   usuario: Usuario;
 
   constructor(
@@ -32,7 +31,13 @@ export class LoginComponent implements OnInit
   {
     window.scrollTo(0, 0);
 
-    this.forma2 = new FormGroup({
+    this.formLogin = new FormGroup({
+      email1: new FormControl(null, [Validators.required, Validators.email]),
+      password1: new FormControl(null, Validators.required),
+      rememberMe: new FormControl(false),
+    });
+
+    this.formRegister = new FormGroup({
       name: new FormControl(null, Validators.required),
       email2: new FormControl(null, [Validators.required, Validators.email]),
       lastName: new FormControl(null, Validators.required),
@@ -53,66 +58,69 @@ export class LoginComponent implements OnInit
       }
     }
 
+    this.formLogin.get('email1').setValue(localStorage.getItem('email') || '');
+    this.formLogin.get('rememberMe').setValue(localStorage.getItem('email') ? true : false);
 
-    this.email = localStorage.getItem('email') || '';
-
-    if (this.email.length > 1)
-    {
-      this.rememberme = true;
-    }
-
+    // if (this.email.length > 1)
+    // {
+    //   this.rememberme = true;
+    // }
   }
 
 
   registerUser()
   {
-    const formaValue = this.forma2.value;
+    const formRegisterValue = this.formRegister.value;
 
-    let usuario = new Usuario(formaValue.name, formaValue.lastName, formaValue.email2.trim().toLowerCase(), formaValue.password2);
+    //validate email
+    const email = formRegisterValue.email2.trim().toLowerCase();
 
-    this._usuarioService.registerUser(usuario)
-      .subscribe(resp =>
-      {
-        Swal.fire({
-          title: 'Usuario creado',
-          text: usuario.email,
-          type: 'success',
-          confirmButtonText: 'Ok'
-        }).then((result) =>
+    if (REGEX_EMAIL.test(String(email).toLowerCase()))
+    {
+      let usuario = new Usuario(formRegisterValue.name, formRegisterValue.lastName, email, formRegisterValue.password2);
+
+      this._usuarioService.registerUser(usuario)
+        .subscribe(resp =>
         {
-          if (result.value)
+          Swal.fire({
+            title: 'Usuario creado',
+            text: usuario.email,
+            type: 'success',
+            confirmButtonText: 'Ok'
+          }).then((result) =>
           {
-            this._usuarioService.loginUser(usuario)
-              .subscribe(resp =>
-              {
-                window.location.reload();
-              });
-          }
+            if (result.value)
+            {
+              this._usuarioService.loginUser(usuario)
+                .subscribe(resp =>
+                {
+                  window.location.reload();
+                });
+            }
+          });
         });
-
-      });
+    }
+    else
+    {
+      Swal.fire('Oops', 'El correo no parece un correo e_e. Recuerda que debe tener un patrón como micorreo@dominio.com', 'warning');
+    }
   }
 
 
-  loginUser(forma: NgForm)
+  loginUser()
   {
-    let usuario = new Usuario(null, null, forma.value.email1.trim().toLowerCase(), forma.value.password1);
+    const formLoginValue = this.formLogin.value;
 
-    this._usuarioService.loginUser(usuario, forma.value.rememberme)
+    let usuario = new Usuario(null, null, formLoginValue.email1.trim().toLowerCase(), formLoginValue.password1);
+
+    console.log('formLoginValue.rememberMe: ' + formLoginValue.rememberMe);
+
+    this._usuarioService.loginUser(usuario, formLoginValue.rememberMe)
       .subscribe(resp =>
       {
         window.location.reload();
       });
   }
 
-
-  downloadFile()
-  {
-    this._fileService.downloadPoliticas()
-      .subscribe(
-        data => saveAs(data, 'politicaTratamientoDatos.pdf'),
-        error => console.error(error)
-      );
-  }
 
 }

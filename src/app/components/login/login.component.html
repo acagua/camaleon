@@ -16,7 +16,8 @@
 
                 <div class="col-lg-5">
                     <div class="block">
-                        <a class="only-mobile" data-toggle="collapse" href="#register-content" role="button" aria-expanded="false" aria-controls="register-content">
+                        <a class="only-mobile" data-toggle="collapse" href="#register-content" role="button"
+                            aria-expanded="false" aria-controls="register-content">
                             <div class="block-header">
                                 <h6 class="text-uppercase register-title">Regístrate</h6>
                             </div>
@@ -25,38 +26,44 @@
                             <h6 class="text-uppercase register-title">Regístrate</h6>
                         </div>
                         <div id="register-content" class="block-body collapse">
-                            <form ngNativeValidate [formGroup]="forma2" (ngSubmit)="registerUser()">
+                            <form ngNativeValidate [formGroup]="formRegister" (ngSubmit)="registerUser()">
                                 <div class="form-group">
                                     <label for="name" class="form-label">Nombres</label>
-                                    <input formControlName="name" name="name" id="name" type="text" class="form-control" required>
+                                    <input formControlName="name" name="name" id="name" type="text" class="form-control"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">Apellidos</label>
-                                    <input formControlName="lastName" name="lastName" type="text" class="form-control" required>
+                                    <input formControlName="lastName" name="lastName" type="text" class="form-control"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email2" class="form-label">Correo</label>
-                                    <input formControlName="email2" name="email2" id="email2" type="text" class="form-control" required>
+                                    <input formControlName="email2" name="email2" id="email2" type="text"
+                                        class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password2" class="form-label">Contraseña</label>
-                                    <input formControlName="password2" name="password2" id="password2" type="password" minlength="8" class="form-control" required>
+                                    <input formControlName="password2" name="password2" id="password2" type="password"
+                                        minlength="8" class="form-control" required>
                                 </div>
                                 <div class="form-group text-center">
-                                    <!-- <p>Al registrarte aceptas las políticas de tratamiento de datos de Cameleon que puedes encontrar <a href="javascript:void(0)"
-                      (click)="downloadFile()">aquí</a>
-                  </p> -->
                                     <p>Al registrarte aceptas las
-                                        <a target="_blank" href="https://s3.amazonaws.com/camaleon/general/politica-para-el-tratamiento-de-datos-personales-camaleon.pdf" rel="noopener">
-                                          Políticas de Tratamiento de Datos
+                                        <a target="_blank"
+                                            href="https://s3.amazonaws.com/camaleon/general/politica-para-el-tratamiento-de-datos-personales-camaleon.pdf"
+                                            rel="noopener">
+                                            Políticas de Tratamiento de Datos
                                         </a> y los
-                                        <a target="_blank" href="https://s3.amazonaws.com/camaleon/general/terminos-condiciones-camaleon.pdf" rel="noopener">
-                                          Términos y Condiciones
-                                      </a> de Camaleon.
+                                        <a target="_blank"
+                                            href="https://s3.amazonaws.com/camaleon/general/terminos-condiciones-camaleon.pdf"
+                                            rel="noopener">
+                                            Términos y Condiciones
+                                        </a> de Camaleon.
                                     </p>
                                 </div>
                                 <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-outline-dark"><i class="far fa-user mr-2"></i>Registrar</button>
+                                    <button type="submit" class="btn btn-outline-dark"><i
+                                            class="far fa-user mr-2"></i>Registrar</button>
                                 </div>
                             </form>
 
@@ -66,7 +73,8 @@
                 <br>
                 <div class="col-lg-5 mt-3 mt-md-0">
                     <div class="block">
-                        <a class="only-mobile" data-toggle="collapse" href="#login-content" role="button" aria-expanded="false" aria-controls="login-content">
+                        <a class="only-mobile" data-toggle="collapse" href="#login-content" role="button"
+                            aria-expanded="false" aria-controls="login-content">
                             <div class="block-header">
                                 <h6 class="text-uppercase register-title">Ingresa</h6>
                             </div>
@@ -76,23 +84,27 @@
                         </div>
                         <div id="login-content" class="block-body collapse">
 
-                            <form ngNativeValidate #f="ngForm" (ngSubmit)="loginUser(f)">
+                            <form ngNativeValidate [formGroup]="formLogin" (ngSubmit)="loginUser()">
                                 <div class="row">
 
                                     <div class="form-group col-md-12">
                                         <label for="email1" class="form-label">Correo</label>
-                                        <input [ngModel]="email" type="text" name="email1" id="email1" class="form-control" required>
+                                        <input formControlName="email1" name="email1" id="email1" type="text"
+                                            class="form-control" required>
                                     </div>
 
                                     <div class="form-group col-md-12">
                                         <label for="password1" class="form-label">Contraseña</label>
-                                        <input ngModel type="password" name="password1" id="password1" class="form-control" required>
+                                        <input formControlName="password1" name="password1" id="password1"
+                                            type="password" minlength="8" class="form-control" required>
                                     </div>
 
                                     <div class="form-group col-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input [(ngModel)]="rememberme" id="rememberme" type="checkbox" name="rememberme" class="custom-control-input">
-                                            <label for="rememberme" class="custom-control-label align-middle">Recuérdame</label>
+                                            <input formControlName="rememberMe" name="rememberMe" id="rememberMe"
+                                                type="checkbox" class="custom-control-input">
+                                            <label for="rememberMe"
+                                                class="custom-control-label align-middle">Recuérdame</label>
                                         </div>
                                     </div>
 
@@ -104,8 +116,9 @@
 
                                 </div>
                                 <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-outline-dark"><i class="fa fa-sign-in-alt mr-2"></i>
-                    Ingresar</button>
+                                    <button type="submit" class="btn btn-outline-dark"><i
+                                            class="fa fa-sign-in-alt mr-2"></i>
+                                        Ingresar</button>
                                 </div>
                             </form>
 

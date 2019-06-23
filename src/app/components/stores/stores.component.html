@@ -9,10 +9,11 @@
 
     <section>
 
-        <div *ngFor="let category of categories;index as i" class="">
-            <h3 class="category-title">{{category.name}}</h3>
+        <div *ngFor="let categoryStoresI of categoryStores">
+            <h3 class="category-title">{{categoryStoresI.category.name}}</h3>
             <div class="row mb-4 mt-3 category">
-                <div *ngFor="let store of storesLines[i]" class="pointer col-5 col-sm-4 col-md-2 text-center my-2">
+                <div *ngFor="let store of categoryStoresI.stores"
+                    class="pointer col-5 col-sm-4 col-md-2 text-center my-2">
                     <a [routerLink]="[ '/store', store.codeName ]">
                         <img class="img-fluid mx-auto rounded-border" [src]="store.imageLogo" alt="Card image cap">
                     </a>

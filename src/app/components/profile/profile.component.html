@@ -69,7 +69,7 @@
   <hr>
   <br>
   <div class="hero-content text-center">
-    <h2 class="hero-heading">Qué he pedido?</h2>
+    <h2 class="hero-heading">¿Qué he pedido?</h2>
   </div>
 
   <section>
@@ -85,6 +85,7 @@
               <tr>
                 <th class="py-4 text-uppercase text-sm text-center"># Orden</th>
                 <th class="py-4 text-uppercase text-sm text-center">Fecha</th>
+                <th class="py-4 text-uppercase text-sm text-center">Estado</th>
                 <th class="py-4 text-uppercase text-sm text-center"># Artículos</th>
                 <th class="py-4 text-uppercase text-sm">Dirección</th>
                 <th class="py-4 text-uppercase text-sm text-right">Total</th>
@@ -95,6 +96,7 @@
               <tr *ngFor="let order of orders">
                 <td class="py-4 text-center">{{order.number}}</td>
                 <td class="py-4 text-center">{{order.date|date}}</td>
+                <td class="py-4 text-center">{{order.status}}</td>
                 <td class="py-4 text-center">{{order.items.length}}</td>
                 <td class="py-4">{{order.address}}</td>
                 <td class="py-4 text-right">{{order.total|currency}}</td>

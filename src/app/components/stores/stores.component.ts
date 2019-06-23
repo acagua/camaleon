@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/category.model';
 import { StoreService } from 'src/app/services/store.service';
-import { Store } from 'src/app/models/store.model';
 
 @Component({
   selector: 'app-stores',
@@ -11,7 +10,7 @@ import { Store } from 'src/app/models/store.model';
 export class StoresComponent implements OnInit
 {
   categories: Category[] = [];
-  storesLines: Store[][] = [];
+  categoryStores: any[] = [];
 
   constructor(
     public _categoryService: CategoryService,
@@ -32,7 +31,7 @@ export class StoresComponent implements OnInit
             this._storeService.getStoresRandomByCategory(category._id, 6)
               .subscribe((documents) =>
               {
-                this.storesLines.push(documents);
+                this.categoryStores.push({ category: category, stores: documents });
               });
           }
         }
