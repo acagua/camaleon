@@ -12,6 +12,7 @@ export class Order
         public number: number,
         public shippingCost: number,
         public _id: String,
+        public status: String,
     )
     {
 
