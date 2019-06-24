@@ -99,6 +99,7 @@ Now that you're more familiar with your Bitbucket repository, go ahead and add a
 
 ## Error instalar módulo npm 
 sudo npm i <modulo> --unsafe-perm=true --allow-root
+sudo npm i bcrypt --unsafe-perm=true --allow-root
 
 ## Despliegue en EC2
 1. sudo git pull origin master
@@ -114,11 +115,20 @@ sudo npm i <modulo> --unsafe-perm=true --allow-root
 ## Actualizar Angular
 1. sudo ng update @angular/cli @angular/core
 
-## Actualizar npm
+## Instalar n (node version manager)
+1. sudo npm install n -g 
+2. sudo ln -s /home/<username>/.npm-global/bin/n /usr/local/bin/n
+3. sudo n --version
+
+## Actualizar node
 1. sudo npm cache clean -f 
 2. sudo npm install -g n 
 3. sudo n stable 
+revisar versión, si no se actualiza:
 4. sudo ln -sf /usr/local/n/versions/node/<xx.x.x (xx.x.x = nueva version)>/bin/node /usr/bin/node
+
+## Actualizar npm
+5. sudo npm install -g npm
 
 ## Daemon PM2 para levantar app
 1. sudo pm2 delete all
@@ -142,3 +152,14 @@ sudo npm i <modulo> --unsafe-perm=true --allow-root
 1. sudo mkswap /swapfile
 2. sudo swapon /swapfile
 8. sudo swapon -s
+
+## Actualizar certificado SSL opcion A
+1. cd /opt/letencrypt 
+2. ./letsencrypt-auto certonly --standalone --email admin@camaleon.shop -d camaleon.shop -d admin.camaleon.shop -d www.camaleon.shop
+3. renew and replace
+
+## Actualizar certificado SSL opcion B
+1. ./letsencrypt-auto
+2. empty
+3. renew and replace
+4. redirect
