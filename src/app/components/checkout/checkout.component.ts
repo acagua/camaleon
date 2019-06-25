@@ -44,8 +44,9 @@ export class CheckoutComponent implements OnInit
   payUApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
   merchantId = '508029';
   accountId = '512326';
-  responseUrl = 'http://localhost:4200/response';
-  confirmationUrl = 'https://www.camaleon.shop/confirmation';
+  // responseUrl = 'http://localhost:4200/response';
+  responseUrl = 'https://www.camaleon.shop/response';
+  confirmationUrl = 'https://www.camaleon.shop/api/payu';
   currency = 'COP';
   description: string;
   referenceCode: string;
