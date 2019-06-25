@@ -103,7 +103,7 @@ export class CheckoutComponent implements OnInit
       arrItem: this._cartService.arrItemCart
     }).subscribe(resp =>
     {
-      this.referenceCode = resp.document.number;
+      this.referenceCode = 'CAM-' + resp.document.number;
       this.description = resp.document.number;
 
       // this.router.navigate(['/profile']);
