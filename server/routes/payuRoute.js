@@ -9,8 +9,8 @@ app.post('/', function(req, res) {
     var body = req.body;
     var payu = new PayU({
         //name: body.name
+        name: body
     });
-    console.log(req.body);
     payu.save(function(err, docSaved) {
         if (err) {
             return res.status(400).json({
