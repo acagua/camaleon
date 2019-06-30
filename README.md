@@ -154,12 +154,20 @@ revisar versión, si no se actualiza:
 8. sudo swapon -s
 
 ## Actualizar certificado SSL opcion A
-1. cd /opt/letencrypt 
-2. ./letsencrypt-auto certonly --standalone --email admin@camaleon.shop -d camaleon.shop -d admin.camaleon.shop -d www.camaleon.shop
-3. renew and replace
+1. sudo service nginx stop
+2. cd /opt/letencrypt 
+3. ./letsencrypt-auto certonly --standalone --email admin@camaleon.shop -d camaleon.shop -d admin.camaleon.shop -d www.camaleon.shop
+4. renew and replace
+5. sudo service nginx start
 
 ## Actualizar certificado SSL opcion B
-1. ./letsencrypt-auto
-2. empty
-3. renew and replace
-4. redirect
+1. sudo service nginx stop
+2. cd /opt/letsencrypt/ && ./letsencrypt-auto 
+3. empty
+4. renew and replace
+5. redirect
+6. sudo service nginx start
+
+## En caso de error nginx
+1. sudo pkill -f nginx
+2. sudo systemctl start nginx

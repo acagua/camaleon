@@ -249,6 +249,20 @@ input[type=number]::-webkit-outer-spin-button {
 .collapse:not(.show) {
     display: block;
 }
+.summary{
+    .title{
+        .font-settings(700; none; 2.7rem);
+    }
+    .sub-title{
+        .font-settings(500; bold; 17px);
+        padding-right: 0.4rem;
+    }
+    .sub-title-detail{
+        .font-settings(300; none; 17px);
+    }
+}
+
+
 
 @media only screen and (max-width: 991px){
     .menu-mobile{
@@ -271,6 +285,15 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .category-title{
         text-align: center;
+    }
+    .summary{
+        .title{
+            text-align:center;
+        }
+        .row{
+            justify-content: center;
+        }
+        
     }
 }
 @media only screen and (max-width: 768px) {
@@ -452,9 +475,7 @@ input[type=number]::-webkit-outer-spin-button {
     
 }
 
-
 //MIXINS
-
 .btn-colors(@font-color; @background-color; @border-color){
     color: @font-color;
     background-color: @background-color;

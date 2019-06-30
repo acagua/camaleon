@@ -14,6 +14,7 @@ export class PayuResponseComponent implements OnInit {
 
   transactionState: string;
   transactionStateStr: string;
+  transactionStateImg: string;
 
   paymentMethod: string;
   paymentMethodStr: string;
@@ -30,18 +31,23 @@ export class PayuResponseComponent implements OnInit {
         switch (this.transactionState) {
           case '4':
             this.transactionStateStr = 'Aprobada';
+            this.transactionStateImg = '../../../assets/img/icons/aprobado.png';
             break;
           case '5':
             this.transactionStateStr = 'Expirada';
+            this.transactionStateImg = '../../../assets/img/icons/rechazado.png';
             break;
           case '6':
             this.transactionStateStr = 'Declinada';
+            this.transactionStateImg = '../../../assets/img/icons/rechazado.png';
             break;
           case '7':
             this.transactionStateStr = 'Pediente';
+            this.transactionStateImg = '../../../assets/img/icons/pendiente.png';
             break;
           case '104':
             this.transactionStateStr = 'Error';
+            this.transactionStateImg = '../../../assets/img/icons/rechazado.png';
             break;
           default:
             console.log('Lo lamentamos, respuesta no identificada ' + this.transactionState + '.');

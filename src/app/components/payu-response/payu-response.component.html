@@ -1,16 +1,45 @@
-<div>
-    Fecha de transacción: {{transactionDate}}
-    <br> Valor: {{amount|currency}}
-    <br> Nº de orden: {{referenceCode}}
-    <br> Estado: {{transactionStateStr}}
+<div class="container-90 summary">
+    <div class="row mb-3">
+        <span class="title">Resumen de la transacción</span>
+    </div>
 
-    <div *ngIf="transactionState == '6'">
-        Detalle:{{responseCode}}
+    <div class="row mt-2 mb-4">
+        <img [src]='this.transactionStateImg' />
     </div>
-    <div *ngIf="transactionState == '4'">
-        Dentro de poco recibiras tu pedido!
+
+    <div class="row my-2">
+        <span class="sub-title"> Estado: </span> <span class="sub-title-detail"> {{transactionStateStr}}</span>
     </div>
-    <div *ngIf="transactionState == '7'">
-        Detalle:{{responseCode}}
+
+    <div class="row my-2">
+        <span class="sub-title">Fecha de transacción: </span>
+        <span class="sub-title-detail"> {{transactionDate}}</span>
+    </div>
+
+    <div class="row my-2">
+        <span class="sub-title"> Valor: </span>
+        <span class="sub-title-detail"> {{amount|currency}}</span>
+    </div>
+
+    <div class="row my-2">
+        <span class="sub-title"> Nº de orden: </span> <span class="sub-title-detail"> {{referenceCode}}</span>
+    </div>
+
+    <div class="row my-2" *ngIf="transactionState == '6'">
+        <span class="sub-title"> Detalle:</span> <span class="sub-title-detail">{{responseCode}}</span>
+    </div>
+
+    <div class="row my-2" *ngIf="transactionState == '4'">
+        <span class="sub-title"> Dentro de poco recibiras tu pedido!</span>
+    </div>
+
+    <div class="row my-2" *ngIf="transactionState == '7'">
+        <span class="sub-title"> Detalle:</span> <span class="sub-title-detail">{{responseCode}}</span>
+    </div>
+
+    <div class="row mt-4">
+        <a [routerLink]="[ '/home']">
+            <div class="btn btn-outline-dark"> Volver al inicio</div>
+        </a>
     </div>
 </div>
