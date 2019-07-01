@@ -1,83 +1,114 @@
 <div class="container-90">
 
-  <section class="hero">
-    <div class="container">
-      <!-- Hero Content-->
-      <div class="hero-content text-center">
-        <h2 class="hero-heading">Orden #{{order.number}}</h2>
-        <div class="row">
-          <div class="col-xl-8 offset-xl-2">
-            <p class="lead text-muted">Pediste el <strong>{{order.date|dateOrder}}</strong></p>
-            <p class="lead text-muted">El estado de la orden es: <strong>{{order.status}}</strong></p>
-            <p class="text-muted">Si tienes alguna duda no dudes en contactarnos al 319 264 9443</p>
-          </div>
+    <section class="hero">
+        <div class="container">
+            <!-- Hero Content-->
+            <div class="hero-content text-center">
+                <h2 class="hero-heading">Orden #{{order.number}}</h2>
+                <div class="row">
+                    <div class="col-xl-8 offset-xl-2">
+                        <p class="lead text-muted"><strong>Fecha: </strong> {{order.date|dateOrder}}</p>
+                        <p class="lead text-muted"><strong>Estado:</strong>{{order.status}}</p>
+                        <p class="lead text-muted"><strong>Dirección de entrega: </strong>{{order.address}}</p>
+                        <p class="lead text-muted only-mobile"><strong>Subtotal: </strong>{{order.total - order.shippingCost|currency}}</p>
+                        <p class="lead text-muted only-mobile"><strong>Envío: </strong>{{order.shippingCost|currency}}</p>
+                        <p class="lead text-muted only-mobile"><strong>Total: </strong>{{order.total|currency}}</p>
+                        <p class="text-muted">Si tienes alguna duda no dudes en contactarnos al 319 264 9443</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <div class="container">
-      <div class="row">
-        <a [routerLink]="['/profile']" class="btn btn-link text-muted">
-          <i class="fa fa-chevron-left"></i> Volver a Mis Órdenes
-        </a>
+    <section>
+        <div class="container only-desktop">
+            <div class="row">
+                <a [routerLink]="['/profile']" class="btn btn-link text-muted">
+                    <i class="fa fa-chevron-left"></i> Volver
+                </a>
 
-        <div class="col-lg-12 col-xl-12">
-          <!--<table class="table table-borderless table-hover table-responsive-md">-->
-          <table class="table table-hover table-responsive-md">
-            <thead class="bg-light">
-              <tr>
-                <th class="py-4 text-uppercase text-sm text-center">Imagen</th>
-                <th class="py-4 text-uppercase text-sm text-center">Artículo</th>
-                <th class="py-4 text-uppercase text-sm text-center">Tienda</th>
-                <th class="py-4 text-uppercase text-sm text-center">Cantidad</th>
-                <th class="py-4 text-uppercase text-sm text-center">Precio</th>
-                <th class="py-4 text-uppercase text-sm text-center">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let orderItem of order.items">
-                <td class="text-center">
-                  <a [routerLink]="['/item',orderItem.item._id]">
-                    <img [src]="orderItem.item.images[0]" alt="..." class="cart-item-img">
-                  </a>
-                </td>
-                <td class="align-middle text-center">
-                  <a [routerLink]="['/item',orderItem.item._id]">
-                    {{orderItem.item.name}}
-                  </a>
-                </td>
-                <td class="align-middle text-center">
-                  <a [routerLink]="['/store',orderItem.item._storeCodeName]">
-                    {{orderItem.item._storeCodeName|storeName}}
-                  </a>
-                </td>
-                <td class="align-middle text-center">{{orderItem.quantity}}</td>
-                <td class="align-middle text-right">{{orderItem.item.price|currency}}</td>
-                <td class="align-middle text-right">{{orderItem.total|currency}}</td>
-              </tr>
-              <tr>
-                <td class="align-middle text-center"></td>
-                <td class="align-middle text-center"></td>
-                <td class="align-middle text-center"></td>
-                <td class="align-middle text-right"></td>
-                <td class="align-middle text-left">Envío</td>
-                <td class="align-middle text-right">{{order.shippingCost|currency}}</td>
-              </tr>
-              <tr>
-                <td class="align-middle text-center"></td>
-                <td class="align-middle text-center"></td>
-                <td class="align-middle text-center"></td>
-                <td class="align-middle text-right"></td>
-                <td class="align-middle text-left">TOTAL</td>
-                <td class="align-middle text-right">{{order.total|currency}}</td>
-              </tr>
-            </tbody>
-          </table>
+                <div class="col-lg-12 col-xl-12">
+                    <!--<table class="table table-borderless table-hover table-responsive-md">-->
+                    <table class="table table-hover table-responsive-md">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="py-4 text-uppercase text-sm text-center">Imagen</th>
+                                <th class="py-4 text-uppercase text-sm text-center">Artículo</th>
+                                <th class="py-4 text-uppercase text-sm text-center">Tienda</th>
+                                <th class="py-4 text-uppercase text-sm text-center">Cantidad</th>
+                                <th class="py-4 text-uppercase text-sm text-center">Precio</th>
+                                <th class="py-4 text-uppercase text-sm text-center">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let orderItem of order.items">
+                                <td class="text-center">
+                                    <a [routerLink]="['/item',orderItem.item._id]">
+                                        <img [src]="orderItem.item.images[0]" alt="..." class="cart-item-img">
+                                    </a>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <a [routerLink]="['/item',orderItem.item._id]">
+                                    {{orderItem.item.name}}
+                                  </a>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <a [routerLink]="['/store',orderItem.item._storeCodeName]">
+                                      {{orderItem.item._storeCodeName|storeName}}
+                                    </a>
+                                </td>
+                                <td class="align-middle text-center">{{orderItem.quantity}}</td>
+                                <td class="align-middle text-right">{{orderItem.item.price|currency}}</td>
+                                <td class="align-middle text-right">{{orderItem.total|currency}}</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle text-center"></td>
+                                <td class="align-middle text-center"></td>
+                                <td class="align-middle text-center"></td>
+                                <td class="align-middle text-right"></td>
+                                <td class="align-middle text-left">Envío</td>
+                                <td class="align-middle text-right">{{order.shippingCost|currency}}</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle text-center"></td>
+                                <td class="align-middle text-center"></td>
+                                <td class="align-middle text-center"></td>
+                                <td class="align-middle text-right"></td>
+                                <td class="align-middle text-left">TOTAL</td>
+                                <td class="align-middle text-right">{{order.total|currency}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <div *ngFor="let orderItem of order.items" class="row text-center mb-4">
+        <div class="col-12">
+            <a [routerLink]="['/item',orderItem.item._id]">
+                <img [src]="orderItem.item.images[0]" alt="..." class="cart-item-img">
+            </a>
+        </div>
+        <div class="col-12">
+            <a [routerLink]="['/item',orderItem.item._id]">
+              {{orderItem.item.name}}
+            </a>
+        </div>
+        <div class="col-12">
+            <a [routerLink]="['/store',orderItem.item._storeCodeName]">
+              {{orderItem.item._storeCodeName|storeName}}
+            </a>
+        </div>
+        <div class="col-12">
+            {{orderItem.quantity}} Unidad<span *ngIf="orderItem.quantity > 1">es</span>
+        </div>
+        <div class="col-12">
+            {{orderItem.item.price|currency}} c/u
+        </div>
+        <div class="col-12">
+            Total: {{orderItem.total|currency}}
+        </div>
     </div>
-  </section>
 
 </div>

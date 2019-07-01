@@ -292,8 +292,16 @@ input[type=number]::-webkit-outer-spin-button {
         }
         .row{
             justify-content: center;
+        }   
+    }
+    .order-detail{
+        .title{
+            margin-top: 1rem;
+            .font-settings(500, none, 1.125rem,)
         }
-        
+        .detail{
+            .font-settings(300, none, 0.9rem,)
+        }
     }
 }
 @media only screen and (max-width: 768px) {
@@ -472,7 +480,9 @@ input[type=number]::-webkit-outer-spin-button {
     .collapse:not(.show) {
         display: none;
     }
-    
+    .cart-item-img{
+        max-width: 120px;
+    }
 }
 
 //MIXINS
