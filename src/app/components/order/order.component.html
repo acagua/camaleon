@@ -83,32 +83,32 @@
             </div>
         </div>
     </section>
-
-    <div *ngFor="let orderItem of order.items" class="row text-center mb-4">
-        <div class="col-12">
-            <a [routerLink]="['/item',orderItem.item._id]">
-                <img [src]="orderItem.item.images[0]" alt="..." class="cart-item-img">
-            </a>
-        </div>
-        <div class="col-12">
-            <a [routerLink]="['/item',orderItem.item._id]">
+    <div class="row d-lg-none d-flex">
+        <div *ngFor="let orderItem of order.items" class="col-6 col-md-4 text-center mb-4">
+            <div>
+                <a [routerLink]="['/item',orderItem.item._id]">
+                    <img [src]="orderItem.item.images[0]" alt="..." class="cart-item-img">
+                </a>
+            </div>
+            <div>
+                <a [routerLink]="['/item',orderItem.item._id]">
               {{orderItem.item.name}}
             </a>
-        </div>
-        <div class="col-12">
-            <a [routerLink]="['/store',orderItem.item._storeCodeName]">
+            </div>
+            <div>
+                <a [routerLink]="['/store',orderItem.item._storeCodeName]">
               {{orderItem.item._storeCodeName|storeName}}
             </a>
-        </div>
-        <div class="col-12">
-            {{orderItem.quantity}} Unidad<span *ngIf="orderItem.quantity > 1">es</span>
-        </div>
-        <div class="col-12">
-            {{orderItem.item.price|currency}} c/u
-        </div>
-        <div class="col-12">
-            Total: {{orderItem.total|currency}}
+            </div>
+            <div>
+                {{orderItem.quantity}} Unidad<span *ngIf="orderItem.quantity > 1">es</span>
+            </div>
+            <div>
+                {{orderItem.item.price|currency}} c/u
+            </div>
+            <div>
+                Total: {{orderItem.total|currency}}
+            </div>
         </div>
     </div>
-
 </div>
