@@ -6,10 +6,9 @@ var PayU = require('../models/payu.js');
 
 //---------------------------------------------------------------------------ROUTES
 app.post('/', function(req, res) {
-    var body = req.body;
+    var body = JSON.stringify(req.body);
     var payu = new PayU({
-        //name: body.name
-        name: 'post'
+        name: body
     });
     payu.save(function(err, docSaved) {
         if (err) {
