@@ -77,16 +77,17 @@ app.post('/', function(req, res) {
 
     //Sandbox
     var payUApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
-    var merchantId = '508029';
     // Producción
     // var payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
-    // var merchantId = '806840';
-    var currency = 'COP'; // opcional, ya mandan currency
+
+    var new_value = '';
     if (value.substring(value.length - 2, value.length) == '00') {
-        value = value.substring(0, value.length - 1);
+        new_value = value.substring(0, value.length - 1);
+    } else {
+        new_value = value;
     }
 
-    var verifySignature = crypto.createHash('md5').update(payUApiKey + '~' + merchantId + '~' + reference_sale + '~' + value + '~' + currency + '~' + state_pol).digest("hex")
+    var verifySignature = crypto.createHash('md5').update(payUApiKey + '~' + merchant_id + '~' + reference_sale + '~' + new_value + '~' + currency + '~' + state_pol).digest("hex")
         //md5.hashStr(payUApiKey + '~' + merchantId + '~' + reference_sale + '~' + value + '~' + currency + '~' + state_pol).toString();
 
     if (sign == verifySignature) {
