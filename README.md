@@ -132,11 +132,14 @@ revisar versión, si no se actualiza:
 
 ## Daemon PM2 para levantar app
 1. sudo pm2 delete all
-2. pm2 start /var/www/camaleon.shop/server.js --name="camaleon"
-3. pm2 save
-4. pm2 startup
+2. sudo pm2 start /var/www/camaleon.shop/server.js --name="camaleon"
+3. sudo pm2 save
+4. sudo pm2 startup
 5. copiar PATH resultante (ejemplo) sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu)
 6. pm2 status
+
+## Para mostrar nuevos servicios o ajustes (carpeta server/)
+1. sudo pm2 restart app-name
 
 ## Memoria para el Build
 1. free -m -> para validar si se está usando
