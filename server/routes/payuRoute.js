@@ -82,10 +82,18 @@ app.post('/', function(req, res) {
     // var payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
     // var merchantId = '806840';
     var currency = 'COP'; // opcional, ya mandan currency
-
+    if (value.substring(value.length - 2, value.length) == '00') {
+        value = value.substring(0, value.length - 1);
+    }
 
     var verifySignature = crypto.createHash('md5').update(payUApiKey + '~' + merchantId + '~' + reference_sale + '~' + value + '~' + currency + '~' + state_pol).digest("hex")
         //md5.hashStr(payUApiKey + '~' + merchantId + '~' + reference_sale + '~' + value + '~' + currency + '~' + state_pol).toString();
+
+    if (sign == verifySignature) {
+        //UPDATE ORDER
+    } else {
+        //ERROR NO CONCUERDA FIRMA 
+    }
 
     var payu = new PayU({
         response_code_pol: response_code_pol,
