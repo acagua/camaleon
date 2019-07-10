@@ -30,24 +30,27 @@ export class CheckoutComponent implements OnInit
   formPayu: FormGroup;
   canShip: Boolean = true;
   payuSignature: String;
-  email = localStorage.getItem('email');
+  email: String;
   tax = 0;
   // Produccion
-  // url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/';
-  // payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
-  // merchantId = '806840';
-  // accountId = '813893';
-  // responseUrl = 'http://www.camaleon.shop/response'
-  // confirmationUrl = 'https://www.camaleon.shop/confirmation';
-  // Sandbox
-  url = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu';
-  payUApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
-  merchantId = '508029';
-  accountId = '512326';
-  // responseUrl = 'http://localhost:4200/response';
-  responseUrl = 'https://www.camaleon.shop/response';
+  url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/';
+  payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
+  merchantId = '806840';
+  accountId = '813893';
+  responseUrl = 'http://www.camaleon.shop/response';
   confirmationUrl = 'https://www.camaleon.shop/api/payu';
-  currency = 'COP';
+
+  // Sandbox
+  // url = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu';
+  // payUApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
+  // merchantId = '508029';
+  // accountId = '512326';
+  // // responseUrl = 'http://localhost:4200/response';
+  // responseUrl = 'https://www.camaleon.shop/response';
+  // confirmationUrl = 'https://www.camaleon.shop/api/payu';
+
+   currency = 'COP';
+
   description: string;
   referenceCode: string;
 
@@ -59,7 +62,7 @@ export class CheckoutComponent implements OnInit
     public router: Router,
   )  {
     this.total = _cartService.total + this.shippingCost;
-
+    this.email = this._userService.user.email;
     this.forma = new FormGroup({
       telephone: new FormControl(this._userService.user.telephone || null, Validators.required),
       address: new FormControl(this._userService.user.address || null, Validators.required),
@@ -104,13 +107,12 @@ export class CheckoutComponent implements OnInit
       arrItem: this._cartService.arrItemCart
     }).subscribe(resp =>
     {
-      this.referenceCode = 'CAM-' + resp.document.number;
+      this.referenceCode = resp.document.number;
       this.description = resp.document.number;
 
       // this.router.navigate(['/profile']);
       this.setPayuSignature();
-      // TODO: descomentar limpieza de carrito en compra
-      // this._cartService.removeCart();
+      this._cartService.removeCart();
       this.submitForm();
     });
   }
@@ -232,7 +234,7 @@ export class CheckoutComponent implements OnInit
     const buyerEmail = document.createElement('input');
     buyerEmail.type = 'hidden';
     buyerEmail.name = 'buyerEmail';
-    buyerEmail.value = this.email;
+    buyerEmail.value = this.email.toString();
     customForm.appendChild(buyerEmail);
 
     const responseUrl = document.createElement('input');

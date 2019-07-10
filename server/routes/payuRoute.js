@@ -7,6 +7,8 @@ var app = express();
 
 var PayU = require('../models/payu.js');
 
+var Order = require('../models/order.js');
+
 //---------------------------------------------------------------------------ROUTES
 app.post('/', function(req, res) {
     var body = req.body;
@@ -76,9 +78,9 @@ app.post('/', function(req, res) {
     var pse_reference2 = body.pse_reference2;
 
     //Sandbox
-    var payUApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
+    //var payUApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
     // Producción
-    // var payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
+    var payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
 
     var new_value = '';
     if (value.substring(value.length - 2, value.length) == '00') {
@@ -88,12 +90,31 @@ app.post('/', function(req, res) {
     }
 
     var verifySignature = crypto.createHash('md5').update(payUApiKey + '~' + merchant_id + '~' + reference_sale + '~' + new_value + '~' + currency + '~' + state_pol).digest("hex")
-        //md5.hashStr(payUApiKey + '~' + merchantId + '~' + reference_sale + '~' + value + '~' + currency + '~' + state_pol).toString();
 
     if (sign == verifySignature) {
         //UPDATE ORDER
+        var nuevoEstado = '';
+        console.log(state_pol);
+        if (state_pol == 4) {
+            nuevoEstado = Order.Status.PAID;
+        } else if (state_pol == 5 || state_pol == 6) {
+            nuevoEstado = Order.Status.CANCELED;
+        }
+        Order.findOneAndUpdate({
+            number: reference_sale // search query
+        }, {
+            status: nuevoEstado // field:values to update
+        }, {
+            new: true, // return updated doc
+            runValidators: true // validate before update
+        }).then(doc => {
+            console.log(doc);
+        }).catch(err => {
+            console.error(err);
+        });
     } else {
         //ERROR NO CONCUERDA FIRMA 
+        console.log('error en la firma');
     }
 
     var payu = new PayU({
@@ -162,29 +183,6 @@ app.post('/', function(req, res) {
         authorization_code: authorization_code,
         pse_reference3: pse_reference3,
         pse_reference2: pse_reference2
-    });
-    payu.save(function(err, docSaved) {
-        if (err) {
-            return res.status(400).json({
-                ok: false,
-                message: 'Error al crear payu',
-                errors: err
-            });
-        } else {
-            return res.status(201).json({
-                ok: true,
-                document: docSaved
-            });
-        }
-    });
-});
-
-app.get('/', function(req, res) {
-    //var body = req.params;
-    var body = req.query;
-    var payu = new PayU({
-        //name: body.name
-        name: 'get'
     });
     payu.save(function(err, docSaved) {
         if (err) {

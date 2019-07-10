@@ -5,6 +5,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+
 // -----------------------------------------------------------Get our API routes
 const userRoute = require('./server/routes/userRoute');
 const loginRoute = require('./server/routes/loginRoute');
@@ -21,8 +22,7 @@ const payuRoute = require('./server/routes/payuRoute');
 const app = express();
 
 //-----------------------------------------------------------------CORS
-app.use(function (req, res, next)
-{
+app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     // res.header("Access-Control-Allow-Origin", "http://localhost:4200");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -35,17 +35,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //------------------------------------------------------------Conexión a la base de datos
-mongoose.connection.openUri('mongodb://camaleonUser:M3g4l0d0n2019!DBUser@ec2-3-89-143-123.compute-1.amazonaws.com:37017/camaleon', (err, res) =>
-{
-    if (err)
-    {
+
+var mongodbUrl = 'mongodb://camaleonUser:M3g4l0d0n2019!DBUser@ec2-3-89-143-123.compute-1.amazonaws.com:37017/camaleon';
+mongoose.connect(mongodbUrl, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false })
+    .then(() => {
+        console.log('BD Online');
+    })
+    .catch((err) => {
         throw err;
-    }
-    else
-    {
-        console.log('Base de datos online');
-    }
-});
+    });
 
 // -------------------------------------------------------------Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -64,8 +62,7 @@ app.use('/api/contactMessage', contactMessageRoute);
 app.use('/api/payu', payuRoute);
 
 // --------------------------------------------------------------Catch all other routes and return the index file
-app.get('*', (req, res) =>
-{
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
