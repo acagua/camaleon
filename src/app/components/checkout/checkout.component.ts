@@ -32,6 +32,7 @@ export class CheckoutComponent implements OnInit
   payuSignature: String;
   email: String;
   tax = 0;
+  taxReturnBase = 0;
   // Produccion
   url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/';
   payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
@@ -210,7 +211,7 @@ export class CheckoutComponent implements OnInit
     const taxReturnBase = document.createElement('input');
     taxReturnBase.type = 'hidden';
     taxReturnBase.name = 'taxReturnBase';
-    taxReturnBase.value = this.total.toString();
+    taxReturnBase.value = this.taxReturnBase.toString();
     customForm.appendChild(taxReturnBase);
 
     const currency = document.createElement('input');
