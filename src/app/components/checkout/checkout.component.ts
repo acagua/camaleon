@@ -222,7 +222,7 @@ export class CheckoutComponent implements OnInit
     const test = document.createElement('input');
     test.type = 'hidden';
     test.name = 'test';
-    test.value = '1';
+    test.value = '0';
     customForm.appendChild(test);
 
     const signature = document.createElement('input');
