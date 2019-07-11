@@ -7,6 +7,11 @@ var City = require('../models/city');
 
 var Schema = mongoose.Schema;
 
+var Status = Object.freeze({
+    ACTIVE: 'Activo',
+    INACTIVE: 'Inactivo'
+});
+
 var itemSchema = new Schema({
     name: { type: String, required: [true, 'Name is required'] },
     description: { type: String, required: [true, 'Description is required'] },
@@ -14,9 +19,10 @@ var itemSchema = new Schema({
     images: { type: [String] },
     options: { type: [ItemOption.schema] },
     specifications: { type: [ItemSpecification.schema] },
-    status: { type: String },
+    status: { type: String, enum: Object.values(Status), default: Status.ACTIVE, required: [true, 'Status is required'] },
     shippingCities: { type: [City.schema] },
     shippingAllColombia: { type: Boolean },
+    stockQuantity: { type: Number, required: [true, 'stockQuantity is required'] },
     _storeId: { type: Schema.Types.ObjectId, ref: 'Store', required: [true, 'Must have a store associated'] },
     _storeCodeName: { type: String, required: [true, 'Must have a store code name associated'] },
     _categoryId: { type: Schema.Types.ObjectId, ref: 'Category', required: [true, 'Must have a category associated'] },
@@ -25,5 +31,9 @@ var itemSchema = new Schema({
 
 itemSchema.plugin(uniqueValidator, { message: '{PATH} must be unique' });
 itemSchema.plugin(random);
+
+Object.assign(itemSchema.statics, {
+    Status,
+});
 
 module.exports = mongoose.model('Item', itemSchema);
