@@ -37,6 +37,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //------------------------------------------------------------Conexión a la base de datos
 
 var mongodbUrl = 'mongodb://camaleonUser:M3g4l0d0n2019!DBUser@ec2-3-89-143-123.compute-1.amazonaws.com:37017/camaleon';
+// var mongodbUrl = 'mongodb://sandboxUser:camaleonsandbox2019@ec2-3-89-143-123.compute-1.amazonaws.com:37017/sandbox';
+
 mongoose.connect(mongodbUrl, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false })
     .then(() => {
         console.log('BD Online');
