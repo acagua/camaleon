@@ -6,6 +6,7 @@ var app = express();
 var Item = require('../models/item.js');
 var ItemOption = require('../models/itemOption.js');
 var ItemSpecification = require('../models/itemSpecification.js');
+const { Status } = require('../models/item.js');
 
 //---------------------------------------------------------------------------ROUTES
 app.get('/', function (req, res)
@@ -80,7 +81,7 @@ app.get('/store/:storeCodeName', function (req, res)
     var from = Number(req.query.from) || 0;
     var limit = Number(req.query.limit) || 20;
 
-    Item.find({ _storeCodeName: storeCodeName })
+    Item.find({ status: Status.ACTIVE, _storeCodeName: storeCodeName })
         .skip(from)
         .limit(limit)
         .exec(
@@ -174,7 +175,7 @@ app.get('/random/category/:categoryId', function (req, res)
 
     var limit = Number(req.query.limit) || 5;
 
-    var filter = { _categoryId: categoryId };
+    var filter = { status: Status.ACTIVE, _categoryId: categoryId };
     var fields = {};
     var options = { limit: limit };
     Item.findRandom(filter, fields, options, function (err, items)
@@ -248,32 +249,6 @@ app.post('/', function (req, res)
         new ItemSpecification({ name: 'fragancia', value: 'lavanda' }),
         new ItemSpecification({ name: 'textura', value: 'mate' })
     );
-
-
-    var item = new Item({
-        name: 'item borrar',
-        description: 'borrar esta mierda de item',
-        price: '15000',
-        images: ['https://s3.amazonaws.com/camaleon/store/pie-de-elefante/product/planner-letras.jpg', 'https://s3.amazonaws.com/camaleon/store/pie-de-elefante/product/planner-manchas.jpg'],
-        options: itemOptions,
-        specifications: itemSpecifications,
-        _storeId: '5c991418ba47ad3788cd2ed8',
-        _storeCodeName: 'Pie_De_Elefante',
-        _categoryId: '5c96584e21c7361284230a90'
-    });
-
-
-    //\ejemplo de mapa
-
-    // var item = new Item({
-    //     name: body.name,
-    //     description: body.description,
-    //     price: body.price,
-    //     images: body.images,
-    //     _storeId: body.storeId,
-    //     _storeCodeName: body.storeCodeName,
-    //     _categoryId: body.categoryId
-    // });
 
     item.save(function (err, itemSaved)
     {
