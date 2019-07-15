@@ -21,7 +21,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 export class CheckoutComponent implements OnInit
 {
   // TODO: como se puede hacer esto trayendo de base de datos solo una vez? habrá algun tipo de "bean de aplicacion, de sesion"?
-  arrPaymentMethod: any[] = [{ '_id': 1, 'name': 'Contraentrega' }, { '_id': 2, 'name': 'Transferencia' }];
+  arrPaymentMethod: any[] = [{ '_id': 1, 'name': 'PayU' }/*, { '_id': 2, 'name': 'Transferencia' }*/];
   departments: Department[] = [{ name: 'BOGOTA', code: '01' }];
   cities: City[] = [];
   shippingCost: number = 6000;
