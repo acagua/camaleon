@@ -147,7 +147,7 @@ app.get('/random/category/:categoryId', function (req, res)
     var filter = { _categoryId: categoryId };
     var fields = {};
     var options = { limit: limit };
-    Store.findRandom(filter, fields, options, function (err, items)
+    Store.findRandom(filter, fields, options, function (err, stores)
     {
         if (err)
         {
@@ -162,7 +162,7 @@ app.get('/random/category/:categoryId', function (req, res)
             return res.status(200).json({
                 title: 'random by category',
                 ok: true,
-                documents: items
+                documents: stores
             });
         }
     });

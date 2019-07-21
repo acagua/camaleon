@@ -20,7 +20,7 @@ export class StoresComponent implements OnInit
     this._categoryService.getCategoriesRandom(6)
       .subscribe((documents) =>
       {
-        if (documents.length === 5 || true) //TODO quitar el || true
+        // if (documents.length === 5 || true) //TODO quitar el || true
         {
           this.categories = documents;
 

@@ -40,7 +40,10 @@
                                     </div>
                                 </div>
                                 <div class="py-2">
-                                    <h3 class="h6 mb-1"><a [routerLink]="['/item',item._id]" class="text-dark">{{item.name}}</a></h3><span class="text-muted">{{item.price|currency}}</span>
+                                    <h3 class="product-title ">
+                                        <a [routerLink]="[ '/item',item._id] " class="text-dark ">{{item.name}}</a>
+                                    </h3>
+                                    <span class="text-muted">{{item.price|currency}}</span>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +84,8 @@
             </li>
 
             <!-- <li *ngFor="let in of counter(5) ;let i = index" class="page-item active"> -->
-            <li *ngFor="let in of counter(numberOfPages) ;let i = index" [ngClass]="{'page-item': true, 'active': actualPage == (i+1)}">
+            <li *ngFor="let in of counter(numberOfPages) ;let i = index"
+                [ngClass]="{'page-item': true, 'active': actualPage == (i+1)}">
                 <a (click)="goToPage(i+1)" class="page-link">{{i+1}}</a>
             </li>
 
@@ -114,11 +118,13 @@
             document.getElementById('slider-snap-input-lower'),
             document.getElementById('slider-snap-input-upper')
         ];
-        snapSlider.noUiSlider.on('update', function(values, handle) {
+        snapSlider.noUiSlider.on('update', function (values, handle)
+        {
             snapValues[handle].innerHTML = values[handle];
         });
 
-        snapSlider.noUiSlider.on('change', function(values, handle) {
+        snapSlider.noUiSlider.on('change', function (values, handle)
+        {
             inputValues[handle].value = values[handle];
         });
     </script>

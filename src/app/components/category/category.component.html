@@ -25,15 +25,16 @@
                         </div>
                     </div>
                     <div class="py-2">
-                        <div class="h6 mb-1">
-                            <a [routerLink]="['/item',item._id]" class="text-dark">{{item.name}}</a>
-                        </div>
-                        <h4 class="h6 mb-1">by
-                            <a [routerLink]="['/store',item._storeCodeName]" class="">
-                                {{item._storeCodeName|storeName}}
+                        <h3 class="product-title">
+                            <a [routerLink]="[ '/item',item._id] " class="text-dark ">{{item.name}}
+                            </a>
+                        </h3>
+                        <h4 class="product-store">
+                            <a [routerLink]="[ '/store',item._storeCodeName] "
+                                class="store-name ">{{item._storeCodeName|storeName}}
                             </a>
                         </h4>
-                        <span class="text-muted">{{item.price|currency}}</span>
+                        <span class="text-muted ">{{item.price|currency}}</span>
                     </div>
                 </div>
             </div>
