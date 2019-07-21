@@ -164,7 +164,7 @@
         <h2 class="h3 section-title ">Tiendas</h2>
         <div class="row justify-content-center mx-auto ">
             <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon " *ngFor="let store of storesLine" (click)="goStore(store) ">
-                <img class="img-fluid mx-auto mt-4 rounded-border " [src]="store.imageLogo " alt="Card image cap ">
+                <img class="img-fluid mx-auto mt-4 rounded-border max-logo-size" [src]="store.imageLogo " alt="Card image cap ">
             </div>
             <div class="col-5 col-sm-4 col-md-2 text-center category-icon ">
                 <a [routerLink]="[ '/stores'] ">
