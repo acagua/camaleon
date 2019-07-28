@@ -50,6 +50,9 @@
             <div class="row justify-content-center mx-auto col-md-10 ">
                 <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon " *ngFor="let category of categoriesTop " (click)="goCategory(category) ">
                     <img class="img-fluid mx-auto mt-4 " [src]="category.image " alt="Card image cap ">
+                    <!-- <div class="home-category">
+
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -161,15 +164,28 @@
     <hr>
 
     <div>
-        <h2 class="h3 section-title ">Tiendas</h2>
-        <div class="row justify-content-center mx-auto ">
-            <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon " *ngFor="let store of storesLine" (click)="goStore(store) ">
-                <img class="img-fluid mx-auto mt-4 rounded-border max-logo-size" [src]="store.imageLogo " alt="Card image cap ">
-            </div>
-            <div class="col-5 col-sm-4 col-md-2 text-center category-icon ">
-                <a [routerLink]="[ '/stores'] ">
-                    <img class="img-fluid mx-auto mt-4 rounded-border " src="../../../assets/img/more-brands.png " alt="Card image cap ">
-                </a>
+        <h2 class="h3 section-title mb-4">Tiendas</h2>
+        <div class="col-12">
+            <div class="row justify-content-center mx-auto ">
+                <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon logo-padding-5" *ngFor="let store of storesLine" (click)="goStore(store) ">
+                    <img class="img-fluid mx-auto mt-0 rounded-border" [src]="store.imageLogo " alt="Card image cap ">
+                </div>
+                <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon logo-padding-5">
+                    <a class="no-link" [routerLink]="[ '/stores'] ">
+                        <!-- <img class="img-fluid mx-auto mt-4 rounded-border " src="../../../assets/img/more-brands.png " alt="Card image cap "> -->
+                        <div class="more-stores h-100">
+                            <div>Más <br> Tiendas</div>
+                            <div class="w-75 m-auto pt-2 cutline"></div>
+                            <div class="w-25 m-auto ">
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1693 1683.8" style="enable-background:new 0 0 1693 1683.8;" xml:space="preserve">
+                                    <circle class="plus-circle" cx="846.1" cy="841.8" r="800"/>
+                                    <line class="plus-lines" x1="846.1" y1="1343.1" x2="846.1" y2="340.5"/>
+                                    <line class="plus-lines" x1="344.8" y1="841.8" x2="1347.4" y2="841.8"/>
+                                    </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

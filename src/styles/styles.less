@@ -60,6 +60,26 @@ input[type=number]::-webkit-outer-spin-button {
     max-width: 181px;
 }
 
+.logo-padding-5{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.more-stores{
+    .rounded-border();
+    .btn-colors(white, @camaleon-black, @camaleon-black);
+    .font-settings(500; none; 2rem; @main-font);
+}
+
+.no-link:hover{
+    text-decoration: none;
+}
+
+.cutline{
+    border-top: solid 2px;
+    color:white;
+}
+
 .no-padding {
     padding: 0;
 }
@@ -506,4 +526,19 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: @weight;
     font-style: @style;
     font-size: @size;
+}
+
+//ICONOS
+.plus-circle{
+    fill:none;
+    stroke:#fff;
+    stroke-width:80;
+    stroke-miterlimit:10;
+}
+.plus-lines{
+    fill:none;
+    stroke:#fff;
+    stroke-width:80;
+    stroke-linecap:round;
+    stroke-miterlimit:10;
 }
