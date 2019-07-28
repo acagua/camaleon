@@ -93,25 +93,42 @@ app.post('/', function(req, res) {
 
     if (sign == verifySignature) {
         //UPDATE ORDER
-        var nuevoEstado = '';
-        console.log(state_pol);
-        if (state_pol == 4) {
-            nuevoEstado = Order.Status.PAID;
-        } else if (state_pol == 5 || state_pol == 6) {
-            nuevoEstado = Order.Status.CANCELED;
-        }
-        Order.findOneAndUpdate({
-            number: reference_sale // search query
-        }, {
-            status: nuevoEstado // field:values to update
-        }, {
-            new: true, // return updated doc
-            runValidators: true // validate before update
-        }).then(doc => {
-            console.log(doc);
-        }).catch(err => {
-            console.error(err);
-        });
+        var currentStatus = '';
+        Order.findOne({
+                number: reference_sale // search query
+            }, "status")
+            .then(doc => {
+                currentStatus = doc.status;
+                console.log("order status " + currentStatus);
+                if (currentStatus == Order.Status.PAYMENT_PENDING) {
+                    var nuevoEstado = '';
+                    console.log("estado" + state_pol);
+                    if (state_pol == 4) {
+                        //TODO Enviar correo de confirmacion de pago
+                        nuevoEstado = Order.Status.PAID;
+                    } else if (state_pol == 5 || state_pol == 6) {
+                        //TODO Enviar correo de rechazo de pago
+                        nuevoEstado = Order.Status.CANCELED;
+                    }
+                    Order.findOneAndUpdate({
+                        number: reference_sale // search query
+                    }, {
+                        status: nuevoEstado // field:values to update
+                    }, {
+                        new: true, // return updated doc
+                        runValidators: true // validate before update
+                    }).then(doc => {
+                        console.log(doc);
+                    }).catch(err => {
+                        console.error(err);
+                    });
+                } else {
+                    //ESTADO YA ACTUALIZADO
+                    console.log('Estado actualizado previamente');
+                }
+            }).catch(err => {
+                console.error("err" + err);
+            });
     } else {
         //ERROR NO CONCUERDA FIRMA 
         console.log('error en la firma');
