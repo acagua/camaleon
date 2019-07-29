@@ -83,7 +83,7 @@
                     <div class="category-text">Moda</div>
                 </div>
             </div> -->
-            <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon px-1" *ngFor="let category of categoriesTop " (click)="goCategory(category) ">
+            <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon" *ngFor="let category of categoriesTop " (click)="goCategory(category) ">
                 <div class="{{category.color}}-category  mt-4">
                     <div class="w-75 m-auto category-letter">
                         {{category.name.substring(0,1)}}
