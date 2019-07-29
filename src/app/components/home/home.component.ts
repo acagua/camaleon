@@ -27,12 +27,12 @@ export class HomeComponent implements OnInit
 
   //categorías aquí para no traer de bd
   categoriesTop: Category[] = [
-    new Category('Ropa', 'Ropa divina!', '../../../assets/img/icons/moda.png', 'black', '5c965809b3d5ba1284b2e247'),
+    new Category('Moda', 'Ropa divina!', '../../../assets/img/icons/moda.png', 'pink', '5c965809b3d5ba1284b2e247'),
     new Category('Accesorios', 'Cosas lindas!', '../../../assets/img/icons/accesorios.png', 'orange', '5c96584e21c7361284230a90'),
-    new Category('Mascotas', 'Mascotas bellas!', '../../../assets/img/icons/mascotas.png', 'green', '5c96588a21c7361284230a91'),
-    new Category('Bienestar', 'Ropa divina!', '../../../assets/img/icons/bienestar.png', 'red', '5c9658a421c7361284230a92'),
-    new Category('Alimentos', 'Comida deli!', '../../../assets/img/icons/alimentos.png', 'blue', '5c965bfb21c7361284230a93'),
-    new Category('Hogar', 'Casas preciosas!', '../../../assets/img/icons/hogar.png', 'pink', '5c965c1321c7361284230a94')
+    new Category('Niños', 'Cosas para niños bellas!', '../../../assets/img/icons/mascotas.png', 'salmon', '5d3e61aebeaec02838de29e7'),
+    new Category('Estilo de Vida', 'Ropa divina!', '../../../assets/img/icons/bienestar.png', 'grass', '5d3e61c4beaec02838de29e8'),
+    new Category('Alimentos', 'Comida deli!', '../../../assets/img/icons/alimentos.png', 'green', '5c965bfb21c7361284230a93'),
+    new Category('Hogar', 'Casas preciosas!', '../../../assets/img/icons/hogar.png', 'blue', '5c965c1321c7361284230a94')
   ];
 
   homesliders: any[] = [
