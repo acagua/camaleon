@@ -203,10 +203,10 @@
         <h2 class="h3 section-title mb-4">Tiendas</h2>
         <div class="col-12">
             <div class="row justify-content-center mx-auto ">
-                <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon logo-padding-5" *ngFor="let store of storesLine" (click)="goStore(store) ">
+                <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon logo-padding-5 mt-2" *ngFor="let store of storesLine" (click)="goStore(store) ">
                     <img class="img-fluid mx-auto mt-0 rounded-border" [src]="store.imageLogo " alt="Card image cap ">
                 </div>
-                <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon logo-padding-5">
+                <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon logo-padding-5 mt-2">
                     <a class="no-link" [routerLink]="[ '/stores'] ">
                         <!-- <img class="img-fluid mx-auto mt-4 rounded-border " src="../../../assets/img/more-brands.png " alt="Card image cap "> -->
                         <div class="more-stores h-100">
