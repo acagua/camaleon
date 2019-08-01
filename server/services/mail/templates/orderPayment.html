@@ -1,530 +1,270 @@
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
-    xmlns:o="urn:schemas-microsoft-com:office:office">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,500&display=swap"> -->
-    <!-- <link href="../src/styles.css" rel="stylesheet" type="text/css"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Camaleon Order Created</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Montserrat:300,500&display=swap');
-    </style>
-    <style>
-        /* @font-face {
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-    }
-    @font-face {
-        font-family: 'Lato';
-        font-style: normal;
-        font-weight: 400;
-        src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-    } */
-
-        body {
-            margin: 0%;
-            padding: 0%;
-        }
-
-        .outer-pannel {
-            width: 80%;
-            padding: 0% 7%;
-            background-color: rgba(0, 0, 0, 0.059);
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-        }
-
-        .inner-pannel {
-            background-color: rgba(255, 255, 255, 0.55);
-            box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.34);
-        }
-
-        .header {
-            background-color: #282425;
-        }
-
-        .info {
-            background-color: white;
-        }
-
-        .account {
-            margin-top: auto;
-            margin-bottom: auto;
-        }
-
-        .green-title {
-            color: #65ca51;
-        }
-
-        .font {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .f-300 {
-            font-weight: 300;
-        }
-
-        .f-500 {
-            font-weight: 500;
-        }
-
-        .f-size-1 {
-            font-size: 2rem;
-        }
-
-        .f-size-2 {
-            font-size: 1.5rem;
-        }
-
-        .f-size-3 {
-            font-size: 1.3rem;
-        }
-
-        .f-size-4 {
-            font-size: 1rem;
-        }
-
-        .f-size-5 {
-            font-size: 0.7rem;
-        }
-
-        .totals {
-            text-align: right;
-        }
-
-        .image {
-            max-width: 100px;
-        }
-
-        .desktop {
-            display: block;
-        }
-
-        .mobile {
-            display: none;
-        }
-
-        @media (max-width: 670px) {
-            .outer-pannel {
-                width: 100%;
-            }
-
-            .desktop {
-                display: none;
-            }
-
-            .mobile {
-                display: block;
-            }
-        }
-
-        /*Bootsrap*/
-        /* @media (min-width: 1200px) {
-            .container {
-                max-width: 1140px;
-            }
-        }
-        
-        @media (min-width: 992px) {
-            .container {
-                max-width: 960px;
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .container {
-                max-width: 720px;
-            }
-        }
-        @media (min-width: 576px) {
-            .container {
-                max-width: 540px;
-            }
-        } */
-
-        .container {
-            width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
-            display: flex;
-            justify-content: center;
-        }
-
-        .rounded {
-            border-radius: .25rem !important;
-        }
-
-        .row {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            margin-right: -15px;
-            margin-left: -15px;
-        }
-
-        .mb-auto,
-        .my-auto {
-            margin-bottom: auto !important;
-        }
-
-        .mt-auto,
-        .my-auto {
-            margin-top: auto !important;
-        }
-
-        .mb-2,
-        .my-2 {
-            margin-bottom: .5rem !important;
-        }
-
-        .mb-3,
-        .my-3 {
-            margin-bottom: 1rem !important;
-        }
-
-        .mt-3,
-        .my-3 {
-            margin-top: 1rem !important;
-        }
-
-        .mt-4,
-        .my-4 {
-            margin-top: 1.5rem !important;
-        }
-
-        .pb-4,
-        .py-4 {
-            padding-bottom: 1.5rem !important;
-        }
-
-        .pt-2,
-        .py-2 {
-            padding-top: .5rem !important;
-        }
-
-        .col,
-        .col-1,
-        .col-10,
-        .col-11,
-        .col-12,
-        .col-2,
-        .col-3,
-        .col-4,
-        .col-5,
-        .col-6,
-        .col-7,
-        .col-8,
-        .col-9,
-        .col-auto,
-        .col-lg,
-        .col-lg-1,
-        .col-lg-10,
-        .col-lg-11,
-        .col-lg-12,
-        .col-lg-2,
-        .col-lg-3,
-        .col-lg-4,
-        .col-lg-5,
-        .col-lg-6,
-        .col-lg-7,
-        .col-lg-8,
-        .col-lg-9,
-        .col-lg-auto,
-        .col-md,
-        .col-md-1,
-        .col-md-10,
-        .col-md-11,
-        .col-md-12,
-        .col-md-2,
-        .col-md-3,
-        .col-md-4,
-        .col-md-5,
-        .col-md-6,
-        .col-md-7,
-        .col-md-8,
-        .col-md-9,
-        .col-md-auto,
-        .col-sm,
-        .col-sm-1,
-        .col-sm-10,
-        .col-sm-11,
-        .col-sm-12,
-        .col-sm-2,
-        .col-sm-3,
-        .col-sm-4,
-        .col-sm-5,
-        .col-sm-6,
-        .col-sm-7,
-        .col-sm-8,
-        .col-sm-9,
-        .col-sm-auto,
-        .col-xl,
-        .col-xl-1,
-        .col-xl-10,
-        .col-xl-11,
-        .col-xl-12,
-        .col-xl-2,
-        .col-xl-3,
-        .col-xl-4,
-        .col-xl-5,
-        .col-xl-6,
-        .col-xl-7,
-        .col-xl-8,
-        .col-xl-9,
-        .col-xl-auto {
-            position: relative;
-            width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
-        }
-
-        .col-2 {
-            -ms-flex: 0 0 16.666667%;
-            flex: 0 0 16.666667%;
-            max-width: 16.666667%;
-        }
-
-        .col-3 {
-            -ms-flex: 0 0 25%;
-            flex: 0 0 25%;
-            max-width: 25%;
-        }
-
-        .col-4 {
-            -ms-flex: 0 0 33.333333%;
-            flex: 0 0 33.333333%;
-            max-width: 33.333333%;
-        }
-
-        .col-6 {
-            -ms-flex: 0 0 50%;
-            flex: 0 0 50%;
-            max-width: 50%;
-        }
-
-        .col-12 {
-            -ms-flex: 0 0 100%;
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
-
-        .list-unstyled {
-            padding-left: 0;
-            list-style: none;
-        }
-
-        .btn-success {
-            color: #fff;
-            background-color: #28a745;
-            border-color: #28a745;
-        }
-
-        .btn {
-            display: inline-block;
-            font-weight: 400;
-            /* color: #212529; */
+        .centrado-texto{
             text-align: center;
-            vertical-align: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            /* background-color: transparent; */
-            border: 1px solid transparent;
-            padding: .375rem .75rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            border-radius: .25rem;
-            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
-
-        .btn-success:hover {
-            color: #fff;
-            background-color: #218838;
-            border-color: #1e7e34;
+        .texto-verde{
+            color:#65ca51;
+            text-decoration:none !important;
         }
-
-        .btn:hover {
-            /* color: #212529; */
-            text-decoration: none;
+        .texto-blanco{
+            color:#fff;
         }
-
-        *,
-        ::after,
-        ::before {
-            box-sizing: border-box;
+        .fuente-18{
+            font-size:18px;
         }
-
-        .justify-content-center {
-            -ms-flex-pack: center !important;
-            justify-content: center !important;
+        .fuente-1-5{
+            font-size:1.5rem;
         }
-
-        .text-center {
-            text-align: center !important;
+        .blank-space{
+            font-size: 0; 
+            line-height: 0;
         }
-
-        .text-light {
-            color: #f8f9fa !important;
+        .centrado-margen{
+            margin:auto;
         }
-
-        .text-secondary {
-            color: #6c757d !important;
+        .border-right-1{
+            padding-right: 10px;
+            border-right: solid gray 1px;
         }
-
-        .border-bottom {
-            border-bottom: 1px solid #dee2e6 !important;
-        }
-
-        .border-right {
-            border-right: 1px solid #dee2e6 !important;
+        .tabla-productos{
+            padding-bottom: 5px;
+            border-bottom: solid gray 1px;
+            border-spacing: 0;
         }
     </style>
-
 </head>
 
-<body>
-    <div class="container font">
-        <div class="outer-pannel text-center rounded">
-            <div class="inner-pannel rounded">
-                <div class="row header">
-                    <div class="col-12 my-3">
-                        <a href="https://camaleon.shop/" target="_blank">
-                            <img src="https://camaleon.s3.amazonaws.com/email/shared/logo.png" alt="Camaleon.shop"
-                                title="Camaleon.shop" width="255">
-                        </a>
-                    </div>
-                    <!-- <div class="col-6 text-right account">
-                        <button type="button" class="btn btn-success">Mi Cuenta</button>
-                    </div> -->
-                </div>
-                <div class="row info">
-                    <div class="col-12 mt-3">
-                        <div class="f-500 f-size-1">**name** gracias por tu compra!</div>
-                        <div class="f-300 f-size-3"> Estamos trabajando para que la puedas disfrutar cuanto antes.</div>
-                    </div>
-                </div>
-                <div class="row info">
-                    <div class="col-md-6 col-12 mt-3">
-                        <img src="https://camaleon.s3.amazonaws.com/email/shared/summary.png" width="85">
-                        <div class="f-size-2 f-500 green-title">Resumen de compra</div>
-                        <ul class="list-unstyled">
-                            <li>
-                                <b># Orden:</b> <span class="f-300">**order-number**</span>
-                            </li>
-                            <li>
-                                <b>Fecha:</b> <span class="f-300">**purchase-date**</span>
-                            </li>
-                            <li>
-                                <b># Artículos:</b> <span class="f-300">**qty**</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-12 mt-3">
-                        <img src="https://camaleon.s3.amazonaws.com/email/shared/shipping.png" width="85">
-                        <div class="f-size-2 f-500 green-title">Dirección de entrega</div>
-                        <div class="f-300"> **shipping-address** </div>
-                    </div>
-                </div>
-                <div class="row info">
-                    <div class="col-12 mt-3">
-                        <a href="https://www.camaleon.shop/order/**order-id**" target="_blank" rel="noopener">
-                            <div type="div" class="btn btn-success">Ver Estado</div>
-                        </a>
-                    </div>
-                </div>
-                <div class="row info">
-                    <div class="col-12 mt-4">
-                        <div class="f-500 f-size-3">Detalle de tu compra</div>
-                    </div>
-                </div>
-
-                **tableItems**
-
-                <div class="row info pb-4 pt-3">
-                    <div class="col-2">
-                    </div>
-                    <div class="col-2">
-                    </div>
-                    <div class="col-4 totals border-right">
-                        <div class="f-300 f-size-4">Subtotal</div>
-                        <div class="f-300 f-size-4">Envío</div>
-                        <div class="f-300 f-size-4">IVA</div>
-                        <div class="f-500 f-size-3">Total</div>
-                    </div>
-                    <div class="col-4">
-                        <div class="f-300 f-size-4">$**subtotal**</div>
-                        <div class="f-300 f-size-4">$**shipping**</div>
-                        <div class="f-300 f-size-4">$**tax**</div>
-                        <div class="f-500 f-size-3 green-title">$**total**</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 mt-4">
-                    <div class="f-size-2 green-title">
-                        ¿Necesitas ayuda?
-                    </div>
-                    <div class="f-size-4">
-                        Envíanos un correo a <a href="mailto:info@camaleon.shop" target="_blank"
-                            rel="noopener">info@camaleon.shop</a>
-                        <br>
-                        <!-- o llámanos al
-                        <a style="text-decoration: underline; color: #2190E3;" href="tel:+573138891481" target="_blank" rel="noopener"><span style="color: #2190e3; font-size: 18px; line-height: 27px;">(<strong>319</strong>)</span>
-                                <span style="color: #2190e3; font-size: 18px; line-height: 27px;">
-                                <strong>264-9443</strong>
-                            </span>
-                                </a> -->
-                    </div>
-                    <div class="f-size-4">
-                        o escríbenos en nuestras redes sociales
-                    </div>
-                    <div class="row justify-content-center my-3">
-                        <div class="col-3">
-                            <a href="https://web.whatsapp.com/send?phone=573192649443" target="_blank"><img width="32"
-                                    height="32" src="https://camaleon.s3.amazonaws.com/email/shared/whatsapp-logo.png"
-                                    alt="Whatsapp" title="Whatsapp"></a>
-                        </div>
-                        <div class="col-3">
-                            <a href="https://www.instagram.com/camaleon.shop_/" target="_blank"><img width="32"
-                                    height="32" src="https://camaleon.s3.amazonaws.com/email/shared/instagram-logo.png"
-                                    alt="Instagram" title="Instagram"></a>
-                        </div>
-                        <div class="col-3">
-                            <a href="https://m.me/www.camaleon.shop" target="_blank"><img width="32" height="32"
-                                    src="https://camaleon.s3.amazonaws.com/email/shared/facebook-logo.png"
-                                    alt="Messenger" title="Messenger"></a>
-                        </div>
-                        <div class="col-3">
-                            <a href="https://linkedin.com/company/camaleon-shop" target="_blank"><img width="32"
-                                    height="32" src="https://camaleon.s3.amazonaws.com/email/shared/linkedin-logo.png"
-                                    alt="Twitter" title="Twitter"></a>
-                        </div>
-                    </div>
-                    <div class="row f-size-5 mb-2">
-                        <div class="col-12 text-secondary">
-                            Bogotá - Colombia
-                            <br> camaleon.shop - 2019
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<body style="margin: 0; padding: 0;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="padding: 20px 0 30px 0;">
+        <tr>
+            <td align="center" bgcolor="#231f20" style="padding: 40px 0 30px 0;">
+                <a href="https://www.camaleon.shop" class="a">
+                    <img src="https://camaleon.s3.amazonaws.com/email/shared/logo.png" alt="Creating Email Magic" height="45" style="display: block;" />
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#ffffff" style="padding: 40px 30px 15px 30px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td class="centrado-texto fuente-1-5">
+                            **name**, tu pago fue **payment-response**! <br>No olvides hacer tu pago para finalizar la compra
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="centrado-texto">
+                                <img class="centrado-margen" src="https://camaleon.s3.amazonaws.com/email/shared/**payment-response**.png" alt="Creating Email Magic" height="45" style="display: block;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table border="0" cellpadding="0" cellspacing="20" width="100%">
+                                <tr>
+                                    <td width="260" valign="top">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td>
+                                                    <img class="centrado-margen" src="https://camaleon.s3.amazonaws.com/email/shared/summary.png" alt="" height="140" style="display: block;" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td >
+                                                    <table width="100%" class="centrado-texto">
+                                                        <tr>
+                                                            <td>
+                                                                <p class="texto-verde fuente-1-5">Resumen de compra</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span> # Pedido</span><span> **order-number**</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span> Fecha </span><span> **purchase-date** </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                    <span> # Artículos </span><span> **qty** </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td class="blank-space" width="20">
+                                        &nbsp;
+                                    </td>
+                                    <td width="260" valign="top">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+                                                <td>
+                                                    <img class="centrado-margen" src="https://camaleon.s3.amazonaws.com/email/shared/shipping.png" alt="" height="140" style="display: block;" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table width="100%" class="centrado-texto">
+                                                        <tr>
+                                                            <td>
+                                                                <p class="texto-verde fuente-1-5">Dirección de entrega</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span> **shipping-address**</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span> **city** </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span> **department** </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table width="100%">
+                                <tr>
+                                    <td class="centrado-texto">
+                                        <p class="texto-verde fuente-1-5">Detalles de tu compra</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="tabla-productos" width="100%">
+                                            <tr class="texto-blanco centrado-texto fuente-18" bgcolor="#231f20">
+                                                <td>
+                                                    Tienda
+                                                </td>
+                                                <td>
+                                                    Producto
+                                                </td>
+                                                <td>
+                                                    Cantidad
+                                                </td>
+                                                <td>
+                                                    Total
+                                                </td>
+                                            </tr>
+                                            <tr class="centrado-texto">
+                                                <td>
+                                                    **tableItems**
+                                                </td>
+                                                <td>
+                                                    **tableItems**
+                                                </td>
+                                                <td>
+                                                    **tableItems**
+                                                </td>
+                                                <td>
+                                                    **tableItems**
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table width="100%" align="right">
+                                            <tr align="right">
+                                                <td align="right" width="80%" class="border-right-1 fuente-18">Subtotal</td>
+                                                <td align="center">$**subtotal**</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" class="border-right-1 fuente-18">Envío</td>
+                                                <td align="center">$**shipping**</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" class="border-right-1 fuente-18">IVA</td>
+                                                <td align="center">$**tax**</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" class="border-right-1 fuente-18"><b>Total</b></td>
+                                                <td align="center">$**total**</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#231f20" class="texto-blanco" style="padding-bottom: 10px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td width="75%" class="centrado-texto">
+                                <p class="texto-verde fuente-1-5">¿Necesitas ayuda?</p>    
+                                <p>Envíanos un correo a  <a class="texto-verde" href="mailto:info@camaleon.shop" target="_blank" rel="noopener">info@camaleon.shop</a> 
+                                o escríbenos en nuestras redes sociales</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td>
+                                        <a href="https://web.whatsapp.com/send?phone=573192649443" target="_blank">
+                                            <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/whatsapp-logo.png" alt="Whatsapp" title="Whatsapp"></a>
+                                    </td>
+                                    <td class="blank-space" width="20">&nbsp;</td>
+                                    <td>
+                                            <a href="https://www.instagram.com/camaleon.shop_/" target="_blank">
+                                                <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/instagram-logo.png" alt="Instagram" title="Instagram">
+                                            </a>
+                                    </td>
+                                    <td class="blank-space" width="20">&nbsp;</td>
+                                    <td>
+                                            <a href="https://m.me/www.camaleon.shop" target="_blank">
+                                                <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/facebook-logo.png" alt="Messenger" title="Messenger">
+                                            </a>
+                                    </td>
+                                    <td class="blank-space" width="20">&nbsp;</td>
+                                    <td>
+                                            <a href="https://linkedin.com/company/camaleon-shop" target="_blank">
+                                                <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/linkedin-logo.png" alt="Linkedin" title="Linkedin">
+                                            </a>
+                                    </td>
+                                </tr>
+                                <tr class="centrado-texto">
+                                    <td colspan="7">
+                                        <p>Bogotá - Colombia <br>
+                                        &reg; camaleon.shop - 2019</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 
 </html>
