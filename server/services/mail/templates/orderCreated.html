@@ -5,6 +5,40 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Camaleon Order Created</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        .centrado-texto{
+            text-align: center;
+        }
+        .texto-verde{
+            color:#65ca51;
+            text-decoration:none !important;
+        }
+        .texto-blanco{
+            color:#fff;
+        }
+        .fuente-18{
+            font-size:18px;
+        }
+        .fuente-1-5{
+            font-size:1.5rem;
+        }
+        .blank-space{
+            font-size: 0; 
+            line-height: 0;
+        }
+        .centrado-margen{
+            margin:auto;
+        }
+        .border-right-1{
+            padding-right: 10px;
+            border-right: solid gray 1px;
+        }
+        .tabla-productos{
+            padding-bottom: 5px;
+            border-bottom: solid gray 1px;
+            border-spacing: 0;
+        }
+    </style>
 </head>
 
 <body style="margin: 0; padding: 0;">
@@ -17,51 +51,155 @@
             </td>
         </tr>
         <tr>
-            <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+            <td bgcolor="#ffffff" style="padding: 40px 30px 15px 30px;">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr>
-                        <td style="text-align: center; font-size:1.5rem">
-                            **name**, recibimos tu pedido! <br>No olvides hacer tu pago!
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 20px 0 30px 0;">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat.
+                        <td class="centrado-texto fuente-1-5">
+                            **name**, recibimos tu pedido! <br>No olvides hacer tu pago para finalizar la compra
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <table border="0" cellpadding="0" cellspacing="20" width="100%">
                                 <tr>
                                     <td width="260" valign="top">
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
                                                 <td>
-                                                    <img src="images/left.gif" alt="" width="100%" height="140" style="display: block;" />
+                                                    <img class="centrado-margen" src="https://camaleon.s3.amazonaws.com/email/shared/summary.png" alt="" height="140" style="display: block;" />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td style="padding: 25px 0 0 0;">
-
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat.
+                                                <td >
+                                                    <table width="100%" class="centrado-texto">
+                                                        <tr>
+                                                            <td>
+                                                                <p class="texto-verde fuente-1-5">Resumen de compra</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span> # Pedido</span><span> **order-number**</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span> Fecha </span><span> **purchase-date** </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                    <span> # Artículos </span><span> **qty** </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
                                                 </td>
                                             </tr>
                                         </table>
                                     </td>
-                                    <td style="font-size: 0; line-height: 0;" width="20">
+                                    <td class="blank-space" width="20">
                                         &nbsp;
                                     </td>
                                     <td width="260" valign="top">
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
                                                 <td>
-                                                    <img src="images/right.gif" alt="" width="100%" height="140" style="display: block;" />
+                                                    <img class="centrado-margen" src="https://camaleon.s3.amazonaws.com/email/shared/shipping.png" alt="" height="140" style="display: block;" />
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td style="padding: 25px 0 0 0;">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat.
+                                                <td>
+                                                    <table width="100%" class="centrado-texto">
+                                                        <tr>
+                                                            <td>
+                                                                <p class="texto-verde fuente-1-5">Dirección de entrega</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span> **shipping-address**</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span> **city** </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <span> **department** </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    
                                                 </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table width="100%">
+                                <tr>
+                                    <td class="centrado-texto">
+                                        <p class="texto-verde fuente-1-5">Detalles de tu compra</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="tabla-productos" width="100%">
+                                            <tr class="texto-blanco centrado-texto fuente-18" bgcolor="#231f20">
+                                                <td>
+                                                    Tienda
+                                                </td>
+                                                <td>
+                                                    Producto
+                                                </td>
+                                                <td>
+                                                    Cantidad
+                                                </td>
+                                                <td>
+                                                    Total
+                                                </td>
+                                            </tr>
+                                            <tr class="centrado-texto">
+                                                <td>
+                                                    **tableItems**
+                                                </td>
+                                                <td>
+                                                    **tableItems**
+                                                </td>
+                                                <td>
+                                                    **tableItems**
+                                                </td>
+                                                <td>
+                                                    **tableItems**
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table width="100%" align="right">
+                                            <tr align="right">
+                                                <td align="right" width="80%" class="border-right-1 fuente-18">Subtotal</td>
+                                                <td align="center">$**subtotal**</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" class="border-right-1 fuente-18">Envío</td>
+                                                <td align="center">$**shipping**</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" class="border-right-1 fuente-18">IVA</td>
+                                                <td align="center">$**tax**</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" class="border-right-1 fuente-18"><b>Total</b></td>
+                                                <td align="center">$**total**</td>
                                             </tr>
                                         </table>
                                     </td>
@@ -73,25 +211,46 @@
             </td>
         </tr>
         <tr>
-            <td bgcolor="#ee4c50" style="padding: 30px 30px 30px 30px;">
+            <td bgcolor="#231f20" class="texto-blanco" style="padding-bottom: 10px;">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                     <tr>
-                        <td width="75%">
-                            &reg; Someone, somewhere 2013<br/> Unsubscribe to this newsletter instantly
+                        <td width="75%" class="centrado-texto">
+                                <p class="texto-verde fuente-1-5">¿Necesitas ayuda?</p>    
+                                <p>Envíanos un correo a  <a class="texto-verde" href="mailto:info@camaleon.shop" target="_blank" rel="noopener">info@camaleon.shop</a> 
+                                o escríbenos en nuestras redes sociales</p>
                         </td>
-                        <td align="right">
+                    </tr>
+                    <tr>
+                        <td align="center">
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <a href="http://www.twitter.com/">
-                                            <img src="https://camaleon.s3.amazonaws.com/email/shared/instagram-logo.png" alt="Instagram" width="38" height="38" style="display: block;" border="0" />
-                                        </a>
+                                        <a href="https://web.whatsapp.com/send?phone=573192649443" target="_blank">
+                                            <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/whatsapp-logo.png" alt="Whatsapp" title="Whatsapp"></a>
                                     </td>
-                                    <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>
+                                    <td class="blank-space" width="20">&nbsp;</td>
                                     <td>
-                                        <a href="http://www.twitter.com/">
-                                            <img src="https://camaleon.s3.amazonaws.com/email/shared/facebook-logo.png" alt="Facebook" width="38" height="38" style="display: block;" border="0" />
-                                        </a>
+                                            <a href="https://www.instagram.com/camaleon.shop_/" target="_blank">
+                                                <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/instagram-logo.png" alt="Instagram" title="Instagram">
+                                            </a>
+                                    </td>
+                                    <td class="blank-space" width="20">&nbsp;</td>
+                                    <td>
+                                            <a href="https://m.me/www.camaleon.shop" target="_blank">
+                                                <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/facebook-logo.png" alt="Messenger" title="Messenger">
+                                            </a>
+                                    </td>
+                                    <td class="blank-space" width="20">&nbsp;</td>
+                                    <td>
+                                            <a href="https://linkedin.com/company/camaleon-shop" target="_blank">
+                                                <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/linkedin-logo.png" alt="Linkedin" title="Linkedin">
+                                            </a>
+                                    </td>
+                                </tr>
+                                <tr class="centrado-texto">
+                                    <td colspan="7">
+                                        <p>Bogotá - Colombia <br>
+                                        &reg; camaleon.shop - 2019</p>
                                     </td>
                                 </tr>
                             </table>
