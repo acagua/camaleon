@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var app = express();
 
 var Store = require('../models/store.js');
+const { Status } = require('../models/store.js');
 //-------------------------------------------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------RUTAS
@@ -113,7 +114,7 @@ app.get('/random/normal', function (req, res)
 {
     var limit = Number(req.query.limit) || 5;
 
-    var filter = {};
+    var filter = { status: Status.ACTIVE };
     var fields = {};
     var options = { limit: limit };
     Store.findRandom(filter, fields, options, function (err, documents)
@@ -144,7 +145,7 @@ app.get('/random/category/:categoryId', function (req, res)
 
     var limit = Number(req.query.limit) || 5;
 
-    var filter = { _categoryId: categoryId };
+    var filter = { status: Status.ACTIVE, _categoryId: categoryId };
     var fields = {};
     var options = { limit: limit };
     Store.findRandom(filter, fields, options, function (err, stores)

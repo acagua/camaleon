@@ -1,7 +1,7 @@
 var express = require('express');
-
 //var md5 = require('ts-md5');
 const crypto = require('crypto')
+var mail = require('../services/mail/mail.js');
 
 var app = express();
 
@@ -10,7 +10,8 @@ var PayU = require('../models/payu.js');
 var Order = require('../models/order.js');
 
 //---------------------------------------------------------------------------ROUTES
-app.post('/', function(req, res) {
+app.post('/', function (req, res)
+{
     var body = req.body;
     var response_code_pol = body.response_code_pol;
     var phone = body.phone;
@@ -83,53 +84,65 @@ app.post('/', function(req, res) {
     var payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
 
     var new_value = '';
-    if (value.substring(value.length - 2, value.length) == '00') {
+    if (value.substring(value.length - 2, value.length) == '00')
+    {
         new_value = value.substring(0, value.length - 1);
-    } else {
+    } else
+    {
         new_value = value;
     }
 
     var verifySignature = crypto.createHash('md5').update(payUApiKey + '~' + merchant_id + '~' + reference_sale + '~' + new_value + '~' + currency + '~' + state_pol).digest("hex")
 
-    if (sign == verifySignature) {
+    if (sign == verifySignature)
+    {
         //UPDATE ORDER
         var currentStatus = '';
         Order.findOne({
-                number: reference_sale // search query
-            }, "status")
-            .then(doc => {
+            number: reference_sale // search query
+        }, "status")
+            .then(doc =>
+            {
                 currentStatus = doc.status;
                 console.log("order status " + currentStatus);
-                if (currentStatus == Order.Status.PAYMENT_PENDING) {
+                if (currentStatus == Order.Status.PAYMENT_PENDING)
+                {
                     var nuevoEstado = '';
                     console.log("estado" + state_pol);
-                    if (state_pol == 4) {
+                    if (state_pol == 4)
+                    {
                         //TODO Enviar correo de confirmacion de pago
                         nuevoEstado = Order.Status.PAID;
-                    } else if (state_pol == 5 || state_pol == 6) {
+                    } else if (state_pol == 5 || state_pol == 6)
+                    {
                         //TODO Enviar correo de rechazo de pago
                         nuevoEstado = Order.Status.CANCELED;
                     }
                     Order.findOneAndUpdate({
                         number: reference_sale // search query
                     }, {
-                        status: nuevoEstado // field:values to update
-                    }, {
-                        new: true, // return updated doc
-                        runValidators: true // validate before update
-                    }).then(doc => {
-                        console.log(doc);
-                    }).catch(err => {
-                        console.error(err);
-                    });
-                } else {
+                            status: nuevoEstado // field:values to update
+                        }, {
+                            new: true, // return updated doc
+                            runValidators: true // validate before update
+                        }).then(doc =>
+                        {
+                            console.log(doc);
+                        }).catch(err =>
+                        {
+                            console.error(err);
+                        });
+                } else
+                {
                     //ESTADO YA ACTUALIZADO
                     console.log('Estado actualizado previamente');
                 }
-            }).catch(err => {
+            }).catch(err =>
+            {
                 console.error("err" + err);
             });
-    } else {
+    } else
+    {
         //ERROR NO CONCUERDA FIRMA 
         console.log('error en la firma');
     }
@@ -201,14 +214,17 @@ app.post('/', function(req, res) {
         pse_reference3: pse_reference3,
         pse_reference2: pse_reference2
     });
-    payu.save(function(err, docSaved) {
-        if (err) {
+    payu.save(function (err, docSaved)
+    {
+        if (err)
+        {
             return res.status(400).json({
                 ok: false,
                 message: 'Error al crear payu',
                 errors: err
             });
-        } else {
+        } else
+        {
             return res.status(201).json({
                 ok: true,
                 document: docSaved

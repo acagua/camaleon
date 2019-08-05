@@ -12,9 +12,9 @@ import { Category } from 'src/app/models/category.model';
 })
 export class ItemsComponent implements OnInit
 {
-  itemsLines: Item[][] = [];
 
   categories: Category[] = [];
+  categoryItems: any[] = [];
 
   constructor(private router: Router,
     public _itemService: ItemService,
@@ -35,7 +35,7 @@ export class ItemsComponent implements OnInit
             this._itemService.getItemsRandomByCategory(category._id, 6)
               .subscribe((items) =>
               {
-                this.itemsLines.push(items);
+                this.categoryItems.push({ category: category, items: items });
               });
           }
         }
