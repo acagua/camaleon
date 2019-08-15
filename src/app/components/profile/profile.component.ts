@@ -16,8 +16,10 @@ export class ProfileComponent implements OnInit
   orders: any[];
 
   //--------------------------------------------------METHODS
-  constructor(public _userService: UsuarioService,
-    public _orderService: OrderService)
+  constructor(
+    public _userService: UsuarioService,
+    public _orderService: OrderService
+  )
   {
     this.user = this._userService.user;
   }

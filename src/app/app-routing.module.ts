@@ -17,6 +17,9 @@ import { PasswordForgotComponent } from './components/password-forgot/password-f
 import { PasswordNewComponent } from './components/password-new/password-new.component';
 import { PasswordNewGuard } from './services/guards/password-new.guard';
 import { PayuResponseComponent } from './components/payu-response/payu-response.component';
+import { AdminComponent } from './components/admin/admin/admin.component';
+import { AdminStoreComponent } from './components/admin/store/admin-store.component';
+import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -29,13 +32,20 @@ const APP_ROUTES: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard] },
-  // { path: 'profile', component: ProfileComponent },
   { path: 'order/:id', component: OrderComponent },
   { path: 'stores', component: StoresComponent },
   { path: 'items', component: ItemsComponent },
   { path: 'passwordForgot', component: PasswordForgotComponent },
   { path: 'passwordNew', component: PasswordNewComponent, canActivate: [PasswordNewGuard] },
   { path: 'response', component: PayuResponseComponent },
+  {
+    path: 'admin', component: AdminComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: AdminHomeComponent },
+      { path: 'store', component: AdminStoreComponent }
+    ]
+  },
   { path: '', component: HomeComponent },
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];

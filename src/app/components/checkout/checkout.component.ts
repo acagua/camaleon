@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
-import { FormControl, FormGroup, Validators  } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from 'src/app/services/order.service';
 import { Router } from '@angular/router';
 import { GeoService } from 'src/app/services/geo.service';
@@ -11,7 +11,6 @@ import { ItemCart } from 'src/app/models/item-cart.model';
 import Swal from 'sweetalert2';
 import { Item } from 'src/app/models/item.model';
 import { Md5 } from 'ts-md5/dist/md5';
-
 
 @Component({
   selector: 'app-checkout',
@@ -50,7 +49,7 @@ export class CheckoutComponent implements OnInit
   responseUrl = 'https://www.camaleon.shop/response';
   confirmationUrl = 'https://www.camaleon.shop/api/payu';
 
-   currency = 'COP';
+  currency = 'COP';
 
   description: string;
   referenceCode: string;
@@ -61,7 +60,8 @@ export class CheckoutComponent implements OnInit
     public _orderService: OrderService,
     public _geoService: GeoService,
     public router: Router,
-  )  {
+  )
+  {
     this.total = _cartService.total + this.shippingCost;
     this.email = this._userService.user.email;
     this.forma = new FormGroup({
@@ -84,16 +84,18 @@ export class CheckoutComponent implements OnInit
       this.departments = docs;
 
       this.selectDepartment('11');
-
-      // this.forma.controls['city'].setValue('001'); // TODO: pendiente de borrar, junio 4 de 2019
     });
   }
 
   onRegisterOrder()
   {
     // check if the order has shipping issues
-
     const formValues = this.forma.value;
+
+    console.log('b:::' + JSON.stringify(this.cities));
+    console.log('b:::' + formValues.city);
+
+    console.log('b:::' + this.getCity(formValues.city));
 
     this._orderService.registerOrder({
       telephone: formValues.telephone,
@@ -105,7 +107,9 @@ export class CheckoutComponent implements OnInit
       total: this.total,
       userId: this._userService.user._id,
       userEmail: this._userService.user.email,
-      arrItem: this._cartService.arrItemCart
+      arrItem: this._cartService.arrItemCart,
+      department: this.getDepartment(formValues.department),
+      city: this.getCity(formValues.city)
     }).subscribe(resp =>
     {
       this.referenceCode = resp.document.number;
@@ -113,9 +117,35 @@ export class CheckoutComponent implements OnInit
 
       // this.router.navigate(['/profile']);
       this.setPayuSignature();
-      this._cartService.removeCart();
+      // this._cartService.removeCart();
       this.submitForm();
     });
+  }
+
+  getDepartment(pCode: String)
+  {
+    for (let i = 0; i < this.departments.length; i++)
+    {
+      const element = this.departments[i];
+
+      if (element.code === pCode)
+      {
+        return element;
+      }
+    }
+  }
+
+  getCity(pCode: String)
+  {
+    for (let i = 0; i < this.cities.length; i++)
+    {
+      const element = this.cities[i];
+
+      if (element.cityDepartmentCode === pCode)
+      {
+        return element;
+      }
+    }
   }
 
   selectDepartment(selectedOption: String)
@@ -141,7 +171,8 @@ export class CheckoutComponent implements OnInit
       if (!shippingAllColombia)
       {
         const item: Item = element.item;
-        if(item.shippingCities != null){
+        if (item.shippingCities != null)
+        {
 
           item.shippingCities.forEach((element2: City) =>
           {
@@ -167,7 +198,8 @@ export class CheckoutComponent implements OnInit
     this.payuSignature = Md5.hashStr(this.payUApiKey + '~' + this.merchantId + '~' + this.referenceCode + '~' + this.total + '~' + this.currency).toString();
   }
 
-  submitForm() {
+  submitForm()
+  {
     const customForm = document.createElement('form');
     customForm.action = this.url;
     customForm.method = 'POST';

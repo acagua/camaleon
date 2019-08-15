@@ -16,7 +16,6 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class HomeComponent implements OnInit
 {
-
   categoryItems: any[] = [];
   storesLine: Store[] = [];
   categories: Category[] = [];

@@ -122,7 +122,10 @@ app.post('/', function (req, res)
     items: arrOrderItem,
     shippingCost: body.shippingCost,
     total: body.total,
-    _userId: body.userId
+    _userId: body.userId,
+    _storesIds: storesIds,
+    department: body.department,
+    city: body.city
   });
 
   order.save(function (err, orderSaved)
@@ -180,7 +183,7 @@ app.post('/', function (req, res)
                     stores: stores
                   };
 
-                  mail.sendOrderMail(parameters);
+                  // mail.sendOrderMail(parameters);
                 }
               });
           }

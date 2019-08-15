@@ -16,6 +16,8 @@ export class OrderService
 
   registerOrder(pOrder: any)
   {
+    console.log(JSON.stringify(pOrder));
+
     let url = URL_SERVICIOS + '/order';
 
     return this.httpClient.post(url, pOrder).pipe(map((resp: any) =>

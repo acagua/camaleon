@@ -24,6 +24,9 @@ import { ItemsComponent } from './components/items/items.component';
 import { PasswordForgotComponent } from './components/password-forgot/password-forgot.component';
 import { PasswordNewComponent } from './components/password-new/password-new.component';
 import { PayuResponseComponent } from './components/payu-response/payu-response.component';
+import { AdminComponent } from './components/admin/admin/admin.component';
+import { AdminStoreComponent } from './components/admin/store/admin-store.component';
+import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { PayuResponseComponent } from './components/payu-response/payu-response.
     ItemsComponent,
     PasswordForgotComponent,
     PasswordNewComponent,
-    PayuResponseComponent
+    PayuResponseComponent,
+    AdminComponent,
+    AdminStoreComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,

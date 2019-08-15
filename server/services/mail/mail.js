@@ -2,17 +2,23 @@ var nodemailer = require("nodemailer");
 var fs = require('fs');
 var util = require('../../utils/util.js');
 
-//templates desarrollo
-// var templateNewOrder = fs.readFileSync('server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
-// var templateNewOrderStore = fs.readFileSync('server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
-// var templateNewPassword = fs.readFileSync('server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
-// var templateContactMessage = fs.readFileSync('server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
+//templates desarrollo 1
+var templateNewOrder = fs.readFileSync('server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
+var templateNewOrderStore = fs.readFileSync('server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
+var templateNewPassword = fs.readFileSync('server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
+var templateContactMessage = fs.readFileSync('server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
+
+//templates desarrollo 2
+var templateOrderCreated = fs.readFileSync('server/services/mail/templates/orderCreated.html', { encoding: 'utf-8' });
+var templateNewOrderStore = fs.readFileSync('server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
+var templateNewPassword = fs.readFileSync('server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
+var templateContactMessage = fs.readFileSync('server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
 
 //templates produccion
-var templateNewOrder = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
-var templateNewOrderStore = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
-var templateNewPassword = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
-var templateContactMessage = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
+// var templateNewOrder = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
+// var templateNewOrderStore = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
+// var templateNewPassword = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
+// var templateContactMessage = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
 
 var mailFrom = 'info@camaleon.shop';
 
@@ -33,12 +39,13 @@ exports.sendOrderMail = function (parameters)
         var user = parameters.user;
         var order = parameters.order;
 
-        var bcc = ['info@camaleon.shop', 'nicolaz@camaleon.shop'];
+        // var bcc = ['info@camaleon.shop', 'nicolaz@camaleon.shop'];
+        var bcc = [];
 
         //1. mail to the user
         var to = parameters.user.email;
 
-        var htmlTemplate = templateNewOrder;
+        var htmlTemplate = templateOrderCreated;
         var htmlOrderTable = `<div class="desktop">
                                 <div class="row header text-light my-auto">
                                     <div class="col-3 my-2">
@@ -90,7 +97,7 @@ exports.sendOrderMail = function (parameters)
                                     <div class="f-300 f-size-5"><b>Marca: </b>${element.item._storeCodeName}</div>
                                     <div class="f-300 f-size-5"><b>Cantidad: </b>${element.quantity}</div>
                                     <div class="f-300 f-size-5"><b>Total: </b>$${element.total}</div>
-                                </div>`;
+                               </div>`;
         });
 
         htmlOrderTable += `</div></div>`;
@@ -106,7 +113,120 @@ exports.sendOrderMail = function (parameters)
             .replace('**shipping**', order.shippingCost)
             .replace('**tax**', 0 + '')
             .replace('**total**', order.total)
+            .replace('**department**', order.department.name)
+            .replace('**city**', order.city.name)
             .replace('**order-id**', order._id)
+            .replace('**tableItems**', htmlOrderTable);
+
+        var mailOptions = {
+            from: mailFrom,
+            to: to,
+            bcc: bcc,
+            subject: 'Tú orden #' + order.number + ' ha sido recibida :D',
+            html: htmlTemplate
+        };
+
+        transporter.sendMail(mailOptions, function (error, info)
+        {
+            if (error)
+            {
+                console.log(error);
+            } else
+            {
+                console.log("Email sent" + '\n');
+            }
+        });
+    }
+    catch (error)
+    {
+        console.log('error en mail - sendOrderMail: ' + error);
+    }
+}
+
+exports.sendOrderPaymentMail = function (parameters)
+{
+    try
+    {
+        var user = parameters.user;
+        var order = parameters.order;
+
+        var bcc = ['info@camaleon.shop', 'nicolaz@camaleon.shop'];
+
+        //1. mail to the user
+        var to = parameters.user.email;
+
+        var htmlTemplate = templateOrderCreated;
+        var htmlOrderTable = `<div class="desktop">
+                                <div class="row header text-light my-auto">
+                                    <div class="col-3 my-2">
+                                        <div class="f-300 f-size-4">Tienda</div>
+                                    </div>
+                                    <div class="col-3 my-2">
+                                        <div class="f-300 f-size-4">Producto</div>
+                                    </div>
+                                    <div class="col-3 my-2">
+                                        <div class="f-300 f-size-4">Cantidad</div>
+                                    </div>
+                                    <div class="col-3 my-2">
+                                        <div class="f-300 f-size-4">Total</div>
+                                    </div>
+                                </div>`;
+
+        order.items.forEach(element =>
+        {
+            htmlOrderTable += `<div class="row info item border-bottom">
+                                    <div class="col-3 mt-4">
+                                        <div class="f-300 f-size-4">${element.item._storeCodeName}</div>
+                                    </div>
+                                    <div class="col-3 mt-4">
+                                        <div class="f-300 f-size-4">${element.item.name}</div>
+                                    </div>
+                                    <div class="col-3 mt-4">
+                                        <div class="f-300 f-size-4">${element.quantity}</div>
+                                    </div>
+                                    <div class="col-3 mt-4">
+                                        <div class="f-300 f-size-4">$${element.total}</div>
+                                    </div>
+                                </div>`;
+        });
+
+        htmlOrderTable += '</div>';
+
+        htmlOrderTable += `<div class="mobile">
+                                <div class="row info item border-bottom">`;
+
+        order.items.forEach(element =>
+        {
+            htmlOrderTable += `<div class="col-6 mt-4">
+                                    <div class="f-300 f-size-4">
+                                    <img class="image"
+                                    src="${element.item.images[0]}">
+                                    </div>
+                                    <!-- <div class="f-300 f-size-5"><b>Nombre: </b> Billetera de mucho cargue</div> -->
+                                    <div class="f-300 f-size-5">${element.item.name}</div>
+                                    <div class="f-300 f-size-5"><b>Marca: </b>${element.item._storeCodeName}</div>
+                                    <div class="f-300 f-size-5"><b>Cantidad: </b>${element.quantity}</div>
+                                    <div class="f-300 f-size-5"><b>Total: </b>$${element.total}</div>
+                               </div>`;
+        });
+
+        htmlOrderTable += `</div></div>`;
+
+        var orderDate = util.getStrDate(order.date);
+
+        htmlTemplate = htmlTemplate.replace('**name**', user.name)
+            .replace('**order-number**', order.number)
+            .replace('**purchase-date**', orderDate)
+            .replace('**qty**', order.items.length)
+            .replace('**shipping-address**', order.address)
+            .replace('**subtotal**', order.total)
+            .replace('**shipping**', order.shippingCost)
+            .replace('**tax**', 0 + '')
+            .replace('**total**', order.total)
+            .replace('**department**', order.department.name)
+            .replace('**city**', order.city.name)
+            .replace('**order-id**', order._id)
+            .replace('**payment-response**', order.status)
             .replace('**tableItems**', htmlOrderTable);
 
         var mailOptions = {
@@ -175,7 +295,8 @@ exports.sendOrderMail = function (parameters)
             });
         });
 
-    } catch (error)
+    }
+    catch (error)
     {
         console.log('error en mail - sendOrderMail: ' + error);
     }

@@ -79,9 +79,9 @@ app.post('/', function (req, res)
     var pse_reference2 = body.pse_reference2;
 
     //Sandbox
-    //var payUApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
+    var payUApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
     // Producción
-    var payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
+    // var payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
 
     var new_value = '';
     if (value.substring(value.length - 2, value.length) == '00')
@@ -93,6 +93,8 @@ app.post('/', function (req, res)
     }
 
     var verifySignature = crypto.createHash('md5').update(payUApiKey + '~' + merchant_id + '~' + reference_sale + '~' + new_value + '~' + currency + '~' + state_pol).digest("hex")
+
+    console.log("b:::va a entrar a hacer esta mierda");
 
     if (sign == verifySignature)
     {
@@ -108,16 +110,63 @@ app.post('/', function (req, res)
                 if (currentStatus == Order.Status.PAYMENT_PENDING)
                 {
                     var nuevoEstado = '';
+
                     console.log("estado" + state_pol);
+
                     if (state_pol == 4)
                     {
                         //TODO Enviar correo de confirmacion de pago
                         nuevoEstado = Order.Status.PAID;
-                    } else if (state_pol == 5 || state_pol == 6)
+                    }
+                    else if (state_pol == 5 || state_pol == 6)
                     {
                         //TODO Enviar correo de rechazo de pago
                         nuevoEstado = Order.Status.CANCELED;
                     }
+
+                    //mail
+                    //search for the user of the order and the stores
+                    User.findById(body.userId, (err, user) =>
+                    {
+                        if (err)
+                        {
+                            console.log('error at searching for the user in the order registration');
+                        }
+                        else
+                        {
+                            if (!user)
+                            {
+                                console.log('The user with id ' + body.userId + ' does not exist');
+                            }
+                            else
+                            {
+                                //find stores to retrieve the emails to bcc
+                                Store.find({
+                                    '_id': {
+                                        $in: doc._storesIds
+                                    }
+                                }, (err, stores) =>
+                                    {
+                                        if (err)
+                                        {
+                                            console.log('error at searching for the stores in the order registration');
+                                        }
+                                        else
+                                        {
+                                            var parameters = {
+                                                order: doc,
+                                                user: user,
+                                                stores: stores
+                                            };
+                                            // mail.sendOrderPaymentMail(parameters);
+                                            console.log('b:::YES' + '\n');
+                                        }
+                                    });
+                            }
+                        }
+                    });
+                    //\mail
+
                     Order.findOneAndUpdate({
                         number: reference_sale // search query
                     }, {

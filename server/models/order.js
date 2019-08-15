@@ -12,7 +12,7 @@ var Status = Object.freeze({
 });
 
 var orderSchema = new Schema({
-    number: { type: Number },
+    number: { type: Number, unique: true },
     status: { type: String, enum: Object.values(Status), default: Status.PAYMENT_PENDING, required: [true, 'Status is required'] },
     whoReceives: { type: String, required: [true, 'Who receives is required'] },
     date: { type: Date, required: [true, 'The date is required'] },
@@ -22,11 +22,16 @@ var orderSchema = new Schema({
     comments: { type: String },
     shippingCost: { type: Number, required: [true, 'The order has to have a shiping cost'] },
     total: { type: Number, required: [true, 'The order has to have a total'] },
-    _userId: { type: Schema.Types.ObjectId, ref: 'User', required: [true, 'The order has to have an user asociated'] }
+    _userId: { type: Schema.Types.ObjectId, ref: 'User', required: [true, 'The order has to have an user asociated'] },
+    _storesIds: { type: [Schema.Types.ObjectId], ref: 'Store', required: [true, 'The order has to have an array of stores ids asociated'] },
+    department: { type: Schema.Types.Object, required: [true, 'The order has to have a department'] },
+    city: { type: Schema.Types.Object, required: [true, 'The order has to have a city'] }
 }, { collection: 'orders' });
 
 orderSchema.plugin(uniqueValidator, { message: '{PATH} must be unique' });
-orderSchema.plugin(autoIncrement, { inc_field: 'number' });
+orderSchema.plugin(autoIncrement, {
+    inc_field: 'number'
+});
 
 Object.assign(orderSchema.statics, {
     Status,
