@@ -25,7 +25,7 @@ import { PasswordForgotComponent } from './components/password-forgot/password-f
 import { PasswordNewComponent } from './components/password-new/password-new.component';
 import { PayuResponseComponent } from './components/payu-response/payu-response.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
-import { AdminStoreComponent } from './components/admin/store/admin-store.component';
+import { AdminStoreComponent } from './components/admin/admin-store/admin-store.component';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 
 @NgModule({

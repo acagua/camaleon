@@ -20,12 +20,13 @@ var orderSchema = new Schema({
     address: { type: String, required: [true, 'The address is required'] },
     items: { type: [OrderItem.schema] },
     comments: { type: String },
+    subtotal: { type: Number, required: [true, 'The order has to have a subtotal'] },
     shippingCost: { type: Number, required: [true, 'The order has to have a shiping cost'] },
     total: { type: Number, required: [true, 'The order has to have a total'] },
+    department: { type: Schema.Types.Object, required: [true, 'The order has to have a department'] },
+    city: { type: Schema.Types.Object, required: [true, 'The order has to have a city'] },
     _userId: { type: Schema.Types.ObjectId, ref: 'User', required: [true, 'The order has to have an user asociated'] },
     _storesIds: { type: [Schema.Types.ObjectId], ref: 'Store', required: [true, 'The order has to have an array of stores ids asociated'] },
-    department: { type: Schema.Types.Object, required: [true, 'The order has to have a department'] },
-    city: { type: Schema.Types.Object, required: [true, 'The order has to have a city'] }
 }, { collection: 'orders' });
 
 orderSchema.plugin(uniqueValidator, { message: '{PATH} must be unique' });

@@ -19,13 +19,15 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="name" class="form-label">Nombres</label>
-                                            <input formControlName="name" [(ngModel)]="user.name" type="text" class="form-control" required>
+                                            <input formControlName="name" [(ngModel)]="user.name" type="text"
+                                                class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="lastName" class="form-label">Apellidos</label>
-                                            <input formControlName="lastName" [(ngModel)]="user.lastName" type="text" class="form-control" required>
+                                            <input formControlName="lastName" [(ngModel)]="user.lastName" type="text"
+                                                class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -52,8 +54,10 @@
                                     </div>
                                 </div>
                                 <div class="text-center mt-4">
-                                    <button type="submit" class="btn btn-outline-dark"><i class="far fa-save mr-2"></i>Guardar
-                    cambios</button>
+                                    <button type="submit" class="btn btn-outline-dark">
+                                        <i class="far fa-save mr-2"></i>
+                                        Guardar cambios
+                                    </button>
                                 </div>
                             </form>
 
@@ -99,7 +103,8 @@
                                 <td class="py-4 text-center">{{order.items.length}}</td>
                                 <td class="py-4">{{order.address}}</td>
                                 <td class="py-4 text-right">{{order.total|currency}}</td>
-                                <td class="py-4 text-center"><a [routerLink]="['/order',order._id]" class="btn btn-outline-dark btn-sm">Ver</a>
+                                <td class="py-4 text-center"><a [routerLink]="['/order',order._id]"
+                                        class="btn btn-outline-dark btn-sm">Ver</a>
                                 </td>
                             </tr>
                         </tbody>

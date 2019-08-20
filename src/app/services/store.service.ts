@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../config/config';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+import Swal from 'sweetalert2';
+import { throwError } from 'rxjs';
+import { Store } from '../models/store.model';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +66,35 @@ export class StoreService
     {
       return resp.documents;
     }));
+  }
+
+
+  saveStore(store: Store)
+  {
+    let url = URL_SERVICIOS + '/store';
+
+    return this.httpClient.post(url, store)
+      .pipe(
+        map((resp: any) =>
+        {
+          return resp;
+        }),
+        catchError(err =>
+        {
+          let message: string = this.getErrorMessage(err);
+          Swal.fire('Error al registrar', message, 'error');
+          return throwError(err);
+        }));
+  }
+
+
+  getErrorMessage(err: any): string
+  {
+    let resp = '';
+
+    resp = JSON.stringify(err);
+
+    return resp;
   }
 
 

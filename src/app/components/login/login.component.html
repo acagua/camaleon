@@ -26,7 +26,7 @@
                             <h6 class="text-uppercase register-title">Regístrate</h6>
                         </div>
                         <div id="register-content" class="block-body collapse">
-                            <form ngNativeValidate [formGroup]="formRegister" (ngSubmit)="registerUser()">
+                            <form ngNativeValidate [formGroup]="formRegister" (ngSubmit)="onRegisterUser()">
                                 <div class="form-group">
                                     <label for="name" class="form-label">Nombres</label>
                                     <input formControlName="name" name="name" id="name" type="text" class="form-control"
@@ -47,6 +47,16 @@
                                     <input formControlName="password2" name="password2" id="password2" type="password"
                                         minlength="8" class="form-control" required>
                                 </div>
+
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input formControlName="createStore" name="createStore" id="createStore"
+                                            type="checkbox" class="custom-control-input">
+                                        <label for="createStore" class="custom-control-label align-middle">También
+                                            quiero crear mi tienda!</label>
+                                    </div>
+                                </div>
+
                                 <div class="form-group text-center">
                                     <p>Al registrarte aceptas las
                                         <a target="_blank"
@@ -84,7 +94,7 @@
                         </div>
                         <div id="login-content" class="block-body collapse">
 
-                            <form ngNativeValidate [formGroup]="formLogin" (ngSubmit)="loginUser()">
+                            <form ngNativeValidate [formGroup]="formLogin" (ngSubmit)="onLoginUser()">
                                 <div class="row">
 
                                     <div class="form-group col-md-12">

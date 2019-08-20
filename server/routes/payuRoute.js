@@ -8,6 +8,8 @@ var app = express();
 var PayU = require('../models/payu.js');
 
 var Order = require('../models/order.js');
+var User = require('../models/user.js');
+var Store = require('../models/store.js');
 
 //---------------------------------------------------------------------------ROUTES
 app.post('/', function (req, res)
@@ -87,14 +89,13 @@ app.post('/', function (req, res)
     if (value.substring(value.length - 2, value.length) == '00')
     {
         new_value = value.substring(0, value.length - 1);
-    } else
+    }
+    else
     {
         new_value = value;
     }
 
     var verifySignature = crypto.createHash('md5').update(payUApiKey + '~' + merchant_id + '~' + reference_sale + '~' + new_value + '~' + currency + '~' + state_pol).digest("hex")
-
-    console.log("b:::va a entrar a hacer esta mierda");
 
     if (sign == verifySignature)
     {
@@ -106,13 +107,11 @@ app.post('/', function (req, res)
             .then(doc =>
             {
                 currentStatus = doc.status;
-                console.log("order status " + currentStatus);
+                // console.log("order status " + currentStatus);
                 if (currentStatus == Order.Status.PAYMENT_PENDING)
                 {
                     var nuevoEstado = '';
-
-                    console.log("estado" + state_pol);
-
+                    // console.log("estado" + state_pol);
                     if (state_pol == 4)
                     {
                         //TODO Enviar correo de confirmacion de pago
@@ -124,49 +123,6 @@ app.post('/', function (req, res)
                         nuevoEstado = Order.Status.CANCELED;
                     }
 
-                    //mail
-                    //search for the user of the order and the stores
-                    User.findById(body.userId, (err, user) =>
-                    {
-                        if (err)
-                        {
-                            console.log('error at searching for the user in the order registration');
-                        }
-                        else
-                        {
-                            if (!user)
-                            {
-                                console.log('The user with id ' + body.userId + ' does not exist');
-                            }
-                            else
-                            {
-                                //find stores to retrieve the emails to bcc
-                                Store.find({
-                                    '_id': {
-                                        $in: doc._storesIds
-                                    }
-                                }, (err, stores) =>
-                                    {
-                                        if (err)
-                                        {
-                                            console.log('error at searching for the stores in the order registration');
-                                        }
-                                        else
-                                        {
-                                            var parameters = {
-                                                order: doc,
-                                                user: user,
-                                                stores: stores
-                                            };
-                                            // mail.sendOrderPaymentMail(parameters);
-                                            console.log('b:::YES' + '\n');
-                                        }
-                                    });
-                            }
-                        }
-                    });
-                    //\mail
-
                     Order.findOneAndUpdate({
                         number: reference_sale // search query
                     }, {
@@ -176,17 +132,62 @@ app.post('/', function (req, res)
                             runValidators: true // validate before update
                         }).then(doc =>
                         {
-                            console.log(doc);
+                            // console.log(doc);
+                            //mail
+                            //search for the user of the order and the stores
+                            User.findById(doc._userId, (err, user) =>
+                            {
+                                if (err)
+                                {
+                                    console.log('error at searching for the user in the order registration');
+                                }
+                                else
+                                {
+                                    if (!user)
+                                    {
+                                        console.log('The user with id ' + doc._userId + ' does not exist');
+                                    }
+                                    else
+                                    {
+                                        //find stores to retrieve the emails to bcc
+                                        Store.find({
+                                            '_id': {
+                                                $in: doc._storesIds
+                                            }
+                                        }, (err, stores) =>
+                                            {
+                                                if (err)
+                                                {
+                                                    console.log('error at searching for the stores in the order registration');
+                                                }
+                                                else
+                                                {
+                                                    var parameters = {
+                                                        order: doc,
+                                                        user: user,
+                                                        stores: stores
+                                                    };
+
+                                                    mail.sendOrderPaymentMail(parameters);
+                                                    // console.log('b:::YES' + '\n');
+                                                }
+                                            });
+                                    }
+                                }
+                            });
+                            //\mail
                         }).catch(err =>
                         {
                             console.error(err);
                         });
-                } else
+                }
+                else
                 {
                     //ESTADO YA ACTUALIZADO
                     console.log('Estado actualizado previamente');
                 }
-            }).catch(err =>
+            })
+            .catch(err =>
             {
                 console.error("err" + err);
             });
@@ -263,6 +264,7 @@ app.post('/', function (req, res)
         pse_reference3: pse_reference3,
         pse_reference2: pse_reference2
     });
+
     payu.save(function (err, docSaved)
     {
         if (err)
@@ -272,7 +274,8 @@ app.post('/', function (req, res)
                 message: 'Error al crear payu',
                 errors: err
             });
-        } else
+        }
+        else
         {
             return res.status(201).json({
                 ok: true,

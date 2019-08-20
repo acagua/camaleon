@@ -120,6 +120,7 @@ app.post('/', function (req, res)
     telephone: body.telephone,
     address: body.address,
     items: arrOrderItem,
+    subtotal: body.subtotal,
     shippingCost: body.shippingCost,
     total: body.total,
     _userId: body.userId,
@@ -183,7 +184,7 @@ app.post('/', function (req, res)
                     stores: stores
                   };
 
-                  // mail.sendOrderMail(parameters);
+                  mail.sendOrderMail(parameters);
                 }
               });
           }

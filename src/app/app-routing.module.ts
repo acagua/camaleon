@@ -18,7 +18,7 @@ import { PasswordNewComponent } from './components/password-new/password-new.com
 import { PasswordNewGuard } from './services/guards/password-new.guard';
 import { PayuResponseComponent } from './components/payu-response/payu-response.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
-import { AdminStoreComponent } from './components/admin/store/admin-store.component';
+import { AdminStoreComponent } from './components/admin/admin-store/admin-store.component';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 
 const APP_ROUTES: Routes = [

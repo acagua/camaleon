@@ -23,7 +23,8 @@ export class CheckoutComponent implements OnInit
   arrPaymentMethod: any[] = [{ '_id': 1, 'name': 'PayU' }/*, { '_id': 2, 'name': 'Transferencia' }*/];
   departments: Department[] = [{ name: 'BOGOTA', code: '01' }];
   cities: City[] = [];
-  shippingCost: number = 6000;
+  subtotal: number = 0;
+  shippingCost: number = 8000;
   total: number = 0;
   forma: FormGroup;
   formPayu: FormGroup;
@@ -62,6 +63,7 @@ export class CheckoutComponent implements OnInit
     public router: Router,
   )
   {
+    this.subtotal = _cartService.total;
     this.total = _cartService.total + this.shippingCost;
     this.email = this._userService.user.email;
     this.forma = new FormGroup({
@@ -79,12 +81,13 @@ export class CheckoutComponent implements OnInit
   {
     window.scrollTo(0, 0);
 
-    this._geoService.getDepartments().subscribe(docs =>
-    {
-      this.departments = docs;
+    this._geoService.getDepartments()
+      .subscribe(docs =>
+      {
+        this.departments = docs;
 
-      this.selectDepartment('11');
-    });
+        this.selectDepartment('11');
+      });
   }
 
   onRegisterOrder()
@@ -92,17 +95,13 @@ export class CheckoutComponent implements OnInit
     // check if the order has shipping issues
     const formValues = this.forma.value;
 
-    console.log('b:::' + JSON.stringify(this.cities));
-    console.log('b:::' + formValues.city);
-
-    console.log('b:::' + this.getCity(formValues.city));
-
     this._orderService.registerOrder({
       telephone: formValues.telephone,
       address: formValues.address,
       whoReceives: formValues.whoReceives,
       paymentMethod: formValues.paymentMethod,
       comments: formValues.comments,
+      subtotal: this.subtotal,
       shippingCost: this.shippingCost,
       total: this.total,
       userId: this._userService.user._id,
@@ -117,7 +116,7 @@ export class CheckoutComponent implements OnInit
 
       // this.router.navigate(['/profile']);
       this.setPayuSignature();
-      // this._cartService.removeCart();
+      this._cartService.removeCart();
       this.submitForm();
     });
   }

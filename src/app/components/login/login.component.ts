@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit
   formRegister: FormGroup;
   usuario: Usuario;
 
+
   constructor(
     public router: Router,
     public _usuarioService: UsuarioService,
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit
   {
 
   }
+
 
   ngOnInit()
   {
@@ -42,12 +44,19 @@ export class LoginComponent implements OnInit
       email2: new FormControl(null, [Validators.required, Validators.email]),
       lastName: new FormControl(null, Validators.required),
       password2: new FormControl(null, Validators.required),
+      createStore: new FormControl(false)
     });
 
     //cuando inicia sesión, lo debe llevar al home
     if (localStorage.getItem('user'))
     {
-      if (localStorage.getItem('pendingCheckout'))
+      if (localStorage.getItem('createStore'))
+      {
+        localStorage.removeItem('createStore');
+        this.router.navigate(['/admin/store']);
+      }
+
+      else if (localStorage.getItem('pendingCheckout'))
       {
         localStorage.removeItem('pendingCheckout');
         this.router.navigate(['/checkout']);
@@ -68,7 +77,7 @@ export class LoginComponent implements OnInit
   }
 
 
-  registerUser()
+  onRegisterUser()
   {
     const formRegisterValue = this.formRegister.value;
 
@@ -94,6 +103,11 @@ export class LoginComponent implements OnInit
               this._usuarioService.loginUser(usuario)
                 .subscribe(resp =>
                 {
+                  if (formRegisterValue.createStore)
+                  {
+                    localStorage.setItem('createStore', 'true');
+                  }
+
                   window.location.reload();
                 });
             }
@@ -107,13 +121,11 @@ export class LoginComponent implements OnInit
   }
 
 
-  loginUser()
+  onLoginUser()
   {
     const formLoginValue = this.formLogin.value;
 
     let usuario = new Usuario(null, null, formLoginValue.email1.trim().toLowerCase(), formLoginValue.password1);
-
-    console.log('formLoginValue.rememberMe: ' + formLoginValue.rememberMe);
 
     this._usuarioService.loginUser(usuario, formLoginValue.rememberMe)
       .subscribe(resp =>

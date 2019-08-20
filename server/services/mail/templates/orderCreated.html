@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -9,38 +10,38 @@
         .centrado-texto {
             text-align: center;
         }
-        
+
         .texto-verde {
             color: #65ca51;
             text-decoration: none !important;
         }
-        
+
         .texto-blanco {
             color: #fff;
         }
-        
+
         .fuente-18 {
             font-size: 18px;
         }
-        
+
         .fuente-1-5 {
             font-size: 1.5rem;
         }
-        
+
         .blank-space {
             font-size: 0;
             line-height: 0;
         }
-        
+
         .centrado-margen {
             margin: auto;
         }
-        
+
         .border-right-1 {
             padding-right: 10px;
             border-right: solid gray 1px;
         }
-        
+
         .tabla-productos {
             padding-bottom: 5px;
             border-bottom: solid gray 1px;
@@ -54,7 +55,8 @@
         <tr>
             <td align="center" bgcolor="#231f20" style="padding: 40px 0 30px 0;">
                 <a href="https://www.camaleon.shop" class="a">
-                    <img src="https://camaleon.s3.amazonaws.com/email/shared/logo.png" alt="Creating Email Magic" height="45" style="display: block;" />
+                    <img src="https://camaleon.s3.amazonaws.com/email/shared/logo.png" alt="Creating Email Magic"
+                        height="45" style="display: block;" />
                 </a>
             </td>
         </tr>
@@ -74,7 +76,9 @@
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
                                                 <td>
-                                                    <img class="centrado-margen" src="https://camaleon.s3.amazonaws.com/email/shared/summary.png" alt="" height="140" style="display: block;" />
+                                                    <img class="centrado-margen"
+                                                        src="https://camaleon.s3.amazonaws.com/email/shared/summary.png"
+                                                        alt="" height="140" style="display: block;" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -112,7 +116,9 @@
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
                                                 <td>
-                                                    <img class="centrado-margen" src="https://camaleon.s3.amazonaws.com/email/shared/shipping.png" alt="" height="140" style="display: block;" />
+                                                    <img class="centrado-margen"
+                                                        src="https://camaleon.s3.amazonaws.com/email/shared/shipping.png"
+                                                        alt="" height="140" style="display: block;" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -120,7 +126,8 @@
                                                     <table width="100%" class="centrado-texto">
                                                         <tr>
                                                             <td>
-                                                                <p class="texto-verde fuente-1-5">Dirección de entrega</p>
+                                                                <p class="texto-verde fuente-1-5">Dirección de entrega
+                                                                </p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -160,34 +167,20 @@
                                     <td>
                                         <table class="tabla-productos" width="100%">
                                             <tr class="texto-blanco centrado-texto fuente-18" bgcolor="#231f20">
-                                                <td>
+                                                <th>
                                                     Tienda
-                                                </td>
-                                                <td>
+                                                </th>
+                                                <th>
                                                     Producto
-                                                </td>
-                                                <td>
+                                                </th>
+                                                <th>
                                                     Cantidad
-                                                </td>
-                                                <td>
+                                                </th>
+                                                <th>
                                                     Total
-                                                </td>
+                                                </th>
                                             </tr>
                                             **tableItems**
-                                            <!-- <tr class="centrado-texto">
-                                                <td>
-                                                    Landazuri Chocolatería
-                                                </td>
-                                                <td>
-                                                    Chocolates de 200g 80% cacao
-                                                </td>
-                                                <td>
-                                                    5
-                                                </td>
-                                                <td>
-                                                    $500,000
-                                                </td>
-                                            </tr> -->
                                         </table>
                                     </td>
                                 </tr>
@@ -195,20 +188,21 @@
                                     <td>
                                         <table width="100%" align="right">
                                             <tr align="right">
-                                                <td align="right" width="80%" class="border-right-1 fuente-18">Subtotal</td>
-                                                <td align="center">$**subtotal**</td>
+                                                <td align="right" width="80%" class="border-right-1 fuente-18">Subtotal
+                                                </td>
+                                                <td align="right">$**subtotal**</td>
                                             </tr>
                                             <tr>
                                                 <td align="right" class="border-right-1 fuente-18">Envío</td>
-                                                <td align="center">$**shipping**</td>
+                                                <td align="right">$**shipping**</td>
                                             </tr>
                                             <tr>
                                                 <td align="right" class="border-right-1 fuente-18">IVA</td>
-                                                <td align="center">$**tax**</td>
+                                                <td align="right">$**tax**</td>
                                             </tr>
                                             <tr>
                                                 <td align="right" class="border-right-1 fuente-18"><b>Total</b></td>
-                                                <td align="center">$**total**</td>
+                                                <td align="right"><b>$**total**</b></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -225,39 +219,50 @@
                     <tr>
                         <td width="75%" class="centrado-texto">
                             <p class="texto-verde fuente-1-5">¿Necesitas ayuda?</p>
-                            <p>Envíanos un correo a <a class="texto-verde" href="mailto:info@camaleon.shop" target="_blank" rel="noopener">info@camaleon.shop</a> o escríbenos en nuestras redes sociales</p>
+                            <p class="texto-blanco">Envíanos un correo a <a class="texto-verde"
+                                    href="mailto:info@camaleon.shop" target="_blank"
+                                    rel="noopener">info@camaleon.shop</a> o escríbenos en nuestras redes
+                                sociales</p>
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="center" style="padding-top: 20px">
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
                                         <a href="https://web.whatsapp.com/send?phone=573192649443" target="_blank">
-                                            <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/whatsapp-logo.png" alt="Whatsapp" title="Whatsapp"></a>
+                                            <img width="32" height="32"
+                                                src="https://camaleon.s3.amazonaws.com/email/shared/whatsapp-logo.png"
+                                                alt="Whatsapp" title="Whatsapp"></a>
                                     </td>
                                     <td class="blank-space" width="20">&nbsp;</td>
                                     <td>
                                         <a href="https://www.instagram.com/camaleon.shop_/" target="_blank">
-                                            <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/instagram-logo.png" alt="Instagram" title="Instagram">
+                                            <img width="32" height="32"
+                                                src="https://camaleon.s3.amazonaws.com/email/shared/instagram-logo.png"
+                                                alt="Instagram" title="Instagram">
                                         </a>
                                     </td>
                                     <td class="blank-space" width="20">&nbsp;</td>
                                     <td>
                                         <a href="https://m.me/www.camaleon.shop" target="_blank">
-                                            <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/facebook-logo.png" alt="Messenger" title="Messenger">
+                                            <img width="32" height="32"
+                                                src="https://camaleon.s3.amazonaws.com/email/shared/facebook-logo.png"
+                                                alt="Messenger" title="Messenger">
                                         </a>
                                     </td>
                                     <td class="blank-space" width="20">&nbsp;</td>
                                     <td>
                                         <a href="https://linkedin.com/company/camaleon-shop" target="_blank">
-                                            <img width="32" height="32" src="https://camaleon.s3.amazonaws.com/email/shared/linkedin-logo.png" alt="Linkedin" title="Linkedin">
+                                            <img width="32" height="32"
+                                                src="https://camaleon.s3.amazonaws.com/email/shared/linkedin-logo.png"
+                                                alt="Linkedin" title="Linkedin">
                                         </a>
                                     </td>
                                 </tr>
                                 <tr class="centrado-texto">
-                                    <td colspan="7">
-                                        <p>Bogotá - Colombia <br> &reg; camaleon.shop - 2019</p>
+                                    <td colspan="7" style="padding-top: 20px">
+                                        <p class="texto-blanco">Bogotá - Colombia <br> &reg; camaleon.shop - 2019</p>
                                     </td>
                                 </tr>
                             </table>

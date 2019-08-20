@@ -25,6 +25,17 @@ export class CategoryService
   }
 
 
+  getCategories()
+  {
+    let url = URL_SERVICIOS + '/category';
+
+    return this.httpClient.get(url).pipe(map((resp: any) =>
+    {
+      return resp.documents;
+    }));
+  }
+
+
   getCategoriesRandom(limit: number)
   {
     let url = URL_SERVICIOS + '/category/random/normal';

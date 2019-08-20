@@ -201,4 +201,34 @@ app.get('/monda/monda2/monda3', function (req, res)
 });
 
 
+app.post('/', function (req, res)
+{
+    var body = req.body;
+
+    var store = new Store({
+        name: body.name,
+        description: body.description,
+    });
+
+    store.save(function (err, storeSaved)
+    {
+        if (err)
+        {
+            return res.status(400).json({
+                ok: false,
+                message: 'Error creating store',
+                errors: err
+            });
+        }
+        else
+        {
+            return res.status(201).json({
+                ok: true,
+                document: storeSaved
+            });
+        }
+    });
+});
+
+
 module.exports = app;

@@ -2,14 +2,10 @@ var nodemailer = require("nodemailer");
 var fs = require('fs');
 var util = require('../../utils/util.js');
 
-//templates desarrollo 1
-var templateNewOrder = fs.readFileSync('server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
-var templateNewOrderStore = fs.readFileSync('server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
-var templateNewPassword = fs.readFileSync('server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
-var templateContactMessage = fs.readFileSync('server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
+var Order = require('../../models/order.js');
 
-//templates desarrollo 2
 var templateOrderCreated = fs.readFileSync('server/services/mail/templates/orderCreated.html', { encoding: 'utf-8' });
+var templateOrderPayment = fs.readFileSync('server/services/mail/templates/orderPayment.html', { encoding: 'utf-8' });
 var templateNewOrderStore = fs.readFileSync('server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
 var templateNewPassword = fs.readFileSync('server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
 var templateContactMessage = fs.readFileSync('server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
@@ -32,6 +28,7 @@ var transporter = nodemailer.createTransport({
     }
 });
 
+
 exports.sendOrderMail = function (parameters)
 {
     try
@@ -46,61 +43,17 @@ exports.sendOrderMail = function (parameters)
         var to = parameters.user.email;
 
         var htmlTemplate = templateOrderCreated;
-        var htmlOrderTable = `<div class="desktop">
-                                <div class="row header text-light my-auto">
-                                    <div class="col-3 my-2">
-                                        <div class="f-300 f-size-4">Tienda</div>
-                                    </div>
-                                    <div class="col-3 my-2">
-                                        <div class="f-300 f-size-4">Producto</div>
-                                    </div>
-                                    <div class="col-3 my-2">
-                                        <div class="f-300 f-size-4">Cantidad</div>
-                                    </div>
-                                    <div class="col-3 my-2">
-                                        <div class="f-300 f-size-4">Total</div>
-                                    </div>
-                                </div>`;
+        var htmlOrderTable = '';
 
         order.items.forEach(element =>
         {
-            htmlOrderTable += `<div class="row info item border-bottom">
-                                    <div class="col-3 mt-4">
-                                        <div class="f-300 f-size-4">${element.item._storeCodeName}</div>
-                                    </div>
-                                    <div class="col-3 mt-4">
-                                        <div class="f-300 f-size-4">${element.item.name}</div>
-                                    </div>
-                                    <div class="col-3 mt-4">
-                                        <div class="f-300 f-size-4">${element.quantity}</div>
-                                    </div>
-                                    <div class="col-3 mt-4">
-                                        <div class="f-300 f-size-4">$${element.total}</div>
-                                    </div>
-                                </div>`;
+            htmlOrderTable += `<tr>
+                                    <td align="center"><a href="https://camaleon.shop/store/${element.item._storeCodeName}">${element.item._storeCodeName}</a></td>
+                                    <td align="center"><a href="https://camaleon.shop/item/${element.item._id}">${element.item.name}</a></td>
+                                    <td align="center">${element.quantity}</td>
+                                    <td align="right">$${element.total}</td>
+                               </tr>`;
         });
-
-        htmlOrderTable += '</div>';
-
-        htmlOrderTable += `<div class="mobile">
-                                <div class="row info item border-bottom">`;
-
-        order.items.forEach(element =>
-        {
-            htmlOrderTable += `<div class="col-6 mt-4">
-                                    <div class="f-300 f-size-4">
-                                    <img class="image"
-                                    src="${element.item.images[0]}">
-                                    </div>
-                                    <!-- <div class="f-300 f-size-5"><b>Nombre: </b> Billetera de mucho cargue</div> -->
-                                    <div class="f-300 f-size-5">${element.item.name}</div>
-                                    <div class="f-300 f-size-5"><b>Marca: </b>${element.item._storeCodeName}</div>
-                                    <div class="f-300 f-size-5"><b>Cantidad: </b>${element.quantity}</div>
-                                    <div class="f-300 f-size-5"><b>Total: </b>$${element.total}</div>
-                               </div>`;
-        });
-
-        htmlOrderTable += `</div></div>`;
 
         var orderDate = util.getStrDate(order.date);
 
@@ -109,7 +62,7 @@ exports.sendOrderMail = function (parameters)
             .replace('**purchase-date**', orderDate)
             .replace('**qty**', order.items.length)
             .replace('**shipping-address**', order.address)
-            .replace('**subtotal**', order.total)
+            .replace('**subtotal**', order.subtotal)
             .replace('**shipping**', order.shippingCost)
             .replace('**tax**', 0 + '')
             .replace('**total**', order.total)
@@ -122,7 +75,7 @@ exports.sendOrderMail = function (parameters)
             from: mailFrom,
             to: to,
             bcc: bcc,
-            subject: 'Tú orden #' + order.number + ' ha sido recibida :D',
+            subject: 'Tu orden #' + order.number + ' ha sido recibida :D',
             html: htmlTemplate
         };
 
@@ -131,7 +84,8 @@ exports.sendOrderMail = function (parameters)
             if (error)
             {
                 console.log(error);
-            } else
+            }
+            else
             {
                 console.log("Email sent" + '\n');
             }
@@ -155,62 +109,18 @@ exports.sendOrderPaymentMail = function (parameters)
         //1. mail to the user
         var to = parameters.user.email;
 
-        var htmlTemplate = templateOrderCreated;
-        var htmlOrderTable = `<div class="desktop">
-                                <div class="row header text-light my-auto">
-                                    <div class="col-3 my-2">
-                                        <div class="f-300 f-size-4">Tienda</div>
-                                    </div>
-                                    <div class="col-3 my-2">
-                                        <div class="f-300 f-size-4">Producto</div>
-                                    </div>
-                                    <div class="col-3 my-2">
-                                        <div class="f-300 f-size-4">Cantidad</div>
-                                    </div>
-                                    <div class="col-3 my-2">
-                                        <div class="f-300 f-size-4">Total</div>
-                                    </div>
-                                </div>`;
+        var htmlTemplate = templateOrderPayment;
+        var htmlOrderTable = '';
 
         order.items.forEach(element =>
         {
-            htmlOrderTable += `<div class="row info item border-bottom">
-                                    <div class="col-3 mt-4">
-                                        <div class="f-300 f-size-4">${element.item._storeCodeName}</div>
-                                    </div>
-                                    <div class="col-3 mt-4">
-                                        <div class="f-300 f-size-4">${element.item.name}</div>
-                                    </div>
-                                    <div class="col-3 mt-4">
-                                        <div class="f-300 f-size-4">${element.quantity}</div>
-                                    </div>
-                                    <div class="col-3 mt-4">
-                                        <div class="f-300 f-size-4">$${element.total}</div>
-                                    </div>
-                                </div>`;
+            htmlOrderTable += `<tr>
+                                    <td align="center"><a href="https://camaleon.shop/store/${element.item._storeCodeName}">${element.item._storeCodeName}</a></td>
+                                    <td align="center"><a href="https://camaleon.shop/item/${element.item._id}">${element.item.name}</a></td>
+                                    <td align="center">${element.quantity}</td>
+                                    <td align="right">$${element.total}</td>
+                               </tr>`;
         });
-
-        htmlOrderTable += '</div>';
-
-        htmlOrderTable += `<div class="mobile">
-                                <div class="row info item border-bottom">`;
-
-        order.items.forEach(element =>
-        {
-            htmlOrderTable += `<div class="col-6 mt-4">
-                                    <div class="f-300 f-size-4">
-                                    <img class="image"
-                                    src="${element.item.images[0]}">
-                                    </div>
-                                    <!-- <div class="f-300 f-size-5"><b>Nombre: </b> Billetera de mucho cargue</div> -->
-                                    <div class="f-300 f-size-5">${element.item.name}</div>
-                                    <div class="f-300 f-size-5"><b>Marca: </b>${element.item._storeCodeName}</div>
-                                    <div class="f-300 f-size-5"><b>Cantidad: </b>${element.quantity}</div>
-                                    <div class="f-300 f-size-5"><b>Total: </b>$${element.total}</div>
-                               </div>`;
-        });
-
-        htmlOrderTable += `</div></div>`;
 
         var orderDate = util.getStrDate(order.date);
 
@@ -226,14 +136,14 @@ exports.sendOrderPaymentMail = function (parameters)
             .replace('**department**', order.department.name)
             .replace('**city**', order.city.name)
             .replace('**order-id**', order._id)
-            .replace('**payment-response**', order.status)
+            .replace(/payment-response/g, parseOrderStatus(order.status))
             .replace('**tableItems**', htmlOrderTable);
 
         var mailOptions = {
             from: mailFrom,
             to: to,
             bcc: bcc,
-            subject: 'Tú orden #' + order.number + ' ha sido recibida :D',
+            subject: 'Tu orden #' + order.number + ' ha sido confirmada :D',
             html: htmlTemplate
         };
 
@@ -298,9 +208,35 @@ exports.sendOrderPaymentMail = function (parameters)
     }
     catch (error)
     {
-        console.log('error en mail - sendOrderMail: ' + error);
+        console.log('error en mail - sendOrderPaymentMail: ' + error);
     }
 }
+
+
+parseOrderStatus = function (orderStatus)
+{
+    try
+    {
+        var resp = 'NA';
+
+        if (orderStatus == Order.Status.PAID)
+        {
+            return 'exitoso';
+        }
+        else if (orderStatus == Order.Status.CANCELED)
+        {
+            return 'rechazado';
+        }
+
+        return resp;
+    }
+    catch (error)
+    {
+        console.log('error en mail - parseOrderStatus: ' + error);
+        return 'error'
+    }
+}
+
 
 exports.sendNewPasswordMail = function (parameters)
 {

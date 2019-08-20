@@ -1,0 +1,46 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-body">
+      <form ngNativeValidate [formGroup]="formStore" (ngSubmit)="onSaveChanges()">
+
+        <div class="form-group">
+          <label class="form-label" for="logo">Logo</label>
+          <br>
+          <span style="color:red;" *ngIf="message">{{message}}</span>
+          <img [src]="imageURL" height="300" *ngIf="imageURL">
+          <br>
+          <br>
+          <input class="" id="logo" #file type="file" accept='image/*' (change)="preview(file.files)" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="form-label" for="name">Nombre Marca</label>
+            <input type="text" formControlName="name" class="form-control" id="name">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="fullname_invoice" class="form-label">Categoría</label>
+            <select class="form-control" formControlName="category" required>
+              <option *ngFor="let category of categories" [value]="category._id">
+                {{category.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="form-label" for="description">Descripción</label>
+          <textarea class="form-control" formControlName="description" placeholder="Lúcete con una descripción única ;)"
+            rows="2" id="description"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-outline-dark">
+          <i class="far fa-save mr-2"></i>
+          Guardar cambios
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>

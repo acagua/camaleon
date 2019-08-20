@@ -40,7 +40,8 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="fullname_invoice" class="form-label">Departamento</label>
-                                        <select class="form-control" formControlName="department" (change)="selectDepartment($event.target.value)" required>
+                                        <select class="form-control" formControlName="department"
+                                            (change)="selectDepartment($event.target.value)" required>
                                             <option *ngFor="let dep of departments" [value]="dep.code">
                                                 {{dep.name}}
                                             </option>
@@ -49,7 +50,8 @@
                                     <div class="form-group col-md-6">
                                         <label for="fullname_invoice" class="form-label">Ciudad</label>
                                         <!-- <select class="form-control" formControlName="city" (change)="selectCity($event.target.value)" required> -->
-                                        <select class="form-control" formControlName="city" (change)="selectCity($event.target.value)">
+                                        <select class="form-control" formControlName="city"
+                                            (change)="selectCity($event.target.value)">
                                             <option *ngFor="let cit of cities" [value]="cit.cityDepartmentCode">
                                                 {{cit.name}}
                                             </option>
@@ -57,16 +59,19 @@
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="message" class="form-label">Observaciones</label>
-                                        <textarea class="form-control" formControlName="comments" rows="3" id="message" class="form-control"></textarea>
+                                        <textarea class="form-control" formControlName="comments" rows="3" id="message"
+                                            class="form-control"></textarea>
                                     </div>
                                     <div *ngIf="!canShip" class="form-group col-md-12">
-                                        <p class="text-danger">* Oops, hay productos que no pueden ser enviados a la ciudad seleccionada, por favor revisa el carrito de compras</p>
+                                        <p class="text-danger">* Oops, hay productos que no pueden ser enviados a la
+                                            ciudad seleccionada, por favor revisa el carrito de compras</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row">
-                            <a [routerLink]="['/shoppingCart']" routerLink="[/shoppingCart]" class="btn btn-link text-muted">
+                            <a [routerLink]="['/shoppingCart']" routerLink="[/shoppingCart]"
+                                class="btn btn-link text-muted">
                                 <i class="fa fa-angle-left mr-2"></i>Volver al carrito
                             </a>
                             <button type="submit" class="btn btn-outline-dark" [disabled]="!canShip"><i
@@ -88,7 +93,8 @@
                                 <li class="order-summary-item"><span>Envío</span><span>{{shippingCost|currency}}</span>
                                 </li>
                                 <li class="order-summary-item"><span>Impuestos</span><span>$0.00</span></li>
-                                <li class="order-summary-item border-0"><span>Total</span><strong class="order-summary-total">{{total|currency}}</strong></li>
+                                <li class="order-summary-item border-0"><span>Total</span><strong
+                                        class="order-summary-total">{{total|currency}}</strong></li>
                             </ul>
                         </div>
                     </div>

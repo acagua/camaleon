@@ -3,7 +3,6 @@ import { Usuario } from '../models/usuario.model.js';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../config/config';
-
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';

@@ -56,8 +56,7 @@ export class ProfileComponent implements OnInit
       .subscribe(resp =>
       {
         console.log(resp.document);
-      });;
-
+      });
   }
 
 }
