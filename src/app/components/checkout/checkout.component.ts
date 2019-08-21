@@ -34,21 +34,21 @@ export class CheckoutComponent implements OnInit
   tax = 0;
   taxReturnBase = 0;
   // Produccion
-  // url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/';
-  // payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
-  // merchantId = '806840';
-  // accountId = '813893';
-  // responseUrl = 'https://www.camaleon.shop/response';
-  // confirmationUrl = 'https://www.camaleon.shop/api/payu';
-
-  // Sandbox
-  url = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu';
-  payUApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
-  merchantId = '508029';
-  accountId = '512326';
-  // responseUrl = 'http://localhost:4200/response';
+  url = 'https://checkout.payulatam.com/ppp-web-gateway-payu/';
+  payUApiKey = 'riJ8844MMP9ursOtgmFWnhSI2B';
+  merchantId = '806840';
+  accountId = '813893';
   responseUrl = 'https://www.camaleon.shop/response';
   confirmationUrl = 'https://www.camaleon.shop/api/payu';
+
+  // Sandbox
+  // url = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu';
+  // payUApiKey = '4Vj8eK4rloUd272L48hsrarnUA';
+  // merchantId = '508029';
+  // accountId = '512326';
+  // // responseUrl = 'http://localhost:4200/response';
+  // responseUrl = 'https://www.camaleon.shop/response';
+  // confirmationUrl = 'https://www.camaleon.shop/api/payu';
 
   currency = 'COP';
 
