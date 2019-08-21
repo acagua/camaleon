@@ -24,7 +24,7 @@ export class CheckoutComponent implements OnInit
   departments: Department[] = [{ name: 'BOGOTA', code: '01' }];
   cities: City[] = [];
   subtotal: number = 0;
-  shippingCost: number = 8000;
+  shippingCost: number = 8000;//TODO dejarlo configurable desde BD
   total: number = 0;
   forma: FormGroup;
   formPayu: FormGroup;

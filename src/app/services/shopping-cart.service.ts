@@ -31,7 +31,7 @@ export class ShoppingCartService
   {
     this.quantity += pItemCart.quantity;
     this.total += pItemCart.total;
-    this.shippingCost = 6000;
+    this.shippingCost = 8000;//TODO dejarlo configurable en BD
 
     let agregar: boolean = true;
     const cart = localStorage.getItem('arrItemCart');
