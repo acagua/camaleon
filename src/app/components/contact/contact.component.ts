@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { ContactService } from 'src/app/services/contact.service';
 import { ContactMessage } from 'src/app/models/contactMessage.model';
+import { Title, Meta } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-contact',
@@ -14,8 +16,8 @@ import { ContactMessage } from 'src/app/models/contactMessage.model';
 export class ContactComponent implements OnInit
 {
   formContact: FormGroup;
-
-  constructor(private _contactService: ContactService)
+  title = 'Contactanos';
+  constructor(private _contactService: ContactService, private titleService: Title, private meta: Meta)
   {
 
   }
@@ -23,6 +25,11 @@ export class ContactComponent implements OnInit
 
   ngOnInit()
   {
+    this.titleService.setTitle(this.title);
+    this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Contactanos, Contacto, Entrar, Hacer parte'});
+    this.meta.addTag({name: 'description', content: 'Contáctanos para si quieres hacer parte de Camaleon o si tienes alguna duda'});
+    this.meta.addTag({name: 'robots', content: 'index, follow'});
+
     window.scrollTo(0, 0);
 
     this.formContact = new FormGroup({
