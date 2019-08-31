@@ -22,13 +22,12 @@ export class ContactComponent implements OnInit
 
   }
 
-
   ngOnInit()
   {
     this.titleService.setTitle(this.title);
     this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Contactanos, Contacto, Entrar, Hacer parte'});
     this.meta.addTag({name: 'description', content: 'Contáctanos para si quieres hacer parte de Camaleon o si tienes alguna duda'});
-    this.meta.addTag({name: 'robots', content: 'index, follow'});
+    this.meta.addTag({name: 'robots', content: 'all, follow'});
 
     window.scrollTo(0, 0);
 
