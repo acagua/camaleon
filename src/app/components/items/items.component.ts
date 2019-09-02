@@ -10,7 +10,7 @@ import { Title, Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',
-  styleUrls: ['./items.component.css']
+  styleUrls: ['./items.component.less']
 })
 export class ItemsComponent implements OnInit
 {

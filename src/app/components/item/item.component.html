@@ -33,7 +33,7 @@
                     <div class="mb-md-4 row justify-content-center text-md-left">
                         <!--<span class="align-center multi-words">-</span>-->
                         <a [routerLink]="['/store', item._storeCodeName]">
-                            <h2 class="product-detail-store">{{item._storeCodeName|storeName}}</h2>
+                            <h2 class="capitalize">{{item._storeCodeName|storeName}}</h2>
                         </a>
                     </div>
                     <div class="row justify-content-center mt-2">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="row justify-content-center" *ngIf="item.options.length > 0">
                         <div *ngFor="let option of item.options" class="m-3 col-4">
-                            <label class="detail-option-heading multi-words">{{option.name}}</label>
+                            <label class="capitalize multi-words">{{option.name}}</label>
                             <select class="form-control mx-auto" required>
                                 <!-- Con un ng-model se puede cambiar esto y se puede incluir el angular/material para 
                                     que quede más bonito. mat-select

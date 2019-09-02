@@ -9,7 +9,7 @@ import { Title, Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['./category.component.less']
 })
 export class CategoryComponent implements OnInit
 {

@@ -1,27 +1,9 @@
-//Colores Camaleon Logo
-@camaleon-pink: #EF1E7A;
-@camaleon-orange: #F7931E;
-@camaleon-salmon: #FBB03E;
-@camaleon-yellow:#FFF103;
-@camaleon-lemon:#D6DF22;
-@camaleon-grass: #8BC73D;
-@camaleon-green: #3AB549;
-@camaleon-blue: #03AEEF;
-@camaleon-black: #242020;
-@camaleon-dark-blue: #00516c;
+@import 'variables.less';
 
 @btn-color: @camaleon-pink;
 @link-color: @camaleon-blue;
 
-@main-font:'Montserrat';
 @hs-opacity:0.7;
-
-@font-face {
-    font-family: 'Allegiant Regular';
-    src: url('../../src/assets/fonts/Allegiant-Regular.woff') format('woff');
-  }
-
-@logo-font:'Allegiant Regular';
 
 .logo-txt{
     font-family: @logo-font, sans-serif;
@@ -68,6 +50,7 @@
     margin-top:30px;
     width: 90%;
 }
+
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none;
@@ -78,9 +61,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 .pointer{
     cursor:pointer;
-}
-.section-title {
-    text-align: left;
 }
 
 .product {
@@ -95,94 +75,8 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 1rem;
 }
 
-.store-name {
+.capitalize {
     text-transform: capitalize;
-}
-
-.rounded-border {
-    border-radius: 10px;
-}
-
-.max-logo-size{
-    max-width: 181px;
-}
-
-.logo-padding-5{
-    padding-right: 5px;
-    padding-left: 5px;
-}
-
-.more-stores{
-    .rounded-border();
-    .btn-colors(white, @camaleon-black, @camaleon-black);
-    .font-settings(500; none; 2rem; @main-font);
-}
-
-.no-link:hover{
-    text-decoration: none;
-}
-
-.cutline{
-    border-top: solid 2px;
-    color:white;
-}
-
-.no-padding {
-    padding: 0;
-}
-.card-icon {
-    max-width: 100%;
-}
-.border-width-3 {
-    border-width: 3px;
-}
-.description{
-    font-size:16px;
-}
-.category{
-
-}
-.category-icon {
-    transition-duration: 0.3s;
-}
-.category-icon:hover:hover {
-    transform: translateY(-10%);
-    transition-duration: 0.3s;
-}
-.fab {
-    font-size: 1.5rem;
-}
-.fa-whatsapp{
-    color:#16E676;
-}
-.fa-facebook{
-    color:#3E62A9;
-}
-.fa-instagram{
-    background: linear-gradient(to top right,#F2B360,#A62DA0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    //color:#A62DA0;
-}
-.fa-linkedin{
-    color:#0077B5;
-}
-.detail-option-heading{
-    text-transform: capitalize;
-}
-.product-detail-title {
-    font-size: 3rem;
-    //text-align: center;
-}
-.multi-words {
-    text-align:center;
-    font-size:1.1rem;
-}
-.product-detail-store {
-    text-transform: capitalize;//TODO ver si por la marca algunos nos quieran la mayuscula
-}
-.menu-mobile{
-    display:none !important;
 }
 
 .nav-link {
@@ -190,9 +84,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: 100 !important;
 }
 
-.bg-dark{
-    background-color: #343a40 !important;
-}
+
 
 .hs-mobile{
     display:none;
@@ -582,102 +474,4 @@ input[type=number]::-webkit-outer-spin-button {
     }
 }
 
-//MIXINS
-.btn-colors(@font-color; @background-color; @border-color){
-    color: @font-color;
-    background-color: @background-color;
-    border-color: @border-color;
-}
 
-.font-settings(@weight; @style:none; @size; @family:@main-font){
-    font-family: @family, sans-serif;
-    font-weight: @weight;
-    font-style: @style;
-    font-size: @size;
-}
-
-//ICONOS
-.icon-mas-tiendas-circle{
-    fill:none;
-    stroke:#fff;
-    stroke-width:80;
-    stroke-miterlimit:10;
-}
-.icon-mas-tiendas-lines{
-    fill:none;
-    stroke:#fff;
-    stroke-width:80;
-    stroke-linecap:round;
-    stroke-miterlimit:10;
-}
-
-.hogar-category{
-    .btn-colors(@camaleon-orange, none, @camaleon-orange);
-    .rounded-border();
-    border: solid 4px @camaleon-orange;
-}
-.icon-category-hogar{
-    fill:none;
-    stroke:@camaleon-orange;
-    stroke-width:4;
-    stroke-miterlimit:10;
-    width:50%;
-}
-
-.pink-category{
-    .btn-colors(@camaleon-pink, none, @camaleon-pink);
-    .rounded-border();
-    border: solid 4px @camaleon-pink;
-}
-
-.orange-category{
-    .btn-colors(@camaleon-orange, none, @camaleon-orange);
-    .rounded-border();
-    border: solid 4px @camaleon-orange;
-}
-
-.salmon-category{
-    .btn-colors(@camaleon-salmon, none, @camaleon-salmon);
-    .rounded-border();
-    border: solid 4px @camaleon-salmon;
-}
-
-.lemon-category{
-    .btn-colors(@camaleon-lemon, none, @camaleon-lemon);
-    .rounded-border();
-    border: solid 4px @camaleon-lemon;
-}
-
-.grass-category{
-    .btn-colors(@camaleon-grass, none, @camaleon-grass);
-    .rounded-border();
-    border: solid 4px @camaleon-grass;
-}
-
-.green-category{
-    .btn-colors(@camaleon-green, none, @camaleon-green);
-    .rounded-border();
-    border: solid 4px @camaleon-green;
-}
-
-.blue-category{
-    .btn-colors(@camaleon-blue, none, @camaleon-blue);
-    .rounded-border();
-    border: solid 4px @camaleon-blue;
-}
-
-.icon-cateogry-pink{
-    fill:none;
-    stroke:@camaleon-pink;
-    stroke-width:4;
-    stroke-linecap:round;
-    stroke-miterlimit:10;
-}
-
-.category-letter{
-    .font-settings(300, none, 3.5rem, @logo-font)
-}
-
-.category-text{
-    .font-settings(300, none, 1rem, @main-font)
-}

@@ -12,7 +12,7 @@ import { StoreNamePipe } from '../../pipes/store-name.pipe';
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.css']
+  styleUrls: ['./item.component.less']
 })
 export class ItemComponent implements OnInit, OnChanges
 {
