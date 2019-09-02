@@ -11,10 +11,12 @@ import { ItemCart } from 'src/app/models/item-cart.model';
 import Swal from 'sweetalert2';
 import { Item } from 'src/app/models/item.model';
 import { Md5 } from 'ts-md5/dist/md5';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-checkout',
-  templateUrl: './checkout.component.html'
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css']
 })
 
 export class CheckoutComponent implements OnInit
@@ -61,7 +63,8 @@ export class CheckoutComponent implements OnInit
     public _orderService: OrderService,
     public _geoService: GeoService,
     public router: Router,
-  )
+    private titleService: Title,
+    private meta: Meta)
   {
     this.subtotal = _cartService.total;
     this.total = _cartService.total + this.shippingCost;
@@ -79,6 +82,12 @@ export class CheckoutComponent implements OnInit
 
   ngOnInit()
   {
+
+    this.titleService.setTitle('Finalizar Compra');
+    this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Finalizar compra, Checkout'});
+    this.meta.addTag({name: 'description', content: 'Finaliza tu compra'});
+    this.meta.addTag({name: 'robots', content: 'all, follow'});
+
     window.scrollTo(0, 0);
 
     this._geoService.getDepartments()

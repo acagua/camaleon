@@ -9,6 +9,7 @@ export class Item
         public images: String,
         public price: number,
         public description: string,
+        public keywords: string,
         public specifications: any [],
         public options: any [],
         public shippingAllColombia: Boolean,

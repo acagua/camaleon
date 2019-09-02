@@ -10,21 +10,22 @@ import { Title, Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styles: []
+  styleUrls: ['./contact.component.css']
 })
 
 export class ContactComponent implements OnInit
 {
   formContact: FormGroup;
-  title = 'Contactanos';
-  constructor(private _contactService: ContactService, private titleService: Title, private meta: Meta)
+  constructor(private _contactService: ContactService,
+    private titleService: Title,
+    private meta: Meta)
   {
 
   }
 
   ngOnInit()
   {
-    this.titleService.setTitle(this.title);
+    this.titleService.setTitle('Contactanos');
     this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Contactanos, Contacto, Entrar, Hacer parte'});
     this.meta.addTag({name: 'description', content: 'Contáctanos para si quieres hacer parte de Camaleon o si tienes alguna duda'});
     this.meta.addTag({name: 'robots', content: 'all, follow'});

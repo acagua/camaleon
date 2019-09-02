@@ -9,10 +9,12 @@ import Swal from 'sweetalert2';
 import { ItemCart } from 'src/app/models/item-cart.model';
 import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit
 {
@@ -41,7 +43,9 @@ export class HomeComponent implements OnInit
     public _storeService: StoreService,
     public _itemService: ItemService,
     public _cartService: ShoppingCartService,
-    public _categoryService: CategoryService)
+    public _categoryService: CategoryService,
+    private titleService: Title,
+    private meta: Meta) 
   {
 
     this._categoryService.getCategoriesRandom(2)
@@ -76,6 +80,10 @@ export class HomeComponent implements OnInit
 
   ngOnInit()
   {
+    this.titleService.setTitle('Inicio');
+    this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Marketplace, Inicio, Home, Comprar, Vender'});
+    this.meta.addTag({name: 'description', content: 'Conoce la plataforma digital que te trae productos de emprendedores colombianos'});
+    this.meta.addTag({name: 'robots', content: 'all, follow'});
     window.scrollTo(0, 0);
     if (window.screen.width < 768)
     { // 768px portrait

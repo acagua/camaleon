@@ -3,10 +3,12 @@ import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-order',
-  templateUrl: './order.component.html'
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit
 {
@@ -17,7 +19,9 @@ export class OrderComponent implements OnInit
   constructor(private route: ActivatedRoute,
     public router: Router,
     public _orderService: OrderService,
-    public _userService: UsuarioService) 
+    public _userService: UsuarioService,
+    private titleService: Title,
+    private meta: Meta)
   {
 
     if (!this._userService.user)
@@ -35,6 +39,11 @@ export class OrderComponent implements OnInit
           .subscribe((document) =>
           {
             this.order = document;
+
+            this.titleService.setTitle('Pedido #' + this.order.number);
+            this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Pedido, Orden, Compra'});
+            this.meta.addTag({name: 'description', content: 'Detalle de tu pedido'});
+            this.meta.addTag({name: 'robots', content: 'all, follow'});
           });
       });
     }
@@ -44,6 +53,7 @@ export class OrderComponent implements OnInit
 
   ngOnInit()
   {
+    
     window.scrollTo(0, 0);
   }
 

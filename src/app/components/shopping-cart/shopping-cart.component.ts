@@ -3,10 +3,12 @@ import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-shopping-cart',
-  templateUrl: './shopping-cart.component.html'
+  templateUrl: './shopping-cart.component.html',
+  styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit
 {
@@ -16,8 +18,9 @@ export class ShoppingCartComponent implements OnInit
   constructor(
     public router: Router,
     public _cartService: ShoppingCartService,
-    public _userService: UsuarioService
-  )
+    public _userService: UsuarioService,
+    private titleService: Title,
+    private meta: Meta)
   {
 
   }
@@ -25,6 +28,11 @@ export class ShoppingCartComponent implements OnInit
 
   ngOnInit()
   {
+    this.titleService.setTitle('Carrito de Compras');
+    this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Carrito, Cart'});
+    this.meta.addTag({name: 'description', content: 'Revisa los artículos que vas a comprar'});
+    this.meta.addTag({name: 'robots', content: 'all, follow'});
+
     window.scrollTo(0, 0);
   }
 

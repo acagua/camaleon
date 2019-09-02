@@ -7,10 +7,12 @@ import Swal from 'sweetalert2';
 import { FileService } from 'src/app/services/file.service.js';
 import { saveAs } from 'file-saver';
 import { REGEX_EMAIL } from '../../constants/constants';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit
 {
@@ -22,8 +24,9 @@ export class LoginComponent implements OnInit
   constructor(
     public router: Router,
     public _usuarioService: UsuarioService,
-    public _fileService: FileService
-  )
+    public _fileService: FileService,
+    private titleService: Title,
+    private meta: Meta)
   {
 
   }
@@ -31,6 +34,11 @@ export class LoginComponent implements OnInit
 
   ngOnInit()
   {
+    this.titleService.setTitle('Ingresar');
+    this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Ingresar, Registro, Vender, Login'});
+    this.meta.addTag({name: 'description', content: 'Ingresar a mi cuenta o registrarme. Quiero vender!'});
+    this.meta.addTag({name: 'robots', content: 'all, follow'});
+
     window.scrollTo(0, 0);
 
     this.formLogin = new FormGroup({

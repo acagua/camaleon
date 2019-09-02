@@ -3,10 +3,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { PasswordService } from 'src/app/services/password.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-password-new',
-  templateUrl: './password-new.component.html'
+  templateUrl: './password-new.component.html',
+  styleUrls: ['./password-new.component.css']
 })
 export class PasswordNewComponent implements OnInit
 {

@@ -7,10 +7,12 @@ import { Item } from 'src/app/models/item.model';
 import Swal from 'sweetalert2';
 import { ItemCart } from 'src/app/models/item-cart.model';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-store',
-  templateUrl: './store.component.html'
+  templateUrl: './store.component.html',
+  styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit
 {
@@ -27,8 +29,9 @@ export class StoreComponent implements OnInit
     private router: Router,
     public _storeService: StoreService,
     public _itemService: ItemService,
-    public _cartService: ShoppingCartService
-  )
+    public _cartService: ShoppingCartService,
+    private titleService: Title,
+    private meta: Meta)
   {
     this.route.params.subscribe(params =>
     {
@@ -41,6 +44,10 @@ export class StoreComponent implements OnInit
           this.numberOfPages = Math.ceil(this.numberItems / 20);
 
           this.setItems();
+          this.titleService.setTitle('' + this.store.name);
+          this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Marca, Tienda, ' + this.store.name});
+          this.meta.addTag({name: 'description', content: '' + this.store.description});
+          this.meta.addTag({name: 'robots', content: 'all, follow'});
         });
     });
   }

@@ -6,10 +6,13 @@ import { ItemCart } from 'src/app/models/item-cart.model';
 import { ItemService } from 'src/app/services/item.service';
 import Swal from 'sweetalert2';
 import { CurrencyPipe } from '@angular/common';
+import { Title, Meta } from '@angular/platform-browser';
+import { StoreNamePipe } from '../../pipes/store-name.pipe';
 
 @Component({
   selector: 'app-item',
-  templateUrl: './item.component.html'
+  templateUrl: './item.component.html',
+  styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit, OnChanges
 {
@@ -22,8 +25,9 @@ export class ItemComponent implements OnInit, OnChanges
     private route: ActivatedRoute,
     private _cartService: ShoppingCartService,
     public _itemService: ItemService,
-    public router: Router
-  )
+    public router: Router,
+    private titleService: Title,
+    private meta: Meta)
   {
     this.route.params.subscribe(params =>
     {
@@ -38,6 +42,10 @@ export class ItemComponent implements OnInit, OnChanges
             {
               this.otherItems = documents;
             });
+            this.titleService.setTitle('' + this.item.name);
+            this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Artículo, Producto, ' + this.item.keywords});
+            this.meta.addTag({name: 'description', content: '' + this.item.description});
+            this.meta.addTag({name: 'robots', content: 'all, follow'});
         });
     });
   }
@@ -45,12 +53,10 @@ export class ItemComponent implements OnInit, OnChanges
   ngOnInit()
   {
     window.scrollTo(0, 0);
-    console.log('ngOnInit activated');
   }
 
   ngOnChanges()
   {
-    console.log('ngOnChanges activated');
   }
 
   top()
