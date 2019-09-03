@@ -12,7 +12,7 @@ import { Title, Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
-  styleUrls: ['./store.component.css']
+  styleUrls: ['./store.component.less']
 })
 export class StoreComponent implements OnInit
 {

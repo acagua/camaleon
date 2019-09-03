@@ -1,5 +1,4 @@
 @import 'variables.less';
-@hs-opacity:0.7; //BORRAR
 
 .container-90{
     margin: 0 auto;
@@ -11,25 +10,8 @@
     cursor:pointer;
 }
 
-.product {
-    max-width: 150px;
-}
-
-.product-title {
-    font-size: 1rem;
-}
-
-.product-store {
-    font-size: 1rem;
-}
-
 .capitalize {
     text-transform: capitalize;
-}
-
-.nav-link {
-    color: #fff !important;
-    font-weight: 100 !important;
 }
 
 .only-mobile{
@@ -44,7 +26,7 @@
     display: block;
 }
 
-
+//Tablet
 @media only screen and (max-width: 991px){
     
     .only-mobile{
@@ -58,181 +40,7 @@
     }
 }
 
+//Mobile
 @media only screen and (max-width: 768px) {
-    
-    .product-title {
-        font-size: .9rem;
-    }
-    .product-store {
-        font-size: .9rem;
-    }
-    .product-detail-title {
-        font-size: 1.7rem;
-        text-align: center;
-        margin-bottom: 0.0rem;
-    }
-    //AQUI
-    .multi-words {
-        padding-right: 0.3rem;
-        padding-left: 0.3rem;
-        margin-top:0;
-        font-size:1.1rem;
-    }
-    .nav-link{
-        color:#ccc !important;
-        letter-spacing:0.05rem !important;
-        font-size: 0.9rem !important;
-        padding: 0.8rem 0.8rem !important;
-        text-transform: capitalize !important;
-        font-weight: 0px !important;
-    }
-    .nav-link.active{
-        color:#000 !important;
-        letter-spacing:0.05rem !important;
-        font-size: 1rem !important;
-        padding: 0.8rem 0.8rem !important;
-        text-transform: capitalize !important;
-    }
-    .detail-option-heading{
-        font-size:0.8rem;
-    }
-    .whatsapp{
-        visibility: hidden;
-    }
-    .whatsapp-mobile{
-        visibility: block;
-    }
-    .menu-mobile{
-        display:flex !important;
-    }
-    .logo-img{
-        height:25px;
-    }
-    .hs-mobile{
-        display:block;
-    }
-    // .hs-desktop{
-    //     display:none;
-    // }
-    .carousel-item{
-        height:100%;
-        .right{
-            float:none;
-            padding-left: 4%; 
-            padding-right: 4%;
-            text-align: center;
-        }
-        .left{
-            float:none;
-            padding-left: 4%; 
-            padding-right: 4%;
-            text-align: center;
-        }
-        .hs-text-block {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            transform: none;
-            text-align:center;
-            .title(){
-                .font-settings(700; none; 17px);
-            }
-    
-            .title-lemon{
-                .title();
-                color:@camaleon-lemon;
-            }
-    
-            .title-dark-blue{
-                .title();
-                color:@camaleon-dark-blue;
-            }
-    
-            .subtitle(){
-                .font-settings(500; none; 13px);
-            }
-    
-            .subtitle-white{
-                .subtitle();
-                color:white;
-            }
-            .subtitle-lemon{
-                .subtitle();
-                color:@camaleon-lemon;
-            }
-            .subtitle-dark-blue{
-                .subtitle();
-                color:@camaleon-dark-blue;
-            }
-    
-            .cta(){
-                border-radius: 5px;
-                border: solid 1px;
-                letter-spacing: .0em;
-                text-transform: none;
-                .font-settings(800; none; 10px);
-            }
-    
-            .cta-white-dark-blue{
-                .cta();
-                .btn-colors(@camaleon-dark-blue; white; @camaleon-dark-blue);
-            }
-            .cta-salmon-dark-blue{
-                .cta();
-                .btn-colors(@camaleon-dark-blue; @camaleon-salmon; @camaleon-dark-blue);
-            }
-    
-            .slogan(){
-                .font-settings(300; none; 12px);
-            }
-    
-            .slogan-dark-blue{
-                .slogan();
-                color: @camaleon-dark-blue;
-            }
-    
-            .slogan-lemon{
-                .slogan();
-                color:@camaleon-lemon;
-            }
-    
-        }
-        .black{
-            background-color: rgba(@camaleon-black,@hs-opacity);
-        }
-    
-        .blue{
-            background-color: rgba(@camaleon-blue, @hs-opacity);
-        }
-    
-        .yellow{
-            background-color: rgba(@camaleon-yellow,@hs-opacity);
-        }
-    }
 
-    .center-title {
-        text-align:center;
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-    .store-description{
-        text-align:justify;//center;
-    }
-
-    .register-title{
-        text-align: center;
-    }
-    .only-mobile{
-        display:block;
-    }
-    .only-desktop{
-        display:none;
-    }
-    .collapse:not(.show) {
-        display: none;
-    }
-    .cart-item-img{
-        max-width: 120px;
-    }
 }
-
-
