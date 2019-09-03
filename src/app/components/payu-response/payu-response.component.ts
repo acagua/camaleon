@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-payu-response',
   templateUrl: './payu-response.component.html',
-  styleUrls: ['./payu-response.component.css']
+  styleUrls: ['./payu-response.component.less']
 })
 export class PayuResponseComponent implements OnInit {
 

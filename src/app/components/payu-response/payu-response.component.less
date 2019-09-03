@@ -1,0 +1,36 @@
+@import '../../../styles/variables.less';
+
+.summary{
+    .title{
+        .font-settings(700; none; 2.7rem);
+    }
+    .sub-title{
+        .font-settings(500; bold; 17px);
+        padding-right: 0.4rem;
+    }
+    .sub-title-detail{
+        .font-settings(300; none; 17px);
+    }
+}
+
+@media only screen and (max-width: 991px){
+    
+    .only-mobile{
+        display:block;
+    }
+    .only-desktop{
+        display:none;
+    }
+    .collapse:not(.show) {
+        display: none;
+    }
+    
+    .summary{
+        .title{
+            text-align:center;
+        }
+        .row{
+            justify-content: center;
+        }   
+    }
+}

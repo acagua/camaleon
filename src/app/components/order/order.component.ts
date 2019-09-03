@@ -8,7 +8,7 @@ import { Title, Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+  styleUrls: ['./order.component.less']
 })
 export class OrderComponent implements OnInit
 {

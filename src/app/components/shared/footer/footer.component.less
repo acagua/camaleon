@@ -1,3 +1,44 @@
+@import '../../../../styles/variables.less';
+
+.logo-txt{
+    font-family: @logo-font, sans-serif;
+    
+    .font-size-footer{
+        font-size: 0.9rem;
+        .logo-img{
+            width:20px;
+        }
+    }
+    .logo-letter-pink{
+        color:@camaleon-pink;
+    }
+    .logo-letter-orange{
+        color:@camaleon-orange;
+    }
+    .logo-letter-salmon{
+        color:@camaleon-salmon;
+    }
+    .logo-letter-yellow{
+        color:@camaleon-yellow;
+    }
+    .logo-letter-lemon{
+        color:@camaleon-lemon;
+    }
+    .logo-letter-grass{
+        color:@camaleon-grass;
+    }
+    .logo-letter-green{
+        color:@camaleon-green;
+    }
+    .logo-letter-blue{
+        color:@camaleon-blue;
+    }
+}
+
+.main-footer{
+    border-top: solid 1px lightgray;
+}
+
 .fab {
     font-size: 1.5rem;
 }
@@ -15,4 +56,16 @@
 }
 .fa-linkedin{
     color:#0077B5;
+}
+
+@media only screen and (max-width: 768px) {
+    .logo-txt{
+        font-family: @logo-font, sans-serif;
+        .font-size-footer{
+            font-size: 0.8rem;
+            .logo-img{
+                width:15px;
+            }
+        }
+    }
 }

@@ -1,5 +1,7 @@
 @import '../../../styles/variables.less';
 
+@hs-opacity:0.7;
+
 .section-title {
     text-align: left;
 }
@@ -51,6 +53,109 @@
 
 .slide{
     width:100%;
+}
+.carousel-control-prev, .carousel-control-next {
+    width:4%;
+}
+
+.carousel-item{
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .right{
+        float:right;
+        padding-left: 25px; 
+        padding-right: 4%;
+        text-align: right;
+    }
+    .left{
+        float:left;
+        padding-left: 4%; 
+        padding-right: 25px;
+        text-align: left;
+    }
+
+    .hs-text-block {
+        cursor: pointer;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        transform: translate(0,33%);
+        max-width: 768px;
+        
+        .title(){
+            .font-settings(700; none; 22px);
+        }
+
+        .title-lemon{
+            .title();
+            color:@camaleon-lemon;
+        }
+
+        .title-dark-blue{
+            .title();
+            color:@camaleon-dark-blue;
+        }
+
+        .subtitle(){
+            .font-settings(500; none; 18px);
+        }
+
+        .subtitle-white{
+            .subtitle();
+            color:white;
+        }
+        .subtitle-lemon{
+            .subtitle();
+            color:@camaleon-lemon;
+        }
+        .subtitle-dark-blue{
+            .subtitle();
+            color:@camaleon-dark-blue;
+        }
+
+        .cta(){
+            border-radius: 5px;
+            border: solid 1px;
+            letter-spacing: .0em;
+            text-transform: none;
+            .font-settings(800; none; 12px);
+        }
+
+        .cta-white-dark-blue{
+            .cta();
+            .btn-colors(@camaleon-dark-blue; white; @camaleon-dark-blue);
+        }
+        .cta-salmon-dark-blue{
+            .cta();
+            .btn-colors(@camaleon-dark-blue; @camaleon-salmon; @camaleon-dark-blue);
+        }
+
+        .slogan(){
+            .font-settings(300; none; 12px);
+        }
+
+        .slogan-dark-blue{
+            .slogan();
+            color: @camaleon-dark-blue;
+        }
+
+        .slogan-lemon{
+            .slogan();
+            color:@camaleon-lemon;
+        }
+
+    }
+    .black{
+        background-color: rgba(@camaleon-black,@hs-opacity);
+    }
+
+    .blue{
+        background-color: rgba(@camaleon-blue, @hs-opacity);
+    }
+
+    .yellow{
+        background-color: rgba(@camaleon-yellow,@hs-opacity);
+    }
 }
 
 //CATEGORIAS
@@ -126,4 +231,18 @@
 
 .category-text{
     .font-settings(300, none, 1rem, @main-font)
+}
+
+@media only screen and (max-width: 768px) {
+    
+    .more-stores{
+        .font-settings(500; none; 1.5rem; @main-font);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    
+    .section-title {
+        text-align: center;
+    }
 }
