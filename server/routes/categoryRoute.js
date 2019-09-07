@@ -75,7 +75,7 @@ app.get('/random/normal', function (req, res)
 {
     var limit = Number(req.query.limit) || 5;
 
-    var filter = { status: 'ACTIVE' };
+    var filter = { status: Category.Status.ACTIVE };
     var fields = {};
     var options = { limit: limit };
     Category.findRandom(filter, fields, options, function (err, documents)
