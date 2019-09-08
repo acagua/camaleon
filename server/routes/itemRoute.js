@@ -6,7 +6,6 @@ var app = express();
 var Item = require('../models/item.js');
 var ItemOption = require('../models/itemOption.js');
 var ItemSpecification = require('../models/itemSpecification.js');
-const { Status } = require('../models/item.js');
 
 //---------------------------------------------------------------------------ROUTES
 app.get('/', function (req, res)
@@ -81,7 +80,7 @@ app.get('/store/:storeCodeName', function (req, res)
     var from = Number(req.query.from) || 0;
     var limit = Number(req.query.limit) || 20;
 
-    Item.find({ status: Status.ACTIVE, _storeCodeName: storeCodeName })
+    Item.find({ status: Item.Status.ACTIVE, _storeCodeName: storeCodeName })
         .skip(from)
         .limit(limit)
         .exec(
@@ -175,7 +174,7 @@ app.get('/random/category/:categoryId', function (req, res)
 
     var limit = Number(req.query.limit) || 5;
 
-    var filter = { status: Status.ACTIVE, _categoryId: categoryId };
+    var filter = { status: Item.Status.ACTIVE, _categoryId: categoryId };
     var fields = {};
     var options = { limit: limit };
     Item.findRandom(filter, fields, options, function (err, items)

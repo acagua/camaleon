@@ -6,6 +6,7 @@ import { URL_SERVICIOS } from '../config/config';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
+import { UserAccess } from '../models/userAccess.model.js';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +44,28 @@ export class UsuarioService
   }
 
 
-  registerUser(usuario: Usuario)
+  getUser(id: string)
+  {
+    let url = URL_SERVICIOS + '/user/' + id;
+
+    return this.httpClient.get(url)
+      .pipe(
+        map((resp: any) =>
+        {
+          return resp;
+        })
+        ,
+        catchError(err =>
+        {
+          let message: string = this.getErrorMessage(err);
+          Swal.fire('Error al consultar usuario', message, 'error');
+          return throwError(err);
+        })
+      );
+  }
+
+
+  saveUser(usuario: Usuario)
   {
     let url = URL_SERVICIOS + '/user';
 
@@ -52,13 +74,15 @@ export class UsuarioService
         map((resp: any) =>
         {
           return resp;
-        }),
+        })
+        ,
         catchError(err =>
         {
           let message: string = this.getErrorMessage(err);
           Swal.fire('Error al registrar', message, 'error');
           return throwError(err);
-        }));
+        })
+      );
   }
 
 
@@ -73,14 +97,12 @@ export class UsuarioService
       localStorage.removeItem('email');
     }
 
-    //------------API
     let url = URL_SERVICIOS + '/login';
 
     return this.httpClient.post(url, usuario)
       .pipe(
         map((resp: any) =>
         {
-          localStorage.setItem('id', resp.id);
           localStorage.setItem('token', resp.token);
           localStorage.setItem('user', JSON.stringify(resp.user));
 
@@ -119,7 +141,6 @@ export class UsuarioService
         map((resp: any) =>
         {
           this.user = resp.document;
-
           localStorage.setItem('user', JSON.stringify(resp.document));
 
           Swal.fire('Usuario actualizado', usuario.email, 'success');
@@ -130,6 +151,26 @@ export class UsuarioService
           Swal.fire('Error al actualizar', err.error.message, 'error');
           return throwError(err);
         }));
+  }
+
+
+  addUserAccess(params)
+  {
+    var userAccess = {
+      "roles": [
+        params.role
+      ],
+      "preferred": params.preferred,
+      "_storeId": params.storeId
+    }
+
+    this.user = JSON.parse(localStorage.getItem('user'));
+
+    if (this.user)
+    {
+      this.user.access = [userAccess];
+      localStorage.setItem('user', JSON.stringify(this.user));
+    }
   }
 
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario.model';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,14 +13,21 @@ import { Usuario } from 'src/app/models/usuario.model';
 export class NavbarComponent implements OnInit
 {
   user: Usuario;
-  storesLine1: any[] = [];
+  profilePath: string = 'profile';
 
   constructor(private router: Router,
     public _cartService: ShoppingCartService,
-    public _userService: UsuarioService)
+    public _userService: UsuarioService,
+    public _storeService: StoreService
+  )
   {
-
+    if (this._userService.user)
+    {
+      this.profilePath = _userService.user.access.length > 0 ? 'admin' : 'profile';
+    }
   }
+
+
   ngOnInit()
   {
 
@@ -29,6 +37,7 @@ export class NavbarComponent implements OnInit
   logoutUser()
   {
     this._userService.logoutUser();
+    this._storeService.quitStore();
   }
 
 

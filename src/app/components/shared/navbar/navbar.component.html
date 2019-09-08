@@ -9,7 +9,8 @@
                 <span class="logo-letter-lemon">L</span>
                 <span class="logo-letter-grass">E</span>
                 <!-- <span class="logo-letter-green">O</span> -->
-                <span class="logo-letter-green"><img src="/assets/img/icons/logo-icon.svg" class="logo-img mx-md-1" alt="camaleon.shop"></span>
+                <span class="logo-letter-green"><img src="/assets/img/icons/logo-icon.svg" class="logo-img mx-md-1"
+                        alt="camaleon.shop"></span>
                 <span class="logo-letter-blue">N</span>
             </p>
 
@@ -19,9 +20,10 @@
             <i class="fa fa-bars"></i>
         </button> -->
 
-        <div class="menu-mobile d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
+        <div
+            class="menu-mobile d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
             <div class="nav-item" *ngIf="_userService.isLogged()">
-                <a [routerLink]="['/profile']" class="navbar-icon-link">
+                <a [routerLink]="profilePath" class="navbar-icon-link">
                     <img src="/assets/img/user-icon-white.png" height="25px" alt="user-icon">
                 </a>
             </div>
@@ -60,7 +62,7 @@
             </ul>
             <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
                 <div class="nav-item" *ngIf="_userService.isLogged()">
-                    <a [routerLink]="['/profile']" class="navbar-icon-link">
+                    <a [routerLink]="profilePath" class="navbar-icon-link">
                         <img src="/assets/img/user-icon-white.png" height="25px" alt="user-icon">
                     </a>
                 </div>
@@ -71,7 +73,7 @@
                 </div>
                 <div class="nav-item" *ngIf="!_userService.isLogged()">
                     <a [routerLink]="['/login']" class="nav-link pointer">
-                        Ingresa | Registrate
+                        Ingresa | Regístrate
                     </a>
                 </div>
                 <div class="nav-item">

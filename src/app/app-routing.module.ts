@@ -40,6 +40,7 @@ const APP_ROUTES: Routes = [
   { path: 'response', component: PayuResponseComponent },
   {
     path: 'admin', component: AdminComponent,
+    canActivate: [LoginGuard],
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: AdminHomeComponent },

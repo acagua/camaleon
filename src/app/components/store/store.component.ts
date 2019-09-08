@@ -35,7 +35,7 @@ export class StoreComponent implements OnInit
   {
     this.route.params.subscribe(params =>
     {
-      this._storeService.getStore(params['id'])
+      this._storeService.getStoreByCodeName(params['id'])
         .subscribe((store) =>
         {
           this.store = store;

@@ -40,8 +40,6 @@ export class CategoryService
   {
     let url = URL_SERVICIOS + '/category/random/normal';
 
-    console.log('b:::url: ' + url);
-
     if (limit !== null)
     {
       url += '?limit=' + limit;

@@ -6,6 +6,7 @@ import { Store } from 'src/app/models/store.model';
 import { Usuario } from 'src/app/models/usuario.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from 'src/app/models/category.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-store',
@@ -13,12 +14,14 @@ import { Category } from 'src/app/models/category.model';
 })
 export class AdminStoreComponent implements OnInit
 {
-  public imagePath;
-  imageURL: any;
-  public message: string;
+  store: Store;
+  updating: boolean = false;
+  creating: boolean = false;
   formStore: FormGroup;
   user: Usuario = null;
   categories: Category[] = [];
+  showImage: boolean = true;
+
 
   constructor(
     public _userService: UsuarioService,
@@ -27,51 +30,95 @@ export class AdminStoreComponent implements OnInit
   ) 
   {
     this.user = this._userService.user;
+    var isUser = false;
 
-    this._categoryService.getCategories()
-      .subscribe((documents) =>
+    if (this.user)
+    {
+      if (this.user.access.length > 0)
       {
-        this.categories = documents;
+        var preferredStoreId = this._storeService.getPreferredStore(this.user.access);
 
-        console.log(this.categories);
-      });
+        if (preferredStoreId)
+        {
+          this._storeService.getStore(preferredStoreId)
+            .subscribe(resp =>
+            {
+              this.store = resp;
+
+              this.formStore = new FormGroup({
+                name: new FormControl(this.store ? this.store.name : null),
+                description: new FormControl(this.store ? this.store.description : null),
+                category: new FormControl(this.store ? this.store._categoryId : null),
+                email: new FormControl(this.store ? this.store.emails[0] : null),
+                image: new FormControl(this.store ? this.store.imageLogo : null)
+                // image: new FormControl(null, [Validators.required, requiredFileType('png')])
+              });
+
+              this._storeService.quitStore();
+
+              this.updating = true;
+              this.creating = false;
+            });
+        }
+
+        isUser = true;
+      }
+      else
+      {
+        isUser = false;
+      }
+    }
+    else
+    {
+      isUser = false;
+    }
+
+    if (!isUser)
+    {
+      this.store = this._storeService.store;
+    }
+
+    if (this.store)
+    {
+      this.updating = true;
+      this.creating = false;
+    }
+    else
+    {
+      this.updating = false;
+      this.creating = true;
+    }
+
+    this._categoryService.getCategories().subscribe(resp =>
+    {
+      this.categories = resp;
+    });
+
+    console.log('actualizando ' + this.updating);
+    console.log('creating ' + this.creating);
   }
 
 
   ngOnInit()
   {
+    window.scrollTo(0, 0);
+
     this.formStore = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-      category: new FormControl(null, Validators.required)
+      name: new FormControl(this.store ? this.store.name : null),
+      description: new FormControl(this.store ? this.store.description : null),
+      category: new FormControl(this.store ? this.store._categoryId : null),
+      email: new FormControl(this.store ? this.store.emails[0] : null),
+      image: new FormControl(this.store ? this.store.imageLogo : null)
+      // image: new FormControl(null, [Validators.required, requiredFileType('png')])
     });
 
-    window.scrollTo(0, 0);
   }
 
 
-  preview(files)
+  processImageUpdate(mensaje)
   {
-    if (files.length === 0)
-    {
-      return;
-    }
-
-    var mimeType = files[0].type;
-
-    if (mimeType.match(/image\/*/) == null)
-    {
-      this.message = "Only images are supported.";
-      return;
-    }
-
-    var reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]);
-    reader.onload = (_event) =>
-    {
-      this.imageURL = reader.result;
-    }
+    this.showImage = false;
+    console.log(mensaje);
   }
 
 
@@ -79,13 +126,51 @@ export class AdminStoreComponent implements OnInit
   {
     const formStoreValue = this.formStore.value;
 
-    let store = new Store(formStoreValue.name, formStoreValue.description, 'PENDIENTE');
+    // const email = formStoreValue.email.trim().toLowerCase();
 
-    this._storeService.saveStore(store)
-      .subscribe(resp =>
+    // if (REGEX_EMAIL.test(String(email)))
+    if (true)
+    {
+      var formData = new FormData();
+
+      for (const key of Object.keys(formStoreValue))
       {
-        console.log('hola');
-      });
+        var value = formStoreValue[key];
+        formData.append(key, value);
+      }
+
+      //add the user to send to backend
+      if (this.updating)
+      {
+        console.log('formStoreValue', formStoreValue);
+
+        formData.append('storeId', this.store._id);
+
+        this._storeService.updateStore(this.store._id, formData)
+          .subscribe(resp =>
+          {
+            Swal.fire('Tienda Actualizada!', 'Tu tienda se ha modificado con éxito :D', 'success');
+            this.store = resp.document;
+          });
+      }
+      else if (this.creating)
+      {
+        formData.append('userId', this.user._id);
+
+        this._storeService.saveStore2(formData)
+          .subscribe(resp =>
+          {
+            this.store = resp.document;
+            this._userService.addUserAccess({ storeId: this.store._id, preferred: true, role: "Administrador" });
+            this.creating = false;
+            this.updating = true;
+          });
+      }
+    }
+    else
+    {
+      Swal.fire('Oops', 'El correo no parece un correo e_e. Recuerda que debe tener un patrón como micorreo@dominio.com', 'warning');
+    }
   }
 
 

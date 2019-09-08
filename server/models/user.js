@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 
+var UserAccess = require('../models/userAccess.js');
+
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -10,7 +12,8 @@ var userSchema = new Schema({
     password: { type: String, required: [true, 'El password es obligatorio'] },
     telephone: { type: String },
     address: { type: String },
-    image: { type: String }
+    image: { type: String },
+    access: { type: [UserAccess.schema] }
 }, { collection: 'users' });
 
 userSchema.plugin(uniqueValidator, { message: '{PATH} debe ser único' });

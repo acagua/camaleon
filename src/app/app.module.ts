@@ -27,6 +27,7 @@ import { PayuResponseComponent } from './components/payu-response/payu-response.
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { AdminStoreComponent } from './components/admin/admin-store/admin-store.component';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
+import { FileUploadComponent } from './components/shared/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AdminHomeComponent } from './components/admin/admin-home/admin-home.com
     PayuResponseComponent,
     AdminComponent,
     AdminStoreComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,

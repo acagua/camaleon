@@ -288,64 +288,59 @@ app.put('/:id', (req, res) =>
     var id = req.params.id;
     var body = req.body;
 
-    // console.log('update body:::', body);
-    // console.log('update file:::', req.files);
+    console.log('update body:::', body);
 
-    imageHelper.saveImageS3(req, res);
-    ////////////////////////////////////////////////////////
+    Store.findById(id, (err, storeSearched) =>
+    {
+        if (err)
+        {
+            return res.status(500).json({
+                ok: false,
+                message: 'Error searching store',
+                errors: err
+            });
+        }
+        else
+        {
+            if (!storeSearched)
+            {
+                return res.status(400).json({
+                    ok: false,
+                    message: 'The store with id ' + id + ' does not exist'
+                });
+            }
+            else
+            {
+                storeSearched.name = body.name;
+                storeSearched.description = body.description;
+                storeSearched.emails = [body.email];
+                storeSearched.category = body.category;
 
-    // var id = req.params.id;
-    // var body = req.body;
+                storeSearched.save((err, storeSaved) =>
+                {
+                    if (err)
+                    {
+                        return res.status(400).json({
+                            ok: false,
+                            message: 'Error updating store with id: ' + id,
+                            errors: err
+                        });
+                    }
+                    else
+                    {
+                        //move image
+                        imageHelper.saveStoreImage(storeSaved, req.files);
+                        //\move image
 
-    // console.log('update body:::', body);
-
-    // Store.findById(id, (err, storeSearched) =>
-    // {
-    //     if (err)
-    //     {
-    //         return res.status(500).json({
-    //             ok: false,
-    //             message: 'Error searching store',
-    //             errors: err
-    //         });
-    //     }
-    //     else
-    //     {
-    //         if (!storeSearched)
-    //         {
-    //             return res.status(400).json({
-    //                 ok: false,
-    //                 message: 'The store with id ' + id + ' does not exist'
-    //             });
-    //         }
-    //         else
-    //         {
-    //             storeSearched.name = body.name;
-    //             storeSearched.description = body.description;
-    //             storeSearched.emails = [body.email];
-    //             storeSearched.category = body.category;
-
-    //             storeSearched.save((err, storeSaved) =>
-    //             {
-    //                 if (err)
-    //                 {
-    //                     return res.status(400).json({
-    //                         ok: false,
-    //                         message: 'Error updating store with id: ' + id,
-    //                         errors: err
-    //                     });
-    //                 }
-    //                 else
-    //                 {
-    //                     return res.status(200).json({
-    //                         ok: true,
-    //                         document: storeSaved
-    //                     });
-    //                 }
-    //             });
-    //         }
-    //     }
-    // });
+                        return res.status(200).json({
+                            ok: true,
+                            document: storeSaved
+                        });
+                    }
+                });
+            }
+        }
+    });
 });
 
 

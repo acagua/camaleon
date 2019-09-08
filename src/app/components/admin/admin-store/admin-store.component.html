@@ -1,26 +1,29 @@
 <div class="col-md-12">
   <div class="card">
     <div class="card-body">
+      <!--START STORE-->
       <form ngNativeValidate [formGroup]="formStore" (ngSubmit)="onSaveChanges()">
 
+        <h3>Tienda</h3>
+        <br>
         <div class="form-group">
-          <label class="form-label" for="logo">Logo</label>
+          <label class="form-label">Logo*</label>
           <br>
-          <span style="color:red;" *ngIf="message">{{message}}</span>
-          <img [src]="imageURL" height="300" *ngIf="imageURL">
-          <br>
-          <br>
-          <input class="" id="logo" #file type="file" accept='image/*' (change)="preview(file.files)" />
+          <img class="img img-fluid" *ngIf="showImage" [src]="store.imageLogo" width="300px" height="300px" alt="">
+          <app-file-upload formControlName="image" (imageUpdate)="processImageUpdate($event)"></app-file-upload>
         </div>
 
-        <div class="form-row">
+        <div class=" form-row">
           <div class="form-group col-md-6">
-            <label class="form-label" for="name">Nombre Marca</label>
-            <input type="text" formControlName="name" class="form-control" id="name">
+            <label class="form-label" for="name">Nombre*</label>
+            <!-- <input type="text" formControlName="name" id="name" class="form-control" required> -->
+            <input type="text" formControlName="name" id="name" class="form-control">
           </div>
+
           <div class="form-group col-md-6">
-            <label for="fullname_invoice" class="form-label">Categoría</label>
-            <select class="form-control" formControlName="category" required>
+            <label for="category" class="form-label">Categoría*</label>
+            <!-- <select class="form-control" formControlName="category" id="category" required> -->
+            <select class="form-control" formControlName="category" id="category">
               <option *ngFor="let category of categories" [value]="category._id">
                 {{category.name}}
               </option>
@@ -28,19 +31,31 @@
           </div>
         </div>
 
-
         <div class="form-group">
-          <label class="form-label" for="description">Descripción</label>
-          <textarea class="form-control" formControlName="description" placeholder="Lúcete con una descripción única ;)"
-            rows="2" id="description"></textarea>
+          <label class="form-label" for="description">Descripción*</label>
+          <!-- <textarea class="form-control" formControlName="description" id="description"
+            placeholder="Lúcete con una descripción única ;)" rows="2" required></textarea> -->
+          <textarea class="form-control" formControlName="description" id="description"
+            placeholder="Lúcete con una descripción única ;)" rows="2"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-outline-dark">
-          <i class="far fa-save mr-2"></i>
-          Guardar cambios
-        </button>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label class="form-label" for="email">Correo*</label>
+            <!-- <input class="form-control" type="text" formControlName="email" id="email" required> -->
+            <input class="form-control" type="text" formControlName="email" id="email">
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-outline-dark mx-auto">
+            <i class="far fa-save mr-2"></i>
+            Guardar cambios
+          </button>
+        </div>
 
       </form>
+      <!--END STORE-->
     </div>
   </div>
 </div>

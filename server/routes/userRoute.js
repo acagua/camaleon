@@ -37,6 +37,42 @@ app.get('/', function (req, res)
 });
 
 
+app.get('/:id', function (req, res)
+{
+  var id = req.params.id;
+
+  User.findById(id, (err, user) =>
+  {
+    if (err)
+    {
+      return res.status(500).json({
+        ok: false,
+        message: 'Error searching user',
+        errors: err
+      });
+    }
+    else
+    {
+      if (!user)
+      {
+        return res.status(400).json({
+          ok: false,
+          message: 'The user with id: ' + id + 'does not exist',
+          errors: { message: 'The user with id: ' + id + 'does not exist' }
+        });
+      }
+      else
+      {
+        return res.status(200).json({
+          ok: true,
+          document: user
+        });
+      }
+    }
+  });
+});
+
+
 app.post('/', function (req, res)
 {
   var body = req.body;
@@ -74,7 +110,7 @@ app.post('/', function (req, res)
 app.put('/:id', (req, res) =>
 {
   var id = req.params.id;
-  var body = req.body
+  var body = req.body;
 
   User.findById(id, (err, userSearched) =>
   {
@@ -125,5 +161,6 @@ app.put('/:id', (req, res) =>
     }
   });
 });
+
 
 module.exports = app;

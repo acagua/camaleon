@@ -35,7 +35,6 @@ export class ItemComponent implements OnInit, OnChanges
         .subscribe((item) =>
         {
           this.item = item;
-          console.log('b:::item: ' + JSON.stringify(item));
 
           this._itemService.getItemsRandomByStoreId(item._storeId, 6)
             .subscribe((documents) =>

@@ -1,12 +1,13 @@
 var express = require('express');
 var mail = require('../services/mail/mail.js');
 
-var app = express();
 
 var Order = require('../models/order.js');
 var OrderItem = require('../models/orderItem.js');
 var User = require('../models/user.js');
 var Store = require('../models/store.js');
+
+var app = express();
 //-------------------------------------------------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------RUTAS

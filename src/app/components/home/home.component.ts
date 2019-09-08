@@ -63,7 +63,6 @@ export class HomeComponent implements OnInit
               .subscribe((items) =>
               {
                 this.categoryItems.push({ category: category, items: items });
-                console.log('b:::categoryItems: ' + JSON.stringify(this.categoryItems));
               });
           }
         }

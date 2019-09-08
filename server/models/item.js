@@ -8,8 +8,8 @@ var City = require('../models/city');
 var Schema = mongoose.Schema;
 
 var Status = Object.freeze({
-    ACTIVE: 'Activo',
-    INACTIVE: 'Inactivo'
+    ACTIVE: 'Active',
+    INACTIVE: 'Inactive'
 });
 
 var itemSchema = new Schema({

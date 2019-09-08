@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service.js';
 import Swal from 'sweetalert2';
 import { FileService } from 'src/app/services/file.service.js';
-import { saveAs } from 'file-saver';
 import { REGEX_EMAIL } from '../../constants/constants';
 import { Title, Meta } from '@angular/platform-browser';
 
@@ -19,7 +18,9 @@ export class LoginComponent implements OnInit
   formLogin: FormGroup;
   formRegister: FormGroup;
   usuario: Usuario;
-
+  step1: boolean = true;
+  selling: boolean = false;
+  shopping: boolean = false;
 
   constructor(
     public router: Router,
@@ -35,9 +36,9 @@ export class LoginComponent implements OnInit
   ngOnInit()
   {
     this.titleService.setTitle('Ingresar');
-    this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Ingresar, Registro, Vender, Login'});
-    this.meta.addTag({name: 'description', content: 'Ingresar a mi cuenta o registrarme. Quiero vender!'});
-    this.meta.addTag({name: 'robots', content: 'all, follow'});
+    this.meta.addTag({ name: 'keywords', content: 'Camaleon.shop, Camaleon, Ingresar, Registro, Vender, Login' });
+    this.meta.addTag({ name: 'description', content: 'Ingresar a mi cuenta o registrarme. Quiero vender!' });
+    this.meta.addTag({ name: 'robots', content: 'all, follow' });
 
     window.scrollTo(0, 0);
 
@@ -51,11 +52,9 @@ export class LoginComponent implements OnInit
       name: new FormControl(null, Validators.required),
       email2: new FormControl(null, [Validators.required, Validators.email]),
       lastName: new FormControl(null, Validators.required),
-      password2: new FormControl(null, Validators.required),
-      createStore: new FormControl(false)
+      password2: new FormControl(null, Validators.required)
     });
 
-    //cuando inicia sesión, lo debe llevar al home
     if (localStorage.getItem('user'))
     {
       if (localStorage.getItem('createStore'))
@@ -77,11 +76,20 @@ export class LoginComponent implements OnInit
 
     this.formLogin.get('email1').setValue(localStorage.getItem('email') || '');
     this.formLogin.get('rememberMe').setValue(localStorage.getItem('email') ? true : false);
+  }
 
-    // if (this.email.length > 1)
-    // {
-    //   this.rememberme = true;
-    // }
+
+  onSell()
+  {
+    this.step1 = false;
+    this.selling = true;
+  }
+
+
+  onShop()
+  {
+    this.step1 = false;
+    this.shopping = true;
   }
 
 
@@ -96,7 +104,7 @@ export class LoginComponent implements OnInit
     {
       let usuario = new Usuario(formRegisterValue.name, formRegisterValue.lastName, email, formRegisterValue.password2);
 
-      this._usuarioService.registerUser(usuario)
+      this._usuarioService.saveUser(usuario)
         .subscribe(resp =>
         {
           Swal.fire({
@@ -111,7 +119,7 @@ export class LoginComponent implements OnInit
               this._usuarioService.loginUser(usuario)
                 .subscribe(resp =>
                 {
-                  if (formRegisterValue.createStore)
+                  if (this.selling === true)
                   {
                     localStorage.setItem('createStore', 'true');
                   }

@@ -6,57 +6,72 @@
     </section>
 
     <hr>
-    <div class="only-mobile my-3 text-center">
+    <!-- <div class="only-mobile my-3 text-center">
         Selecciona una opción:
-    </div>
+    </div> -->
 
     <section>
         <div class="container">
-            <div class="row justify-content-center">
 
-                <div class="col-lg-5">
+            <!-- START SELL OR SHOP -->
+            <div class="row justify-content-center" *ngIf="step1">
+                <div class="col-md-5">
+                    <a (click)="onSell()">Vender!</a>
+                </div>
+                <div class="col-md-5">
+                    <a (click)="onShop()">Comprar!</a>
+                </div>
+            </div>
+            <!-- END SELL OR SHOP -->
+
+            <!-- START SHOP -->
+            <div class=" row justify-content-center" *ngIf="!step1">
+                <div class="col-md-5">
                     <div class="block">
-                        <a class="only-mobile" data-toggle="collapse" href="#register-content" role="button" aria-expanded="false" aria-controls="register-content">
+                        <a class="only-mobile" data-toggle="collapse" href="#register-content" role="button"
+                            aria-expanded="false" aria-controls="register-content">
                             <div class="block-header">
-                                <h6 class="text-uppercase register-title">Regístrate</h6>
+                                <h6 class="text-uppercase register-title" *ngIf="shopping">Regístrate</h6>
+                                <h6 class="text-uppercase register-title" *ngIf="selling">Paso 1. Regístrate</h6>
                             </div>
                         </a>
                         <div class="block-header only-desktop">
-                            <h6 class="text-uppercase register-title">Regístrate</h6>
+                            <h6 class="text-uppercase register-title" *ngIf="shopping">Regístrate</h6>
+                            <h6 class="text-uppercase register-title" *ngIf="selling">Paso 1. Regístrate</h6>
                         </div>
-                        <div id="register-content" class="block-body collapse">
+                        <div id="register-content" [ngClass]="{'block-body': true, 'collapse': shopping}">
                             <form ngNativeValidate [formGroup]="formRegister" (ngSubmit)="onRegisterUser()">
                                 <div class="form-group">
                                     <label for="name" class="form-label">Nombres</label>
-                                    <input formControlName="name" name="name" id="name" type="text" class="form-control" required>
+                                    <input formControlName="name" name="name" id="name" type="text" class="form-control"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">Apellidos</label>
-                                    <input formControlName="lastName" name="lastName" type="text" class="form-control" required>
+                                    <input formControlName="lastName" name="lastName" type="text" class="form-control"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email2" class="form-label">Correo</label>
-                                    <input formControlName="email2" name="email2" id="email2" type="text" class="form-control" required>
+                                    <input formControlName="email2" name="email2" id="email2" type="text"
+                                        class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password2" class="form-label">Contraseña</label>
-                                    <input formControlName="password2" name="password2" id="password2" type="password" minlength="8" class="form-control" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
-                                        <input formControlName="createStore" name="createStore" id="createStore" type="checkbox" class="custom-control-input">
-                                        <label for="createStore" class="custom-control-label align-middle">También
-                                            quiero crear mi tienda!</label>
-                                    </div>
+                                    <input formControlName="password2" name="password2" id="password2" type="password"
+                                        minlength="8" class="form-control" required>
                                 </div>
 
                                 <div class="form-group text-center">
                                     <p>Al registrarte aceptas las
-                                        <a target="_blank" href="https://s3.amazonaws.com/camaleon/general/politica-para-el-tratamiento-de-datos-personales-camaleon.pdf" rel="noopener">
+                                        <a target="_blank"
+                                            href="https://s3.amazonaws.com/camaleon/general/politica-para-el-tratamiento-de-datos-personales-camaleon.pdf"
+                                            rel="noopener">
                                             Políticas de Tratamiento de Datos
                                         </a> y los
-                                        <a target="_blank" href="https://s3.amazonaws.com/camaleon/general/terminos-condiciones-camaleon.pdf" rel="noopener">
+                                        <a target="_blank"
+                                            href="https://s3.amazonaws.com/camaleon/general/terminos-condiciones-camaleon.pdf"
+                                            rel="noopener">
                                             Términos y Condiciones
                                         </a> de Camaleon.
                                     </p>
@@ -71,9 +86,10 @@
                     </div>
                 </div>
                 <br>
-                <div class="col-lg-5 mt-3 mt-md-0">
+                <div class="col-md-5 mt-3 mt-md-0" *ngIf="shopping">
                     <div class="block">
-                        <a class="only-mobile" data-toggle="collapse" href="#login-content" role="button" aria-expanded="false" aria-controls="login-content">
+                        <a class="only-mobile" data-toggle="collapse" href="#login-content" role="button"
+                            aria-expanded="false" aria-controls="login-content">
                             <div class="block-header">
                                 <h6 class="text-uppercase register-title">Ingresa</h6>
                             </div>
@@ -88,18 +104,22 @@
 
                                     <div class="form-group col-md-12">
                                         <label for="email1" class="form-label">Correo</label>
-                                        <input formControlName="email1" name="email1" id="email1" type="text" class="form-control" required>
+                                        <input formControlName="email1" name="email1" id="email1" type="text"
+                                            class="form-control" required>
                                     </div>
 
                                     <div class="form-group col-md-12">
                                         <label for="password1" class="form-label">Contraseña</label>
-                                        <input formControlName="password1" name="password1" id="password1" type="password" minlength="8" class="form-control" required>
+                                        <input formControlName="password1" name="password1" id="password1"
+                                            type="password" minlength="8" class="form-control" required>
                                     </div>
 
                                     <div class="form-group col-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input formControlName="rememberMe" name="rememberMe" id="rememberMe" type="checkbox" class="custom-control-input">
-                                            <label for="rememberMe" class="custom-control-label align-middle">Recuérdame</label>
+                                            <input formControlName="rememberMe" name="rememberMe" id="rememberMe"
+                                                type="checkbox" class="custom-control-input">
+                                            <label for="rememberMe"
+                                                class="custom-control-label align-middle">Recuérdame</label>
                                         </div>
                                     </div>
 
@@ -120,9 +140,9 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
+            <!-- END SHOP -->
+
         </div>
     </section>
 </div>

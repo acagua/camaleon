@@ -6,20 +6,34 @@ var StoreCategory = require('../models/storeCategory.js');
 var Schema = mongoose.Schema;
 
 var Status = Object.freeze({
-    ACTIVE: 'Activo',
-    INACTIVE: 'Inactivo'
+    ACTIVE: 'Active',
+    INACTIVE: 'Inactive'
 });
 
+// var storeSchema = new Schema({
+//     name: { type: String, unique: true, required: [true, 'Name is required'] },
+//     codeName: { type: String, unique: true, required: [true, 'Code Name is required'] },
+//     description: { type: String, required: [true, 'Description is required'] },
+//     imageLogo: { type: String, required: [true, 'Image is required'] },
+//     imageBanner: { type: String },
+//     numberOfItems: { type: Number, default: 0, required: [true, 'Image is required'] },
+//     status: { type: String, enum: Object.values(Status), default: Status.ACTIVE, required: [true, 'Status is required'] },
+//     emails: { type: [String], required: [true, 'Image is required'] },
+//     _categoryId: { type: Schema.Types.ObjectId, ref: 'Category', required: [true, 'Must have a category associated'] },
+//     _userIds: { type: [Schema.Types.ObjectId], ref: 'User', required: [true, 'At least one user should be associated'] },
+// }, { collection: 'stores' });
+
 var storeSchema = new Schema({
-    name: { type: String, required: [true, 'El nombre es obligatorio'] },
-    description: { type: String, unique: true, required: [true, 'El correo es obligatorio'] },
-    image: { type: String, required: [true, 'La imagen debe es obligatoria'] },
+    name: { type: String, required: [true, 'Name is required'] },
+    codeName: { type: String, required: [true, 'Code Name is required'] },
+    description: { type: String, required: [true, 'Description is required'] },
+    imageLogo: { type: String, required: [true, 'Image is required'] },
     imageBanner: { type: String },
-    numberOfItems: { type: Number },
+    numberOfItems: { type: Number, default: 0, required: [true, 'Image is required'] },
     status: { type: String, enum: Object.values(Status), default: Status.ACTIVE, required: [true, 'Status is required'] },
-    emails: { type: [String] },
-    categories: { type: [StoreCategory.schema] },
+    emails: { type: [String], required: [true, 'Image is required'] },
     _categoryId: { type: Schema.Types.ObjectId, ref: 'Category', required: [true, 'Must have a category associated'] },
+    _userIds: { type: [Schema.Types.ObjectId], ref: 'User', required: [true, 'At least one user should be associated'] },
 }, { collection: 'stores' });
 
 storeSchema.plugin(uniqueValidator, { message: '{PATH} debe ser único' });
