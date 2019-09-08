@@ -5,19 +5,19 @@ var util = require('../../utils/util.js');
 var Order = require('../../models/order.js');
 
 //templates sandbox
-var templateOrderCreated = fs.readFileSync('server/services/mail/templates/orderCreated.html', { encoding: 'utf-8' });
-var templateOrderPayment = fs.readFileSync('server/services/mail/templates/orderPayment.html', { encoding: 'utf-8' });
-var templateNewOrderStore = fs.readFileSync('server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
-var templateNewPassword = fs.readFileSync('server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
-var templateContactMessage = fs.readFileSync('server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
+// var templateOrderCreated = fs.readFileSync('server/services/mail/templates/orderCreated.html', { encoding: 'utf-8' });
+// var templateOrderPayment = fs.readFileSync('server/services/mail/templates/orderPayment.html', { encoding: 'utf-8' });
+// var templateNewOrderStore = fs.readFileSync('server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
+// var templateNewPassword = fs.readFileSync('server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
+// var templateContactMessage = fs.readFileSync('server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
 
 //templates produccion
-// // var templateNewOrder = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
-// var templateOrderCreated = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/orderCreated.html', { encoding: 'utf-8' });
-// var templateOrderPayment = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/orderPayment.html', { encoding: 'utf-8' });
-// var templateNewOrderStore = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
-// var templateNewPassword = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
-// var templateContactMessage = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
+// var templateNewOrder = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
+var templateOrderCreated = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/orderCreated.html', { encoding: 'utf-8' });
+var templateOrderPayment = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/orderPayment.html', { encoding: 'utf-8' });
+var templateNewOrderStore = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
+var templateNewPassword = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newPassword.html', { encoding: 'utf-8' });
+var templateContactMessage = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
 
 var mailFrom = 'info@camaleon.shop';
 
@@ -32,10 +32,8 @@ var transporter = nodemailer.createTransport({
 });
 
 
-exports.sendOrderMail = function (parameters)
-{
-    try
-    {
+exports.sendOrderMail = function(parameters) {
+    try {
         var user = parameters.user;
         var order = parameters.order;
 
@@ -48,8 +46,7 @@ exports.sendOrderMail = function (parameters)
         var htmlTemplate = templateOrderCreated;
         var htmlOrderTable = '';
 
-        order.items.forEach(element =>
-        {
+        order.items.forEach(element => {
             htmlOrderTable += `<tr>
                                     <td align="center"><a href="https://camaleon.shop/store/${element.item._storeCodeName}">${element.item._storeCodeName}</a></td>
                                     <td align="center"><a href="https://camaleon.shop/item/${element.item._id}">${element.item.name}</a></td>
@@ -82,26 +79,20 @@ exports.sendOrderMail = function (parameters)
             html: htmlTemplate
         };
 
-        transporter.sendMail(mailOptions, function (error, info)
-        {
-            if (error)
-            {
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
                 console.log(error);
-            } else
-            {
+            } else {
                 console.log("Email sent" + '\n');
             }
         });
-    } catch (error)
-    {
+    } catch (error) {
         console.log('error en mail - sendOrderMail: ' + error);
     }
 }
 
-exports.sendOrderPaymentMail = function (parameters)
-{
-    try
-    {
+exports.sendOrderPaymentMail = function(parameters) {
+    try {
         var user = parameters.user;
         var order = parameters.order;
 
@@ -113,8 +104,7 @@ exports.sendOrderPaymentMail = function (parameters)
         var htmlTemplate = templateOrderPayment;
         var htmlOrderTable = '';
 
-        order.items.forEach(element =>
-        {
+        order.items.forEach(element => {
             htmlOrderTable += `<tr>
                                     <td align="center"><a href="https://camaleon.shop/store/${element.item._storeCodeName}">${element.item._storeCodeName}</a></td>
                                     <td align="center"><a href="https://camaleon.shop/item/${element.item._id}">${element.item.name}</a></td>
@@ -148,27 +138,21 @@ exports.sendOrderPaymentMail = function (parameters)
             html: htmlTemplate
         };
 
-        transporter.sendMail(mailOptions, function (error, info)
-        {
-            if (error)
-            {
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
                 console.log(error);
-            } else
-            {
+            } else {
                 console.log("Email sent");
             }
         });
 
         //2. mail to the stores
-        parameters.stores.forEach(element1 =>
-        {
+        parameters.stores.forEach(element1 => {
             var htmlTemplate = templateNewOrderStore;
             var htmlOrderTable = '<table>';
             // replace order table
-            order.items.forEach(element2 =>
-            {
-                if (element2.item._storeId + 'x' === element1._id + 'x')
-                {
+            order.items.forEach(element2 => {
+                if (element2.item._storeId + 'x' === element1._id + 'x') {
                     htmlOrderTable += '<tr>';
                     htmlOrderTable += ' <th>Producto</th>';
                     htmlOrderTable += ' <th>Cantidad</th>';
@@ -194,52 +178,41 @@ exports.sendOrderPaymentMail = function (parameters)
                 html: htmlTemplate
             };
 
-            transporter.sendMail(mailOptions, function (error, info)
-            {
-                if (error)
-                {
+            transporter.sendMail(mailOptions, function(error, info) {
+                if (error) {
                     console.log(error);
-                } else
-                {
+                } else {
                     console.log("Email sent");
                 }
             });
         });
 
-    } catch (error)
-    {
+    } catch (error) {
         console.log('error en mail - sendOrderPaymentMail: ' + error);
     }
 }
 
 
-parseOrderStatus = function (orderStatus)
-{
-    try
-    {
+parseOrderStatus = function(orderStatus) {
+    try {
         var resp = 'NA';
 
-        if (orderStatus == Order.Status.PAID)
-        {
+        if (orderStatus == Order.Status.PAID) {
             return 'exitoso';
-        } else if (orderStatus == Order.Status.CANCELED)
-        {
+        } else if (orderStatus == Order.Status.CANCELED) {
             return 'rechazado';
         }
 
         return resp;
-    } catch (error)
-    {
+    } catch (error) {
         console.log('error en mail - parseOrderStatus: ' + error);
         return 'error'
     }
 }
 
 
-exports.sendNewPasswordMail = function (parameters)
-{
-    try
-    {
+exports.sendNewPasswordMail = function(parameters) {
+    try {
         var user = parameters.user;
         var token = parameters.token.token;
 
@@ -255,26 +228,20 @@ exports.sendNewPasswordMail = function (parameters)
             html: html
         };
 
-        transporter.sendMail(mailOptions, function (error, info)
-        {
-            if (error)
-            {
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
                 console.log(error);
-            } else
-            {
+            } else {
                 console.log("Email sent");
             }
         });
-    } catch (error)
-    {
+    } catch (error) {
         console.log('error en mail - sendNewPasswordMail: ' + error);
     }
 }
 
-exports.sendContactMessage = function (parameters)
-{
-    try
-    {
+exports.sendContactMessage = function(parameters) {
+    try {
         var contactMessage = parameters.contactMessage;
 
         // var to = mailFrom;
@@ -292,20 +259,16 @@ exports.sendContactMessage = function (parameters)
             html: html
         };
 
-        transporter.sendMail(mailOptions, function (error, info)
-        {
-            if (error)
-            {
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
                 console.log(error);
-            } else
-            {
+            } else {
                 console.log("Email sent");
             }
         });
 
         return true;
-    } catch (error)
-    {
+    } catch (error) {
         console.log('error en mail - sendContactMessage: ' + error);
         return false;
     }
