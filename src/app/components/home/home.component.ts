@@ -80,8 +80,8 @@ export class HomeComponent implements OnInit
   ngOnInit()
   {
     this.titleService.setTitle('Inicio');
-    this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Marketplace, Inicio, Home, Comprar, Vender'});
-    this.meta.addTag({name: 'description', content: 'Conoce la plataforma digital que te trae productos de emprendedores colombianos'});
+    this.meta.addTag({name: 'keywords', content: 'Camaleon, Marketplace'});
+    this.meta.addTag({name: 'description', content: 'Camaleon - Marketplace de emprendimientos colombianos que trae para tí productos innovadores y exclusivos'});
     this.meta.addTag({name: 'robots', content: 'all, follow'});
     window.scrollTo(0, 0);
     if (window.screen.width < 768)

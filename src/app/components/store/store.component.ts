@@ -45,7 +45,7 @@ export class StoreComponent implements OnInit
 
           this.setItems();
           this.titleService.setTitle('' + this.store.name);
-          this.meta.addTag({name: 'keywords', content: 'Camaleon.shop, Camaleon, Marca, Tienda, ' + this.store.name});
+          this.meta.addTag({name: 'keywords', content: '' + this.store.name});
           this.meta.addTag({name: 'description', content: '' + this.store.description});
           this.meta.addTag({name: 'robots', content: 'all, follow'});
         });
