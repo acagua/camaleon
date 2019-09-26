@@ -174,3 +174,6 @@ revisar versión, si no se actualiza:
 ## En caso de error nginx
 1. sudo pkill -f nginx
 2. sudo systemctl start nginx
+
+## Modulos
+1. Lazy Load https://www.npmjs.com/package/ng-lazyload-image
