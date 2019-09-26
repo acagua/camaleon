@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit
   storesLine: Store[] = [];
   categories: Category[] = [];
   isMobile: Boolean = false;
-
+  defaultImage: String = '../../../assets/img/logo-gris.png';
   //categorías aquí para no traer de bd
   categoriesTop: Category[] = [
     new Category('Moda', 'Ropa divina!', '../../../assets/img/icons/moda.png', 'pink', '5c965809b3d5ba1284b2e247'),

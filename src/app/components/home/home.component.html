@@ -105,7 +105,7 @@
                 <div class="product mx-auto ">
                     <div class="product-image ">
                         <a [routerLink]="[ '/item',item._id] " class="product-hover-overlay-link ">
-                            <img [src]="item.images[0]" alt="product " class="img-fluid" />
+                            <img [defaultImage]="defaultImage" [lazyLoad]="item.images[0]" alt="product " class="img-fluid" />
                         </a>
                     </div>
                     <div class="py-2">
@@ -131,7 +131,7 @@
         <div class="col-12">
             <div class="row justify-content-center mx-auto ">
                 <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon logo-padding-5 mt-2" *ngFor="let store of storesLine" (click)="goStore(store) ">
-                    <img class="img-fluid mx-auto mt-0 rounded-border" [src]="store.imageLogo " alt="Card image cap ">
+                    <img class="img-fluid mx-auto mt-0 rounded-border" [defaultImage]="defaultImage" [lazyLoad]="store.imageLogo" alt="Card image cap ">
                 </div>
                 <div class="pointer col-6 col-sm-4 col-md-2 text-center category-icon logo-padding-5 mt-2">
                     <a class="no-link" [routerLink]="[ '/stores'] ">

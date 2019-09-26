@@ -28,6 +28,8 @@ import { AdminComponent } from './components/admin/admin/admin.component';
 import { AdminStoreComponent } from './components/admin/admin-store/admin-store.component';
 import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
 import { FileUploadComponent } from './components/shared/file-upload/file-upload.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +63,8 @@ import { FileUploadComponent } from './components/shared/file-upload/file-upload
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    PipesModule
+    PipesModule,
+    LazyLoadImageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
