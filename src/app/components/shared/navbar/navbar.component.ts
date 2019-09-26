@@ -23,7 +23,11 @@ export class NavbarComponent implements OnInit
   {
     if (this._userService.user)
     {
-      this.profilePath = _userService.user.access.length > 0 ? 'admin' : 'profile';
+      try {
+        this.profilePath = _userService.user.access.length > 0 ? 'admin' : 'profile';
+      } catch (e) {
+          this.profilePath = 'profile';
+        }
     }
   }
 
