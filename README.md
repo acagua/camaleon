@@ -159,7 +159,9 @@ revisar versión, si no se actualiza:
 ## Actualizar certificado SSL opcion A
 1. sudo service nginx stop
 2. cd /opt/letencrypt 
-3. ./letsencrypt-auto certonly --standalone --email admin@camaleon.shop -d camaleon.shop -d admin.camaleon.shop -d www.camaleon.shop
+3. ./letsencrypt-auto certonly --standalone --email admin@camaleon.shop -d camaleon.shop -d 
+admin.camaleon.shop -d www.camaleon.shop
+./letsencrypt-auto certonly --standalone --renew-by-default --email admin@camaleon.shop camaleon.shop -d www.camaleon.shop
 4. renew and replace
 5. sudo service nginx start
 
@@ -170,6 +172,13 @@ revisar versión, si no se actualiza:
 4. renew and replace
 5. redirect
 6. sudo service nginx start
+
+## Automatic Renewal SSL: 
+1. sudo service nginx stop
+2. cd /opt/letencrypt 
+3. ./letsencrypt-auto certonly --standalone --renew-by-default --email admin@camaleon.shop -d camaleon.shop -d www.camaleon.shop
+4. ./letsencrypt-auto renew
+5. sudo service nginx start
 
 ## En caso de error nginx
 1. sudo pkill -f nginx
