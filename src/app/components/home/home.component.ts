@@ -34,8 +34,8 @@ export class HomeComponent implements OnInit
   ];
 
   homesliders: any[] = [
-    new Array('1', '../../../assets/img/homeslider/hs-shopper.jpg', 'items'),
-    new Array('2', '../../../assets/img/homeslider/hs-store.jpg', 'contact'),
+    new Array('1', '../../../assets/img/homeslider/hs-store.jpg', 'contact'),
+    new Array('2', '../../../assets/img/homeslider/hs-shopper.jpg', 'items'),
     new Array('3', '../../../assets/img/homeslider/hs-shopper-2.jpg', 'stores')
   ];
 
