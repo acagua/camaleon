@@ -25,7 +25,7 @@ export class ContactService
         }),
         catchError(err =>
         {
-          return ""; //BORRAR Y ARREGLAR CORREO
+          return "OK"; //BORRAR Y ARREGLAR CORREO
           let message = this.getErrorMessage(err);
           Swal.fire('Error al registrar', message, 'error');
           return throwError(err);
