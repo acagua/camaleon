@@ -33,8 +33,250 @@ li{
     }
 }
 
+.background{
+    //position: absolute;
+    text-align: center;
+}
+.container-landing{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    
+}
+html{
+    scroll-behavior: smooth;
+}
+
+.content1{
+    font-family: 'Montserrat-bold';
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 10%;
+    line-height: 1;
+}
+
+.blue-message {
+    .title{
+        font-family: 'Montserrat-bold';
+        font-size: 1rem;
+    }
+    .message{
+        font-family: 'Montserrat-light';
+        font-size: 0.8rem;
+        color:white;
+    }
+}
+.content2{
+    font-family: 'Montserrat';
+    .title{
+        font-size: 2rem;
+    }
+    .price{
+        font-size: 3rem;
+    }
+    .month{
+        font-size: 1rem;
+    }
+    text-align: center;
+    padding-top: 3%;
+    line-height: 1;
+}
+
+.top-left{
+    float: left;
+    margin-top:5%;
+}
+.top-right{
+    float: right;
+}
+
+.rt-bk-top{
+    background-image:url('../../../assets/img/contact-landing/fondo-1-right.png'); 
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 250px;
+    height:500px;
+}
+
+.lt-bk-top{
+    background-image:url('../../../assets/img/contact-landing/fondo-1-left.png'); 
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 200px;
+    height:500px;
+    position: absolute;
+
+}
+.content1{
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.no-margin{
+
+    margin-left: 0;
+    margin-right: 0;
+}
+.vp-row{
+    //margin-top:-3rem;
+    position: absolute;
+    margin-top: 24rem;
+}
+.vp-card{
+    box-shadow: 5px 10px 18px #c0c0c0;
+    border-radius: 15px;
+    height:345px;
+    //max-width: 16%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-align: center
+}
+.vp-icon{
+    margin-top:7.3rem;
+}
+.title{
+    font-family: 'Montserrat-bold';
+    font-size: 0.8rem;
+}
+
+.plans-title{
+    font-family: 'Montserrat-bold';
+    font-size: 1.2rem;
+    line-height: 1.1;
+
+}
+
+.content{
+    font-family: 'Montserrat-light';
+    font-size: 0.7rem;;
+}
+.free-store{
+    background-image:url('../../../assets/img/contact-landing/bk-vp-1.png'); 
+}
+.payment-methods{
+    background-image:url('../../../assets/img/contact-landing/bk-vp-2.png'); 
+}
+.expert-support{
+    background-image:url('../../../assets/img/contact-landing/bk-vp-3.png'); 
+}
+
+.blue-section{
+    margin-top: 5rem;
+}
+
+.btn-row{
+    margin-top: -8rem;
+}
+
+.start-btn{
+    background-image:linear-gradient(to right, #00ADEE,#00D8FB);
+    color:white;
+    border-radius:2rem;
+    font-family: 'Montserrat-bold';
+    font-size:0.7rem;
+}
+.rt-bk-bottom{
+    background-image:url('../../../assets/img/contact-landing/fondo-3-right.png'); 
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 250px;
+    height:500px;
+}
+
+.lt-bk-bottom{
+    background-image:url('../../../assets/img/contact-landing/fondo-3-left.png'); 
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 200px;
+    height:500px;
+    position: absolute;
+
+}
+.bottom-left{
+    float: left;
+    margin-top:20%;
+}
+.bottom-right{
+    float: right;
+}
+
+.plan-card-basic{
+    .plan-icon{
+        margin-top:0.2rem;
+    }
+    .title{
+        font-family: 'Montserrat-light';
+        color: white;
+        vertical-align: top;
+        font-size:1.6rem
+    }
+    .price-container{
+        font-family: 'Montserrat-light';
+        background-color: white;
+        border-radius: 25px;
+        //vertical-align: top;
+        margin-left: -2.3rem;
+        padding-left: 2rem;
+        margin-right: 1rem;
+        .blue{
+            color:#00B4A6;
+        }
+        .green{
+            color:#8BC53F;
+        }
+        .pink{
+            color:#FF908A;
+        }
+        line-height: 0.7;
+        .price{
+            font-size:2rem;
+        }
+        .month{
+            font-size:1rem;
+        }
+    }
+    
+    .plan-card-list{
+        color:white;
+        .list-item{
+            font-family: 'Montserrat-light';
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        li {
+            list-style-image: url(../../../assets/img/contact-landing/li-check.png);
+        }
+        
+    }
+
+
+    box-shadow: 5px 10px 18px #c0c0c0;
+    border-radius: 15px;
+    height:345px;
+    background-size: 100%;
+    text-align: left;
+}
+.blue-bg{
+    background-image:linear-gradient(to top right, #68B8EA,#53E5CF);
+}
+.green-bg{
+    background-image:linear-gradient(to top right, #8BC53F,#CDDD5B);
+}
+
+.pink-bg{
+    background-image:linear-gradient(to top right, #FF908A,#FFBE7A);
+}
+
 @media only screen and (max-width: 768px) {
     .logo-txt{
          font-size: 2.3rem;
+    }
+    .lt-bk{
+        width: 100px;    
+    }
+    .rt-bk{
+        width: 125px;
     }
 }
