@@ -245,7 +245,7 @@ exports.sendContactMessage = function(parameters) {
         var contactMessage = parameters.contactMessage;
 
         // var to = mailFrom;
-        var to = 'nicolaz888@hotmail.com';
+        var to = 'info@camaleon.shop';
 
         var html = templateContactMessage.replace('**sender**', contactMessage.name + ' ' + contactMessage.lastName)
             .replace('**phone**', contactMessage.phone)
