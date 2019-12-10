@@ -53,16 +53,17 @@ html{
     text-align: center;
     padding-top: 10%;
     line-height: 1;
+    color:#241352;
 }
 
 .blue-message {
     .title{
         font-family: 'Montserrat-bold';
-        font-size: 1rem;
+        font-size: 2rem;
     }
     .message{
         font-family: 'Montserrat-light';
-        font-size: 0.8rem;
+        font-size: 1.1rem;
         color:white;
     }
 }
@@ -127,7 +128,7 @@ html{
 .vp-card{
     box-shadow: 5px 10px 18px #c0c0c0;
     border-radius: 15px;
-    height:345px;
+    height:22rem;
     //max-width: 16%;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -139,12 +140,14 @@ html{
 .title{
     font-family: 'Montserrat-bold';
     font-size: 0.8rem;
+    color: #241352;
 }
 
 .plans-title{
     font-family: 'Montserrat-bold';
-    font-size: 1.2rem;
+    font-size: 2rem;
     line-height: 1.1;
+    color: #241352;
 
 }
 
@@ -163,26 +166,37 @@ html{
 }
 
 .blue-section{
-    margin-top: 5rem;
+    margin-top: 9.5rem;
+    width:100%;
 }
 
 .btn-row{
-    margin-top: -8rem;
+    margin-top: -12.5rem;
 }
 
 .start-btn{
-    background-image:linear-gradient(to right, #00ADEE,#00D8FB);
     color:white;
     border-radius:2rem;
     font-family: 'Montserrat-bold';
     font-size:0.7rem;
 }
+.btn-blue{
+    background-image:linear-gradient(to right, #00ADEE,#00D8FB);
+}
+.btn-green{
+    background-image:linear-gradient(to right, #8BC53F,#CDDD5B);
+}
+.btn-pink{
+    background-image:linear-gradient(to right, #FF908A,#FFBE7A);
+}
+
 .rt-bk-bottom{
     background-image:url('../../../assets/img/contact-landing/fondo-3-right.png'); 
     background-size: 100%;
     background-repeat: no-repeat;
     width: 250px;
     height:500px;
+    margin-top: -73rem;
 }
 
 .lt-bk-bottom{
@@ -191,18 +205,24 @@ html{
     background-repeat: no-repeat;
     width: 200px;
     height:500px;
-    position: absolute;
-
+    margin-top: -45rem;
 }
 .bottom-left{
     float: left;
-    margin-top:20%;
+    //margin-top:20%;
 }
 .bottom-right{
     float: right;
 }
 
 .plan-card-basic{
+
+    box-shadow: 5px 10px 18px #c0c0c0;
+    border-radius: 15px;
+    height:400px;
+    background-size: 100%;
+    text-align: left;
+
     .plan-icon{
         margin-top:0.2rem;
     }
@@ -242,33 +262,26 @@ html{
         color:white;
         .list-item{
             font-family: 'Montserrat-light';
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             margin-bottom: 0.5rem;
         }
         li {
             list-style-image: url(../../../assets/img/contact-landing/li-check.png);
-        }
-        
+        }   
     }
-
-
-    box-shadow: 5px 10px 18px #c0c0c0;
-    border-radius: 15px;
-    height:345px;
-    background-size: 100%;
-    text-align: left;
 }
 .blue-bg{
-    background-image:linear-gradient(to top right, #68B8EA,#53E5CF);
+    background-image:linear-gradient(to top right, #00ADEE,#53E5CF);
 }
 .green-bg{
     background-image:linear-gradient(to top right, #8BC53F,#CDDD5B);
 }
-
 .pink-bg{
     background-image:linear-gradient(to top right, #FF908A,#FFBE7A);
 }
-
+.white-line{
+    border-bottom: 0.2rem solid white;
+}
 @media only screen and (max-width: 768px) {
     .logo-txt{
          font-size: 2.3rem;
@@ -279,4 +292,42 @@ html{
     .rt-bk{
         width: 125px;
     }
+    .top-left{
+        margin-top:260%;
+    }
+    .content1{
+        font-size: 2.5rem;
+        padding-top: 45%;
+    }
+    .blue-section{
+        margin-top: 86rem;
+        width: 100%;
+        height: 15rem;
+    }
+    .vp-card{
+        box-shadow: 5px 10px 18px #c0c0c0;
+        border-radius: 15px;
+        height:20rem;
+    }
+
+    .plan-card-basic{
+    
+        .plan-icon{
+            margin-top:0.1rem;
+        }
+        .title{
+            font-size:1.3rem;
+            vertical-align: middle;
+        }
+    }
+    .price-container{
+        margin-top: 1rem;
+    }
+    .rt-bk-bottom{
+        margin-top: -138rem;
+    }
+    .lt-bk-bottom{
+        margin-top: -51rem;
+    }
+
 }
