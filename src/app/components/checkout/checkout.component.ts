@@ -23,7 +23,7 @@ export class CheckoutComponent implements OnInit
 {
   // TODO: como se puede hacer esto trayendo de base de datos solo una vez? habrá algun tipo de "bean de aplicacion, de sesion"?
   arrPaymentMethod: any[] = [{ '_id': 1, 'name': 'Tarjeta de Crédito' }, { '_id': 2, 'name': 'PSE' }, { '_id': 3, 'name': 'Tarjeta Débito' }, { '_id': 4, 'name': 'Pago en Efectivo' }, { '_id': 5, 'name': 'Pago en Bancos'}];
-  departments: Department[] = [{ name: 'BOGOTA', code: '01' }];
+  departments: Department[] = [];
   cities: City[] = [];
   subtotal: number = 0;
   shippingCost: number = 8000;//TODO dejarlo configurable desde BD
@@ -94,7 +94,6 @@ export class CheckoutComponent implements OnInit
       .subscribe(docs =>
       {
         this.departments = docs;
-
         this.selectDepartment('11');
       });
   }
@@ -161,11 +160,21 @@ export class CheckoutComponent implements OnInit
     this._geoService.getCitiesFromDepartment(selectedOption).subscribe(docs =>
     {
       this.cities = docs;
+      // console.log("Ciudades:");
+      // console.log(this.cities);
+      // console.log("1Ciudad:");
+      // console.log(this.cities[0].cityDepartmentCode);
+      // console.log("fin");
+      this.selectCity(this.cities[0].cityDepartmentCode);
+      this.forma.value.city = this.cities[0].cityDepartmentCode;
     });
   }
 
   selectCity(selectedOption: String)
   {
+    console.log("select city");
+    console.log(selectedOption);
+      
     const citySelected = selectedOption;
 
     let arrDifferentCities: City[] = [];
