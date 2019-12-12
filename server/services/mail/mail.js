@@ -12,7 +12,7 @@ var Order = require('../../models/order.js');
 // var templateContactMessage = fs.readFileSync('server/services/mail/templates/contactMessage.html', { encoding: 'utf-8' });
 
 //templates produccion
-// var templateNewOrder = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
+var templateNewOrder = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrder.html', { encoding: 'utf-8' });
 var templateOrderCreated = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/orderCreated.html', { encoding: 'utf-8' });
 var templateOrderPayment = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/orderPayment.html', { encoding: 'utf-8' });
 var templateNewOrderStore = fs.readFileSync('/var/www/camaleon.shop/server/services/mail/templates/newOrderStore.html', { encoding: 'utf-8' });
@@ -62,6 +62,7 @@ exports.sendOrderMail = function(parameters) {
             .replace('**purchase-date**', orderDate)
             .replace('**qty**', order.items.length)
             .replace('**shipping-address**', order.address)
+            .replace('**telephone**', order.telephone)
             .replace('**subtotal**', order.subtotal)
             .replace('**shipping**', order.shippingCost)
             .replace('**tax**', 0 + '')
@@ -120,6 +121,7 @@ exports.sendOrderPaymentMail = function(parameters) {
             .replace('**purchase-date**', orderDate)
             .replace('**qty**', order.items.length)
             .replace('**shipping-address**', order.address)
+            .replace('**telephone**', order.telephone)
             .replace('**subtotal**', order.total)
             .replace('**shipping**', order.shippingCost)
             .replace('**tax**', 0 + '')
