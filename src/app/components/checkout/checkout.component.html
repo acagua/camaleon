@@ -48,8 +48,8 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="fullname_invoice" class="form-label">Ciudad</label>
-                                        <!-- <select class="form-control" formControlName="city" (change)="selectCity($event.target.value)" required> -->
-                                        <select class="form-control" formControlName="city" (change)="selectCity($event.target.value)">
+                                        <select class="form-control" formControlName="city" (change)="selectCity($event.target.value)" required>
+                                        <!-- <select class="form-control" formControlName="city" (change)="selectCity($event.target.value)"> -->
                                             <option *ngFor="let cit of cities" [value]="cit.cityDepartmentCode">
                                                 {{cit.name}}
                                             </option>
