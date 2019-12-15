@@ -50,6 +50,7 @@
                                         <label for="fullname_invoice" class="form-label">Ciudad</label>
                                         <select class="form-control" formControlName="city" (change)="selectCity($event.target.value)" required>
                                         <!-- <select class="form-control" formControlName="city" (change)="selectCity($event.target.value)"> -->
+                                            <option value="">Selecciona una ciudad</option>
                                             <option *ngFor="let cit of cities" [value]="cit.cityDepartmentCode">
                                                 {{cit.name}}
                                             </option>
