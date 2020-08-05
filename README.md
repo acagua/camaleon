@@ -156,11 +156,14 @@ revisar versión, si no se actualiza:
 2. sudo swapon /swapfile
 8. sudo swapon -s
 
+## instalar certificado SSL
+1. sudo add-apt-repository ppa:certbot/certbot
+2. sudo apt install python3-certbot-nginx
+
 ## Actualizar certificado SSL opcion A
 1. sudo service nginx stop
 2. cd /opt/letencrypt 
-3. ./letsencrypt-auto certonly --standalone --email admin@camaleon.shop -d camaleon.shop -d 
-admin.camaleon.shop -d www.camaleon.shop
+3. ./letsencrypt-auto certonly --standalone --email admin@camaleon.shop -d camaleon.shop -d www.camaleon.shop
 ./letsencrypt-auto certonly --standalone --renew-by-default --email admin@camaleon.shop camaleon.shop -d www.camaleon.shop
 4. renew and replace
 5. sudo service nginx start
@@ -188,6 +191,15 @@ admin.camaleon.shop -d www.camaleon.shop
 1. Lazy Load https://www.npmjs.com/package/ng-lazyload-image
 
 ## nginx config
+Activar UFW
+1. sudo ufw enable
+2. sudo ufw allow 'Nginx Full'
+3. sudo ufw allow http
+4. sudo ufw allow https
+5. sudo ufw allow 'OpenSSH'
+6. sudo ufw allow ssh
+7. Crear nuevo config file en /etc/nginx/sites-available y al terminar hacer el sudo ln -s para pasarlo /etc/nginx/sites-enable (hacer la conexion desde /)
+8. Contenido config file: 
 server {
     listen 80;
     listen [::]:80;
