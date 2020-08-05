@@ -186,3 +186,22 @@ admin.camaleon.shop -d www.camaleon.shop
 
 ## Modulos
 1. Lazy Load https://www.npmjs.com/package/ng-lazyload-image
+
+## nginx config
+server {
+    listen 80;
+    listen [::]:80;
+    server_name http://camaleon.shop http://www.camaleon.shop camaleon.shop www.camaleon.shop;
+    root /var/www/camaleon.shop/dist;
+    #root /var/www/camaleon.shop;   
+    server_tokens off;
+    index index.html index.htm;
+
+    error_log /var/log/nginx/camaleon.log;
+
+location / {
+        # First attempt to server request as file, then         
+        # as directory, then fall back to displaying a 404.          
+        try_files $uri $uri/ /index.html =404;
+    }
+}
